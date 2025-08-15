@@ -54,7 +54,7 @@ import org.xml.sax.SAXException;
  * <p>
  * The serializer supports both DOM and SAX. SAX serializing is done by firing
  * SAX events and using the serializer as a document handler. DOM serializing is done
- * by calling {@link #serialize(Document)} or by using DOM Level 3  
+ * by calling {@link #serialize(Document)} or by using DOM Level 3
  * {@link org.w3c.dom.ls.LSSerializer} and
  * serializing with {@link org.w3c.dom.ls.LSSerializer#write},
  * {@link org.w3c.dom.ls.LSSerializer#writeToString}.
@@ -69,14 +69,14 @@ import org.xml.sax.SAXException;
  * boundaries, indent lines, and serialize elements on separate
  * lines. Line terminators will be regarded as spaces, and
  * spaces at beginning of line will be stripped.
- * 
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ *
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML. See the Xerces documentation for more 
  * information.
  * @author <a href="mailto:arkin@intalio.com">Assaf Arkin</a>
  * @author <a href="mailto:rahul.srivastava@sun.com">Rahul Srivastava</a>
- * @author Elena Litani IBM
+ * @author Elena litani IBM
  * @version $Revision$ $Date$
  * @see Serializer
  */
@@ -97,13 +97,19 @@ extends XMLSerializer {
     // DOM Level 3 implementation: variables intialized in DOMSerializerImpl
     // 
 
-    /** stores namespaces in scope */
+    /**
+     * Stores namespaces in scope
+     */
     protected NamespaceSupport fNSBinder;
 
-    /** stores all namespace bindings on the current element */
+    /**
+     * Stores all namespace bindings on the current element
+     */
     protected NamespaceSupport fLocalNSBinder;
 
-    /** symbol table for serialization */
+    /**
+     * Symbol table for serialization
+     */
     protected SymbolTable fSymbolTable;    
 
     // is node dom level 1 node?
@@ -114,9 +120,9 @@ extends XMLSerializer {
 
     /**
      * Controls whether namespace fixup should be performed during
-     * the serialization. 
-     * NOTE: if this field is set to true the following 
-     * fields need to be initialized: fNSBinder, fLocalNSBinder, fSymbolTable, 
+     * the serialization.
+     * NOTE: if this field is set to true the following
+     * fields need to be initialized: fNSBinder, fLocalNSBinder, fSymbolTable,
      * XMLSymbols.EMPTY_STRING, fXmlSymbol, fXmlnsSymbol, fNamespaceCounter.
      */
     protected boolean fNamespaces = false;
@@ -148,8 +154,8 @@ extends XMLSerializer {
      * using the specified output format. If <tt>format</tt> is null,
      * will use a default output format.
      *
-     * @param writer The writer to use
-     * @param format The output format to use, null for the default
+     * @param writer the writer to use
+     * @param format the output format to use, null for the default
      */
     public XML11Serializer( Writer writer, OutputFormat format ) {
         super( writer, format );
@@ -162,8 +168,8 @@ extends XMLSerializer {
      * stream using the specified output format. If <tt>format</tt>
      * is null, will use a default output format.
      *
-     * @param output The output stream to use
-     * @param format The output format to use, null for the default
+     * @param output the output stream to use
+     * @param format the output format to use, null for the default
      */
     public XML11Serializer( OutputStream output, OutputFormat format ) {
         super( output, format != null ? format : new OutputFormat( Method.XML, null, false ) );

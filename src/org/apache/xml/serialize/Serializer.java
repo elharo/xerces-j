@@ -51,8 +51,8 @@ import org.xml.sax.DocumentHandler;
  * to serialize the document based on the specified method. If the output
  * format or method are missing, the default is an XML serializer with
  * UTF-8 encoding and now indentation.
- * 
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ *
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for more 
  * information.
@@ -91,7 +91,7 @@ public interface Serializer
      * called while the serializer is in the process of serializing
      * a document.
      *
-     * @param format The output format to use
+     * @param format the output format to use
      */
     public void setOutputFormat( OutputFormat format );
 

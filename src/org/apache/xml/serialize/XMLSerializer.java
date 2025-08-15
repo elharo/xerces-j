@@ -65,7 +65,7 @@ import org.xml.sax.helpers.AttributesImpl;
  * <p>
  * The serializer supports both DOM and SAX. SAX serializing is done by firing
  * SAX events and using the serializer as a document handler. DOM serializing is done
- * by calling {@link #serialize(Document)} or by using DOM Level 3  
+ * by calling {@link #serialize(Document)} or by using DOM Level 3
  * {@link org.w3c.dom.ls.LSSerializer} and
  * serializing with {@link org.w3c.dom.ls.LSSerializer#write},
  * {@link org.w3c.dom.ls.LSSerializer#writeToString}.
@@ -80,14 +80,14 @@ import org.xml.sax.helpers.AttributesImpl;
  * boundaries, indent lines, and serialize elements on separate
  * lines. Line terminators will be regarded as spaces, and
  * spaces at beginning of line will be stripped.
- * 
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ *
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML. See the Xerces documentation for more 
  * information.
  * @author <a href="mailto:arkin@intalio.com">Assaf Arkin</a>
  * @author <a href="mailto:rahul.srivastava@sun.com">Rahul Srivastava</a>
- * @author Elena Litani IBM
+ * @author Elena litani IBM
  * @version $Revision$ $Date$
  * @see Serializer
  */
@@ -108,22 +108,28 @@ extends BaseMarkupSerializer {
     // DOM Level 3 implementation: variables intialized in DOMSerializerImpl
     // 
 
-    /** stores namespaces in scope */
+    /**
+     * Stores namespaces in scope
+     */
     protected NamespaceSupport fNSBinder;
 
-    /** stores all namespace bindings on the current element */
+    /**
+     * Stores all namespace bindings on the current element
+     */
     protected NamespaceSupport fLocalNSBinder;
 
-    /** symbol table for serialization */
+    /**
+     * Symbol table for serialization
+     */
     protected SymbolTable fSymbolTable;    
 
     protected final static String PREFIX = "NS";
 
     /**
      * Controls whether namespace fixup should be performed during
-     * the serialization. 
-     * NOTE: if this field is set to true the following 
-     * fields need to be initialized: fNSBinder, fLocalNSBinder, fSymbolTable, 
+     * the serialization.
+     * NOTE: if this field is set to true the following
+     * fields need to be initialized: fNSBinder, fLocalNSBinder, fSymbolTable,
      * XMLSymbols.EMPTY_STRING, fXmlSymbol, fXmlnsSymbol
      */
     protected boolean fNamespaces = false;
@@ -163,8 +169,8 @@ extends BaseMarkupSerializer {
      * using the specified output format. If <tt>format</tt> is null,
      * will use a default output format.
      *
-     * @param writer The writer to use
-     * @param format The output format to use, null for the default
+     * @param writer the writer to use
+     * @param format the output format to use, null for the default
      */
     public XMLSerializer( Writer writer, OutputFormat format ) {
         super( format != null ? format : new OutputFormat( Method.XML, null, false ) );
@@ -178,8 +184,8 @@ extends BaseMarkupSerializer {
      * stream using the specified output format. If <tt>format</tt>
      * is null, will use a default output format.
      *
-     * @param output The output stream to use
-     * @param format The output format to use, null for the default
+     * @param output the output stream to use
+     * @param format the output format to use, null for the default
      */
     public XMLSerializer( OutputStream output, OutputFormat format ) {
         super( format != null ? format : new OutputFormat( Method.XML, null, false ) );
@@ -196,8 +202,9 @@ extends BaseMarkupSerializer {
     /**
      * This methods turns on namespace fixup algorithm during
      * DOM serialization.
+     *
      * @see org.w3c.dom.ls.LSSerializer
-     * 
+     *
      * @param namespaces
      */
     public void setNamespaces (boolean namespaces){
@@ -245,7 +252,7 @@ extends BaseMarkupSerializer {
                     startDocument( ( localName == null || localName.length() == 0 ) ? rawName : localName );
             } else {
                 // For any other element, if first in parent, then
-                // close parent's opening tag and use the parnet's
+                // close parent's opening tag and use the parent's
                 // space preserving.
                 if (state.empty)
                     _printer.printText( '>' );
@@ -556,11 +563,9 @@ extends BaseMarkupSerializer {
         if (! _started) {
 
             if (! _format.getOmitXMLDeclaration()) {
-                StringBuffer    buffer;
-
-                // Serialize the document declaration appreaing at the head
+                // Serialize the XML declaration appearing at the head
                 // of very XML document (unless asked not to).
-                buffer = new StringBuffer( "<?xml version=\"" );
+                StringBuffer buffer = new StringBuffer( "<?xml version=\"" );
                 if (_format.getVersion() != null)
                     buffer.append( _format.getVersion() );
                 else
@@ -583,7 +588,7 @@ extends BaseMarkupSerializer {
             if (! _format.getOmitDocumentType()) {
                 if (_docTypeSystemId != null) {
                     // System identifier must be specified to print DOCTYPE.
-                    // If public identifier is specified print 'PUBLIC
+                    // If public identifier is specified, print 'PUBLIC
                     // <public> <system>', if not, print 'SYSTEM <system>'.
                     _printer.printText( "<!DOCTYPE " );
                     _printer.printText( rootTagName );
@@ -623,7 +628,7 @@ extends BaseMarkupSerializer {
             }
         }
         _started = true;
-        // Always serialize these, even if not te first root element.
+        // Always serialize these, even if not the first root element.
         serializePreRoot();
     }
 
@@ -1097,7 +1102,7 @@ extends BaseMarkupSerializer {
     /**
      * Serializes a namespace attribute with the given prefix and value for URI.
      * In case prefix is empty will serialize default namespace declaration.
-     * 
+     *
      * @param prefix
      * @param uri
      * @exception IOException
@@ -1124,9 +1129,9 @@ extends BaseMarkupSerializer {
 
 
     /**
-     * Prints attribute. 
+     * Prints attribute.
      * NOTE: xml:space attribute modifies output format
-     * 
+     *
      * @param name
      * @param value
      * @param isSpecified
@@ -1185,8 +1190,8 @@ extends BaseMarkupSerializer {
     }
 
 
-    /** Retrieve and remove the namespaces declarations from the list of attributes.
-     *
+    /**
+     * Retrieve and remove the namespaces declarations from the list of attributes.
      */
     private Attributes extractNamespaces( Attributes attrs )
     throws SAXException
@@ -1253,7 +1258,9 @@ extends BaseMarkupSerializer {
         }
     }
 
-    /** print text data */
+    /**
+     * Print text data
+     */
     protected void printXMLChar( int ch) throws IOException {
     	if (ch == '\r') {
 			printHex(ch);
@@ -1387,7 +1394,7 @@ extends BaseMarkupSerializer {
     * DOM Level 3:
     * Check a node to determine if it contains unbound namespace prefixes.
     *
-    * @param node The node to check for unbound namespace prefices
+    * @param node the node to check for unbound namespace prefices
     */
 	protected void checkUnboundNamespacePrefixedNode (Node node) throws IOException{
 

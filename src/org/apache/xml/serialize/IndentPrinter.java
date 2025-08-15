@@ -28,7 +28,7 @@ import java.io.Writer;
  * Extends {@link Printer} and adds support for indentation and line
  * wrapping.
  *
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML. See the Xerces documentation for more 
  * information.
@@ -137,7 +137,7 @@ public class IndentPrinter
      * added to the accumulate line. When a line is long enough, it can
      * be broken at its text boundary.
      *
-     * @param text The text to print
+     * @param text the text to print
      */
     public void printText( String text )
     {

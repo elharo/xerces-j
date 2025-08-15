@@ -24,7 +24,8 @@ import java.util.Hashtable;
 import java.util.StringTokenizer;
 
 /**
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ *
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for more 
  * information.
@@ -131,7 +132,7 @@ public abstract class SerializerFactory {
      * using the output byte stream and the encoding specified in the
      * output format.
      *
-     * @throws UnsupportedEncodingException The specified encoding is
+     * @throws UnsupportedEncodingException the specified encoding is
      *   not supported
      */
     public abstract Serializer makeSerializer( OutputStream output,

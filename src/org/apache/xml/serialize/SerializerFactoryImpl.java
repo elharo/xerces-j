@@ -29,7 +29,7 @@ import org.apache.xerces.dom.DOMMessageFormatter;
  * Default serializer factory can construct serializers for the three
  * markup serializers (XML, HTML, XHTML ).
  *
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for more 
  * information.

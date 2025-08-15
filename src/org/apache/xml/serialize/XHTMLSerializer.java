@@ -28,7 +28,7 @@ import java.io.Writer;
  * pretty serializing. For usage instructions see either {@link
  * Serializer} or {@link BaseMarkupSerializer}.
  *
- * @deprecated This class was deprecated in Xerces 2.6.2. It is
+ * @deprecated this class was deprecated in Xerces 2.6.2. It is
  * recommended that new applications use JAXP's Transformation API 
  * for XML (TrAX) for serializing XHTML. See the Xerces documentation
  * for more information.
@@ -68,8 +68,8 @@ public class XHTMLSerializer
      * using the specified output format. If <tt>format</tt> is null,
      * will use a default output format.
      *
-     * @param writer The writer to use
-     * @param format The output format to use, null for the default
+     * @param writer the writer to use
+     * @param format the output format to use, null for the default
      */
     public XHTMLSerializer( Writer writer, OutputFormat format )
     {
@@ -83,8 +83,8 @@ public class XHTMLSerializer
      * stream using the specified output format. If <tt>format</tt>
      * is null, will use a default output format.
      *
-     * @param output The output stream to use
-     * @param format The output format to use, null for the default
+     * @param output the output stream to use
+     * @param format the output format to use, null for the default
      */
     public XHTMLSerializer( OutputStream output, OutputFormat format )
     {

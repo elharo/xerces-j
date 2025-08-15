@@ -44,14 +44,13 @@ import org.w3c.dom.html.HTMLDocument;
  * The two interesting constructors are:
  * <ul>
  * <li>{@link #OutputFormat(String,String,boolean)} creates a format
- *  for the specified method (XML, HTML, Text, etc), encoding and indentation
+ * for the specified method (XML, HTML, Text, etc), encoding and indentation
  * <li>{@link #OutputFormat(Document,String,boolean)} creates a format
- *  compatible with the document type (XML, HTML, Text, etc), encoding and
- *  indentation
+ * compatible with the document type (XML, HTML, Text, etc), encoding and
+ * indentation
  * </ul>
  *
- *
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for 
  * more information.
@@ -64,8 +63,9 @@ import org.w3c.dom.html.HTMLDocument;
  */
 public class OutputFormat
 {
-    /** 
-     * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+    /**
+     *
+     * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
      * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
      * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for 
      * more information.
@@ -98,8 +98,9 @@ public class OutputFormat
 
     }
 
-    /** 
-     * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+    /**
+     *
+     * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
      * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
      * API for XML (TrAX) for serializing XML and HTML. See the Xerces documentation for 
      * more information.
@@ -238,10 +239,11 @@ public class OutputFormat
      * specify otherwise, or specify the default behavior.
      */
     private boolean _preserve = false;
-	/** If true, an empty string valued attribute is output as "". If false and
-	 * and we are using the HTMLSerializer, then only the attribute name is 
-	 * serialized. Defaults to false for backwards compatibility.
-	 */
+    /**
+     * If true, an empty string valued attribute is output as "". If false and
+     * and we are using the HTMLSerializer, then only the attribute name is
+     * serialized. Defaults to false for backwards compatibility.
+     */
 	private boolean _preserveEmptyAttributes = false;
 
     /**
@@ -258,9 +260,9 @@ public class OutputFormat
      * is true, the document will be pretty printed with the default
      * indentation level and default line wrapping.
      *
-     * @param method The specified output method
-     * @param encoding The specified encoding
-     * @param indenting True for pretty printing
+     * @param method the specified output method
+     * @param encoding the specified encoding
+     * @param indenting true for pretty printing
      * @see #setEncoding
      * @see #setIndenting
      * @see #setMethod
@@ -278,7 +280,7 @@ public class OutputFormat
      * document type identifiers and media type for the specified
      * document.
      *
-     * @param doc The document to output
+     * @param doc the document to output
      * @see #whichMethod
      */
     public OutputFormat( Document doc )
@@ -296,9 +298,9 @@ public class OutputFormat
      * is true, the document will be pretty printed with the default
      * indentation level and default line wrapping.
      *
-     * @param doc The document to output
-     * @param encoding The specified encoding
-     * @param indenting True for pretty printing
+     * @param doc the document to output
+     * @param encoding the specified encoding
+     * @param indenting true for pretty printing
      * @see #setEncoding
      * @see #setIndenting
      * @see #whichMethod
@@ -319,7 +321,7 @@ public class OutputFormat
      * and the most suitable method will be determined for
      * the document by calling {@link #whichMethod}.
      *
-     * @return The specified output method, or null
+     * @return the specified output method, or null
      */
     public String getMethod()
     {
@@ -331,7 +333,7 @@ public class OutputFormat
      * Sets the method for this output format.
      *
      * @see #getMethod
-     * @param method The output method, or null
+     * @param method the output method, or null
      */
     public void setMethod( String method )
     {
@@ -346,7 +348,7 @@ public class OutputFormat
      * If the serializer does not support that particular
      * version, it should default to a supported version.
      *
-     * @return The specified method version, or null
+     * @return the specified method version, or null
      */
     public String getVersion()
     {
@@ -360,7 +362,7 @@ public class OutputFormat
      * it would be "4.0".
      *
      * @see #getVersion
-     * @param version The output method version, or null
+     * @param version the output method version, or null
      */
     public void setVersion( String version )
     {
@@ -373,7 +375,7 @@ public class OutputFormat
      * was specified, zero is returned and the document
      * should not be indented.
      *
-     * @return The indentation or zero
+     * @return the indentation or zero
      * @see #setIndenting
      */
     public int getIndent()
@@ -397,7 +399,7 @@ public class OutputFormat
      * Calling {@link #setIndenting} will reset this
      * value to zero (off) or the default (on).
      *
-     * @param indent The indentation, or zero
+     * @param indent the indentation, or zero
      */
     public void setIndent( int indent )
     {
@@ -415,7 +417,7 @@ public class OutputFormat
      * To specify a different indentation level or line wrapping,
      * use {@link #setIndent} and {@link #setLineWidth}.
      *
-     * @param on True if indentation should be on
+     * @param on true if indentation should be on
      */
     public void setIndenting( boolean on )
     {
@@ -433,7 +435,7 @@ public class OutputFormat
      * Returns the specified encoding. If no encoding was
      * specified, the default is always "UTF-8".
      *
-     * @return The encoding
+     * @return the encoding
      */
     public String getEncoding()
     {
@@ -448,7 +450,7 @@ public class OutputFormat
      * used by the {@link java.io.Writer}.
      *
      * @see #getEncoding
-     * @param encoding The encoding, or null
+     * @param encoding the encoding, or null
      */
     public void setEncoding( String encoding )
     {
@@ -495,7 +497,7 @@ public class OutputFormat
      * To determine the media type based on the
      * document type, use {@link #whichMediaType}.
      *
-     * @return The specified media type, or null
+     * @return the specified media type, or null
      */
     public String getMediaType()
     {
@@ -507,7 +509,7 @@ public class OutputFormat
      * Sets the media type.
      *
      * @see #getMediaType
-     * @param mediaType The specified media type
+     * @param mediaType the specified media type
      */
     public void setMediaType( String mediaType )
     {
@@ -523,8 +525,8 @@ public class OutputFormat
      * by the DOM Document or SAX events will override these
      * values.
      *
-     * @param publicId The public identifier, or null
-     * @param systemId The system identifier, or null
+     * @param publicId the public identifier, or null
+     * @param systemId the system identifier, or null
      */
     public void setDoctype( String publicId, String systemId )
     {
@@ -566,7 +568,7 @@ public class OutputFormat
     /**
      * Sets comment omitting on and off.
      *
-     * @param omit True if comments should be ommited
+     * @param omit true if comments should be ommited
      */
     public void setOmitComments( boolean omit )
     {
@@ -587,7 +589,7 @@ public class OutputFormat
     /**
      * Sets DOCTYPE declaration omitting on and off.
      *
-     * @param omit True if DOCTYPE declaration should be ommited
+     * @param omit true if DOCTYPE declaration should be ommited
      */
     public void setOmitDocumentType( boolean omit )
     {
@@ -608,7 +610,7 @@ public class OutputFormat
     /**
      * Sets XML declaration omitting on and off.
      *
-     * @param omit True if XML declaration should be ommited
+     * @param omit true if XML declaration should be ommited
      */
     public void setOmitXMLDeclaration( boolean omit )
     {
@@ -631,7 +633,7 @@ public class OutputFormat
      * identifiers must be null for the document to be
      * serialized as standalone.
      *
-     * @param standalone True if document DTD is standalone
+     * @param standalone true if document DTD is standalone
      */
     public void setStandalone( boolean standalone )
     {
@@ -654,8 +656,8 @@ public class OutputFormat
      * Returns true if the text node children of the given elements
      * should be output as CDATA.
      *
-     * @param tagName The element's tag name
-     * @return True if should serialize as CDATA
+     * @param tagName the element's tag name
+     * @return true if should serialize as CDATA
      */
     public boolean isCDataElement( String tagName )
     {
@@ -674,7 +676,7 @@ public class OutputFormat
      * Sets the list of elements for which text node children
      * should be output as CDATA.
      *
-     * @param cdataElements List of CDATA element tag names
+     * @param cdataElements list of CDATA element tag names
      */
     public void setCDataElements( String[] cdataElements )
     {
@@ -697,8 +699,8 @@ public class OutputFormat
      * Returns true if the text node children of the given elements
      * should be output unescaped.
      *
-     * @param tagName The element's tag name
-     * @return True if should serialize unescaped
+     * @param tagName the element's tag name
+     * @return true if should serialize unescaped
      */
     public boolean isNonEscapingElement( String tagName )
     {
@@ -718,7 +720,7 @@ public class OutputFormat
      * Sets the list of elements for which text node children
      * should be output unescaped (no character references).
      *
-     * @param nonEscapingElements List of unescaped element tag names
+     * @param nonEscapingElements list of unescaped element tag names
      */
     public void setNonEscapingElements( String[] nonEscapingElements )
     {
@@ -732,7 +734,7 @@ public class OutputFormat
      * Web line separator (<tt>\n</tt>). A string is returned to
      * support double codes (CR + LF).
      *
-     * @return The specified line separator
+     * @return the specified line separator
      */
     public String getLineSeparator()
     {
@@ -747,7 +749,7 @@ public class OutputFormat
      * useful if the document is edited on machines of the same type.
      * For general documents, use the Web line separator.
      *
-     * @param lineSeparator The specified line separator
+     * @param lineSeparator the specified line separator
      */
     public void setLineSeparator( String lineSeparator )
     {
@@ -776,7 +778,7 @@ public class OutputFormat
      * space stripping and all elements that do not specify otherwise
      * or use the default value will not preserve spaces.
      *
-     * @param preserve True if spaces should be preserved
+     * @param preserve true if spaces should be preserved
      */
     public void setPreserveSpace( boolean preserve )
     {
@@ -801,7 +803,7 @@ public class OutputFormat
      * occur. Calling {@link #setIndenting} will reset this
      * value to zero (off) or the default (on).
      *
-     * @param lineWidth The line width to use, zero for default
+     * @param lineWidth the line width to use, zero for default
      * @see #getLineWidth
      * @see #setIndenting
      */
@@ -812,16 +814,17 @@ public class OutputFormat
         else
             _lineWidth = lineWidth;
     }
-	/**
-	 * Returns the preserveEmptyAttribute flag. If flag is false, then'
-	 * attributes with empty string values are output as the attribute 
-	 * name only (in HTML mode).
-	 * @return preserve the preserve flag
+    /**
+     * Returns the preserveEmptyAttribute flag. If flag is false, then'
+     * attributes with empty string values are output as the attribute
+     * name only (in HTML mode).
+     *
+     * @return preserve the preserve flag
 	 */	public boolean getPreserveEmptyAttributes () {		return _preserveEmptyAttributes;	}	/**
 	 * Sets the preserveEmptyAttribute flag. If flag is false, then'
 	 * attributes with empty string values are output as the attribute 
 	 * name only (in HTML mode).
-	 * @param preserve the preserve flag
+     * @param preserve the preserve flag
 	 */	public void setPreserveEmptyAttributes (boolean preserve) {		_preserveEmptyAttributes = preserve;	}
 
     /**
@@ -847,8 +850,8 @@ public class OutputFormat
      * element are all whitespace, then the method is said to be
      * <tt>html</tt>. Otherwise the method is <tt>xml</tt>.
      *
-     * @param doc The document to check
-     * @return The suitable method
+     * @param doc the document to check
+     * @return the suitable method
      */
     public static String whichMethod( Document doc )
     {

@@ -29,7 +29,7 @@ import org.apache.xerces.util.EncodingMap;
  * to override encoding names and provide the last printable character
  * for each encoding.
  *
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML. See the Xerces documentation for more 
  * information.
@@ -60,7 +60,8 @@ public class Encodings
     static Hashtable _encodings = new Hashtable();
 
     /**
-     * @param encoding a MIME charset name, or null.
+     *
+     * @param encoding a MIME charset name, or null
      */
     static EncodingInfo getEncodingInfo(String encoding, boolean allowJavaNames) throws UnsupportedEncodingException {
         EncodingInfo eInfo = null;

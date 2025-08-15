@@ -29,8 +29,8 @@ import org.w3c.dom.Element;
 
 /**
  * Interface for a DOM serializer implementation.
- * 
- * @deprecated This class was deprecated in Xerces 2.9.0. It is recommended 
+ *
+ * @deprecated this class was deprecated in Xerces 2.9.0. It is recommended
  * that new applications use the DOM Level 3 LSSerializer or JAXP's Transformation 
  * API for XML (TrAX) for serializing XML. See the Xerces documentation for more 
  * information.
@@ -46,8 +46,8 @@ public interface DOMSerializer
      * Serialized the DOM element. Throws an exception only if
      * an I/O exception occured while serializing.
      *
-     * @param elem The element to serialize
-     * @throws IOException An I/O exception occured while
+     * @param elem the element to serialize
+     * @throws IOException an I/O exception occured while
      *   serializing
      */
     public void serialize( Element elem )
@@ -58,8 +58,8 @@ public interface DOMSerializer
      * Serializes the DOM document. Throws an exception only if
      * an I/O exception occured while serializing.
      *
-     * @param doc The document to serialize
-     * @throws IOException An I/O exception occured while
+     * @param doc the document to serialize
+     * @throws IOException an I/O exception occured while
      *   serializing
      */
     public void serialize( Document doc )
@@ -70,8 +70,8 @@ public interface DOMSerializer
      * Serializes the DOM document fragment. Throws an exception
      * only if an I/O exception occured while serializing.
      *
-     * @param frag The document fragment to serialize
-     * @throws IOException An I/O exception occured while
+     * @param frag the document fragment to serialize
+     * @throws IOException an I/O exception occured while
      *   serializing
      */
     public void serialize( DocumentFragment frag )
