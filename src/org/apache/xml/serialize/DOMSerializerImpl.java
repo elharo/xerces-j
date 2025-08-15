@@ -659,7 +659,7 @@ public class DOMSerializerImpl implements LSSerializer, DOMConfiguration {
      *
      * @param node  the node to serialize
      * @param destination the destination for the serialized DOM
-     * @return Returns <code>true</code> if <code>node</code> was
+     * @return returns <code>true</code> if <code>node</code> was
       *   successfully serialized and <code>false</code> in case the node
       *   couldn't be serialized
      */
@@ -804,7 +804,7 @@ public class DOMSerializerImpl implements LSSerializer, DOMConfiguration {
      *
      * @param node  the node to serialize
      * @param URI the URI to write to
-     * @return Returns <code>true</code> if <code>node</code> was
+     * @return returns <code>true</code> if <code>node</code> was
       *   successfully serialized and <code>false</code> in case the node
       *   couldn't be serialized
      */
