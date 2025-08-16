@@ -61,10 +61,10 @@ public interface XPointerProcessor {
      * by checking if it's element and attributes parameters match the
      * criteria specified in the xpointer expression.
      *
-     * @param element - The name of the element
-     * @param attributes - The element attributes
-     * @param augs - Additional information that may include infoset augmentations
-     * @param event - An integer indicating
+     * @param element the name of the element
+     * @param attributes the element attributes
+     * @param augs additional information that may include infoset augmentations
+     * @param event an integer indicating
      *                0 - The start of an element
      *                1 - The end of an element
      *                2 - An empty element call
