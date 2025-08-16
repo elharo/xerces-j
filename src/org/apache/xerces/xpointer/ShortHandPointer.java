@@ -30,8 +30,8 @@ import org.apache.xerces.xs.XSTypeDefinition;
 /**
  * <p>
  * Implements the XPointerPart interface and handles processing of
- * ShortHand Pointers.  It identifies at most one element in the 
- * resource's information set; specifically, the first one (if any) 
+ * ShortHand Pointers.  It identifies at most one element in the
+ * resource's information set; specifically, the first one (if any)
  * in document order that has a matching NCName as an identifier.
  * </p>
  *
@@ -60,7 +60,7 @@ final class ShortHandPointer implements XPointerPart {
     
     /**
      * The XPointerProcessor takes care of this.  Simply set the ShortHand Pointer here.
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#parseXPointer(java.lang.String)
      */
     public void parseXPointer(String part) throws XNIException {
@@ -70,9 +70,9 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
-     * Resolves the XPointer ShortHand pointer based on the rules defined in 
+     * Resolves the XPointer ShortHand pointer based on the rules defined in
      * Section 3.2 of the XPointer Framework Recommendation.
-     * Note that in the current implementation only supports DTD determined ID's. 
+     * Note that in the current implementation only supports DTD determined ID's.
      *
      * @see org.apache.xerces.xpointer.XPointerPart#resolveXPointer(org.apache.xerces.xni.QName, org.apache.xerces.xni.XMLAttributes, org.apache.xerces.xni.Augmentations, int event)
      */
@@ -113,7 +113,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
-     * 
+     *
      * @param element
      * @param attributes
      * @param augs
@@ -173,10 +173,10 @@ final class ShortHandPointer implements XPointerPart {
     
     /**
      * Rerturns the DTD determine-ID
-     * 
+     *
      * @param attributes
      * @param index
-     * @return String 
+     * @return string
      * @throws XNIException
      */
     public String getDTDDeterminedID(XMLAttributes attributes, int index)
@@ -190,11 +190,10 @@ final class ShortHandPointer implements XPointerPart {
     
     /**
      * Returns the schema-determined-ID.
-     * 
-     * 
+     *
      * @param attributes
      * @param index
-     * @return A String containing the schema-determined ID. 
+     * @return a String containing the schema-determined ID
      * @throws XNIException
      */
     public String getSchemaDeterminedID(XMLAttributes attributes, int index)
@@ -235,10 +234,10 @@ final class ShortHandPointer implements XPointerPart {
     
     /**
      * Not quite sure how this can be correctly implemented.
-     * 
+     *
      * @param attributes
      * @param index
-     * @return String - We return null since we currenly do not supprt this. 
+     * @return string - We return null since we currenly do not supprt this
      * @throws XNIException
      */
     public String getChildrenSchemaDeterminedID(XMLAttributes attributes,
@@ -247,7 +246,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#isFragmentResolved()
      */
     public boolean isFragmentResolved() {
@@ -255,7 +254,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#isChildFragmentResolved()
      */
     public boolean isChildFragmentResolved() {
@@ -264,7 +263,7 @@ final class ShortHandPointer implements XPointerPart {
     
     /**
      * Returns the name of the ShortHand pointer
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#getSchemeName()
      */
     public String getSchemeName() {
@@ -272,6 +271,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#getSchemeData()
      */
     public String getSchemeData() {
@@ -279,6 +279,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#setSchemeName(java.lang.String)
      */
     public void setSchemeName(String schemeName) {
@@ -286,6 +287,7 @@ final class ShortHandPointer implements XPointerPart {
     }
     
     /**
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#setSchemeData(java.lang.String)
      */
     public void setSchemeData(String schemeData) {

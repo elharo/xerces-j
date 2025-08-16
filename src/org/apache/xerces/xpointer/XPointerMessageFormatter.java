@@ -26,9 +26,9 @@ import org.apache.xerces.util.MessageFormatter;
 /**
  * XPointerMessageFormatter provides error messages for the XPointer Framework
  * and element() Scheme Recommendations.
- * 
+ *
  * @xerces.internal
- * 
+ *
  * @version $Id$
  */
 final class XPointerMessageFormatter implements MessageFormatter {
@@ -43,20 +43,20 @@ final class XPointerMessageFormatter implements MessageFormatter {
     /**
      * Formats a message with the specified arguments using the given locale
      * information.
-     * 
+     *
      * @param locale
-     *            The locale of the message.
+     *            The locale of the message
      * @param key
-     *            The message key.
+     *            The message key
      * @param arguments
      *            The message replacement text arguments. The order of the
      *            arguments must match that of the placeholders in the actual
      *            message.
-     * 
-     * @return Returns the formatted message.
-     * 
+     *
+     * @return returns the formatted message.
+     *
      * @throws MissingResourceException
-     *             Thrown if the message with the specified key cannot be found.
+     *             Thrown if the message with the specified key cannot be found
      */
     public String formatMessage(Locale locale, String key, Object[] arguments)
             throws MissingResourceException {
