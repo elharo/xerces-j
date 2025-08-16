@@ -34,7 +34,7 @@ import org.apache.xerces.xni.parser.XMLErrorHandler;
  * </p>
  *
  * @xerces.internal
- * 
+ *
  * @version $Id$
  */
 final class ElementSchemePointer implements XPointerPart {
@@ -114,10 +114,10 @@ final class ElementSchemePointer implements XPointerPart {
     // XPointerPart implementation
     // ************************************************************************
 
-    /** 
+    /**
      * Parses the XPointer expression and tokenizes it into Strings
-     * delimited by whitespace.   
-     *   
+     * delimited by whitespace.
+     *
      * @see org.apache.xerces.xpointer.XPointerProcessor#parseXPointer(java.lang.String)
      */
     public void parseXPointer(String xpointer) throws XNIException {
@@ -198,6 +198,7 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * Returns the scheme name i.e element
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#getSchemeName()
      */
     public String getSchemeName() {
@@ -206,7 +207,7 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * Returns the scheme data
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#getSchemeData()
      */
     public String getSchemeData() {
@@ -215,7 +216,7 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * Sets the scheme name
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#setSchemeName(java.lang.String)
      */
     public void setSchemeName(String schemeName) {
@@ -225,7 +226,7 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * Sets the scheme data
-     * 
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#setSchemeData(java.lang.String)
      */
     public void setSchemeData(String schemeData) {
@@ -236,7 +237,7 @@ final class ElementSchemePointer implements XPointerPart {
      * Responsible for resolving the element() scheme XPointer.  If a ShortHand
      * Pointer is present and it is successfully resolved and if a child
      * sequence is present, the child sequence is resolved relative to it.
-     *   
+     *
      * @see org.apache.xerces.xpointer.XPointerProcessor#resolveXPointer(org.apache.xerces.xni.QName, org.apache.xerces.xni.XMLAttributes, org.apache.xerces.xni.Augmentations, int event)
      */
     public boolean resolveXPointer(QName element, XMLAttributes attributes,
@@ -278,11 +279,11 @@ final class ElementSchemePointer implements XPointerPart {
     /**
      * Matches the current element position in the document tree with the
      * element position specified in the element XPointer scheme.
-     *   
+     *
      * @param event
-     * @return boolean - true if the current element position in the document 
+     * @return boolean - true if the current element position in the document
      * tree matches theelement position specified in the element XPointer 
-     * scheme.
+     * scheme
      */
     protected boolean matchChildSequence(QName element, int event)
             throws XNIException {
@@ -360,11 +361,11 @@ final class ElementSchemePointer implements XPointerPart {
     }
 
     /**
-     * Matches the current position of the element being visited by checking 
-     * its position and previous elements against the element XPointer expression.  
+     * Matches the current position of the element being visited by checking
+     * its position and previous elements against the element XPointer expression.
      * If a match is found it return true else false.
-     *  
-     * @return boolean 
+     *
+     * @return boolean
      */
     protected boolean checkMatch() {
         // If the number of elements in the ChildSequence is greater than the
@@ -411,7 +412,7 @@ final class ElementSchemePointer implements XPointerPart {
     /**
      * Returns true if the node matches or is a child of a matching element()
      * scheme XPointer.
-     *  
+     *
      * @see org.apache.xerces.xpointer.XPointerProcessor#isFragmentResolved()
      */
     public boolean isFragmentResolved() throws XNIException {
@@ -422,11 +423,12 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * Returns true if the XPointer expression resolves to a non-element child
-     * of the current resource fragment.       
-     * 
+     * of the current resource fragment.
+     *
      * @see org.apache.xerces.xpointer.XPointerPart#isChildFragmentResolved()
-     *   
-     */    
+ *
+     *
+     */
     public boolean isChildFragmentResolved() {
     	// if only a shorthand pointer was present
     	if (fIsShortHand && fShortHandPointer != null && fChildSequence.length <= 0) {
@@ -438,8 +440,8 @@ final class ElementSchemePointer implements XPointerPart {
     }
     
     /**
-	 * Reports an XPointer error
-	 */
+     * Reports an XPointer error
+     */
     protected void reportError(String key, Object[] arguments)
             throws XNIException {
     	/*fErrorReporter.reportError(XPointerMessageFormatter.XPOINTER_DOMAIN,
@@ -490,19 +492,20 @@ final class ElementSchemePointer implements XPointerPart {
 
     /**
      * List of XPointer Framework tokens.
-     * 
+     *
      * @xerces.internal
-     * 
+     *
      * @author Neil Delima, IBM
      * @version $Id$
-     * 
+ *
+     *
      */
     private final class Tokens {
 
         /**
          * XPointer element() scheme
-         * [1]    ElementSchemeData    ::=    (NCName ChildSequence?) | ChildSequence  
-         * [2]    ChildSequence    ::=    ('/' [1-9] [0-9]*)+ 
+         * [1]    ElementSchemeData    ::=    (NCName ChildSequence?) | ChildSequence
+         * [2]    ChildSequence    ::=    ('/' [1-9] [0-9]*)+
          */
         private static final int XPTRTOKEN_ELEM_NCNAME = 0;
 
@@ -527,8 +530,8 @@ final class ElementSchemePointer implements XPointerPart {
         private HashMap fTokenNames = new HashMap();
 
         /**
-         * Constructor 
-         * 
+         * Constructor
+         *
          * @param symbolTable SymbolTable
          */
         private Tokens(SymbolTable symbolTable) {
@@ -550,9 +553,10 @@ final class ElementSchemePointer implements XPointerPart {
         }
 
         /**
-         * Returns the token String 
-         * @param token The index of the token
-         * @return String The token string
+         * Returns the token String
+         *
+         * @param token the index of the token
+         * @return string The token string
          */
         private Integer getToken(int token) {
             return (Integer) fTokenNames.get(new Integer(token));
@@ -560,8 +564,8 @@ final class ElementSchemePointer implements XPointerPart {
 
         /**
          * Add the specified string as a token
-         *  
-         * @param token The token string
+         *
+         * @param token the token string
          */
         private void addToken(String tokenStr) {
             Integer tokenInt = (Integer) fTokenNames.get(tokenStr);
@@ -574,8 +578,8 @@ final class ElementSchemePointer implements XPointerPart {
 
         /**
          * Add the specified int token
-         *  
-         * @param token The int specifying the token
+         *
+         * @param token the int specifying the token
          */
         private void addToken(int token) {
             try {
@@ -607,7 +611,7 @@ final class ElementSchemePointer implements XPointerPart {
         /**
          * Obtains the token at the current position, then advance
          * the current position by one.
-         * 
+         *
          * If there's no such next token, this method throws
          * <tt>new XNIException("InvalidXPointerExpression");</tt>.
          */
@@ -620,7 +624,7 @@ final class ElementSchemePointer implements XPointerPart {
         /**
          * Obtains the token at the current position, without advancing
          * the current position.
-         * 
+         *
          * If there's no such next token, this method throws
          * <tt>new XNIException("InvalidXPointerExpression");</tt>.
          */
@@ -632,9 +636,9 @@ final class ElementSchemePointer implements XPointerPart {
 
         /**
          * Obtains the token at the current position as a String.
-         * 
+         *
          * If there's no current token or if the current token
-         * is not a string token, this method throws 
+         * is not a string token, this method throws
          * If there's no such next token, this method throws
          * <tt>new XNIException("InvalidXPointerExpression");</tt>.
          */
@@ -647,7 +651,6 @@ final class ElementSchemePointer implements XPointerPart {
 
         /**
          * Returns the number of tokens.
-         * 
          */
         private int getTokenCount() {
             return fTokenCount;
@@ -655,11 +658,10 @@ final class ElementSchemePointer implements XPointerPart {
     }
 
     /**
-     * 
      * The XPointer expression scanner.  Scans the XPointer framework expression.
-     * 
+     *
      * @xerces.internal
-     * 
+     *
      * @version $Id$
      */
     private class Scanner {
@@ -667,12 +669,13 @@ final class ElementSchemePointer implements XPointerPart {
         /**
          * 7-bit ASCII subset
          *
-         *  0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
-         *  0,  0,  0,  0,  0,  0,  0,  0,  0, HT, LF,  0,  0, CR,  0,  0,  // 0
-         *  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  // 1
+         * 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+         * 0,  0,  0,  0,  0,  0,  0,  0,  0, HT, LF,  0,  0, CR,  0,  0,  // 0
+         * 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  // 1
          * SP,  !,  ",  #,  $,  %,  &,  ',  (,  ),  *,  +,  ,,  -,  .,  /,  // 2
-         *  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  :,  ;,  <,  =,  >,  ?,  // 3
-         *  @,  A,  B,  C,  D,  E,  F,  G,  H,  I,  J,  K,  L,  M,  N,  O,  // 4
+         * 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  :,  ;,  <,  =,  >,  ?,  // 3
+         *
+         * @,  a,  B,  C,  D,  E,  F,  G,  H,  I,  J,  K,  L,  M,  N,  O,  // 4
          *  P,  Q,  R,  S,  T,  U,  V,  W,  X,  Y,  Z,  [,  \,  ],  ^,  _,  // 5
          *  `,  a,  b,  c,  d,  e,  f,  g,  h,  i,  j,  k,  l,  m,  n,  o,  // 6
          *  p,  q,  r,  s,  t,  u,  v,  w,  x,  y,  z,  {,  |,  },  ~, DEL  // 7
@@ -702,17 +705,19 @@ final class ElementSchemePointer implements XPointerPart {
         //
         // Data
         //
-        /** Symbol table. */
+        /**
+         * Symbol table.
+         */
         private SymbolTable fSymbolTable;
 
         //
         // Constructors
         //
 
-        /** 
-         * Constructs an XPath expression scanner. 
+        /**
+         * Constructs an XPath expression scanner.
          *
-         * @param symbolTable SymbolTable  
+         * @param symbolTable SymbolTable
          */
         private Scanner(SymbolTable symbolTable) {
             // save pool and tokens
@@ -722,7 +727,6 @@ final class ElementSchemePointer implements XPointerPart {
 
         /**
          * Scans the XPointer Expression
-         * 
          */
         private boolean scanExpr(SymbolTable symbolTable, Tokens tokens,
                 String data, int currentOffset, int endOffset)
@@ -813,15 +817,15 @@ final class ElementSchemePointer implements XPointerPart {
             return true;
         }
 
-        /** 
-         * Scans a NCName.  
-         * From Namespaces in XML 
+        /**
+         * Scans a NCName.
+         * From Namespaces in XML
          * [5] NCName ::= (Letter | '_') (NCNameChar)*
          * [6] NCNameChar ::= Letter | Digit | '.' | '-' | '_' | CombiningChar | Extender
-         * 
-         * @param data A String containing the XPointer expression
-         * @param endOffset The int XPointer expression length  
-         * @param currentOffset An int representing the current position of the XPointer expression pointer
+         *
+         * @param data a String containing the XPointer expression
+         * @param endOffset the int XPointer expression length
+         * @param currentOffset an int representing the current position of the XPointer expression pointer
          */
         private int scanNCName(String data, int endOffset, int currentOffset) {
             int ch = data.charAt(currentOffset);
