@@ -30,7 +30,6 @@ import org.apache.xerces.xni.XNIException;
  * </p>
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 public interface XPointerProcessor {

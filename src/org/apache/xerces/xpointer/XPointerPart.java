@@ -30,7 +30,6 @@ import org.apache.xerces.xni.XNIException;
  * </p>
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 public interface XPointerPart {
@@ -50,8 +49,7 @@ public interface XPointerPart {
      *
      * @param  part A String representing the PointerPart or ShortHandPointer
      * @throws XNIException thrown if the PointerPart string does not conform to
-     *         the syntax defined by its scheme.
-     *
+     *         the syntax defined by its scheme
      *
      */
     public void parseXPointer(String part) throws XNIException;
@@ -70,7 +68,6 @@ public interface XPointerPart {
      *                2 - An empty element call
      * @throws XNIException thrown to signal an error
      *
-     *
      */
     public boolean resolveXPointer(QName element, XMLAttributes attributes,
             Augmentations augs, int event) throws XNIException;
@@ -83,7 +80,6 @@ public interface XPointerPart {
      *         else returns false
      * @throws XNIException thrown to signal an error
      *
-     *
      */
     public boolean isFragmentResolved() throws XNIException;
     
@@ -95,7 +91,6 @@ public interface XPointerPart {
      *         of the current resource fragment
      * @throws XNIException thrown to signal an error
      *
-     *
      */
     public boolean isChildFragmentResolved() throws XNIException;
 
@@ -103,8 +98,7 @@ public interface XPointerPart {
      * Returns a String containing the scheme name of the PointerPart
      * or the name of the ShortHand Pointer.
      *
-     * @return a String containing the scheme name of the PointerPart.
-     *
+     * @return a String containing the scheme name of the PointerPart
      *
      */
     public String getSchemeName();
@@ -112,8 +106,7 @@ public interface XPointerPart {
     /**
      * Returns a String containing the scheme data of the PointerPart.
      *
-     * @return a String containing the scheme data of the PointerPart.
-     *
+     * @return a String containing the scheme data of the PointerPart
      *
      */
     public String getSchemeData();
@@ -121,8 +114,7 @@ public interface XPointerPart {
     /**
      * Sets the scheme name of the PointerPart or the ShortHand Pointer name.
      *
-     * @param schemeName a String containing the scheme name of the PointerPart.
-     *
+     * @param schemeName a String containing the scheme name of the PointerPart
      *
      */
     public void setSchemeName(String schemeName);
@@ -130,8 +122,7 @@ public interface XPointerPart {
     /**
      * Sets the scheme data of the PointerPart.
      *
-     * @param schemeData a String containing the scheme data of the PointerPart.
-     *
+     * @param schemeData a String containing the scheme data of the PointerPart
      *
      */
     public void setSchemeData(String schemeData);

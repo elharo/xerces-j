@@ -34,7 +34,6 @@ import org.apache.xerces.xni.parser.XMLErrorHandler;
  * </p>
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 final class ElementSchemePointer implements XPointerPart {
@@ -426,7 +425,6 @@ final class ElementSchemePointer implements XPointerPart {
      * of the current resource fragment.
      *
      * @see org.apache.xerces.xpointer.XPointerPart#isChildFragmentResolved()
- *
      *
      */
     public boolean isChildFragmentResolved() {
@@ -494,10 +492,8 @@ final class ElementSchemePointer implements XPointerPart {
      * List of XPointer Framework tokens.
      *
      * @xerces.internal
-     *
      * @author Neil Delima, IBM
      * @version $Id$
- *
      *
      */
     private final class Tokens {
@@ -661,7 +657,6 @@ final class ElementSchemePointer implements XPointerPart {
      * The XPointer expression scanner.  Scans the XPointer framework expression.
      *
      * @xerces.internal
-     *
      * @version $Id$
      */
     private class Scanner {

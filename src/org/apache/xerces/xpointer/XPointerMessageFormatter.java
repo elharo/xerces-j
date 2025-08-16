@@ -28,7 +28,6 @@ import org.apache.xerces.util.MessageFormatter;
  * and element() Scheme Recommendations.
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 final class XPointerMessageFormatter implements MessageFormatter {
@@ -52,9 +51,7 @@ final class XPointerMessageFormatter implements MessageFormatter {
      *            The message replacement text arguments. The order of the
      *            arguments must match that of the placeholders in the actual
      *            message.
-     *
-     * @return returns the formatted message.
-     *
+     * @return returns the formatted message
      * @throws MissingResourceException
      *             Thrown if the message with the specified key cannot be found
      */

@@ -57,7 +57,6 @@ import org.apache.xerces.xni.parser.XMLErrorHandler;
  * </p>
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 public final class XPointerHandler extends XIncludeHandler implements
@@ -345,7 +344,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * of the current resource fragment.
      *
      * @see org.apache.xerces.xpointer.XPointerPart#isChildFragmentResolved()
- *
      *
      */
     public boolean isChildFragmentResolved() throws XNIException {
@@ -443,7 +441,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * List of XPointer Framework tokens.
      *
      * @xerces.internal
-     *
      *
      */
     private final class Tokens {
@@ -608,7 +605,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * The XPointer expression scanner.  Scans the XPointer framework expression.
      *
      * @xerces.internal
-     *
      *
      */
     private class Scanner {
@@ -989,7 +985,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      *
      * @param text   the text in the comment
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by application to signal an error
      */
@@ -1014,7 +1009,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * @param target the target
      * @param data   the data or null if none specified
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1032,7 +1026,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * @param element    the name of the element
      * @param attributes the element attributes
      * @param augs       additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1063,7 +1056,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * @param element    the name of the element
      * @param attributes the element attributes
      * @param augs       additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1092,7 +1084,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      *
      * @param text   the content
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1114,7 +1105,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      *
      * @param text   the ignorable whitespace
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1131,7 +1121,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      *
      * @param element the name of the element
      * @param augs    additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1150,7 +1139,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * The start of a CDATA section.
      *
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1165,7 +1153,6 @@ public final class XPointerHandler extends XIncludeHandler implements
      * The end of a CDATA section.
      *
      * @param augs   additional information that may include infoset augmentations
-     *
      * @throws XNIException
      *                   Thrown by handler to signal an error
      */
@@ -1188,8 +1175,7 @@ public final class XPointerHandler extends XIncludeHandler implements
      * that do not affect the operation of the component.
      *
      * @param propertyId the property identifier
-     * @param value      the value of the property.
-     *
+     * @param value      the value of the property
      * @throws XMLConfigurationException thrown for configuration error.
      *                                  In general, components should
      *                                  only throw this exception if
