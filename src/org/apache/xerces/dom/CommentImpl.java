@@ -23,11 +23,10 @@ import org.w3c.dom.Node;
 
 /**
  * Represents an XML (or HTML) comment.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class CommentImpl 
     extends CharacterDataImpl 
@@ -37,14 +36,18 @@ public class CommentImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -2685736833408134044L;
 
     //
     // Constructors
     //
 
-    /** Factory constructor. */
+    /**
+     * Factory constructor.
+     */
     public CommentImpl(CoreDocumentImpl ownerDoc, String data) {
     	super(ownerDoc, data);
     }
@@ -53,7 +56,7 @@ public class CommentImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */
@@ -61,7 +64,9 @@ public class CommentImpl
         return Node.COMMENT_NODE;
     }
 
-    /** Returns the node name. */
+    /**
+     * Returns the node name.
+     */
     public String getNodeName() {
         return "#comment";
     }

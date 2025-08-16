@@ -20,15 +20,15 @@ package org.apache.xerces.impl.xs;
 /**
  * This exception might be thrown by any constraint checking method.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Elena Litani, IBM
- *
  * @version $Id$
  */
 public class XMLSchemaException extends Exception {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -9096984648537046218L;
     
     // store a datatype error: error code plus the arguments

@@ -25,10 +25,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Comment;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class CommentImpl extends XMLEventImpl implements Comment {
@@ -40,6 +39,7 @@ public final class CommentImpl extends XMLEventImpl implements Comment {
     private final String fText;
 
     /**
+     *
      * @param location
      */
     public CommentImpl(final String text, final Location location) {
@@ -48,6 +48,7 @@ public final class CommentImpl extends XMLEventImpl implements Comment {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Comment#getText()
      */
     public String getText() {

@@ -23,30 +23,30 @@ import org.apache.xerces.xni.grammars.XMLGrammarPool;
 import org.apache.xerces.xni.parser.XMLComponentManager;
 
 /**
- * This parser configuration extends the default configuration allowing Xerces to 
- * handle usage scenarios where the names in the XML documents being parsed are mostly 
- * unique by installing a memory sensitive <code>SymbolTable</code>. The internalized 
- * strings stored in this <code>SymbolTable</code> are softly reachable and may be 
+ * This parser configuration extends the default configuration allowing Xerces to
+ * handle usage scenarios where the names in the XML documents being parsed are mostly
+ * unique by installing a memory sensitive <code>SymbolTable</code>. The internalized
+ * strings stored in this <code>SymbolTable</code> are softly reachable and may be
  * cleared by the garbage collector in response to memory demand.
- * 
- * @see org.apache.xerces.util.SoftReferenceSymbolTable
- * 
- * @author Peter McCracken, IBM
  *
+ * @see org.apache.xerces.util.SoftReferenceSymbolTable
+ * @author Peter McCracken, IBM
  * @version $Id$
  */
 public class SoftReferenceSymbolTableConfiguration extends
     XIncludeAwareParserConfiguration {
     
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public SoftReferenceSymbolTableConfiguration() {
         this(new SoftReferenceSymbolTable(), null, null);
     } // <init>()
     
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public SoftReferenceSymbolTableConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -57,8 +57,8 @@ public class SoftReferenceSymbolTableConfiguration extends
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public SoftReferenceSymbolTableConfiguration(
             SymbolTable symbolTable,
@@ -71,9 +71,9 @@ public class SoftReferenceSymbolTableConfiguration extends
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public SoftReferenceSymbolTableConfiguration(
             SymbolTable symbolTable,

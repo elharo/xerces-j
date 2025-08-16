@@ -19,17 +19,17 @@ package org.apache.xerces.impl.xpath;
 
 /**
  * XPath exception.
- * 
+ *
  * @xerces.internal
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XPathException 
     extends Exception {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -948482312169512085L;
     
     // Data
@@ -40,13 +40,17 @@ public class XPathException
     // Constructors
     //
 
-    /** Constructs an exception. */
+    /**
+     * Constructs an exception.
+     */
     public XPathException() {
         super();
         fKey = "c-general-xpath";
     } // <init>()
 
-    /** Constructs an exception with the specified key. */
+    /**
+     * Constructs an exception with the specified key.
+     */
     public XPathException(String key) {
         super();
         fKey = key;

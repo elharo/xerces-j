@@ -21,13 +21,14 @@ package org.apache.xerces.impl.dv;
  * A runtime exception that's thrown if an error happens when the application
  * tries to get a DV factory instance.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @version $Id$
  */
 public class DVFactoryException extends RuntimeException {
     
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -3738854697928682412L;
     
     public DVFactoryException() {

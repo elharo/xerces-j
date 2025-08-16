@@ -32,34 +32,45 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 /**
  * This class is the configuration used to parse XML 1.0 and XML 1.1 documents
  * and provides support for XInclude. This is the default Xerces configuration.
- * 
+ *
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public class XIncludeAwareParserConfiguration extends XML11Configuration {
     
-    /** Feature identifier: allow notation and unparsed entity events to be sent out of order. */
+    /**
+     * Feature identifier: allow notation and unparsed entity events to be sent out of order.
+     */
     protected static final String ALLOW_UE_AND_NOTATION_EVENTS =
         Constants.SAX_FEATURE_PREFIX + Constants.ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE;
     
-    /** Feature identifier: fixup base URIs. */
+    /**
+     * Feature identifier: fixup base URIs.
+     */
     protected static final String XINCLUDE_FIXUP_BASE_URIS =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_BASE_URIS_FEATURE;
     
-    /** Feature identifier: fixup language. */
+    /**
+     * Feature identifier: fixup language.
+     */
     protected static final String XINCLUDE_FIXUP_LANGUAGE =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_LANGUAGE_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /**
+     * Feature identifier: XInclude processing
+     */
     protected static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
-    /** Property identifier: XInclude handler. */
+    /**
+     * Property identifier: XInclude handler.
+     */
     protected static final String XINCLUDE_HANDLER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XINCLUDE_HANDLER_PROPERTY;
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String NAMESPACE_CONTEXT =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_CONTEXT_PROPERTY;
     
@@ -67,30 +78,42 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
     // Components
     //
     
-    /** XInclude handler. */
+    /**
+     * XInclude handler.
+     */
     protected XIncludeHandler fXIncludeHandler;
     
-    /** Non-XInclude NamespaceContext. */
+    /**
+     * Non-XInclude NamespaceContext.
+     */
     protected NamespaceSupport fNonXIncludeNSContext;
     
-    /** XInclude NamespaceContext. */
+    /**
+     * XInclude NamespaceContext.
+     */
     protected XIncludeNamespaceSupport fXIncludeNSContext;
     
-    /** Current NamespaceContext. */
+    /**
+     * Current NamespaceContext.
+     */
     protected NamespaceContext fCurrentNSContext;
     
-    /** Flag indicating whether XInclude processsing is enabled. */
+    /**
+     * Flag indicating whether XInclude processsing is enabled.
+     */
     protected boolean fXIncludeEnabled = false;
     
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XIncludeAwareParserConfiguration() {
         this(null, null, null);
     } // <init>()
     
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XIncludeAwareParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -101,8 +124,8 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XIncludeAwareParserConfiguration(
             SymbolTable symbolTable,
@@ -115,9 +138,9 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XIncludeAwareParserConfiguration(
             SymbolTable symbolTable,
@@ -147,7 +170,9 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
     }
     
     
-    /** Configures the pipeline. */
+    /**
+     * Configures the pipeline.
+     */
     protected void configurePipeline() {
         super.configurePipeline();
         if (fXIncludeEnabled) {

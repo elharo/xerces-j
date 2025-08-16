@@ -22,26 +22,24 @@ import org.apache.xerces.xni.XMLResourceIdentifier;
 /**
  * <p>This interface describes the properties of entities--their
  * physical location and their name.</p>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public interface XMLEntityDescription extends XMLResourceIdentifier {
 	
-    /** 
+    /**
      * Sets the name of the entity.
-     * 
+     *
      * @param name the name of the entity
      */
     public void setEntityName(String name);
      
-    /** 
-     * Returns the name of the entity. 
+    /**
+     * Returns the name of the entity.
      *
-     * @return the name of the entity 
+     * @return the name of the entity
      */
     public String getEntityName();
     

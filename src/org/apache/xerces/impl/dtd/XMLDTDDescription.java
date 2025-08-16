@@ -26,10 +26,9 @@ import org.apache.xerces.xni.grammars.XMLGrammarDescription;
 import org.apache.xerces.xni.parser.XMLInputSource;
 
 /**
- * All information specific to DTD grammars.  
- * 
+ * All information specific to DTD grammars.
+ *
  * @xerces.internal
- * 
  * @author Neil Graham, IBM
  * @version $Id$
  */
@@ -74,41 +73,48 @@ public class XMLDTDDescription extends XMLResourceIdentifierImpl
         return XMLGrammarDescription.XML_DTD;
     } // getGrammarType():  String
 
-    /** 
+    /**
+     *
      * @return the root name of this DTD or null if root name is unknown
      */
     public String getRootName() {
         return fRootName;
     } // getRootName():  String
 
-    /** Set the root name **/
+    /**
+     * Set the root name *
+     */
     public void setRootName(String rootName) {
         fRootName = rootName;
         fPossibleRoots = null;
     }
     
-    /** Set possible roots **/
+    /**
+     * Set possible roots *
+     */
     public void setPossibleRoots(ArrayList possibleRoots) {
         fPossibleRoots = possibleRoots;
     }
 
-    /** Set possible roots **/
+    /**
+     * Set possible roots *
+     */
     public void setPossibleRoots(Vector possibleRoots) {
         fPossibleRoots = (possibleRoots != null) ? new ArrayList(possibleRoots) : null;
     }
 
     /**
-     * Compares this grammar with the given grammar. Currently, we compare 
+     * Compares this grammar with the given grammar. Currently, we compare
      * as follows:
      * - if grammar type not equal return false immediately
      * - try and find a common root name:
-     *    - if both have roots, use them
-     *    - else if one has a root, examine other's possible root's for a match;
-     *    - else try all combinations
-     *  - test fExpandedSystemId and fPublicId as above
-     * 
-     * @param desc The description of the grammar to be compared with
-     * @return     True if they are equal, else false
+     * - if both have roots, use them
+     * - else if one has a root, examine other's possible root's for a match;
+     * - else try all combinations
+     * - test fExpandedSystemId and fPublicId as above
+     *
+     * @param desc the description of the grammar to be compared with
+     * @return  True if they are equal, else false
      */
     public boolean equals(Object desc) {
         if (!(desc instanceof XMLGrammarDescription)) return false;
@@ -170,7 +176,8 @@ public class XMLDTDDescription extends XMLResourceIdentifierImpl
      * Returns the hash code of this grammar
      * Because our .equals method is so complex, we just return a very
      * simple hash that might avoid calls to the equals method a bit...
-     * @return The hash code
+     *
+     * @return the hash code
      */
     public int hashCode() {
         if (fExpandedSystemId != null) {

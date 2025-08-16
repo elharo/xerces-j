@@ -29,7 +29,6 @@ import org.apache.xerces.xni.XMLDocumentHandler;
  * them.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLDocumentSource {
@@ -38,10 +37,14 @@ public interface XMLDocumentSource {
     // XMLDocumentSource methods
     //
 
-    /** Sets the document handler. */
+    /**
+     * Sets the document handler.
+     */
     public void setDocumentHandler(XMLDocumentHandler handler);
 
-    /** Returns the document handler */
+    /**
+     * Returns the document handler
+     */
     public XMLDocumentHandler getDocumentHandler();
 
 } // interface XMLDocumentSource

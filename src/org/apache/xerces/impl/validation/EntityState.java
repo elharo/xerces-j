@@ -22,16 +22,15 @@ package org.apache.xerces.impl.validation;
  * The entity state interface defines methods that must be implemented
  * by components that store information about entity declarations, as well as by
  * entity validator that will need to validate attributes of type entity.
- * 
+ *
  * @xerces.internal
- * 
  * @author Elena Litani, IBM
  * @version $Id$
  */
 public interface EntityState {
     /**
      * Query method to check if entity with this name was declared.
-     * 
+     *
      * @param name
      * @return true if name is a declared entity
      */
@@ -39,7 +38,7 @@ public interface EntityState {
 
     /**
      * Query method to check if entity is unparsed.
-     * 
+     *
      * @param name
      * @return true if name is an unparsed entity
      */

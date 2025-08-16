@@ -18,8 +18,8 @@
 package org.apache.xerces.xs;
 
 /**
- * The interface represents the namespace schema information information item. 
- * Each namespace schema information information item corresponds to an XML 
+ * The interface represents the namespace schema information information item.
+ * Each namespace schema information information item corresponds to an XML
  * Schema with a unique namespace name.
  */
 public interface XSNamespaceItem {
@@ -29,87 +29,94 @@ public interface XSNamespaceItem {
     public String getSchemaNamespace();
 
     /**
-     * [schema components]: a list of top-level components, i.e. element 
+     * [schema components]: a list of top-level components, i.e. element
      * declarations, attribute declarations, etc. Identity-constraint
      * definitions are also considered top-level.
-     * 
-     * @param objectType The type of the declaration, i.e. 
+     *
+     * @param objectType the type of the declaration, i.e.
      *   <code>ELEMENT_DECLARATION</code>. Note that 
      *   <code>XSTypeDefinition.SIMPLE_TYPE</code> and 
      *   <code>XSTypeDefinition.COMPLEX_TYPE</code> can also be used as the 
      *   <code>objectType</code> to retrieve only complex types or simple 
      *   types, instead of all types.
-     * @return  A list of top-level definition of the specified type in 
+     * @return A list of top-level definition of the specified type in
      *   <code>objectType</code> or an empty <code>XSNamedMap</code> if no 
-     *   such definitions exist. 
+     *   such definitions exist
      */
     public XSNamedMap getComponents(short objectType);
 
     /**
-     *  [annotations]: a set of annotations if it exists, otherwise an empty 
+     * [annotations]: a set of annotations if it exists, otherwise an empty
      * <code>XSObjectList</code>.
      */
     public XSObjectList getAnnotations();
 
     /**
-     * Convenience method. Returns a top-level element declaration. 
-     * @param name The name of the declaration.
-     * @return A top-level element declaration or <code>null</code> if such a 
-     *   declaration does not exist. 
+     * Convenience method. Returns a top-level element declaration.
+     *
+     * @param name the name of the declaration
+     * @return a top-level element declaration or <code>null</code> if such a
+     *   declaration does not exist
      */
     public XSElementDeclaration getElementDeclaration(String name);
 
     /**
-     * Convenience method. Returns a top-level attribute declaration. 
-     * @param name The name of the declaration.
-     * @return A top-level attribute declaration or <code>null</code> if such 
-     *   a declaration does not exist. 
+     * Convenience method. Returns a top-level attribute declaration.
+     *
+     * @param name the name of the declaration
+     * @return a top-level attribute declaration or <code>null</code> if such
+     *   a declaration does not exist
      */
     public XSAttributeDeclaration getAttributeDeclaration(String name);
 
     /**
-     * Convenience method. Returns a top-level simple or complex type 
-     * definition. 
-     * @param name The name of the definition.
-     * @return An <code>XSTypeDefinition</code> or <code>null</code> if such 
-     *   a definition does not exist. 
+     * Convenience method. Returns a top-level simple or complex type
+     * definition.
+     *
+     * @param name the name of the definition
+     * @return an <code>XSTypeDefinition</code> or <code>null</code> if such
+     *   a definition does not exist
      */
     public XSTypeDefinition getTypeDefinition(String name);
 
     /**
-     * Convenience method. Returns a top-level attribute group definition. 
-     * @param name The name of the definition.
-     * @return A top-level attribute group definition or <code>null</code> if 
-     *   such a definition does not exist. 
+     * Convenience method. Returns a top-level attribute group definition.
+     *
+     * @param name the name of the definition
+     * @return a top-level attribute group definition or <code>null</code> if
+     *   such a definition does not exist
      */
     public XSAttributeGroupDefinition getAttributeGroup(String name);
 
     /**
-     * Convenience method. Returns a top-level model group definition. 
-     * @param name The name of the definition.
-     * @return A top-level model group definition definition or 
-     *   <code>null</code> if such a definition does not exist. 
+     * Convenience method. Returns a top-level model group definition.
+     *
+     * @param name the name of the definition
+     * @return a top-level model group definition definition or
+     *   <code>null</code> if such a definition does not exist
      */
     public XSModelGroupDefinition getModelGroupDefinition(String name);
 
     /**
-     * Convenience method. Returns a top-level notation declaration. 
-     * @param name The name of the declaration.
-     * @return A top-level notation declaration or <code>null</code> if such 
-     *   a declaration does not exist. 
+     * Convenience method. Returns a top-level notation declaration.
+     *
+     * @param name the name of the declaration
+     * @return a top-level notation declaration or <code>null</code> if such
+     *   a declaration does not exist
      */
     public XSNotationDeclaration getNotationDeclaration(String name);
 
     /**
      * Convenience method. Returns an identity-constraint definition.
-     * @param name The name of the definition.
-     * @return An identity-constraint definition or <code>null</code> if such 
-     *   a declaration does not exist. 
+     *
+     * @param name the name of the definition
+     * @return an identity-constraint definition or <code>null</code> if such
+     *   a declaration does not exist
      */
     public XSIDCDefinition getIDCDefinition(String name);
 
     /**
-     * [document location] - a list of location URIs for the documents that 
+     * [document location] - a list of location URIs for the documents that
      * contributed to the <code>XSModel</code>.
      */
     public StringList getDocumentLocations();

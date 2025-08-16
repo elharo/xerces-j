@@ -39,7 +39,7 @@ import org.w3c.dom.ls.LSInput;
  * class. Provides support for preparsing schemas.
  *
  * @deprecated
- * @author Pavani Mukthipudi, Sun Microsystems Inc.
+ * @author Pavani Mukthipudi, Sun Microsystems Inc
  * @author Neil Graham, IBM
  * @version $Id$
  *
@@ -165,9 +165,9 @@ public class DOMASBuilderImpl
     /**
      * Parse a Abstract Schema from a location identified by an URI.
      *
-     * @param uri The location of the Abstract Schema to be read.
-     * @return The newly created <code>Abstract Schema</code>.
-     * @exception DOMASException
+     * @param uri the location of the Abstract Schema to be read
+     * @return the newly created <code>Abstract Schema</code>
+     * @throws DOMASException
      *   Exceptions raised by <code>parseASURI()</code> originate with the
      *   installed ErrorHandler, and thus depend on the implementation of
      *   the <code>DOMErrorHandler</code> interfaces. The default error
@@ -177,7 +177,7 @@ public class DOMASBuilderImpl
      *   <br> WRONG_MIME_TYPE_ERR: Raised when <code>mimeTypeCheck</code> is
      *   <code>true</code> and the inputsource has an incorrect MIME Type.
      *   See attribute <code>mimeTypeCheck</code>.
-     * @exception DOMSystemException
+     * @throws DOMSystemException
      *   Exceptions raised by <code>parseURI()</code> originate with the
      *   installed ErrorHandler, and thus depend on the implementation of
      *   the <code>DOMErrorHandler</code> interfaces. The default error
@@ -195,10 +195,10 @@ public class DOMASBuilderImpl
      * Parse a Abstract Schema from a location identified by an
      * <code>LSInput</code>.
      *
-     * @param is The <code>LSInput</code> from which the source
-     *   Abstract Schema is to be read.
-     * @return The newly created <code>ASModel</code>.
-     * @exception DOMASException
+     * @param is the <code>LSInput</code> from which the source
+     *   Abstract Schema is to be read
+     * @return the newly created <code>ASModel</code>
+     * @throws DOMASException
      *   Exceptions raised by <code>parseASURI()</code> originate with the
      *   installed ErrorHandler, and thus depend on the implementation of
      *   the <code>DOMErrorHandler</code> interfaces. The default error
@@ -208,7 +208,7 @@ public class DOMASBuilderImpl
      *   <br> WRONG_MIME_TYPE_ERR: Raised when <code>mimeTypeCheck</code> is
      *   true and the inputsource has an incorrect MIME Type. See attribute
      *   <code>mimeTypeCheck</code>.
-     * @exception DOMSystemException
+     * @throws DOMSystemException
      *   Exceptions raised by <code>parseURI()</code> originate with the
      *   installed ErrorHandler, and thus depend on the implementation of
      *   the <code>DOMErrorHandler</code> interfaces. The default error

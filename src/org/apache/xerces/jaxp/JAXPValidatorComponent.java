@@ -60,39 +60,45 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * Runs events through a {@link javax.xml.validation.ValidatorHandler}
  * and performs validation/infoset-augmentation by an external validator.
- * 
+ *
  * <p>
  * This component sets up the pipeline as follows:
- *  
+ *
  * <!-- this picture may look teribble on your IDE but it is correct. -->
  * <pre>
- *             __                                           __
- *            /  |==> XNI2SAX --> Validator --> SAX2XNI ==>|  
- *           /   |                                         |   
- *       ==>| Tee|                                         | next
- *           \   |                                         |  component
- *            \  |============other XNI events============>|  
- *             ~~                                           ~~
+ * __                                           __
+ * /  |==> XNI2SAX --> Validator --> SAX2XNI ==>|
+ * /   |                                         |
+ * ==>| Tee|                                         | next
+ * \   |                                         |  component
+ * \  |============other XNI events============>|
+ * ~~                                           ~~
  * </pre>
  * <p>
  * only those events that need to go through Validator will go the 1st route,
  * and other events go the 2nd direct route.
- * 
+ *
  * @author Kohsuke Kawaguchi (kohsuke.kawaguchi@sun.com)
  * @version $Id$
  */
 final class JAXPValidatorComponent 
     extends TeeXMLDocumentFilterImpl implements XMLComponent {
     
-    /** Property identifier: entity manager. */
+    /**
+     * Property identifier: entity manager.
+     */
     private static final String ENTITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;    
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     private static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
     
@@ -108,7 +114,7 @@ final class JAXPValidatorComponent
      * Used to store the {@link Augmentations} associated with the
      * current event, so that we can pick it up again
      * when the event is forwarded by the {@link ValidatorHandler}.
-     * 
+     *
      * UGLY HACK.
      */
     private Augmentations fCurrentAug;
@@ -125,7 +131,8 @@ final class JAXPValidatorComponent
     private XMLEntityResolver fEntityResolver;
     
     /**
-     * @param validatorHandler may not be null.
+     *
+     * @param validatorHandler may not be null
      */
     public JAXPValidatorComponent( ValidatorHandler validatorHandler ) {
         this.validator = validatorHandler;
@@ -218,10 +225,9 @@ final class JAXPValidatorComponent
     }
     
     /**
-     * 
      * Uses {@link DefaultHandler} as a default implementation of
      * {@link ContentHandler}.
-     * 
+     *
      * <p>
      * We only forward certain events from a {@link ValidatorHandler}.
      * Other events should go "the 2nd direct route".
@@ -275,7 +281,9 @@ final class JAXPValidatorComponent
         
         private Augmentations elementAug() {
             Augmentations aug = aug();
-            /** aug.putItem(Constants.TYPEINFO,typeInfoProvider.getElementTypeInfo()); **/
+            /**
+             * Aug.putItem(Constants.TYPEINFO,typeInfoProvider.getElementTypeInfo()); *
+             */
             return aug;
         }
 
@@ -335,12 +343,12 @@ final class JAXPValidatorComponent
     
     /**
      * Converts {@link XNI} events to {@link ContentHandler} events.
-     * 
+     *
      * <p>
      * Deriving from {@link DefaultXMLDocumentHandler}
      * to reuse its default {@link org.apache.xerces.xni.XMLDocumentHandler}
      * implementation.
-     * 
+     *
      * @author Kohsuke Kawaguchi (kohsuke.kawaguchi@sun.com)
      */
     private static final class XNI2SAX extends DefaultXMLDocumentHandler {
@@ -349,7 +357,9 @@ final class JAXPValidatorComponent
 
         private String fVersion;
 
-        /** Namespace context */
+        /**
+         * Namespace context
+         */
         protected NamespaceContext fNamespaceContext;
         
         /**
@@ -469,22 +479,30 @@ final class JAXPValidatorComponent
         
         private DraconianErrorHandler() {}
         
-        /** Returns the one and only instance of this error handler. */
+        /**
+         * Returns the one and only instance of this error handler.
+         */
         public static DraconianErrorHandler getInstance() {
             return ERROR_HANDLER_INSTANCE;
         }
         
-        /** Warning: Ignore. */
+        /**
+         * Warning: Ignore.
+         */
         public void warning(SAXParseException e) throws SAXException {
             // noop
         }
         
-        /** Error: Throws back SAXParseException. */
+        /**
+         * Error: Throws back SAXParseException.
+         */
         public void error(SAXParseException e) throws SAXException {
             throw e;
         }
         
-        /** Fatal Error: Throws back SAXParseException. */
+        /**
+         * Fatal Error: Throws back SAXParseException.
+         */
         public void fatalError(SAXParseException e) throws SAXException {
             throw e;
         }
@@ -528,11 +546,13 @@ final class JAXPValidatorComponent
                 }
             }
             
-            /** Augmentations augs = fCurrentAttributes.getAugmentations(j);
-            augs.putItem( Constants.TYPEINFO,
-                typeInfoProvider.getAttributeTypeInfo(i) );
-            augs.putItem( Constants.ID_ATTRIBUTE,
-                typeInfoProvider.isIdAttribute(i)?Boolean.TRUE:Boolean.FALSE ); **/
+            /**
+             * Augmentations augs = fCurrentAttributes.getAugmentations(j);
+             * augs.putItem( Constants.TYPEINFO,
+             * typeInfoProvider.getAttributeTypeInfo(i) );
+             * augs.putItem( Constants.ID_ATTRIBUTE,
+             * typeInfoProvider.isIdAttribute(i)?Boolean.TRUE:Boolean.FALSE ); *
+             */
         }
     }
     

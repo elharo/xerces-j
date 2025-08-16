@@ -30,11 +30,9 @@ import org.apache.xerces.xs.XSWildcard;
  * The XML representation for a wildcard declaration
  * schema component is an &lt;any&gt; or &lt;anyAttribute&gt; element information item
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- * @author Rahul Srivastava, Sun Microsystems Inc.
- *
+ * @author Rahul Srivastava, Sun Microsystems Inc
  * @version $Id$
  */
 public class XSWildcardDecl implements XSWildcard {
@@ -112,7 +110,7 @@ public class XSWildcardDecl implements XSWildcard {
     }
 
     /**
-     *  Schema Component Constraint: Wildcard Subset
+     * Schema Component Constraint: Wildcard Subset
      */
     public boolean isSubsetOf(XSWildcardDecl superWildcard) {
         // if the super is null (not expressible), return false
@@ -471,7 +469,7 @@ public class XSWildcardDecl implements XSWildcard {
     }
 
     /**
-     * get the string description of this wildcard
+     * Get the string description of this wildcard
      */
     private String fDescription = null;
     public String toString() {
@@ -587,6 +585,7 @@ public class XSWildcardDecl implements XSWildcard {
     }
 
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

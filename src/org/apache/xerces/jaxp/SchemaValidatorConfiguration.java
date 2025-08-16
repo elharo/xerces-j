@@ -28,40 +28,54 @@ import org.apache.xerces.xni.parser.XMLConfigurationException;
 
 /**
  * <p>Parser configuration for Xerces' XMLSchemaValidator.</p>
- * 
+ *
  * @version $Id$
  */
 final class SchemaValidatorConfiguration implements XMLComponentManager {
     
     // feature identifiers
     
-    /** Feature identifier: schema validation. */
+    /**
+     * Feature identifier: schema validation.
+     */
     private static final String SCHEMA_VALIDATION =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
     
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     private static final String VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: use grammar pool only. */
+    /**
+     * Feature identifier: use grammar pool only.
+     */
     private static final String USE_GRAMMAR_POOL_ONLY =
         Constants.XERCES_FEATURE_PREFIX + Constants.USE_GRAMMAR_POOL_ONLY_FEATURE;
     
-    /** Feature identifier: parser settings. */
+    /**
+     * Feature identifier: parser settings.
+     */
     private static final String PARSER_SETTINGS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.PARSER_SETTINGS;
     
     // property identifiers
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: validation manager. */
+    /**
+     * Property identifier: validation manager.
+     */
     private static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
     
-    /** Property identifier: grammar pool. */
+    /**
+     * Property identifier: grammar pool.
+     */
     private static final String XMLGRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
     
@@ -69,19 +83,25 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
     // Data
     //
     
-    /** Parent component manager. **/
+    /**
+     * Parent component manager. *
+     */
     private final XMLComponentManager fParentComponentManager;
     
-    /** The Schema's grammar pool. **/
+    /**
+     * The Schema's grammar pool. *
+     */
     private final XMLGrammarPool fGrammarPool;
 
-    /** 
-     * Tracks whether the validator should use components from 
+    /**
+     * Tracks whether the validator should use components from
      * the grammar pool to the exclusion of all others.
      */
     private final boolean fUseGrammarPoolOnly;
     
-    /** Validation manager. */
+    /**
+     * Validation manager.
+     */
     private final ValidationManager fValidationManager;
     
     public SchemaValidatorConfiguration(XMLComponentManager parentManager, 
@@ -103,15 +123,14 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
     
     /**
      * Returns the state of a feature.
-     * 
-     * @param featureId The feature identifier.
+     *
+     * @param featureId the feature identifier
      * @return true if the feature is supported
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public boolean getFeature(String featureId)
             throws XMLConfigurationException {
@@ -129,15 +148,14 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
 
     /**
      * Returns the value of a property.
-     * 
-     * @param propertyId The property identifier.
+     *
+     * @param propertyId the property identifier
      * @return the value of the property
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public Object getProperty(String propertyId)
             throws XMLConfigurationException {

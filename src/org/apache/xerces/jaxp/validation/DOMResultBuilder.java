@@ -61,13 +61,15 @@ import org.w3c.dom.Text;
 
 /**
  * <p>DOM result builder.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 final class DOMResultBuilder implements DOMDocumentHandler {
 
-    /** Table for quick check of child insertion. */
+    /**
+     * Table for quick check of child insertion.
+     */
     private final static int[] kidOK;
     
     static {
@@ -138,15 +140,21 @@ final class DOMResultBuilder implements DOMDocumentHandler {
     }
     
     public void doctypeDecl(DocumentType node) throws XNIException {
-        /** Create new DocumentType node for the target. */
+        /**
+         * Create new DocumentType node for the target.
+         */
         if (fDocumentImpl != null) {
             DocumentType docType = fDocumentImpl.createDocumentType(node.getName(), node.getPublicId(), node.getSystemId());
             final String internalSubset = node.getInternalSubset();
-            /** Copy internal subset. */
+            /**
+             * Copy internal subset.
+             */
             if (internalSubset != null) {
                 ((DocumentTypeImpl) docType).setInternalSubset(internalSubset);
             }
-            /** Copy entities. */
+            /**
+             * Copy entities.
+             */
             NamedNodeMap oldMap = node.getEntities();
             NamedNodeMap newMap = docType.getEntities();
             int length = oldMap.getLength();
@@ -158,7 +166,9 @@ final class DOMResultBuilder implements DOMDocumentHandler {
                 newEntity.setNotationName(oldEntity.getNotationName());
                 newMap.setNamedItem(newEntity);
             }
-            /** Copy notations. */
+            /**
+             * Copy notations.
+             */
             oldMap = node.getNotations();
             newMap = docType.getNotations();
             length = oldMap.getLength();
@@ -174,23 +184,31 @@ final class DOMResultBuilder implements DOMDocumentHandler {
     }
     
     public void characters(Text node) throws XNIException {
-        /** Create new Text node for the target. */
+        /**
+         * Create new Text node for the target.
+         */
         append(fDocument.createTextNode(node.getNodeValue()));
     }
     
     public void cdata(CDATASection node) throws XNIException {
-        /** Create new CDATASection node for the target. */
+        /**
+         * Create new CDATASection node for the target.
+         */
         append(fDocument.createCDATASection(node.getNodeValue()));
     }
 
     public void comment(Comment node) throws XNIException {
-        /** Create new Comment node for the target. */
+        /**
+         * Create new Comment node for the target.
+         */
         append(fDocument.createComment(node.getNodeValue()));
     }
 
     public void processingInstruction(ProcessingInstruction node)
             throws XNIException {
-        /** Create new ProcessingInstruction node for the target. */
+        /**
+         * Create new ProcessingInstruction node for the target.
+         */
         append(fDocument.createProcessingInstruction(node.getTarget(), node.getData()));
     }
     
@@ -358,7 +376,9 @@ final class DOMResultBuilder implements DOMDocumentHandler {
             fCurrentNode.appendChild(node);
         }
         else {
-            /** Check if this node can be attached to the target. */
+            /**
+             * Check if this node can be attached to the target.
+             */
             if ((kidOK[fTarget.getNodeType()] & (1 << node.getNodeType())) == 0) {
                 String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "HIERARCHY_REQUEST_ERR", null);
                 throw new XNIException(msg);

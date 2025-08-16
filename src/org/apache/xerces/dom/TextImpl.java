@@ -34,11 +34,10 @@ import org.w3c.dom.Text;
  * Note that CDATASection is a subclass of Text. This is conceptually
  * valid, since they're really just two different ways of quoting
  * characters when they're written out as part of an XML stream.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class TextImpl 
     extends CharacterDataImpl 
@@ -53,24 +52,30 @@ public class TextImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -5294980852957403469L;
         
     //
     // Constructors
     //
 
-    /** Default constructor */
+    /**
+     * Default constructor
+     */
     public TextImpl(){}
 
-    /** Factory constructor. */
+    /**
+     * Factory constructor.
+     */
     public TextImpl(CoreDocumentImpl ownerDoc, String data) {
         super(ownerDoc, data);
     }
     
     /**
      * NON-DOM: resets node and sets specified values for the current node
-     * 
+     *
      * @param ownerDoc
      * @param data
      */
@@ -86,7 +91,7 @@ public class TextImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */
@@ -94,7 +99,9 @@ public class TextImpl
         return Node.TEXT_NODE;
     }
 
-    /** Returns the node name. */
+    /**
+     * Returns the node name.
+     */
     public String getNodeName() {
         return "#text";
     }
@@ -113,13 +120,14 @@ public class TextImpl
     
 
     /**
-     * DOM L3 Core CR - Experimental 
-     * 
-     * Returns whether this text node contains 
-     * element content whitespace</a>, often abusively called "ignorable whitespace". 
-     * The text node is determined to contain whitespace in element content 
-     * during the load of the document or if validation occurs while using 
+     * DOM L3 Core CR - Experimental
+     *
+     * Returns whether this text node contains
+     * element content whitespace</a>, often abusively called "ignorable whitespace".
+     * The text node is determined to contain whitespace in element content
+     * during the load of the document or if validation occurs while using
      * <code>Document.normalizeDocument()</code>.
+     *
      * @since DOM Level 3
      */
     public boolean isElementContentWhitespace() {
@@ -133,8 +141,9 @@ public class TextImpl
 
     /**
      * DOM Level 3 WD - Experimental.
-     * Returns all text of <code>Text</code> nodes logically-adjacent text 
+     * Returns all text of <code>Text</code> nodes logically-adjacent text
      * nodes to this node, concatenated in document order.
+     *
      * @since DOM Level 3
      */
     public String getWholeText(){
@@ -163,9 +172,9 @@ public class TextImpl
     }
     
     /**
-     * internal method taking a StringBuffer in parameter and inserts the 
+     * Internal method taking a StringBuffer in parameter and inserts the
      * text content at the start of the buffer
-     * 
+     *
      * @param buf
      */
     protected void insertTextContent(StringBuffer buf) throws DOMException {
@@ -176,11 +185,12 @@ public class TextImpl
      }
 
     /**
-     * Concatenates the text of all logically-adjacent text nodes to the 
+     * Concatenates the text of all logically-adjacent text nodes to the
      * right of this node
+     *
      * @param node
      * @param buffer
-     * @param parent 
+     * @param parent
      * @return true - if execution was stopped because the type of node
      *         other than EntityRef, Text, CDATA is encountered, otherwise
      *         return false
@@ -223,8 +233,9 @@ public class TextImpl
     }
     
     /**
-     * Concatenates the text of all logically-adjacent text nodes to the left of 
+     * Concatenates the text of all logically-adjacent text nodes to the left of
      * the node
+     *
      * @param node
      * @param buffer
      * @param parent
@@ -274,10 +285,10 @@ public class TextImpl
      * nodes with the specified text. All logically-adjacent text nodes are
      * removed including the current node unless it was the recipient of the
      * replacement text.
-     * 
+     *
      * @param content
-     *            The content of the replacing Text node.
-     * @return text - The Text node created with the specified content.
+     *            The content of the replacing Text node
+     * @return text - The Text node created with the specified content
      * @since DOM Level 3
      */
     public Text replaceWholeText(String content) throws DOMException {
@@ -383,7 +394,7 @@ public class TextImpl
      * any its previous sibling was not or was an EntityReference that did not
      * contain only Text or CDATASection nodes, return false. Check this
      * recursively for EntityReference nodes.
-     * 
+     *
      * @param node
      * @return true - can replace text false - can't replace exception must be
      *         raised
@@ -468,7 +479,7 @@ public class TextImpl
      * node any its next sibling was not or was an EntityReference that did not
      * contain only Text or CDATASection nodes, return false. Check this
      * recursively for EntityReference nodes.
-     * 
+     *
      * @param node
      * @return true - can replace text false - can't replace exception must be
      *         raised
@@ -539,7 +550,7 @@ public class TextImpl
 
     /**
      * Check if an EntityReference node has Text Only child nodes
-     * 
+     *
      * @param node
      * @return true - Contains text only children
      */
@@ -590,19 +601,16 @@ public class TextImpl
      * Break a text node into two sibling nodes. (Note that if the current node
      * has no parent, they won't wind up as "siblings" -- they'll both be
      * orphans.)
-     * 
+     *
      * @param offset
      *            The offset at which to split. If offset is at the end of the
      *            available data, the second node will be empty.
-     * 
-     * @return A reference to the new node (containing data after the offset
+     * @return a reference to the new node (containing data after the offset
      *         point). The original node will contain data up to that point.
-     * 
      * @throws DOMException(INDEX_SIZE_ERR)
-     *             if offset is <0 or >length.
-     * 
+     *             if offset is <0 or >length
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR)
-     *             if node is read-only.
+     *             if node is read-only
      */
     public Text splitText(int offset) 
         throws DOMException {
@@ -638,7 +646,7 @@ public class TextImpl
 
     
     /**
-     * NON-DOM (used by DOMParser): Reset data for the node. 
+     * NON-DOM (used by DOMParser): Reset data for the node.
      */
     public void replaceData (String value){
         data = value;
@@ -646,8 +654,8 @@ public class TextImpl
 
 
     /**
-     * NON-DOM (used by DOMParser: Sets data to empty string. 
-     *  Returns the value the data was set to.
+     * NON-DOM (used by DOMParser: Sets data to empty string.
+     * Returns the value the data was set to.
      */
     public String removeData (){
         String olddata=data;

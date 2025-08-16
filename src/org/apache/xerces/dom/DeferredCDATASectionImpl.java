@@ -25,7 +25,7 @@ package org.apache.xerces.dom;
  * escape these special characters. It's primarily a convenience feature
  * for those who are hand-editing XML.
  * <P>
- * CDATASection is an Extended DOM feature, and is not used in HTML 
+ * CDATASection is an Extended DOM feature, and is not used in HTML
  * contexts.
  * <P>
  * Within the DOM, CDATASections are treated essentially as Text
@@ -38,11 +38,10 @@ package org.apache.xerces.dom;
  * split that string over two successive CDATAs at that time.
  * <P>
  * CDATA does not participate in Element.normalize() processing.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredCDATASectionImpl 
     extends CDATASectionImpl 
@@ -52,14 +51,18 @@ public class DeferredCDATASectionImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 1983580632355645726L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -82,7 +85,9 @@ public class DeferredCDATASectionImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -91,7 +96,9 @@ public class DeferredCDATASectionImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected void synchronizeData() {
 
         // no need to sync in the future

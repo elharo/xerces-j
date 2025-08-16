@@ -23,10 +23,9 @@ import javax.xml.stream.Location;
 import javax.xml.stream.events.Namespace;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class NamespaceImpl extends AttributeImpl implements Namespace {
@@ -35,6 +34,7 @@ public final class NamespaceImpl extends AttributeImpl implements Namespace {
     private final String fNamespaceURI;
 
     /**
+     *
      * @param location
      * @param schemaType
      */
@@ -45,8 +45,9 @@ public final class NamespaceImpl extends AttributeImpl implements Namespace {
     }
 
     /**
-     * @param prefix The prefix for this namespace.
-     * @return A QName for the attribute that declares this namespace.
+     *
+     * @param prefix the prefix for this namespace
+     * @return a QName for the attribute that declares this namespace
      */
     private static QName makeAttributeQName(String prefix) {
         if (prefix == null || prefix.equals(XMLConstants.DEFAULT_NS_PREFIX)) {
@@ -56,6 +57,7 @@ public final class NamespaceImpl extends AttributeImpl implements Namespace {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Namespace#getPrefix()
      */
     public String getPrefix() {
@@ -63,6 +65,7 @@ public final class NamespaceImpl extends AttributeImpl implements Namespace {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Namespace#getNamespaceURI()
      */
     public String getNamespaceURI() {
@@ -70,6 +73,7 @@ public final class NamespaceImpl extends AttributeImpl implements Namespace {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Namespace#isDefaultNamespaceDeclaration()
      */
     public boolean isDefaultNamespaceDeclaration() {

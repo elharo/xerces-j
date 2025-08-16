@@ -19,17 +19,19 @@ package org.apache.xerces.xs.datatypes;
 
 /**
  * Interface to expose QName actual values
- * 
+ *
  * @author Ankit Pasricha, IBM
  */
 public interface XSQName {
     
     /**
+     *
      * @return org.apache.xerces.xni.QName class instance
      */
     public org.apache.xerces.xni.QName getXNIQName();
     
     /**
+     *
      * @return javax.xml.namespace.QName class instance
      */
     public javax.xml.namespace.QName getJAXPQName();

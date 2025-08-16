@@ -29,11 +29,10 @@ package org.apache.xerces.dom;
  * Note that CDATASection is a subclass of Text. This is conceptually
  * valid, since they're really just two different ways of quoting
  * characters when they're written out as part of an XML stream.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredTextImpl
     extends TextImpl
@@ -43,14 +42,18 @@ public class DeferredTextImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 2310613872100393425L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -73,7 +76,9 @@ public class DeferredTextImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -82,7 +87,9 @@ public class DeferredTextImpl
     // Protected methods
     //
 
-    /** Synchronizes the underlying data. */
+    /**
+     * Synchronizes the underlying data.
+     */
     protected void synchronizeData() {
 
         // no need for future synchronizations

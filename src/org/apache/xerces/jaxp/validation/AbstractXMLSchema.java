@@ -25,15 +25,15 @@ import javax.xml.validation.ValidatorHandler;
 
 /**
  * <p>Abstract implementation of Schema for W3C XML Schemas.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 abstract class AbstractXMLSchema extends Schema implements
         XSGrammarPoolContainer {
 
-    /** 
-     * Map containing the initial values of features for 
+    /**
+     * Map containing the initial values of features for
      * validators created using this grammar pool container.
      */
     private final HashMap fFeatures;

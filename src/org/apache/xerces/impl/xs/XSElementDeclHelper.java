@@ -20,8 +20,8 @@ package org.apache.xerces.impl.xs;
 import org.apache.xerces.xni.QName;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public interface XSElementDeclHelper {

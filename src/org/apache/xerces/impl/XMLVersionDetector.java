@@ -32,11 +32,10 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 /**
  * This class scans the version of the document to determine
  * which scanner to use: XML 1.1 or XML 1.0.
- * The version is scanned using XML 1.1. scanner.  
- * 
+ * The version is scanned using XML 1.1. scanner.
+ *
  * @xerces.internal
- * 
- * @author Neil Graham, IBM 
+ * @author Neil Graham, IBM
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -50,15 +49,21 @@ public class XMLVersionDetector {
 
     // property identifiers
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: entity manager. */
+    /**
+     * Property identifier: entity manager.
+     */
     protected static final String ENTITY_MANAGER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
 
@@ -66,19 +71,27 @@ public class XMLVersionDetector {
     // Data
     //
 
-    /** Symbol: "version". */
+    /**
+     * Symbol: "version".
+     */
     protected static final String fVersionSymbol = "version".intern();
 
     // symbol:  [xml]:
     protected static final String fXMLSymbol = "[xml]".intern();
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected SymbolTable fSymbolTable;
 
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     protected XMLErrorReporter fErrorReporter;
 
-    /** Entity manager. */
+    /**
+     * Entity manager.
+     */
     protected XMLEntityManager fEntityManager;
 
     protected String fEncoding = null;
@@ -87,12 +100,10 @@ public class XMLVersionDetector {
                     'i', 'o', 'n', '=', ' ', ' ', ' ', ' ', ' '};
 
     /**
-     * 
-     * 
-     * @param componentManager The component manager.
      *
-     * @throws XNIException Throws exception if required features and
-     *                      properties cannot be found.
+     * @param componentManager the component manager
+     * @throws XNIException throws exception if required features and
+     *                      properties cannot be found
      */
     public void reset(XMLComponentManager componentManager)
         throws XMLConfigurationException {
@@ -108,8 +119,9 @@ public class XMLVersionDetector {
     /**
      * Reset the reference to the appropriate scanner given the version of the
      * document and start document scanning.
-     * @param scanner - the scanner to use
-     * @param version - the version of the document (XML 1.1 or XML 1.0).
+     *
+     * @param scanner the scanner to use
+     * @param version the version of the document (XML 1.1 or XML 1.0)
      */
     public void startDocumentParsing(XMLEntityHandler scanner, short version){
 
@@ -132,12 +144,13 @@ public class XMLVersionDetector {
 
 
     /**
-     * This methods scans the XML declaration to find out the version 
+     * This methods scans the XML declaration to find out the version
      * (and provisional encoding)  of the document.
      * The scanning is doing using XML 1.1 scanner.
+     *
      * @param inputSource
-     * @return short - Constants.XML_VERSION_1_1 if document version 1.1, 
-     *                  otherwise Constants.XML_VERSION_1_0 
+     * @return short - Constants.XML_VERSION_1_1 if document version 1.1,
+     *                  otherwise Constants.XML_VERSION_1_0
      * @throws IOException
      */
     public short determineDocVersion(XMLInputSource inputSource) throws IOException {

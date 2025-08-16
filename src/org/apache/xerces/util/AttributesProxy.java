@@ -28,7 +28,6 @@ import org.xml.sax.ext.Attributes2;
  *
  * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public final class AttributesProxy
@@ -38,7 +37,9 @@ public final class AttributesProxy
     // Data
     //
 
-    /** XML attributes. */
+    /**
+     * XML attributes.
+     */
     private XMLAttributes fAttributes;
     
     //
@@ -53,7 +54,9 @@ public final class AttributesProxy
     // Public methods
     //
 
-    /** Sets the XML attributes to be wrapped. */
+    /**
+     * Sets the XML attributes to be wrapped.
+     */
     public void setAttributes(XMLAttributes attributes) {
         fAttributes = attributes;
     } // setAttributes(XMLAttributes)

@@ -34,11 +34,10 @@ package org.apache.xerces.dom;
  * See the XML 1.0 spec, sections 4.7 and 2.6, for more info.
  * <P>
  * Level 1 of the DOM does not support editing Notation contents.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredNotationImpl
     extends NotationImpl
@@ -48,14 +47,18 @@ public class DeferredNotationImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 5705337172887990848L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -78,7 +81,9 @@ public class DeferredNotationImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }

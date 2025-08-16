@@ -27,10 +27,8 @@ import org.apache.xerces.xs.XSTerm;
 /**
  * Store schema particle declaration.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class XSParticleDecl implements XSParticle {
@@ -92,7 +90,7 @@ public class XSParticleDecl implements XSParticle {
 
     /**
      * 3.8.6 Effective Total Range (all and sequence) and
-     *       Effective Total Range (choice)
+     * Effective Total Range (choice)
      * The following methods are used to return min/max range for a particle.
      * They are not exactly the same as it's described in the spec, but all the
      * values from the spec are retrievable by these methods.
@@ -123,7 +121,7 @@ public class XSParticleDecl implements XSParticle {
     }
 
     /**
-     * get the string description of this particle
+     * Get the string description of this particle
      */
     private String fDescription = null;
     public String toString() {
@@ -145,7 +143,7 @@ public class XSParticleDecl implements XSParticle {
     }
 
     /**
-     * append the string description of this particle to the string buffer
+     * Append the string description of this particle to the string buffer
      * this is for error message.
      */
     void appendParticle(StringBuffer buffer) {
@@ -228,9 +226,10 @@ public class XSParticleDecl implements XSParticle {
         return fValue;
     }
 
-	/**
-	 * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
-	 */
+    /**
+     *
+     * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
+     */
 	public XSNamespaceItem getNamespaceItem() {
 		return null;
 	}

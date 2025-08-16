@@ -27,7 +27,6 @@ import org.apache.xerces.xni.parser.XMLParseException;
  * Default error handler.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class DefaultErrorHandler
@@ -37,24 +36,26 @@ public class DefaultErrorHandler
     // Data
     //
 
-    /** Print writer. */
+    /**
+     * Print writer.
+     */
     protected PrintWriter fOut;
 
     //
     // Constructors
     //
 
-    /** 
-     * Constructs an error handler that prints error messages to 
-     * <code>System.err</code>. 
+    /**
+     * Constructs an error handler that prints error messages to
+     * <code>System.err</code>.
      */
     public DefaultErrorHandler() {
         this(new PrintWriter(System.err));
     } // <init>()
 
-    /** 
+    /**
      * Constructs an error handler that prints error messages to the
-     * specified <code>PrintWriter</code>. 
+     * specified <code>PrintWriter</code>.
      */
     public DefaultErrorHandler(PrintWriter out) {
         fOut = out;
@@ -64,19 +65,25 @@ public class DefaultErrorHandler
     // ErrorHandler methods
     //
 
-    /** Warning. */
+    /**
+     * Warning.
+     */
     public void warning(String domain, String key, XMLParseException ex) 
         throws XNIException {
         printError("Warning", ex);
     } // warning(XMLParseException)
 
-    /** Error. */
+    /**
+     * Error.
+     */
     public void error(String domain, String key, XMLParseException ex)
         throws XNIException {
         printError("Error", ex);
     } // error(XMLParseException)
 
-    /** Fatal error. */
+    /**
+     * Fatal error.
+     */
     public void fatalError(String domain, String key, XMLParseException ex)
         throws XNIException {
         printError("Fatal Error", ex);
@@ -87,7 +94,9 @@ public class DefaultErrorHandler
     // Private methods
     //
 
-    /** Prints the error message. */
+    /**
+     * Prints the error message.
+     */
     private void printError(String type, XMLParseException ex) {
 
         fOut.print("[");

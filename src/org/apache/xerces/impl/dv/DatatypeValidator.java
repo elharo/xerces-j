@@ -21,17 +21,15 @@ package org.apache.xerces.impl.dv;
 /**
  * The interface that a DTD datatype must implement. The implementation of this
  * interface must be thread-safe.
- * 
+ *
  * @xerces.internal
- *
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public interface DatatypeValidator {
 
     /**
-     * validate a given string against this DV
+     * Validate a given string against this DV
      *
      * @param content       the string value that needs to be validated
      * @param context       the validation context

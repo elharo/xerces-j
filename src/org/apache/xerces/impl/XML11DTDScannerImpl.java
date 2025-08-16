@@ -29,42 +29,46 @@ import org.apache.xerces.xni.XNIException;
 /**
  * This class is responsible for scanning the declarations found
  * in the internal and external subsets of a DTD in an XML document.
- * The scanner acts as the sources for the DTD information which is 
+ * The scanner acts as the sources for the DTD information which is
  * communicated to the DTD handlers.
  * <p>
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
  * </ul>
- * 
- * @xerces.internal
  *
- * @author Arnaud  Le Hors, IBM
+ * @xerces.internal
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
  * @author Glenn Marcy, IBM
  * @author Eric Ye, IBM
- *
  * @version $Id$
  */
 public class XML11DTDScannerImpl
     extends XMLDTDScannerImpl {
 
-    /** String buffer. */
+    /**
+     * String buffer.
+     */
     private final XMLStringBuffer fStringBuffer = new XMLStringBuffer();
     
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XML11DTDScannerImpl() {super();} // <init>()
 
-    /** Constructor for he use of non-XMLComponentManagers. */
+    /**
+     * Constructor for he use of non-XMLComponentManagers.
+     */
     public XML11DTDScannerImpl(SymbolTable symbolTable,
                 XMLErrorReporter errorReporter, XMLEntityManager entityManager) {
         super(symbolTable, errorReporter, entityManager);
@@ -84,7 +88,7 @@ public class XML11DTDScannerImpl
     /**
      * Scans public ID literal.
      *
-     * [12] PubidLiteral ::= '"' PubidChar* '"' | "'" (PubidChar - "'")* "'" 
+     * [12] PubidLiteral ::= '"' PubidChar* '"' | "'" (PubidChar - "'")* "'"
      * [13] PubidChar::= #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
      *
      * The returned string is normalized according to the following rule,
@@ -94,11 +98,11 @@ public class XML11DTDScannerImpl
      * identifier must be normalized to single space characters (#x20), and
      * leading and trailing white space must be removed.
      *
-     * @param literal The string to fill in with the public ID literal.
-     * @return True on success.
-     *
+     * @param literal the string to fill in with the public ID literal
+     * @return true on success.
      * <strong>Note:</strong> This method uses fStringBuffer, anything in it at
-     * the time of calling is lost.
+     * the time of calling is lost
+     *
      */
     protected boolean scanPubidLiteral(XMLString literal)
         throws IOException, XNIException
@@ -178,10 +182,10 @@ public class XML11DTDScannerImpl
     
     /**
      * Checks whether this string would be unchanged by normalization.
-     * 
+     *
      * @return -1 if the value would be unchanged by normalization,
      * otherwise the index of the first whitespace character which
-     * would be transformed.
+     * would be transformed
      */
     protected int isUnchangedByNormalization(XMLString value) {
         int end = value.offset + value.length;

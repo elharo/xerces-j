@@ -18,8 +18,8 @@
 package org.apache.xerces.impl.dtd;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class XMLEntityDecl {
@@ -28,29 +28,47 @@ public class XMLEntityDecl {
     // Data
     //
 
-    /** name */
+    /**
+     * Name
+     */
     public String name;
 
-    /** publicId */
+    /**
+     * PublicId
+     */
     public String publicId;
 
-    /** systemId */
+    /**
+     * SystemId
+     */
     public String systemId;
 
-    /** baseSystemId */
+    /**
+     * BaseSystemId
+     */
     public String baseSystemId;
 
-    /** notation */
+    /**
+     * Notation
+     */
     public String notation;
 
-    /** isPE */
+    /**
+     * IsPE
+     */
     public boolean isPE;
 
-    /** inExternal */
-    /** <strong>Note:</strong> flag of where the entity is defined, not whether it is a external entity */
+    /**
+     * InExternal
+     */
+    /**
+     * <strong>Note:</strong> flag of where the entity is defined, not whether it is a external entity
+     */
     public boolean inExternal;
 
-    /** Value. */
+    /**
+     * Value.
+     */
     public String value;
 
     //
@@ -58,14 +76,14 @@ public class XMLEntityDecl {
     //
 
     /**
-     * setValues
-     * 
-     * @param name 
-     * @param publicId 
-     * @param systemId 
-     * @param baseSystemId 
-     * @param notation 
-     * @param isPE 
+     * SetValues
+     *
+     * @param name
+     * @param publicId
+     * @param systemId
+     * @param baseSystemId
+     * @param notation
+     * @param isPE
      * @param inExternal
      */
     public void setValues(String name, String publicId, String systemId, 
@@ -75,15 +93,15 @@ public class XMLEntityDecl {
     }
 
     /**
-     * setValues
-     * 
-     * @param name 
-     * @param publicId 
-     * @param systemId 
-     * @param baseSystemId 
+     * SetValues
+     *
+     * @param name
+     * @param publicId
+     * @param systemId
+     * @param baseSystemId
      * @param value
-     * @param notation 
-     * @param isPE 
+     * @param notation
+     * @param isPE
      * @param inExternal
      */
     public void setValues(String name, String publicId, String systemId, 
@@ -100,7 +118,7 @@ public class XMLEntityDecl {
     } // setValues(String,String,String,String,String,boolean,boolean)
 
     /**
-     * clear
+     * Clear
      */
     public void clear() {
        this.name         = null;

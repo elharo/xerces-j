@@ -52,9 +52,8 @@ import org.w3c.dom.Node;
  * <P>
  *
  * @xerces.internal
- *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class NamedNodeMapImpl
     implements NamedNodeMap, Serializable {
@@ -63,7 +62,9 @@ public class NamedNodeMapImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -7039242451046758020L;
 
     //
@@ -76,7 +77,9 @@ public class NamedNodeMapImpl
     protected final static short CHANGED      = 0x1<<1;
     protected final static short HASDEFAULTS  = 0x1<<2;
 
-    /** Nodes. */
+    /**
+     * Nodes.
+     */
     protected List nodes;
 
     protected NodeImpl ownerNode; // the node this map belongs to
@@ -85,7 +88,9 @@ public class NamedNodeMapImpl
     // Constructors
     //
 
-    /** Constructs a named node map. */
+    /**
+     * Constructs a named node map.
+     */
     protected NamedNodeMapImpl(NodeImpl ownerNode) {
         this.ownerNode = ownerNode;
     }
@@ -107,16 +112,15 @@ public class NamedNodeMapImpl
     /**
      * Retrieve an item from the map by 0-based index.
      *
-     * @param index Which item to retrieve. Note that indices are just an
+     * @param index which item to retrieve. Note that indices are just an
      * enumeration of the current contents; they aren't guaranteed to be
      * stable, nor do they imply any promises about the order of the
      * NamedNodeMap's contents. In other words, DO NOT assume either that
      * index(i) will always refer to the same entry, or that there is any
      * stable ordering of entries... and be prepared for double-reporting
      * or skips as insertion and deletion occur.
-     *
      * @return the node which currenly has the specified index, or null if index
-     * is greater than or equal to getLength().
+     * is greater than or equal to getLength()
      */
     public Node item(int index) {
     	return (nodes != null && index < nodes.size()) ?
@@ -126,9 +130,9 @@ public class NamedNodeMapImpl
     /**
      * Retrieve a node by name.
      *
-     * @param name Name of a node to look up.
+     * @param name name of a node to look up
      * @return the Node (of unspecified sub-class) stored with that name, or
-     * null if no value has been assigned to that name.
+     * null if no value has been assigned to that name
      */
     public Node getNamedItem(String name) {
 
@@ -141,12 +145,12 @@ public class NamedNodeMapImpl
      * Introduced in DOM Level 2. <p>
      * Retrieves a node specified by local name and namespace URI.
      *
-     * @param namespaceURI  The namespace URI of the node to retrieve.
+     * @param namespaceURI  the namespace URI of the node to retrieve.
      *                      When it is null or an empty string, this
-     *                      method behaves like getNamedItem.
-     * @param localName     The local name of the node to retrieve.
-     * @return Node         A Node (of any type) with the specified name, or null if the specified
-     *                      name did not identify any node in the map.
+     *                      method behaves like getNamedItem
+     * @param localName     the local name of the node to retrieve
+     * @return node A Node (of any type) with the specified name, or null if the specified
+     *                      name did not identify any node in the map
      */
     public Node getNamedItemNS(String namespaceURI, String localName) {
 
@@ -161,16 +165,17 @@ public class NamedNodeMapImpl
      * stored under, multiple nodes of certain types (those that have a "special" string
      * value) cannot be stored as the names would clash. This is seen as preferable to
      * allowing nodes to be aliased.
+     *
      * @see org.w3c.dom.NamedNodeMap#setNamedItem
-     * @return If the new Node replaces an existing node the replaced Node is returned,
-     *      otherwise null is returned. 
-     * @param arg 
+     * @return if the new Node replaces an existing node the replaced Node is returned,
+     *      otherwise null is returned
+     * @param arg
      *      A node to store in a named node map. The node will later be
      *      accessible using the value of the namespaceURI and localName
      *      attribute of the node. If a node with those namespace URI and
      *      local name is already present in the map, it is replaced by the new
      *      one.
-     * @exception org.w3c.dom.DOMException The exception description.
+     * @throws org.w3c.dom.DOMException the exception description
      */
     public Node setNamedItem(Node arg)
     throws DOMException {
@@ -205,10 +210,11 @@ public class NamedNodeMapImpl
 
     /**
      * Adds a node using its namespaceURI and localName.
+     *
      * @see org.w3c.dom.NamedNodeMap#setNamedItem
-     * @return If the new Node replaces an existing node the replaced Node is returned,
-     *      otherwise null is returned. 
-     * @param arg A node to store in a named node map. The node will later be
+     * @return if the new Node replaces an existing node the replaced Node is returned,
+     *      otherwise null is returned
+     * @param arg a node to store in a named node map. The node will later be
      *      accessible using the value of the namespaceURI and localName
      *      attribute of the node. If a node with those namespace URI and
      *      local name is already present in the map, it is replaced by the new
@@ -256,10 +262,12 @@ public class NamedNodeMapImpl
    
     /**
      * Removes a node specified by name.
-     * @param name The name of a node to remove.
-     * @return The node removed from the map if a node with such a name exists.
+     *
+     * @param name the name of a node to remove
+     * @return the node removed from the map if a node with such a name exists
      */
-    /***/
+    /**
+     */
     public Node removeNamedItem(String name)
         throws DOMException {
 
@@ -285,16 +293,16 @@ public class NamedNodeMapImpl
     /**
      * Introduced in DOM Level 2. <p>
      * Removes a node specified by local name and namespace URI.
+     *
      * @param namespaceURI
      *                      The namespace URI of the node to remove.
      *                      When it is null or an empty string, this
-     *                      method behaves like removeNamedItem.
-     * @param name          The local name of the node to remove.
-     * @return Node         The node removed from the map if a node with such
-     *                      a local name and namespace URI exists.
+     *                      method behaves like removeNamedItem
+     * @param name          the local name of the node to remove
+     * @return node The node removed from the map if a node with such
+     *                      a local name and namespace URI exists
      * @throws              NOT_FOUND_ERR: Raised if there is no node named
-     *                      name in the map.
-
+     *                      name in the map
      */
      public Node removeNamedItemNS(String namespaceURI, String name)
         throws DOMException {
@@ -363,7 +371,7 @@ public class NamedNodeMapImpl
      * NamedNodeMaps readonly too. I expect that in fact the shallow
      * version of this operation will never be
      *
-     * @param readOnly boolean true to make read-only, false to permit editing.
+     * @param readOnly boolean true to make read-only, false to permit editing
      * @param deep boolean true to pass this request along to the contained
      * nodes, false to only toggle the NamedNodeMap itself. I expect that
      * the shallow version of this operation will never be used, but I want
@@ -380,7 +388,6 @@ public class NamedNodeMapImpl
     
     /**
      * Internal subroutine returns this NodeNameMap's (shallow) readOnly value.
-     *
      */
     boolean getReadOnly() {
     	return isReadOnly();
@@ -434,11 +441,10 @@ public class NamedNodeMapImpl
 
     /**
      * Subroutine: Locate the named item, or the point at which said item
-     * should be added. 
+     * should be added.
      *
-     * @param name Name of a node to look up.
-     *
-     * @return If positive or zero, the index of the found item.
+     * @param name name of a node to look up
+     * @return if positive or zero, the index of the found item.
      * If negative, index of the appropriate point at which to insert
      * the item, encoded as -1-index and hence reconvertable by subtracting
      * it from -1. (Encoding because I don't want to recompare the strings
@@ -476,7 +482,8 @@ public class NamedNodeMapImpl
     } // findNamePoint(String):int
 
     
-    /** This findNamePoint is for DOM Level 2 Namespaces.
+    /**
+     * This findNamePoint is for DOM Level 2 Namespaces.
      */
     protected int findNamePoint(String namespaceURI, String name) {
         
@@ -529,8 +536,8 @@ public class NamedNodeMapImpl
 
 
     /**
-      * NON-DOM: Remove attribute at specified index
-      */
+     * NON-DOM: Remove attribute at specified index
+     */
     protected void removeItem(int index) {
        if (nodes != null && index < nodes.size()){
            nodes.remove(index);
@@ -570,9 +577,9 @@ public class NamedNodeMapImpl
 
     /**
      * NON-DOM: copy content of this map into the specified ArrayList
-     * 
-     * @param list   ArrayList to copy information into.
-     * @return A copy of this node named map
+     *
+     * @param list   ArrayList to copy information into
+     * @return a copy of this node named map
      */
     protected ArrayList cloneMap(ArrayList list) {
         if (list == null) {
@@ -593,8 +600,8 @@ public class NamedNodeMapImpl
      }
 
     /**
-      * NON-DOM remove all elements from this map
-      */
+     * NON-DOM remove all elements from this map
+     */
     public void removeAll (){
         if (nodes != null) {
             nodes.clear();

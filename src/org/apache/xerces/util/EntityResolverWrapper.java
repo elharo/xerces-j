@@ -33,9 +33,7 @@ import org.xml.sax.SAXException;
  * This class wraps a SAX entity resolver in an XNI entity resolver.
  *
  * @see EntityResolver
- *
  * @author Andy Clark, IBM
- * 
  * @version $Id$
  */
 public class EntityResolverWrapper
@@ -45,17 +43,23 @@ public class EntityResolverWrapper
     // Data
     //
 
-    /** The SAX entity resolver. */
+    /**
+     * The SAX entity resolver.
+     */
     protected EntityResolver fEntityResolver;
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public EntityResolverWrapper() {}
 
-    /** Wraps the specified SAX entity resolver. */
+    /**
+     * Wraps the specified SAX entity resolver.
+     */
     public EntityResolverWrapper(EntityResolver entityResolver) {
         setEntityResolver(entityResolver);
     } // <init>(EntityResolver)
@@ -64,12 +68,16 @@ public class EntityResolverWrapper
     // Public methods
     //
 
-    /** Sets the SAX entity resolver. */
+    /**
+     * Sets the SAX entity resolver.
+     */
     public void setEntityResolver(EntityResolver entityResolver) {
         fEntityResolver = entityResolver;
     } // setEntityResolver(EntityResolver)
 
-    /** Returns the SAX entity resolver. */
+    /**
+     * Returns the SAX entity resolver.
+     */
     public EntityResolver getEntityResolver() {
         return fEntityResolver;
     } // getEntityResolver():EntityResolver
@@ -83,10 +91,9 @@ public class EntityResolverWrapper
      * resolved, this method should return null.
      *
      * @param resourceIdentifier	contains the physical co-ordinates of the resource to be resolved
-     *
-     * @throws XNIException Thrown on general error.
-     * @throws IOException  Thrown if resolved entity stream cannot be
-     *                      opened or some other i/o error occurs.
+     * @throws XNIException thrown on general error
+     * @throws IOException  thrown if resolved entity stream cannot be
+     *                      opened or some other i/o error occurs
      */
     public XMLInputSource resolveEntity(XMLResourceIdentifier resourceIdentifier)
         throws XNIException, IOException {

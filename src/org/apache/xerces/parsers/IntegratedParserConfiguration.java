@@ -33,38 +33,37 @@ import org.apache.xerces.xni.parser.XMLDocumentScanner;
  * This is configuration uses a scanner that integrates both scanning of the document
  * and binding namespaces.
  *
- * If namespace feature is turned on, the pipeline is constructured with the 
+ * If namespace feature is turned on, the pipeline is constructured with the
  * following components:
  * XMLNSDocumentScannerImpl -> XMLNSDTDValidator -> (optional) XMLSchemaValidator
- * 
+ *
  * If the namespace feature is turned off the default document scanner implementation
  * is used (XMLDocumentScannerImpl).
  * <p>
  * In addition to the features and properties recognized by the base
- * parser configuration, this class recognizes these additional 
+ * parser configuration, this class recognizes these additional
  * features and properties:
  * <ul>
  * <li>Features
- *  <ul>
- *  <li>http://apache.org/xml/features/validation/schema</li>
- *  <li>http://apache.org/xml/features/validation/schema-full-checking</li>
- *  <li>http://apache.org/xml/features/validation/schema/normalized-value</li>
- *  <li>http://apache.org/xml/features/validation/schema/element-default</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/features/validation/schema</li>
+ * <li>http://apache.org/xml/features/validation/schema-full-checking</li>
+ * <li>http://apache.org/xml/features/validation/schema/normalized-value</li>
+ * <li>http://apache.org/xml/features/validation/schema/element-default</li>
+ * </ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *   <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *   <li>http://apache.org/xml/properties/internal/document-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *   <li>http://apache.org/xml/properties/internal/validator/dtd</li>
- *   <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/document-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/validator/dtd</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * </ul>
  * </ul>
  *
  * @author Elena Litani, IBM
- *
  * @version $Id$
  */
 public class IntegratedParserConfiguration
@@ -76,28 +75,36 @@ extends StandardParserConfiguration {
     //          like DTD/Standard one?
     //
 
-    /** Document scanner that does namespace binding. */
+    /**
+     * Document scanner that does namespace binding.
+     */
     protected XMLNSDocumentScannerImpl fNamespaceScanner;
 
-    /** Default Xerces implementation of scanner */
+    /**
+     * Default Xerces implementation of scanner
+     */
     protected XMLDocumentScannerImpl fNonNSScanner;
 
-    /** DTD Validator that does not bind namespaces */
+    /**
+     * DTD Validator that does not bind namespaces
+     */
     protected XMLDTDValidator fNonNSDTDValidator;
     
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public IntegratedParserConfiguration() {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public IntegratedParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -107,12 +114,12 @@ extends StandardParserConfiguration {
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public IntegratedParserConfiguration(SymbolTable symbolTable,
                                          XMLGrammarPool grammarPool) {
@@ -123,13 +130,13 @@ extends StandardParserConfiguration {
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public IntegratedParserConfiguration(SymbolTable symbolTable,
                                          XMLGrammarPool grammarPool,
@@ -147,7 +154,9 @@ extends StandardParserConfiguration {
     } // <init>(SymbolTable,XMLGrammarPool)
 
     
-    /** Configures the pipeline. */
+    /**
+     * Configures the pipeline.
+     */
 	protected void configurePipeline() {
 
 		// use XML 1.0 datatype library
@@ -232,16 +241,18 @@ extends StandardParserConfiguration {
 
 
 
-    /** Create a document scanner: this scanner performs namespace binding 
-      */
+    /**
+     * Create a document scanner: this scanner performs namespace binding
+     */
     protected XMLDocumentScanner createDocumentScanner() {
         fNamespaceScanner = new XMLNSDocumentScannerImpl();
         return fNamespaceScanner;
     } // createDocumentScanner():XMLDocumentScanner
 
 
-    /** Create a DTD validator: this validator performs namespace binding.
-      */
+    /**
+     * Create a DTD validator: this validator performs namespace binding.
+     */
     protected XMLDTDValidator createDTDValidator() {
         return new XMLNSDTDValidator();
     } // createDTDValidator():XMLDTDValidator

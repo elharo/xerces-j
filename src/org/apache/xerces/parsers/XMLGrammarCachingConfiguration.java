@@ -52,13 +52,12 @@ import org.apache.xerces.xni.parser.XMLInputSource;
  * directly.</p>
  * <p>
  * In addition to the features and properties recognized by the base
- * parser configuration, this class recognizes these additional 
+ * parser configuration, this class recognizes these additional
  * features and properties:
  * <ul>
  * </ul>
  *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class XMLGrammarCachingConfiguration 
@@ -98,15 +97,17 @@ public class XMLGrammarCachingConfiguration
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLGrammarCachingConfiguration() {
         this(fStaticSymbolTable, fStaticGrammarPool, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XMLGrammarCachingConfiguration(SymbolTable symbolTable) {
         this(symbolTable, fStaticGrammarPool, null);
@@ -116,12 +117,12 @@ public class XMLGrammarCachingConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XMLGrammarCachingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool) {
@@ -132,13 +133,13 @@ public class XMLGrammarCachingConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XMLGrammarCachingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool,
@@ -191,14 +192,14 @@ public class XMLGrammarCachingConfiguration
      * Parse a grammar from a location identified by an URI.
      * This method also adds this grammar to the XMLGrammarPool
      *
-     * @param type The type of the grammar to be constructed
-     * @param uri The location of the grammar to be constructed.
+     * @param type the type of the grammar to be constructed
+     * @param uri the location of the grammar to be constructed.
      * <strong>The parser will not expand this URI or make it
      * available to the EntityResolver</strong>
-     * @return The newly created <code>Grammar</code>.
-     * @exception XNIException thrown on an error in grammar
+     * @return the newly created <code>Grammar</code>
+     * @throws XNIException thrown on an error in grammar
      * construction
-     * @exception IOException thrown if an error is encountered
+     * @throws IOException thrown if an error is encountered
      * in reading the file
      */
     public Grammar parseGrammar(String type, String uri)
@@ -210,18 +211,18 @@ public class XMLGrammarCachingConfiguration
 
     /**
      * Parse a grammar from a location identified by an
-     * XMLInputSource.  
+     * XMLInputSource.
      * This method also adds this grammar to the XMLGrammarPool
      *
-     * @param type The type of the grammar to be constructed
-     * @param is The XMLInputSource containing this grammar's
+     * @param type the type of the grammar to be constructed
+     * @param is the XMLInputSource containing this grammar's
      * information
      * <strong>If a URI is included in the systemId field, the parser will not expand this URI or make it
      * available to the EntityResolver</strong>
-     * @return The newly created <code>Grammar</code>.
-     * @exception XNIException thrown on an error in grammar
+     * @return the newly created <code>Grammar</code>
+     * @throws XNIException thrown on an error in grammar
      * construction
-     * @exception IOException thrown if an error is encountered
+     * @throws IOException thrown if an error is encountered
      * in reading the file
      */
     public Grammar parseGrammar(String type, XMLInputSource
@@ -246,13 +247,12 @@ public class XMLGrammarCachingConfiguration
      * Check a feature. If feature is known and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId)
         throws XMLConfigurationException {
@@ -265,14 +265,13 @@ public class XMLGrammarCachingConfiguration
      * Check a property. If the property is known and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {

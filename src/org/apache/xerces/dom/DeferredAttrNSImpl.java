@@ -26,12 +26,11 @@ package org.apache.xerces.dom;
 
 /**
  * DeferredAttrNSImpl is to AttrNSImpl, what DeferredAttrImpl is to
- * AttrImpl. 
- * 
+ * AttrImpl.
+ *
  * @xerces.internal
- * 
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @version $Id$
  * @see DeferredAttrImpl
  */
@@ -43,14 +42,18 @@ public final class DeferredAttrNSImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 6074924934945957154L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -74,7 +77,9 @@ public final class DeferredAttrNSImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -83,7 +88,9 @@ public final class DeferredAttrNSImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected void synchronizeData() {
 
         // no need to sync in the future

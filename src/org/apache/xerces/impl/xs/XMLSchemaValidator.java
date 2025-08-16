@@ -97,18 +97,17 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
  * </ul>
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Sandy Gao IBM
  * @author Elena Litani IBM
  * @author Andy Clark IBM
- * @author Neeraj Bajaj, Sun Microsystems, inc.
+ * @author Neeraj Bajaj, Sun Microsystems, inc
  * @version $Id$
  */
 public class XMLSchemaValidator
@@ -121,104 +120,152 @@ public class XMLSchemaValidator
 
     // feature identifiers
 
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
 
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String SCHEMA_VALIDATION =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
 
-    /** Feature identifier: schema full checking*/
+    /**
+     * Feature identifier: schema full checking
+     */
     protected static final String SCHEMA_FULL_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_FULL_CHECKING;
 
-    /** Feature identifier: dynamic validation. */
+    /**
+     * Feature identifier: dynamic validation.
+     */
     protected static final String DYNAMIC_VALIDATION =
         Constants.XERCES_FEATURE_PREFIX + Constants.DYNAMIC_VALIDATION_FEATURE;
 
-    /** Feature identifier: expose schema normalized value */
+    /**
+     * Feature identifier: expose schema normalized value
+     */
     protected static final String NORMALIZE_DATA =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
 
-    /** Feature identifier: send element default value via characters() */
+    /**
+     * Feature identifier: send element default value via characters()
+     */
     protected static final String SCHEMA_ELEMENT_DEFAULT =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_ELEMENT_DEFAULT;
 
-    /** Feature identifier: augment PSVI */
+    /**
+     * Feature identifier: augment PSVI
+     */
     protected static final String SCHEMA_AUGMENT_PSVI =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_AUGMENT_PSVI;
 
-    /** Feature identifier: whether to recognize java encoding names */
+    /**
+     * Feature identifier: whether to recognize java encoding names
+     */
     protected static final String ALLOW_JAVA_ENCODINGS =
         Constants.XERCES_FEATURE_PREFIX + Constants.ALLOW_JAVA_ENCODINGS_FEATURE;
 
-    /** Feature identifier: standard uri conformant feature. */
+    /**
+     * Feature identifier: standard uri conformant feature.
+     */
     protected static final String STANDARD_URI_CONFORMANT_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.STANDARD_URI_CONFORMANT_FEATURE;
     
-    /** Feature: generate synthetic annotations */
+    /**
+     * Feature: generate synthetic annotations
+     */
     protected static final String GENERATE_SYNTHETIC_ANNOTATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.GENERATE_SYNTHETIC_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: validate annotations. */
+    /**
+     * Feature identifier: validate annotations.
+     */
     protected static final String VALIDATE_ANNOTATIONS =
         Constants.XERCES_FEATURE_PREFIX + Constants.VALIDATE_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: honour all schemaLocations */
+    /**
+     * Feature identifier: honour all schemaLocations
+     */
     protected static final String HONOUR_ALL_SCHEMALOCATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.HONOUR_ALL_SCHEMALOCATIONS_FEATURE;
 
-    /** Feature identifier: use grammar pool only */
+    /**
+     * Feature identifier: use grammar pool only
+     */
     protected static final String USE_GRAMMAR_POOL_ONLY =
         Constants.XERCES_FEATURE_PREFIX + Constants.USE_GRAMMAR_POOL_ONLY_FEATURE;
 
-    /** Feature identifier: whether to continue parsing a schema after a fatal error is encountered */
+    /**
+     * Feature identifier: whether to continue parsing a schema after a fatal error is encountered
+     */
     protected static final String CONTINUE_AFTER_FATAL_ERROR =
         Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE;
 
     protected static final String PARSER_SETTINGS =
             Constants.XERCES_FEATURE_PREFIX + Constants.PARSER_SETTINGS;
     
-    /** Feature identifier: namespace growth */
+    /**
+     * Feature identifier: namespace growth
+     */
     protected static final String NAMESPACE_GROWTH = 
         Constants.XERCES_FEATURE_PREFIX + Constants.NAMESPACE_GROWTH_FEATURE;
 
-    /** Feature identifier: tolerate duplicates */
+    /**
+     * Feature identifier: tolerate duplicates
+     */
     protected static final String TOLERATE_DUPLICATES = 
         Constants.XERCES_FEATURE_PREFIX + Constants.TOLERATE_DUPLICATES_FEATURE;
 
-    /** Feature identifier: whether to ignore xsi:type attributes until a global element declaration is encountered */
+    /**
+     * Feature identifier: whether to ignore xsi:type attributes until a global element declaration is encountered
+     */
     protected static final String IGNORE_XSI_TYPE =
         Constants.XERCES_FEATURE_PREFIX + Constants.IGNORE_XSI_TYPE_FEATURE;
     
-    /** Feature identifier: whether to ignore ID/IDREF errors */
+    /**
+     * Feature identifier: whether to ignore ID/IDREF errors
+     */
     protected static final String ID_IDREF_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.ID_IDREF_CHECKING_FEATURE;
     
-    /** Feature identifier: whether to ignore unparsed entity errors */
+    /**
+     * Feature identifier: whether to ignore unparsed entity errors
+     */
     protected static final String UNPARSED_ENTITY_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.UNPARSED_ENTITY_CHECKING_FEATURE;
     
-    /** Feature identifier: whether to ignore identity constraint errors */
+    /**
+     * Feature identifier: whether to ignore identity constraint errors
+     */
     protected static final String IDENTITY_CONSTRAINT_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.IDC_CHECKING_FEATURE;
 
     // property identifiers
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     public static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     public static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     public static final String ENTITY_RESOLVER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
 
-    /** Property identifier: grammar pool. */
+    /**
+     * Property identifier: grammar pool.
+     */
     public static final String XMLGRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
 
@@ -228,37 +275,53 @@ public class XMLSchemaValidator
     protected static final String ENTITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
 
-    /** Property identifier: schema location. */
+    /**
+     * Property identifier: schema location.
+     */
     protected static final String SCHEMA_LOCATION =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_LOCATION;
 
-    /** Property identifier: no namespace schema location. */
+    /**
+     * Property identifier: no namespace schema location.
+     */
     protected static final String SCHEMA_NONS_LOCATION =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_NONS_LOCATION;
 
-    /** Property identifier: JAXP schema source. */
+    /**
+     * Property identifier: JAXP schema source.
+     */
     protected static final String JAXP_SCHEMA_SOURCE =
         Constants.JAXP_PROPERTY_PREFIX + Constants.SCHEMA_SOURCE;
 
-    /** Property identifier: JAXP schema language. */
+    /**
+     * Property identifier: JAXP schema language.
+     */
     protected static final String JAXP_SCHEMA_LANGUAGE =
         Constants.JAXP_PROPERTY_PREFIX + Constants.SCHEMA_LANGUAGE;
 
-    /** Property identifier: root type definition. */
+    /**
+     * Property identifier: root type definition.
+     */
     protected static final String ROOT_TYPE_DEF =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ROOT_TYPE_DEFINITION_PROPERTY;
     
-    /** Property identifier: root element declaration. */
+    /**
+     * Property identifier: root element declaration.
+     */
     protected static final String ROOT_ELEMENT_DECL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ROOT_ELEMENT_DECLARATION_PROPERTY;
 
-    /** Property identifier: Schema DV Factory */
+    /**
+     * Property identifier: Schema DV Factory
+     */
     protected static final String SCHEMA_DV_FACTORY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_DV_FACTORY_PROPERTY;
     
     // recognized features and properties
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES =
         {
             VALIDATION,
@@ -281,7 +344,9 @@ public class XMLSchemaValidator
         };
 
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = { null,
         // NOTE: The following defaults are nulled out on purpose.
         //       If they are set, then when the XML Schema validator
@@ -311,7 +376,9 @@ public class XMLSchemaValidator
         null
     };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES =
         {
             SYMBOL_TABLE,
@@ -327,7 +394,9 @@ public class XMLSchemaValidator
             SCHEMA_DV_FACTORY,
         };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS =
         { null, null, null, null, null, null, null, null, null, null, null};
 
@@ -349,7 +418,9 @@ public class XMLSchemaValidator
     // Data
     //
 
-    /** current PSVI element info */
+    /**
+     * Current PSVI element info
+     */
     protected ElementPSVImpl fCurrentPSVI = new ElementPSVImpl();
 
     // since it is the responsibility of each component to an
@@ -376,7 +447,9 @@ public class XMLSchemaValidator
     // Namespace growth feature
     protected boolean fNamespaceGrowth = false;
     
-    /** Schema type: None, DTD, Schema */
+    /**
+     * Schema type: None, DTD, Schema
+     */
     private String fSchemaType = null;
 
     // to indicate whether we are in the scope of entity reference or CData
@@ -385,7 +458,9 @@ public class XMLSchemaValidator
 
     // properties
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected SymbolTable fSymbolTable;
 
     /**
@@ -503,10 +578,14 @@ public class XMLSchemaValidator
         } // reportError(XMLLocator,String,String,Object[],short)
     }
 
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     protected final XSIErrorReporter fXSIErrorReporter = new XSIErrorReporter();
 
-    /** Entity resolver */
+    /**
+     * Entity resolver
+     */
     protected XMLEntityResolver fEntityResolver;
 
     // updated during reset
@@ -521,7 +600,9 @@ public class XMLSchemaValidator
     //JAXP Schema Source property
     protected Object fJaxpSchemaSource = null;
 
-    /** Schema Grammar Description passed,  to give a chance to application to supply the Grammar */
+    /**
+     * Schema Grammar Description passed,  to give a chance to application to supply the Grammar
+     */
     protected final XSDDescription fXSDDescription = new XSDDescription();
     protected final Hashtable fLocationPairs = new Hashtable();
     protected final Hashtable fExpandedLocationPairs = new Hashtable();
@@ -530,7 +611,9 @@ public class XMLSchemaValidator
 
     // handlers
 
-    /** Document handler. */
+    /**
+     * Document handler.
+     */
     protected XMLDocumentHandler fDocumentHandler;
 
     protected XMLDocumentSource fDocumentSource;
@@ -555,13 +638,12 @@ public class XMLSchemaValidator
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state) throws XMLConfigurationException {
     } // setFeature(String,boolean)
@@ -582,13 +664,12 @@ public class XMLSchemaValidator
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
      *
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value) throws XMLConfigurationException {
         if (propertyId.equals(ROOT_TYPE_DEF)) {
@@ -626,9 +707,8 @@ public class XMLSchemaValidator
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -644,9 +724,8 @@ public class XMLSchemaValidator
      * component does not want to report a default value for this
      * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -661,12 +740,16 @@ public class XMLSchemaValidator
     // XMLDocumentSource methods
     //
 
-    /** Sets the document handler to receive information about the document. */
+    /**
+     * Sets the document handler to receive information about the document.
+     */
     public void setDocumentHandler(XMLDocumentHandler documentHandler) {
         fDocumentHandler = documentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
 
-    /** Returns the document handler */
+    /**
+     * Returns the document handler
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
@@ -675,12 +758,16 @@ public class XMLSchemaValidator
     // XMLDocumentHandler methods
     //
 
-    /** Sets the document source */
+    /**
+     * Sets the document source
+     */
     public void setDocumentSource(XMLDocumentSource source) {
         fDocumentSource = source;
     } // setDocumentSource
 
-    /** Returns the document source */
+    /**
+     * Returns the document source
+     */
     public XMLDocumentSource getDocumentSource() {
         return fDocumentSource;
     } // getDocumentSource
@@ -688,9 +775,9 @@ public class XMLSchemaValidator
     /**
      * The start of the document.
      *
-     * @param locator The system identifier of the entity if the entity
-     *                 is external, null otherwise.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param locator the system identifier of the entity if the entity
+     *                 is external, null otherwise
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
@@ -702,10 +789,9 @@ public class XMLSchemaValidator
      *                 Implementors of this class are responsible
      *                 for copying the namespace bindings from the
      *                 the current context (and its parent contexts)
-     *                 if that information is important.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     *                 if that information is important
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startDocument(
         XMLLocator locator,
@@ -732,13 +818,12 @@ public class XMLSchemaValidator
      * present, this method will be called immediately following the
      * startDocument call.
      *
-     * @param version    The XML version.
-     * @param encoding   The IANA encoding name of the document, or null if
-     *                   not specified.
-     * @param standalone The standalone value, or null if not specified.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version    the XML version
+     * @param encoding   the IANA encoding name of the document, or null if
+     *                   not specified
+     * @param standalone the standalone value, or null if not specified
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void xmlDecl(String version, String encoding, String standalone, Augmentations augs)
         throws XNIException {
@@ -753,14 +838,13 @@ public class XMLSchemaValidator
     /**
      * Notifies of the presence of the DOCTYPE line in the document.
      *
-     * @param rootElement The name of the root element.
-     * @param publicId    The public identifier if an external DTD or null
-     *                    if the external DTD is specified using SYSTEM.
-     * @param systemId    The system identifier if an external DTD, null
-     *                    otherwise.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param rootElement the name of the root element
+     * @param publicId    the public identifier if an external DTD or null
+     *                    if the external DTD is specified using SYSTEM
+     * @param systemId    the system identifier if an external DTD, null
+     *                    otherwise
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void doctypeDecl(
         String rootElement,
@@ -779,11 +863,10 @@ public class XMLSchemaValidator
     /**
      * The start of an element.
      *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
@@ -799,11 +882,10 @@ public class XMLSchemaValidator
     /**
      * An empty element.
      *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
@@ -834,10 +916,9 @@ public class XMLSchemaValidator
     /**
      * Character content.
      *
-     * @param text The content.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the content
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void characters(XMLString text, Augmentations augs) throws XNIException {
 
@@ -866,10 +947,9 @@ public class XMLSchemaValidator
      * characters in the document are ignorable based on the element
      * content model.
      *
-     * @param text The ignorable whitespace.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the ignorable whitespace
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void ignorableWhitespace(XMLString text, Augmentations augs) throws XNIException {
 
@@ -884,10 +964,9 @@ public class XMLSchemaValidator
     /**
      * The end of an element.
      *
-     * @param element The name of the element.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element the name of the element
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endElement(QName element, Augmentations augs) throws XNIException {
 
@@ -907,12 +986,11 @@ public class XMLSchemaValidator
     } // endElement(QName, Augmentations)
 
     /**
-    * The start of a CDATA section.
-    *
-    * @param augs     Additional information that may include infoset augmentations
-    *
-    * @throws XNIException Thrown by handler to signal an error.
-    */
+     * The start of a CDATA section.
+     *
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
+     */
     public void startCDATA(Augmentations augs) throws XNIException {
 
         // REVISIT: what should we do here if schema normalization is on??
@@ -927,9 +1005,8 @@ public class XMLSchemaValidator
     /**
      * The end of a CDATA section.
      *
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endCDATA(Augmentations augs) throws XNIException {
 
@@ -944,9 +1021,8 @@ public class XMLSchemaValidator
     /**
      * The end of the document.
      *
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDocument(Augmentations augs) throws XNIException {
 
@@ -1021,16 +1097,15 @@ public class XMLSchemaValidator
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param name     The name of the general entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param name     the name of the general entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
      *                 parsed from a java.io.Reader).
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @exception XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startGeneralEntity(
         String name,
@@ -1059,11 +1134,10 @@ public class XMLSchemaValidator
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param version  The XML version, or null if not specified.
-     * @param encoding The IANA encoding name of the entity.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version  the XML version, or null if not specified
+     * @param encoding the IANA encoding name of the entity
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void textDecl(String version, String encoding, Augmentations augs) throws XNIException {
 
@@ -1077,10 +1151,9 @@ public class XMLSchemaValidator
     /**
      * A comment.
      *
-     * @param text The text in the comment.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
         
@@ -1102,11 +1175,10 @@ public class XMLSchemaValidator
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
      *
-     * @param target The target.
-     * @param data   The data or null if none specified.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
         throws XNIException {
@@ -1124,11 +1196,10 @@ public class XMLSchemaValidator
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param name   The name of the entity.
-     * @param augs   Additional information that may include infoset augmentations
-     *
-     * @exception XNIException
-     *                   Thrown by handler to signal an error.
+     * @param name   the name of the entity
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException
+     *                   Thrown by handler to signal an error
      */
     public void endGeneralEntity(String name, Augmentations augs) throws XNIException {
 
@@ -1163,18 +1234,24 @@ public class XMLSchemaValidator
     private short fWhiteSpace = -1; //whiteSpace: preserve/replace/collapse
     private boolean fUnionType = false;
 
-    /** Schema grammar resolver. */
+    /**
+     * Schema grammar resolver.
+     */
     private final XSGrammarBucket fGrammarBucket = new XSGrammarBucket();
     private final SubstitutionGroupHandler fSubGroupHandler = new SubstitutionGroupHandler(this);
 
-    /** the DV usd to convert xsi:type to a QName */
+    /**
+     * The DV usd to convert xsi:type to a QName
+     */
     // REVISIT: in new simple type design, make things in DVs static,
     //          so that we can QNameDV.getCompiledForm()
     private final XSSimpleType fQNameDV =
         (XSSimpleType) SchemaGrammar.SG_SchemaNS.getGlobalTypeDecl(SchemaSymbols.ATTVAL_QNAME);
 
     private final CMNodeFactory nodeFactory = new CMNodeFactory();
-    /** used to build content models */
+    /**
+     * Used to build content models
+     */
     // REVISIT: create decl pool, and pass it to each traversers
     private final CMBuilder fCMBuilder = new CMBuilder(nodeFactory);
     
@@ -1188,96 +1265,156 @@ public class XMLSchemaValidator
 
     // state
 
-    /** String representation of the validation root. */
+    /**
+     * String representation of the validation root.
+     */
     // REVISIT: what do we store here? QName, XPATH, some ID? use rawname now.
     private String fValidationRoot;
 
-    /** Skip validation: anything below this level should be skipped */
+    /**
+     * Skip validation: anything below this level should be skipped
+     */
     private int fSkipValidationDepth;
 
-    /** anything above this level has validation_attempted != full */
+    /**
+     * Anything above this level has validation_attempted != full
+     */
     private int fNFullValidationDepth;
 
-    /** anything above this level has validation_attempted != none */
+    /**
+     * Anything above this level has validation_attempted != none
+     */
     private int fNNoneValidationDepth;
 
-    /** Element depth: -2: validator not in pipeline; >= -1 current depth. */
+    /**
+     * Element depth: -2: validator not in pipeline; >= -1 current depth.
+     */
     private int fElementDepth;
 
-    /** Seen sub elements. */
+    /**
+     * Seen sub elements.
+     */
     private boolean fSubElement;
 
-    /** Seen sub elements stack. */
+    /**
+     * Seen sub elements stack.
+     */
     private boolean[] fSubElementStack = new boolean[INITIAL_STACK_SIZE];
 
-    /** Current element declaration. */
+    /**
+     * Current element declaration.
+     */
     private XSElementDecl fCurrentElemDecl;
 
-    /** Element decl stack. */
+    /**
+     * Element decl stack.
+     */
     private XSElementDecl[] fElemDeclStack = new XSElementDecl[INITIAL_STACK_SIZE];
 
-    /** nil value of the current element */
+    /**
+     * Nil value of the current element
+     */
     private boolean fNil;
 
-    /** nil value stack */
+    /**
+     * Nil value stack
+     */
     private boolean[] fNilStack = new boolean[INITIAL_STACK_SIZE];
 
-    /** notation value of the current element */
+    /**
+     * Notation value of the current element
+     */
     private XSNotationDecl fNotation;
 
-    /** notation stack */
+    /**
+     * Notation stack
+     */
     private XSNotationDecl[] fNotationStack = new XSNotationDecl[INITIAL_STACK_SIZE];
 
-    /** Current type. */
+    /**
+     * Current type.
+     */
     private XSTypeDefinition fCurrentType;
 
-    /** type stack. */
+    /**
+     * Type stack.
+     */
     private XSTypeDefinition[] fTypeStack = new XSTypeDefinition[INITIAL_STACK_SIZE];
 
-    /** Current content model. */
+    /**
+     * Current content model.
+     */
     private XSCMValidator fCurrentCM;
 
-    /** Content model stack. */
+    /**
+     * Content model stack.
+     */
     private XSCMValidator[] fCMStack = new XSCMValidator[INITIAL_STACK_SIZE];
 
-    /** the current state of the current content model */
+    /**
+     * The current state of the current content model
+     */
     private int[] fCurrCMState;
 
-    /** stack to hold content model states */
+    /**
+     * Stack to hold content model states
+     */
     private int[][] fCMStateStack = new int[INITIAL_STACK_SIZE][];
 
-    /** whether the curret element is strictly assessed */
+    /**
+     * Whether the curret element is strictly assessed
+     */
     private boolean fStrictAssess = true;
 
-    /** strict assess stack */
+    /**
+     * Strict assess stack
+     */
     private boolean[] fStrictAssessStack = new boolean[INITIAL_STACK_SIZE];
 
-    /** Temporary string buffers. */
+    /**
+     * Temporary string buffers.
+     */
     private final StringBuffer fBuffer = new StringBuffer();
 
-    /** Whether need to append characters to fBuffer */
+    /**
+     * Whether need to append characters to fBuffer
+     */
     private boolean fAppendBuffer = true;
 
-    /** Did we see any character data? */
+    /**
+     * Did we see any character data?
+     */
     private boolean fSawText = false;
 
-    /** stack to record if we saw character data */
+    /**
+     * Stack to record if we saw character data
+     */
     private boolean[] fSawTextStack = new boolean[INITIAL_STACK_SIZE];
 
-    /** Did we see non-whitespace character data? */
+    /**
+     * Did we see non-whitespace character data?
+     */
     private boolean fSawCharacters = false;
 
-    /** Stack to record if we saw character data outside of element content*/
+    /**
+     * Stack to record if we saw character data outside of element content
+     */
     private boolean[] fStringContent = new boolean[INITIAL_STACK_SIZE];
 
-    /** temporary qname */
+    /**
+     * Temporary qname
+     */
     private final QName fTempQName = new QName();
     
-    /** value of the "root-type-definition" property. */
+    /**
+     * Value of the "root-type-definition" property.
+     */
     private javax.xml.namespace.QName fRootTypeQName = null;
     private XSTypeDefinition fRootTypeDefinition = null;
     
-    /** value of the "root-element-declaration" property. */
+    /**
+     * Value of the "root-element-declaration" property.
+     */
     private javax.xml.namespace.QName fRootElementDeclQName = null;
     private XSElementDecl fRootElementDeclaration = null;
     
@@ -1285,7 +1422,9 @@ public class XMLSchemaValidator
     
     private boolean fIDCChecking;
 
-    /** temporary validated info */
+    /**
+     * Temporary validated info
+     */
     private ValidatedInfo fValidatedInfo = new ValidatedInfo();
 
     // used to validate default/fixed values against xsi:type
@@ -1314,14 +1453,18 @@ public class XMLSchemaValidator
      */
     protected XPathMatcherStack fMatcherStack = new XPathMatcherStack();
 
-    /** Cache of value stores for identity constraint fields. */
+    /**
+     * Cache of value stores for identity constraint fields.
+     */
     protected ValueStoreCache fValueStoreCache = new ValueStoreCache();
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLSchemaValidator() {
         fState4XsiType.setExtraChecking(false);
         fState4ApplyDefault.setFacetChecking(false);
@@ -1593,7 +1736,7 @@ public class XMLSchemaValidator
      * method is called when the selector matches in order to initialize
      * the value store.
      *
-     * @param identityConstraint The identity constraint.
+     * @param identityConstraint the identity constraint
      */
     public void startValueScopeFor(IdentityConstraint identityConstraint, int initialDepth) {
 
@@ -1607,7 +1750,7 @@ public class XMLSchemaValidator
      * Request to activate the specified field. This method returns the
      * matcher for the field.
      *
-     * @param field The field to activate.
+     * @param field the field to activate
      */
     public XPathMatcher activateField(Field field, int initialDepth) {
         ValueStore valueStore =
@@ -1621,7 +1764,7 @@ public class XMLSchemaValidator
     /**
      * Ends the value scope for the specified identity constraint.
      *
-     * @param identityConstraint The identity constraint.
+     * @param identityConstraint the identity constraint
      */
     public void endValueScopeFor(IdentityConstraint identityConstraint, int initialDepth) {
 
@@ -1661,7 +1804,9 @@ public class XMLSchemaValidator
     // Protected methods
     //
 
-    /** ensure element stack capacity */
+    /**
+     * Ensure element stack capacity
+     */
     void ensureStackCapacity() {
 
         if (fElementDepth == fElemDeclStack.length) {
@@ -1768,7 +1913,8 @@ public class XMLSchemaValidator
     /**
      * Normalize whitespace in an XMLString according to the rules defined
      * in XML Schema specifications.
-     * @param value    The string to normalize.
+     *
+     * @param value    the string to normalize
      * @param collapse replace or collapse
      */
     private void normalizeWhitespace(XMLString value, boolean collapse) {
@@ -1885,7 +2031,9 @@ public class XMLSchemaValidator
 
     } // handleIgnorableWhitespace(XMLString)
 
-    /** Handle element. */
+    /**
+     * Handle element.
+     */
     Augmentations handleStartElement(QName element, XMLAttributes attributes, Augmentations augs) {
 
         if (DEBUG) {
@@ -2324,8 +2472,8 @@ public class XMLSchemaValidator
     } // handleStartElement(QName,XMLAttributes,boolean)
 
     /**
-     *  Handle end element. If there is not text content, and there is a
-     *  {value constraint} on the corresponding element decl, then
+     * Handle end element. If there is not text content, and there is a
+     * {value constraint} on the corresponding element decl, then
      * set the fDefaultValue XMLString representing the default value.
      */
     Augmentations handleEndElement(QName element, Augmentations augs) {
@@ -3267,9 +3415,9 @@ public class XMLSchemaValidator
     } // addDefaultAttributes
 
     /**
-     *  If there is not text content, and there is a
-     *  {value constraint} on the corresponding element decl, then return
-     *  an XMLString representing the default value.
+     * If there is not text content, and there is a
+     * {value constraint} on the corresponding element decl, then return
+     * an XMLString representing the default value.
      */
     void processElementContent(QName element) {
         // 1 If the item is ?valid? with respect to an element declaration as per Element Locally Valid (Element) (?3.3.4) and the {value constraint} is present, but clause 3.2 of Element Locally Valid (Element) (?3.3.4) above is not satisfied and the item has no element or character information item [children], then schema. Furthermore, the post-schema-validation infoset has the canonical lexical representation of the {value constraint} value as the item's [schema normalized value] property.
@@ -3602,7 +3750,9 @@ public class XMLSchemaValidator
         return ret.toString();
     }
 
-    /**********************************/
+    /**
+     * ******************************
+     */
 
     // xpath matcher information
 
@@ -3617,13 +3767,19 @@ public class XMLSchemaValidator
         // Data
         //
 
-        /** Active matchers. */
+        /**
+         * Active matchers.
+         */
         protected XPathMatcher[] fMatchers = new XPathMatcher[4];
 
-        /** Count of active matchers. */
+        /**
+         * Count of active matchers.
+         */
         protected int fMatchersCount;
 
-        /** Offset stack for contexts. */
+        /**
+         * Offset stack for contexts.
+         */
         protected IntStack fContextStack = new IntStack();
 
         //
@@ -3637,7 +3793,9 @@ public class XMLSchemaValidator
         // Public methods
         //
 
-        /** Resets the XPath matcher stack. */
+        /**
+         * Resets the XPath matcher stack.
+         */
         public void clear() {
             for (int i = 0; i < fMatchersCount; i++) {
                 fMatchers[i] = null;
@@ -3646,33 +3804,45 @@ public class XMLSchemaValidator
             fContextStack.clear();
         } // clear()
 
-        /** Returns the size of the stack. */
+        /**
+         * Returns the size of the stack.
+         */
         public int size() {
             return fContextStack.size();
         } // size():int
 
-        /** Returns the count of XPath matchers. */
+        /**
+         * Returns the count of XPath matchers.
+         */
         public int getMatcherCount() {
             return fMatchersCount;
         } // getMatcherCount():int
 
-        /** Adds a matcher. */
+        /**
+         * Adds a matcher.
+         */
         public void addMatcher(XPathMatcher matcher) {
             ensureMatcherCapacity();
             fMatchers[fMatchersCount++] = matcher;
         } // addMatcher(XPathMatcher)
 
-        /** Returns the XPath matcher at the specified index. */
+        /**
+         * Returns the XPath matcher at the specified index.
+         */
         public XPathMatcher getMatcherAt(int index) {
             return fMatchers[index];
         } // getMatcherAt(index):XPathMatcher
 
-        /** Pushes a new context onto the stack. */
+        /**
+         * Pushes a new context onto the stack.
+         */
         public void pushContext() {
             fContextStack.push(fMatchersCount);
         } // pushContext()
 
-        /** Pops a context off of the stack. */
+        /**
+         * Pops a context off of the stack.
+         */
         public void popContext() {
             fMatchersCount = fContextStack.pop();
         } // popContext()
@@ -3681,7 +3851,9 @@ public class XMLSchemaValidator
         // Private methods
         //
 
-        /** Ensures the size of the matchers array. */
+        /**
+         * Ensures the size of the matchers array.
+         */
         private void ensureMatcherCapacity() {
             if (fMatchersCount == fMatchers.length) {
                 XPathMatcher[] array = new XPathMatcher[fMatchers.length * 2];
@@ -3706,20 +3878,28 @@ public class XMLSchemaValidator
         // Data
         //
 
-        /** Identity constraint. */
+        /**
+         * Identity constraint.
+         */
         protected IdentityConstraint fIdentityConstraint;
         protected int fFieldCount = 0;
         protected Field[] fFields = null;
-        /** current data */
+        /**
+         * Current data
+         */
         protected Object[] fLocalValues = null;
         protected short[] fLocalValueTypes = null;
         protected ShortList[] fLocalItemValueTypes = null;
 
-        /** Current data value count. */
+        /**
+         * Current data value count.
+         */
         protected int fValuesCount;
         protected boolean fHasValue = false;
 
-        /** global data */
+        /**
+         * Global data
+         */
         public final Vector fValues = new Vector();
         public ShortVector fValueTypes = null;
         public Vector fItemValueTypes = null;
@@ -3732,14 +3912,18 @@ public class XMLSchemaValidator
         private int fItemValueTypesLength = 0;
         private ShortList fItemValueType = null;
 
-        /** buffer for error messages */
+        /**
+         * Buffer for error messages
+         */
         final StringBuffer fTempBuffer = new StringBuffer();
 
         //
         // Constructors
         //
 
-        /** Constructs a value store for the specified identity constraint. */
+        /**
+         * Constructs a value store for the specified identity constraint.
+         */
         protected ValueStoreBase(IdentityConstraint identityConstraint) {
             fIdentityConstraint = identityConstraint;
             fFieldCount = fIdentityConstraint.getFieldCount();
@@ -3782,7 +3966,9 @@ public class XMLSchemaValidator
             }
         } // append(ValueStoreBase)
 
-        /** Start scope for value store. */
+        /**
+         * Start scope for value store.
+         */
         public void startValueScope() {
             fValuesCount = 0;
             for (int i = 0; i < fFieldCount; i++) {
@@ -3792,7 +3978,9 @@ public class XMLSchemaValidator
             }
         } // startValueScope()
 
-        /** Ends scope for value store. */
+        /**
+         * Ends scope for value store.
+         */
         public void endValueScope() {
 
             if (fValuesCount == 0) {
@@ -3855,13 +4043,13 @@ public class XMLSchemaValidator
         /**
          * Adds the specified value to the value store.
          *
-         * @param field The field associated to the value. This reference
+         * @param field the field associated to the value. This reference
          *              is used to ensure that each field only adds a value
          *              once within a selection scope.
-         * @param mayMatch a flag indiciating whether the field may be matched.
-         * @param actualValue The value to add.
-         * @param valueType Type of the value to add.
-         * @param itemValueType If the value is a list, a list of types for each of the values in the list.
+         * @param mayMatch a flag indiciating whether the field may be matched
+         * @param actualValue the value to add
+         * @param valueType type of the value to add
+         * @param itemValueType if the value is a list, a list of types for each of the values in the list
          */
         public void addValue(Field field, boolean mayMatch, Object actualValue, short valueType, ShortList itemValueType) {
             int i;
@@ -3957,12 +4145,18 @@ public class XMLSchemaValidator
                     }
                 }
             }
-            /** Handle n-tuples. **/
+            /**
+             * Handle n-tuples. *
+             */
             else {
                 final int size2 = fValues.size();
-                /** Iterate over each set of fields. **/
+                /**
+                 * Iterate over each set of fields. *
+                 */
                 OUTER: for (int i = 0; i < size1; i += fFieldCount) {
-                    /** Check whether this set is contained in the value store. **/
+                    /**
+                     * Check whether this set is contained in the value store. *
+                     */
                     INNER: for (int j = 0; j < size2; j += fFieldCount) {
                         for (int k = 0; k < fFieldCount; ++k) {
                             final Object value1 = values.elementAt(i+k);
@@ -3997,7 +4191,9 @@ public class XMLSchemaValidator
             // no-op
         } // duplicateValue(Hashtable)
 
-        /** Returns a string of the specified values. */
+        /**
+         * Returns a string of the specified values.
+         */
         protected String toString(Object[] values) {
 
             // no values
@@ -4019,7 +4215,9 @@ public class XMLSchemaValidator
 
         } // toString(Object[]):String
         
-        /** Returns a string of the specified values. */
+        /**
+         * Returns a string of the specified values.
+         */
         protected String toString(Vector values, int start, int length) {
 
             // no values
@@ -4048,7 +4246,9 @@ public class XMLSchemaValidator
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
             String s = super.toString();
             int index1 = s.lastIndexOf('$');
@@ -4147,7 +4347,9 @@ public class XMLSchemaValidator
         // Constructors
         //
 
-        /** Constructs a unique value store. */
+        /**
+         * Constructs a unique value store.
+         */
         public UniqueValueStore(UniqueOrKey unique) {
             super(unique);
         } // <init>(Unique)
@@ -4185,7 +4387,9 @@ public class XMLSchemaValidator
         // Constructors
         //
 
-        /** Constructs a key value store. */
+        /**
+         * Constructs a key value store.
+         */
         public KeyValueStore(UniqueOrKey key) {
             super(key);
         } // <init>(Key)
@@ -4220,14 +4424,18 @@ public class XMLSchemaValidator
         // Data
         //
 
-        /** Key value store. */
+        /**
+         * Key value store.
+         */
         protected ValueStoreBase fKeyValueStore;
 
         //
         // Constructors
         //
 
-        /** Constructs a key value store. */
+        /**
+         * Constructs a key value store.
+         */
         public KeyRefValueStore(KeyRef keyRef, KeyValueStore keyValueStore) {
             super(keyRef);
             fKeyValueStore = keyValueStore;
@@ -4268,7 +4476,9 @@ public class XMLSchemaValidator
 
         } // endDocumentFragment()
 
-        /** End document. */
+        /**
+         * End document.
+         */
         public void endDocument() {
             super.endDocument();
 
@@ -4292,7 +4502,9 @@ public class XMLSchemaValidator
         final LocalIDKey fLocalId = new LocalIDKey();
         // values stores
 
-        /** stores all global Values stores. */
+        /**
+         * Stores all global Values stores.
+         */
         protected final ArrayList fValueStores = new ArrayList();
 
         /**
@@ -4332,7 +4544,9 @@ public class XMLSchemaValidator
         // Constructors
         //
 
-        /** Default constructor. */
+        /**
+         * Default constructor.
+         */
         public ValueStoreCache() {
         } // <init>()
 
@@ -4340,7 +4554,9 @@ public class XMLSchemaValidator
         // Public methods
         //
 
-        /** Resets the identity constraint cache. */
+        /**
+         * Resets the identity constraint cache.
+         */
         public void startDocument() {
             fValueStores.clear();
             fIdentityConstraint2ValueStoreMap.clear();
@@ -4359,7 +4575,8 @@ public class XMLSchemaValidator
             fGlobalIDConstraintMap.clear();
         } // startElement(void)
 
-        /** endElement():  merges contents of fGlobalIDConstraintMap with the
+        /**
+         * EndElement():  merges contents of fGlobalIDConstraintMap with the
          * top of fGlobalMapStack into fGlobalIDConstraintMap.
          */
         public void endElement() {
@@ -4448,14 +4665,18 @@ public class XMLSchemaValidator
             }
         } // initValueStoresFor(XSElementDecl)
 
-        /** Returns the value store associated to the specified IdentityConstraint. */
+        /**
+         * Returns the value store associated to the specified IdentityConstraint.
+         */
         public ValueStoreBase getValueStoreFor(IdentityConstraint id, int initialDepth) {
             fLocalId.fDepth = initialDepth;
             fLocalId.fId = id;
             return (ValueStoreBase) fIdentityConstraint2ValueStoreMap.get(fLocalId);
         } // getValueStoreFor(IdentityConstraint, int):ValueStoreBase
 
-        /** Returns the global value store associated to the specified IdentityConstraint. */
+        /**
+         * Returns the global value store associated to the specified IdentityConstraint.
+         */
         public ValueStoreBase getGlobalValueStoreFor(IdentityConstraint id) {
             return (ValueStoreBase) fGlobalIDConstraintMap.get(id);
         } // getValueStoreFor(IdentityConstraint):ValueStoreBase
@@ -4480,7 +4701,9 @@ public class XMLSchemaValidator
 
         } // transplant(id)
 
-        /** Check identity constraints. */
+        /**
+         * Check identity constraints.
+         */
         public void endDocument() {
 
             int count = fValueStores.size();
@@ -4495,7 +4718,9 @@ public class XMLSchemaValidator
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
             String s = super.toString();
             int index1 = s.lastIndexOf('$');
@@ -4549,10 +4774,14 @@ public class XMLSchemaValidator
         // Data
         //
 
-        /** Current length. */
+        /**
+         * Current length.
+         */
         private int fLength;
 
-        /** Data. */
+        /**
+         * Data.
+         */
         private short[] fData;
         
         //
@@ -4569,28 +4798,38 @@ public class XMLSchemaValidator
         // Public methods
         //
 
-        /** Returns the length of the vector. */
+        /**
+         * Returns the length of the vector.
+         */
         public int length() {
             return fLength;
         }
 
-        /** Adds the value to the vector. */
+        /**
+         * Adds the value to the vector.
+         */
         public void add(short value) {
             ensureCapacity(fLength + 1);
             fData[fLength++] = value;
         }
 
-        /** Returns the short value at the specified position in the vector. */
+        /**
+         * Returns the short value at the specified position in the vector.
+         */
         public short valueAt(int position) {
             return fData[position];
         }
 
-        /** Clears the vector. */
+        /**
+         * Clears the vector.
+         */
         public void clear() {
             fLength = 0;
         }
         
-        /** Returns whether the short is contained in the vector. */
+        /**
+         * Returns whether the short is contained in the vector.
+         */
         public boolean contains(short value) {
             for (int i = 0; i < fLength; ++i) {
                 if (fData[i] == value) {
@@ -4604,7 +4843,9 @@ public class XMLSchemaValidator
         // Private methods
         //
 
-        /** Ensures capacity. */
+        /**
+         * Ensures capacity.
+         */
         private void ensureCapacity(int size) {
             if (fData == null) {
                 fData = new short[8];

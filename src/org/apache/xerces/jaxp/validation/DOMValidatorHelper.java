@@ -58,7 +58,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>DOMSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -68,31 +68,45 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
     // Constants
     //
 
-    /** Chunk size (1024). */
+    /**
+     * Chunk size (1024).
+     */
     private static final int CHUNK_SIZE = (1 << 10);
     
-    /** Chunk mask (CHUNK_SIZE - 1). */
+    /**
+     * Chunk mask (CHUNK_SIZE - 1).
+     */
     private static final int CHUNK_MASK = CHUNK_SIZE - 1;
     
     // property identifiers
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: namespace context. */
+    /**
+     * Property identifier: namespace context.
+     */
     private static final String NAMESPACE_CONTEXT =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_CONTEXT_PROPERTY;
     
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     private static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     private static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
     
-    /** Property identifier: validation manager. */
+    /**
+     * Property identifier: validation manager.
+     */
     private static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
     
@@ -100,52 +114,84 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
     // Data
     //
     
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     private final XMLErrorReporter fErrorReporter;
     
-    /** The namespace context of this document: stores namespaces in scope. **/
+    /**
+     * The namespace context of this document: stores namespaces in scope. *
+     */
     private final NamespaceSupport fNamespaceContext;
     
-    /** The namespace context of the DOMSource, includes context from ancestor nodes. **/
+    /**
+     * The namespace context of the DOMSource, includes context from ancestor nodes. *
+     */
     private final DOMNamespaceContext fDOMNamespaceContext = new DOMNamespaceContext();
     
-    /** Schema validator. **/
+    /**
+     * Schema validator. *
+     */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /**
+     * Symbol table *
+     */
     private final SymbolTable fSymbolTable;
     
-    /** Validation manager. **/
+    /**
+     * Validation manager. *
+     */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /**
+     * Component manager. *
+     */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** Simple Locator. **/
+    /**
+     * Simple Locator. *
+     */
     private final SimpleLocator fXMLLocator = new SimpleLocator(null, null, -1, -1, -1);
     
-    /** DOM document handler. **/
+    /**
+     * DOM document handler. *
+     */
     private DOMDocumentHandler fDOMValidatorHandler;
     
-    /** DOM result augmentor. **/
+    /**
+     * DOM result augmentor. *
+     */
     private final DOMResultAugmentor fDOMResultAugmentor = new DOMResultAugmentor(this);
     
-    /** DOM result builder. **/
+    /**
+     * DOM result builder. *
+     */
     private final DOMResultBuilder fDOMResultBuilder = new DOMResultBuilder();
     
-    /** Map for tracking unparsed entities. **/
+    /**
+     * Map for tracking unparsed entities. *
+     */
     private NamedNodeMap fEntities = null;
     
-    /** Array for holding character data. **/
+    /**
+     * Array for holding character data. *
+     */
     private final char [] fCharBuffer = new char[CHUNK_SIZE];
     
-    /** Root node. **/
+    /**
+     * Root node. *
+     */
     private Node fRoot;
     
-    /** Current element. **/
+    /**
+     * Current element. *
+     */
     private Node fCurrentElement;
     
-    /** Fields for start element, end element and characters. **/
+    /**
+     * Fields for start element, end element and characters. *
+     */
     final QName fElementQName = new QName();
     final QName fAttributeQName = new QName();
     final XMLAttributesImpl fAttributes = new XMLAttributesImpl(); 
@@ -232,7 +278,9 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
      * Other methods
      */
     
-    /** Traverse the DOM and fire events to the schema validator. */
+    /**
+     * Traverse the DOM and fire events to the schema validator.
+     */
     private void validate(Node node) {
         final Node top = node;
         final boolean useIsSameNode = useIsSameNode(top);
@@ -263,7 +311,9 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
         }
     }
     
-    /** Do processing for the start of a node. */
+    /**
+     * Do processing for the start of a node.
+     */
     private void beginNode(Node node) {
         switch (node.getNodeType()) {
             case Node.ELEMENT_NODE:
@@ -302,7 +352,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.PROCESSING_INSTRUCTION_NODE:
-                /** 
+                /**
                  * The validator does nothing with processing instructions so bypass it.
                  * Send the ProcessingInstruction node directly to the result builder.
                  */
@@ -311,7 +361,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.COMMENT_NODE:
-                /** 
+                /**
                  * The validator does nothing with comments so bypass it.
                  * Send the Comment node directly to the result builder.
                  */
@@ -320,7 +370,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.DOCUMENT_TYPE_NODE:
-                /** 
+                /**
                  * Send the DocumentType node directly to the result builder.
                  */
                 if (fDOMValidatorHandler != null) {
@@ -332,7 +382,9 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
         }
     }
     
-    /** Do processing for the end of a node. */
+    /**
+     * Do processing for the end of a node.
+     */
     private void finishNode(Node node) {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             fCurrentElement = node;
@@ -346,7 +398,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
     
     /**
      * Extracts NamedNodeMap of entities. We need this to validate
-     * elements and attributes of type xs:ENTITY, xs:ENTITIES or 
+     * elements and attributes of type xs:ENTITY, xs:ENTITIES or
      * types dervied from them.
      */
     private void setupEntityMap(Document doc) {
@@ -481,18 +533,20 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
         // Data
         //
 
-        /** 
+        /**
          * Namespace binding information. This array is composed of a
          * series of tuples containing the namespace binding information:
          * &lt;prefix, uri&gt;.
          */
         protected String[] fNamespace = new String[16 * 2];
 
-        /** The size of the namespace information array. */
+        /**
+         * The size of the namespace information array.
+         */
         protected int fNamespaceSize = 0;
         
-        /** 
-         * Flag indicating whether the namespace context 
+        /**
+         * Flag indicating whether the namespace context
          * has been from the root node's ancestors.
          */
         protected boolean fDOMContextBuilt = false;

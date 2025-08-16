@@ -27,10 +27,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.DTD;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class DTDImpl extends XMLEventImpl implements DTD {
@@ -46,6 +45,7 @@ public final class DTDImpl extends XMLEventImpl implements DTD {
     }
     
     /**
+     *
      * @see javax.xml.stream.events.DTD#getDocumentTypeDeclaration()
      */
     public String getDocumentTypeDeclaration() {
@@ -53,6 +53,7 @@ public final class DTDImpl extends XMLEventImpl implements DTD {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.DTD#getProcessedDTD()
      */
     public Object getProcessedDTD() {
@@ -60,6 +61,7 @@ public final class DTDImpl extends XMLEventImpl implements DTD {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.DTD#getNotations()
      */
     public List getNotations() {
@@ -67,6 +69,7 @@ public final class DTDImpl extends XMLEventImpl implements DTD {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.DTD#getEntities()
      */
     public List getEntities() {

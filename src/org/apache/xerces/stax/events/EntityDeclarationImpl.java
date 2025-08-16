@@ -25,10 +25,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EntityDeclaration;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class EntityDeclarationImpl extends XMLEventImpl implements
@@ -40,6 +39,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     private final String fNotationName;
 
     /**
+     *
      * @param eventType
      * @param location
      * @param schemaType
@@ -53,6 +53,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getPublicId()
      */
     public String getPublicId() {
@@ -60,6 +61,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getSystemId()
      */
     public String getSystemId() {
@@ -67,6 +69,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getName()
      */
     public String getName() {
@@ -74,6 +77,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getNotationName()
      */
     public String getNotationName() {
@@ -81,6 +85,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getReplacementText()
      */
     public String getReplacementText() {
@@ -89,6 +94,7 @@ public final class EntityDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityDeclaration#getBaseURI()
      */
     public String getBaseURI() {

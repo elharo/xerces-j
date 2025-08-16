@@ -57,11 +57,10 @@ import org.w3c.dom.Text;
  * acts as the parent of these nodes so that the user can use the
  * standard methods from the Node interface, such as insertBefore()
  * and appendChild().
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DocumentFragmentImpl 
     extends ParentNode
@@ -71,26 +70,32 @@ public class DocumentFragmentImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -7596449967279236746L;
     
     //
     // Constructors
     //
 
-    /** Factory constructor. */
+    /**
+     * Factory constructor.
+     */
     public DocumentFragmentImpl(CoreDocumentImpl ownerDoc) {
         super(ownerDoc);
     }  
   
-    /** Constructor for serialization. */
+    /**
+     * Constructor for serialization.
+     */
     public DocumentFragmentImpl() {}
 
     //
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */
@@ -98,7 +103,9 @@ public class DocumentFragmentImpl
         return Node.DOCUMENT_FRAGMENT_NODE;
     }
 
-    /** Returns the node name. */
+    /**
+     * Returns the node name.
+     */
     public String getNodeName() {
         return "#document-fragment";
     }

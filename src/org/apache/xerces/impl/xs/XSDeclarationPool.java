@@ -27,49 +27,70 @@ import org.apache.xerces.impl.dv.xs.XSSimpleTypeDecl;
  * declarations to the pool.
  * Note: The cashing mechanism is not implemented yet.
  *
- * @xerces.internal 
- * 
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @version $Id$
  */
 public final class XSDeclarationPool {
-    /** Chunk shift (8). */
+    /**
+     * Chunk shift (8).
+     */
     private static final int CHUNK_SHIFT = 8; // 2^8 = 256
 
-    /** Chunk size (1 << CHUNK_SHIFT). */
+    /**
+     * Chunk size (1 << CHUNK_SHIFT).
+     */
     private static final int CHUNK_SIZE = 1 << CHUNK_SHIFT;
 
-    /** Chunk mask (CHUNK_SIZE - 1). */
+    /**
+     * Chunk mask (CHUNK_SIZE - 1).
+     */
     private static final int CHUNK_MASK = CHUNK_SIZE - 1;
 
-    /** Initial chunk count (). */
+    /**
+     * Initial chunk count ().
+     */
     private static final int INITIAL_CHUNK_COUNT = (1 << (10 - CHUNK_SHIFT)); // 2^10 = 1k
 
-    /** Element declaration pool*/
+    /**
+     * Element declaration pool
+     */
     private XSElementDecl fElementDecl[][] = new XSElementDecl[INITIAL_CHUNK_COUNT][];
     private int fElementDeclIndex = 0;
 
-    /** Particle declaration pool */
+    /**
+     * Particle declaration pool
+     */
     private XSParticleDecl fParticleDecl[][] = new XSParticleDecl[INITIAL_CHUNK_COUNT][];
     private int fParticleDeclIndex = 0;
 
-    /** Particle declaration pool */
+    /**
+     * Particle declaration pool
+     */
     private XSModelGroupImpl fModelGroup[][] = new XSModelGroupImpl[INITIAL_CHUNK_COUNT][];
     private int fModelGroupIndex = 0;
 
-    /** Attribute declaration pool */
+    /**
+     * Attribute declaration pool
+     */
     private XSAttributeDecl fAttrDecl[][] = new XSAttributeDecl[INITIAL_CHUNK_COUNT][];
     private int fAttrDeclIndex = 0;
 
-    /** ComplexType declaration pool */
+    /**
+     * ComplexType declaration pool
+     */
     private XSComplexTypeDecl fCTDecl[][] = new XSComplexTypeDecl[INITIAL_CHUNK_COUNT][];
     private int fCTDeclIndex = 0;
 
-    /** SimpleType declaration pool */
+    /**
+     * SimpleType declaration pool
+     */
     private XSSimpleTypeDecl fSTDecl[][] = new XSSimpleTypeDecl[INITIAL_CHUNK_COUNT][];
     private int fSTDeclIndex = 0;
 
-    /** AttributeUse declaration pool */
+    /**
+     * AttributeUse declaration pool
+     */
     private XSAttributeUseImpl fAttributeUse[][] = new XSAttributeUseImpl[INITIAL_CHUNK_COUNT][];
     private int fAttributeUseIndex = 0;
     

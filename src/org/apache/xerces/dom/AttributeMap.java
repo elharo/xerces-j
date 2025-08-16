@@ -27,28 +27,31 @@ import org.w3c.dom.Node;
  * AttributeMap inherits from NamedNodeMapImpl and extends it to deal with the
  * specifics of storing attributes. These are:
  * <ul>
- *  <li>managing ownership of attribute nodes
- *  <li>managing default attributes       
- *  <li>firing mutation events
+ * <li>managing ownership of attribute nodes
+ * <li>managing default attributes
+ * <li>firing mutation events
  * </ul>
  * <p>
  * This class doesn't directly support mutation events, however, it notifies
  * the document when mutations are performed so that the document class do so.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
  */
 public class AttributeMap extends NamedNodeMapImpl {
     
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 8872606282138665383L;
 
     //
     // Constructors
     //
 
-    /** Constructs a named node map. */
+    /**
+     * Constructs a named node map.
+     */
     protected AttributeMap(ElementImpl ownerNode, NamedNodeMapImpl defaults) {
         super(ownerNode);
         if (defaults != null) {
@@ -62,12 +65,13 @@ public class AttributeMap extends NamedNodeMapImpl {
 
     /**
      * Adds an attribute using its nodeName attribute.
+     *
      * @see org.w3c.dom.NamedNodeMap#setNamedItem
-     * @return If the new Node replaces an existing node the replaced Node is
-     *      returned, otherwise null is returned. 
-     * @param arg 
-     *      An Attr node to store in this map.
-     * @exception org.w3c.dom.DOMException The exception description.
+     * @return if the new Node replaces an existing node the replaced Node is
+     *      returned, otherwise null is returned
+     * @param arg
+     *      An Attr node to store in this map
+     * @throws org.w3c.dom.DOMException the exception description
      */
     public Node setNamedItem(Node arg)
     throws DOMException {
@@ -134,10 +138,11 @@ public class AttributeMap extends NamedNodeMapImpl {
 
     /**
      * Adds an attribute using its namespaceURI and localName.
+     *
      * @see org.w3c.dom.NamedNodeMap#setNamedItem
-     * @return If the new Node replaces an existing node the replaced Node is
-     *      returned, otherwise null is returned. 
-     * @param arg A node to store in a named node map.
+     * @return if the new Node replaces an existing node the replaced Node is
+     *      returned, otherwise null is returned
+     * @param arg a node to store in a named node map
      */
     public Node setNamedItemNS(Node arg)
     throws DOMException {
@@ -212,17 +217,19 @@ public class AttributeMap extends NamedNodeMapImpl {
    
     /**
      * Removes an attribute specified by name.
+     *
      * @param name
      *      The name of a node to remove. If the
      *      removed attribute is known to have a default value, an
      *      attribute immediately appears containing the default value
      *      as well as the corresponding namespace URI, local name,
      *      and prefix when applicable.
-     * @return The node removed from the map if a node with such a name exists.
+     * @return the node removed from the map if a node with such a name exists
      * @throws              NOT_FOUND_ERR: Raised if there is no node named
-     *                      name in the map.
+     *                      name in the map
      */
-    /***/
+    /**
+     */
     public Node removeNamedItem(String name)
         throws DOMException {
         return internalRemoveNamedItem(name, true);
@@ -239,15 +246,15 @@ public class AttributeMap extends NamedNodeMapImpl {
 
     /**
      * NON-DOM: Remove the node object
-     * 
+     *
      * NOTE: Specifically removes THIS NODE -- not the node with this
      * name, nor the node with these contents. If node does not belong to
      * this named node map, we throw a DOMException.
-     * 
-     * @param item       The node to remove
+     *
+     * @param item       the node to remove
      * @param addDefault true -- magically add default attribute
-     * @return Removed node
-     * @exception DOMException
+     * @return removed node
+     * @throws DOMException
      */
     protected Node removeItem(Node item, boolean addDefault)
         throws DOMException {
@@ -355,18 +362,19 @@ public class AttributeMap extends NamedNodeMapImpl {
     /**
      * Introduced in DOM Level 2. <p>
      * Removes an attribute specified by local name and namespace URI.
+     *
      * @param namespaceURI
      *                      The namespace URI of the node to remove.
      *                      When it is null or an empty string, this
-     *                      method behaves like removeNamedItem.
-     * @param name          The local name of the node to remove. If the
+     *                      method behaves like removeNamedItem
+     * @param name          the local name of the node to remove. If the
      *                      removed attribute is known to have a default
      *                      value, an attribute immediately appears
      *                      containing the default value.
-     * @return Node         The node removed from the map if a node with such
-     *                      a local name and namespace URI exists.
+     * @return node The node removed from the map if a node with such
+     *                      a local name and namespace URI exists
      * @throws              NOT_FOUND_ERR: Raised if there is no node named
-     *                      name in the map.
+     *                      name in the map
      */
     public Node removeNamedItemNS(String namespaceURI, String name)
         throws DOMException {
@@ -530,7 +538,8 @@ public class AttributeMap extends NamedNodeMapImpl {
 
     /**
      * Get this AttributeMap in sync with the given "defaults" map.
-     * @param defaults The default attributes map to sync with.
+     *
+     * @param defaults the default attributes map to sync with
      */
     protected void reconcileDefaults(NamedNodeMapImpl defaults) {
 

@@ -23,9 +23,8 @@ import java.util.ResourceBundle;
 
 /**
  * Used to format DOM error messages, using the system locale.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Sandy Gao, IBM
  * @version $Id$
  */
@@ -48,16 +47,14 @@ public class DOMMessageFormatter {
      * Formats a message with the specified arguments using the given
      * locale information.
      *
-     * @param domain    domain from which error string is to come.
-     * @param key       The message key.
-     * @param arguments The message replacement text arguments. The order
+     * @param domain    domain from which error string is to come
+     * @param key       the message key
+     * @param arguments the message replacement text arguments. The order
      *                  of the arguments must match that of the placeholders
      *                  in the actual message.
-     *
-     * @return          the formatted message.
-     *
-     * @throws MissingResourceException Thrown if the message with the
-     *                                  specified key cannot be found.
+     * @return the formatted message
+     * @throws MissingResourceException thrown if the message with the
+     *                                  specified key cannot be found
      */
     public static String formatMessage(String domain,
     String key, Object[] arguments)
@@ -134,6 +131,7 @@ public class DOMMessageFormatter {
     
     /**
      * Set Locale to be used by the formatter.
+     *
      * @param dlocale
      */
     public static void setLocale(Locale dlocale) {

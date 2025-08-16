@@ -19,14 +19,16 @@ package org.apache.xerces.dom;
 import org.w3c.dom.ranges.RangeException;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 
 public class RangeExceptionImpl extends RangeException {
     
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -9058052627467240856L;
     
     public RangeExceptionImpl(short code, String message) {

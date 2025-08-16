@@ -27,10 +27,9 @@ import javax.xml.stream.events.Characters;
 import org.apache.xerces.util.XMLChar;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class CharactersImpl extends XMLEventImpl implements Characters {
@@ -39,6 +38,7 @@ public final class CharactersImpl extends XMLEventImpl implements Characters {
 
     /**
      * Standard constructor.
+     *
      * @param eventType
      * @param location
      * @param schemaType
@@ -49,6 +49,7 @@ public final class CharactersImpl extends XMLEventImpl implements Characters {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Characters#getData()
      */
     public String getData() {
@@ -56,6 +57,7 @@ public final class CharactersImpl extends XMLEventImpl implements Characters {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Characters#isWhiteSpace()
      */
     public boolean isWhiteSpace() {
@@ -72,6 +74,7 @@ public final class CharactersImpl extends XMLEventImpl implements Characters {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Characters#isCData()
      */
     public boolean isCData() {
@@ -79,6 +82,7 @@ public final class CharactersImpl extends XMLEventImpl implements Characters {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Characters#isIgnorableWhiteSpace()
      */
     public boolean isIgnorableWhiteSpace() {

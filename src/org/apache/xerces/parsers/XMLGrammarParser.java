@@ -23,6 +23,7 @@ import org.apache.xerces.util.SymbolTable;
 import org.apache.xerces.xni.parser.XMLParserConfiguration;
 
 /**
+ *
  * @version $Id$
  */
 public abstract class XMLGrammarParser
@@ -32,7 +33,9 @@ public abstract class XMLGrammarParser
     // Data
     //
 
-    /** fDatatypeValidatorFactory */
+    /**
+     * FDatatypeValidatorFactory
+     */
     protected DTDDVFactory fDatatypeValidatorFactory;
 
     //

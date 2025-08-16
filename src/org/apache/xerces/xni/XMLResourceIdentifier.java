@@ -27,36 +27,56 @@ package org.apache.xerces.xni;
 
 public interface XMLResourceIdentifier {
     
-    /** Sets the public identifier. */
+    /**
+     * Sets the public identifier.
+     */
     public void setPublicId(String publicId);
 
-    /** Returns the public identifier. */
+    /**
+     * Returns the public identifier.
+     */
     public String getPublicId();
     
-    /** Sets the expanded system identifier. */
+    /**
+     * Sets the expanded system identifier.
+     */
     public void setExpandedSystemId(String systemId);
     
-    /** Returns the expanded system identifier. */
+    /**
+     * Returns the expanded system identifier.
+     */
     public String getExpandedSystemId();
     
-    /** Sets the literal system identifier. */
+    /**
+     * Sets the literal system identifier.
+     */
     public void setLiteralSystemId(String systemId);
      
-    /** Returns the literal system identifier. */
+    /**
+     * Returns the literal system identifier.
+     */
     public String getLiteralSystemId();
     
-    /** Sets the base URI against which the literal SystemId is to be 
-        resolved.*/
+    /**
+     * Sets the base URI against which the literal SystemId is to be
+     * resolved.
+     */
     public void setBaseSystemId(String systemId); 
     
-    /** <p> Returns the base URI against which the literal SystemId is to be 
-        resolved. </p> */
+    /**
+     * <p> Returns the base URI against which the literal SystemId is to be
+     * resolved. </p>
+     */
     public String getBaseSystemId();
 
-    /** Sets the namespace of the resource. */
+    /**
+     * Sets the namespace of the resource.
+     */
     public void setNamespace(String namespace);
      
-    /** Returns the namespace of the resource. */
+    /**
+     * Returns the namespace of the resource.
+     */
     public String getNamespace();
     
 } // XMLResourceIdentifier

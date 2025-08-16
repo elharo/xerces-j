@@ -21,8 +21,7 @@ package org.apache.xerces.impl.xs;
 /**
  * Collection of symbols used to parse a Schema Grammar.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author jeffrey rodriguez
  * @version $Id$
  */

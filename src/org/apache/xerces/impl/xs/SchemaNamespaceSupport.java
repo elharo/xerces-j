@@ -32,12 +32,10 @@ import org.w3c.dom.Node;
 /**
  * This class customizes the behaviour of the util.NamespaceSupport
  * class in order to easily implement some features that we need for
- * efficient schema handling.  It will not be generally useful.  
+ * efficient schema handling.  It will not be generally useful.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class SchemaNamespaceSupport 
@@ -94,7 +92,7 @@ public class SchemaNamespaceSupport
         fNamespaceSize = newSize;
     } // setEffectiveContext(String):void
 
-    /** 
+    /**
      * This method returns an array of Strings, as would be stored in
      * a NamespaceSupport object.  This array contains all
      * declarations except those at the global level.
@@ -143,7 +141,7 @@ public class SchemaNamespaceSupport
     }
     
     /**
-     * This class keeps track of the namespace bindings 
+     * This class keeps track of the namespace bindings
      * declared on ancestors of the schema root.
      */
     static final class SchemaRootContext {
@@ -152,29 +150,37 @@ public class SchemaNamespaceSupport
         // Data
         //
 
-        /** 
+        /**
          * Namespace binding information. This array is composed of a
          * series of tuples containing the namespace binding information:
          * &lt;prefix, uri&gt;.
          */
         String[] fNamespace = new String[16 * 2];
 
-        /** The size of the namespace information array. */
+        /**
+         * The size of the namespace information array.
+         */
         int fNamespaceSize = 0;
         
-        /** 
-         * Flag indicating whether the namespace context 
+        /**
+         * Flag indicating whether the namespace context
          * has been from the root node's ancestors.
          */
         boolean fDOMContextBuilt = false;
         
-        /** Schema root. **/
+        /**
+         * Schema root. *
+         */
         private final Element fSchemaRoot;
         
-        /** Symbol table. **/
+        /**
+         * Symbol table. *
+         */
         private final SymbolTable fSymbolTable;
         
-        /** Temporary storage for attribute QNames. **/
+        /**
+         * Temporary storage for attribute QNames. *
+         */
         private final QName fAttributeQName = new QName();
         
         SchemaRootContext(Element schemaRoot, SymbolTable symbolTable) {

@@ -24,9 +24,8 @@ import org.apache.xerces.xni.NamespaceContext;
  * XInclude processing.  It enables each context to be marked as invalid, if necessary,
  * to indicate that the namespaces recorded on those contexts won't be apparent in the
  * resulting infoset.
- * 
+ *
  * @author Peter McCracken, IBM
- * 
  * @version $Id$
  */
 public class XIncludeNamespaceSupport extends MultipleScopeNamespaceSupport {
@@ -37,13 +36,13 @@ public class XIncludeNamespaceSupport extends MultipleScopeNamespaceSupport {
     private boolean[] fValidContext = new boolean[8];
 
     /**
-     * 
      */
     public XIncludeNamespaceSupport() {
         super();
     }
 
     /**
+     *
      * @param context
      */
     public XIncludeNamespaceSupport(NamespaceContext context) {
@@ -70,7 +69,7 @@ public class XIncludeNamespaceSupport extends MultipleScopeNamespaceSupport {
      * valid for processing the include parent's [in-scope namespaces]. Thus, contexts
      * defined by these elements are set to invalid by the XInclude processor using
      * this method.
-     */    
+     */
     public void setContextInvalid() {
         fValidContext[fCurrentContext] = false;
     }
@@ -80,7 +79,7 @@ public class XIncludeNamespaceSupport extends MultipleScopeNamespaceSupport {
      * the context that existed at the include parent of the current element.  The
      * include parent is the last element, before the current one, which was not set
      * to an invalid context using setContextInvalid()
-     * 
+     *
      * @param prefix the prefix of the desired URI
      * @return the URI corresponding to the prefix in the context of the include parent
      */

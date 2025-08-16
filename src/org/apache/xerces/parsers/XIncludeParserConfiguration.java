@@ -32,7 +32,7 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
  * no schema validator.  Using this pipeline will enable processing according to the
  * XML Inclusions specification, to the conformance level described in
  * <code>XIncludeHandler</code>.
- * 
+ *
  * @author Peter McCracken, IBM
  * @see org.apache.xerces.xinclude.XIncludeHandler
  */
@@ -40,35 +40,47 @@ public class XIncludeParserConfiguration extends XML11Configuration {
 
     private XIncludeHandler fXIncludeHandler;
 
-    /** Feature identifier: allow notation and unparsed entity events to be sent out of order. */
+    /**
+     * Feature identifier: allow notation and unparsed entity events to be sent out of order.
+     */
     protected static final String ALLOW_UE_AND_NOTATION_EVENTS =
         Constants.SAX_FEATURE_PREFIX + Constants.ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE;
     
-    /** Feature identifier: fixup base URIs. */
+    /**
+     * Feature identifier: fixup base URIs.
+     */
     protected static final String XINCLUDE_FIXUP_BASE_URIS =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_BASE_URIS_FEATURE;
     
-    /** Feature identifier: fixup language. */
+    /**
+     * Feature identifier: fixup language.
+     */
     protected static final String XINCLUDE_FIXUP_LANGUAGE =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_LANGUAGE_FEATURE;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String XINCLUDE_HANDLER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XINCLUDE_HANDLER_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String NAMESPACE_CONTEXT =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_CONTEXT_PROPERTY;
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XIncludeParserConfiguration() {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XIncludeParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -79,8 +91,8 @@ public class XIncludeParserConfiguration extends XML11Configuration {
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XIncludeParserConfiguration(
         SymbolTable symbolTable,
@@ -93,9 +105,9 @@ public class XIncludeParserConfiguration extends XML11Configuration {
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XIncludeParserConfiguration(
         SymbolTable symbolTable,
@@ -127,7 +139,9 @@ public class XIncludeParserConfiguration extends XML11Configuration {
     } // <init>(SymbolTable,XMLGrammarPool)}
     
     
-	/** Configures the pipeline. */
+    /**
+     * Configures the pipeline.
+     */
     protected void configurePipeline() {
         super.configurePipeline();
 

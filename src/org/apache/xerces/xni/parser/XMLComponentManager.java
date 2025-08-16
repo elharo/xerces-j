@@ -27,9 +27,7 @@ package org.apache.xerces.xni.parser;
  * and properties that affect the operation of the component.
  *
  * @see XMLComponent
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLComponentManager {
@@ -40,20 +38,18 @@ public interface XMLComponentManager {
 
     /**
      * Returns the state of a feature.
-     * 
-     * @param featureId The feature identifier.
-     * 
-     * @throws XMLConfigurationException Thrown on configuration error.
+     *
+     * @param featureId the feature identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public boolean getFeature(String featureId)
         throws XMLConfigurationException;
 
     /**
      * Returns the value of a property.
-     * 
-     * @param propertyId The property identifier.
-     * 
-    * @throws XMLConfigurationException Thrown on configuration error.
+     *
+     * @param propertyId the property identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public Object getProperty(String propertyId)
         throws XMLConfigurationException;

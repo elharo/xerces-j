@@ -37,8 +37,7 @@ import org.w3c.dom.TypeInfo;
  * The XML representation for a complexType
  * schema component is a &lt;complexType&gt; element information item
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @author Sandy Gao, IBM
  * @version $Id$
@@ -268,16 +267,15 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
      * Checks if a type is derived from another given the the name, namespace
      * and derivation method. See:
      * http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#TypeInfo-isDerivedFrom
-     * 
+     *
      * @param ancestorNS
      *            The namspace of the ancestor type declaration
      * @param ancestorName
      *            The name of the ancestor type declaration
      * @param derivationMethod
      *            The derivation method
-     * 
      * @return boolean True if the ancestor type is derived from the reference
-     *         type by the specifiied derivation method.
+     *         type by the specifiied derivation method
      */
     public boolean isDOMDerivedFrom(String ancestorNS, String ancestorName,
             int derivationMethod) {
@@ -351,7 +349,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
      * Checks if a type is derived from another by any combination of
      * restriction, list ir union. See:
      * http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#TypeInfo-isDerivedFrom
-     * 
+     *
      * @param ancestorNS
      *            The namspace of the ancestor type declaration
      * @param ancestorName
@@ -360,7 +358,6 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
      *            A short indication the method of derivation
      * @param type
      *            The reference type definition
-     * 
      * @return boolean True if the type is derived by any method for the
      *         reference type
      */
@@ -397,16 +394,14 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     /**
      * Checks if a type is derived from another by restriction. See:
      * http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#TypeInfo-isDerivedFrom
-     * 
+     *
      * @param ancestorNS
      *            The namspace of the ancestor type declaration
      * @param ancestorName
      *            The name of the ancestor type declaration
      * @param derivationMethod
-     *            A short indication the method of derivation *
      * @param type
      *            The reference type definition
-     * 
      * @return boolean True if the type is derived by restriciton for the
      *         reference type
      */
@@ -459,7 +454,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     /**
      * Checks if a type is derived from another by extension. See:
      * http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#TypeInfo-isDerivedFrom
-     * 
+     *
      * @param ancestorNS
      *            The namspace of the ancestor type declaration
      * @param ancestorName
@@ -468,7 +463,6 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
      *            A short indication the method of derivation
      * @param type
      *            The reference type definition
-     * 
      * @return boolean True if the type is derived by extension for the
      *         reference type
      */
@@ -609,9 +603,10 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
      * {final} For complex type definition it is a subset of {extension,
      * restriction}. For simple type definition it is a subset of
      * {extension, list, restriction, union}.
-     * @param derivation  Extension, restriction, list, union constants
-     *   (defined in <code>XSConstants</code>).
-     * @return True if derivation is in the final set, otherwise false.
+     *
+     * @param derivation  extension, restriction, list, union constants
+     *   (defined in <code>XSConstants</code>)
+     * @return true if derivation is in the final set, otherwise false
      */
     public boolean isFinal(short derivation) {
         return (fFinal & derivation) != 0;
@@ -620,7 +615,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     /**
      * {final} For complex type definition it is a subset of {extension, restriction}.
      *
-     * @return A bit flag that represents:
+     * @return a bit flag that represents:
      *         {extension, restriction) or none for complexTypes;
      *         {extension, list, restriction, union} or none for simpleTypes;
      */
@@ -638,7 +633,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     }
 
     /**
-     *  {attribute uses} A set of attribute uses.
+     * {attribute uses} A set of attribute uses.
      */
     public XSObjectList getAttributeUses() {
         return fAttrGrp.getAttributeUses();
@@ -678,10 +673,11 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
 
     /**
      * {prohibited substitutions} A subset of {extension, restriction}.
+     *
      * @param prohibited  extention or restriction constants (defined in
-     *   <code>XSConstants</code>).
-     * @return True if prohibited is a prohibited substitution, otherwise
-     *   false.
+     *   <code>XSConstants</code>)
+     * @return true if prohibited is a prohibited substitution, otherwise
+     *   false
      */
     public boolean isProhibitedSubstitution(short prohibited) {
         return (fBlock & prohibited) != 0;
@@ -690,7 +686,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     /**
      * {prohibited substitutions}
      *
-     * @return A bit flag corresponding to prohibited substitutions
+     * @return a bit flag corresponding to prohibited substitutions
      */
     public short getProhibitedSubstitutions() {
         return fBlock;
@@ -704,6 +700,7 @@ public class XSComplexTypeDecl implements XSComplexTypeDefinition, TypeInfo {
     }
     
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

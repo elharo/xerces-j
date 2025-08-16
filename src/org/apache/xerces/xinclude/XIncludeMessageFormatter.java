@@ -26,9 +26,8 @@ import org.apache.xerces.util.MessageFormatter;
 // TODO: fix error messages in XIncludeMessages.properties
 /**
  * XIncludeMessageFormatter provides error messages for the XInclude 1.0 Candidate Recommendation
- * 
+ *
  * @author Peter McCracken, IBM
- * 
  * @version $Id$
  */
 public class XIncludeMessageFormatter implements MessageFormatter {
@@ -42,17 +41,15 @@ public class XIncludeMessageFormatter implements MessageFormatter {
     /**
      * Formats a message with the specified arguments using the given
      * locale information.
-     * 
-     * @param locale    The locale of the message.
-     * @param key       The message key.
-     * @param arguments The message replacement text arguments. The order
+     *
+     * @param locale    the locale of the message
+     * @param key       the message key
+     * @param arguments the message replacement text arguments. The order
      *                  of the arguments must match that of the placeholders
      *                  in the actual message.
-     * 
-     * @return Returns the formatted message.
-     *
-     * @throws MissingResourceException Thrown if the message with the
-     *                                  specified key cannot be found.
+     * @return returns the formatted message
+     * @throws MissingResourceException thrown if the message with the
+     *                                  specified key cannot be found
      */
     public String formatMessage(Locale locale, String key, Object[] arguments)
         throws MissingResourceException {

@@ -13,8 +13,9 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- *  Abstract Schemas operations may throw a <code>DOMSystemException</code> as 
+ *  abstract Schemas operations may throw a <code>DOMSystemException</code> as 
  * described in their descriptions. 
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
 and Save Specification</a>.
@@ -27,25 +28,25 @@ public class DOMASException extends RuntimeException {
     public short   code;
     // ASExceptionCode
     /**
-     *  If an element declaration already exists with the same name within an 
-     * <code>AS_CHOICE</code> operator. 
+     * If an element declaration already exists with the same name within an
+     * <code>AS_CHOICE</code> operator.
      */
     public static final short DUPLICATE_NAME_ERR        = 1;
     /**
-     * If the type of the <code>ASObject</code> is neither an 
-     * <code>ASContentModel</code> nor an <code>ASElementDeclaration</code>. 
+     * If the type of the <code>ASObject</code> is neither an
+     * <code>ASContentModel</code> nor an <code>ASElementDeclaration</code>.
      */
     public static final short TYPE_ERR                  = 2;
     /**
-     * If the <code>DocumentEditAS</code> related to the node does not have 
-     * any active <code>ASModel</code> and <code>wfValidityCheckLevel</code> 
+     * If the <code>DocumentEditAS</code> related to the node does not have
+     * any active <code>ASModel</code> and <code>wfValidityCheckLevel</code>
      * is set to <code>PARTIAL</code> or <code>STRICT_VALIDITY_CHECK</code>.
      */
     public static final short NO_AS_AVAILABLE           = 3;
     /**
-     *  When <code>mimeTypeCheck</code> is <code>true</code> and the input 
-     * source has an incorrect MIME Type. See the attribute 
-     * <code>mimeTypeCheck</code>. 
+     * When <code>mimeTypeCheck</code> is <code>true</code> and the input
+     * source has an incorrect MIME Type. See the attribute
+     * <code>mimeTypeCheck</code>.
      */
     public static final short WRONG_MIME_TYPE_ERR       = 4;
 

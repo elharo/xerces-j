@@ -33,41 +33,58 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
 /**
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
  * @version $Id$
  */
 public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     private static final String NAMESPACES_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
     
-    /** Feature identifier: validation */
+    /**
+     * Feature identifier: validation
+     */
     private static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /**
+     * Feature identifier: XInclude processing
+     */
     private static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
-    /** Feature identifier: include ignorable white space. */
+    /**
+     * Feature identifier: include ignorable white space.
+     */
     private static final String INCLUDE_IGNORABLE_WHITESPACE =
         Constants.XERCES_FEATURE_PREFIX + Constants.INCLUDE_IGNORABLE_WHITESPACE;
     
-    /** Feature identifier: create entiry ref nodes feature. */
+    /**
+     * Feature identifier: create entiry ref nodes feature.
+     */
     private static final String CREATE_ENTITY_REF_NODES_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.CREATE_ENTITY_REF_NODES_FEATURE;
     
-    /** Feature identifier: include comments feature. */
+    /**
+     * Feature identifier: include comments feature.
+     */
     private static final String INCLUDE_COMMENTS_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.INCLUDE_COMMENTS_FEATURE;
     
-    /** Feature identifier: create cdata nodes feature. */
+    /**
+     * Feature identifier: create cdata nodes feature.
+     */
     private static final String CREATE_CDATA_NODES_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.CREATE_CDATA_NODES_FEATURE;
     
-    /** These are DocumentBuilderFactory attributes not DOM attributes */
+    /**
+     * These are DocumentBuilderFactory attributes not DOM attributes
+     */
     private Hashtable attributes;
     private Hashtable features;
     private Schema grammar;
@@ -85,7 +102,9 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     public DocumentBuilder newDocumentBuilder()
         throws ParserConfigurationException 
     {
-        /** Check that if a Schema has been specified that neither of the schema properties have been set. */
+        /**
+         * Check that if a Schema has been specified that neither of the schema properties have been set.
+         */
         if (grammar != null && attributes != null) {
             if (attributes.containsKey(JAXPConstants.JAXP_SCHEMA_LANGUAGE)) {
                 throw new ParserConfigurationException(
@@ -108,8 +127,9 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     }
 
     /**
-     * Allows the user to set specific attributes on the underlying 
+     * Allows the user to set specific attributes on the underlying
      * implementation.
+     *
      * @param name    name of attribute
      * @param value   null means to remove attribute
      */
@@ -145,7 +165,7 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     }
 
     /**
-     * Allows the user to retrieve specific attributes on the underlying 
+     * Allows the user to retrieve specific attributes on the underlying
      * implementation.
      */
     public Object getAttribute(String name)

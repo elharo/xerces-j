@@ -23,18 +23,18 @@ import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.traversal.NodeIterator;
 
 
-/** DefaultNodeIterator implements a NodeIterator, which iterates a 
- *  DOM tree in the expected depth first way. 
+/**
+ * DefaultNodeIterator implements a NodeIterator, which iterates a
+ * DOM tree in the expected depth first way.
  *
- *  <p>The whatToShow and filter functionality is implemented as expected.
- *  
- *  <p>This class also has method removeNode to enable iterator "fix-up" 
- *  on DOM remove. It is expected that the DOM implementation call removeNode
- *  right before the actual DOM transformation. If not called by the DOM,
- *  the client could call it before doing the removal.
- *  
+ * <p>The whatToShow and filter functionality is implemented as expected.
+ *
+ * <p>This class also has method removeNode to enable iterator "fix-up"
+ * on DOM remove. It is expected that the DOM implementation call removeNode
+ * right before the actual DOM transformation. If not called by the DOM,
+ * the client could call it before doing the removal.
+ *
  * @xerces.internal
- *
  * @version $Id$
  */
 public class NodeIteratorImpl implements NodeIterator {
@@ -43,15 +43,25 @@ public class NodeIteratorImpl implements NodeIterator {
     // Data
     //
     
-    /** The DocumentImpl which created this iterator, so it can be detached. */
+    /**
+     * The DocumentImpl which created this iterator, so it can be detached.
+     */
     private DocumentImpl fDocument;
-    /** The root. */
+    /**
+     * The root.
+     */
     private Node fRoot;
-    /** The whatToShow mask. */
+    /**
+     * The whatToShow mask.
+     */
     private int fWhatToShow = NodeFilter.SHOW_ALL;
-    /** The NodeFilter reference. */
+    /**
+     * The NodeFilter reference.
+     */
     private NodeFilter fNodeFilter;
-    /** If detach is called, the fDetach flag is true, otherwise flase. */
+    /**
+     * If detach is called, the fDetach flag is true, otherwise flase.
+     */
     private boolean fDetach = false;
     
     // 
@@ -67,25 +77,32 @@ public class NodeIteratorImpl implements NodeIterator {
     // Note also, if removing a Node, the fCurrentNode
     // can be placed on a Node which would not pass filters. 
     
-    /** The last Node returned. */
+    /**
+     * The last Node returned.
+     */
     private Node fCurrentNode;
     
-    /** The direction of the iterator on the fCurrentNode.
-     *  <pre>
-     *  nextNode()  ==      fForward = true;
-     *  previousNode() ==   fForward = false;
-     *  </pre>
+    /**
+     * The direction of the iterator on the fCurrentNode.
+     * <pre>
+     * nextNode()  ==      fForward = true;
+     * previousNode() ==   fForward = false;
+     * </pre>
      */
     private boolean fForward = true;
     
-    /** When TRUE, the children of entites references are returned in the iterator. */
+    /**
+     * When TRUE, the children of entites references are returned in the iterator.
+     */
     private boolean fEntityReferenceExpansion;
     
     // 
     // Constructor
     //
     
-    /** Public constructor */
+    /**
+     * Public constructor
+     */
     public NodeIteratorImpl( DocumentImpl document,
                              Node root, 
                              int whatToShow, 
@@ -107,24 +124,31 @@ public class NodeIteratorImpl implements NodeIterator {
     // and filter values at each call, and therefore one _could_ add
     // setters for these values and alter them while iterating!
     
-    /** Return the whatToShow value */
+    /**
+     * Return the whatToShow value
+     */
     public int                getWhatToShow() {
         return fWhatToShow;
     }
 
-    /** Return the filter */
+    /**
+     * Return the filter
+     */
     public NodeFilter         getFilter() {
         return fNodeFilter;
     }
     
-    /** Return whether children entity references are included in the iterator. */
+    /**
+     * Return whether children entity references are included in the iterator.
+     */
     public boolean            getExpandEntityReferences() {
         return fEntityReferenceExpansion;
     }
             
-    /** Return the next Node in the Iterator. The node is the next node in 
-     *  depth-first order which also passes the filter, and whatToShow. 
-     *  If there is no next node which passes these criteria, then return null.
+    /**
+     * Return the next Node in the Iterator. The node is the next node in
+     * depth-first order which also passes the filter, and whatToShow.
+     * If there is no next node which passes these criteria, then return null.
      */
     public Node               nextNode() {
         
@@ -179,8 +203,9 @@ public class NodeIteratorImpl implements NodeIterator {
             
     }
     
-    /** Return the previous Node in the Iterator. The node is the next node in 
-     *  _backwards_ depth-first order which also passes the filter, and whatToShow. 
+    /**
+     * Return the previous Node in the Iterator. The node is the next node in
+     * _backwards_ depth-first order which also passes the filter, and whatToShow.
      */
     public Node               previousNode() {
         
@@ -227,7 +252,9 @@ public class NodeIteratorImpl implements NodeIterator {
         return null;
     }
                 
-    /** The node is accepted if it passes the whatToShow and the filter. */
+    /**
+     * The node is accepted if it passes the whatToShow and the filter.
+     */
     boolean acceptNode(Node node) {
                 
         if (fNodeFilter == null) {            
@@ -238,7 +265,9 @@ public class NodeIteratorImpl implements NodeIterator {
         }
     } 
     
-    /** Return node, if matches or any parent if matches. */
+    /**
+     * Return node, if matches or any parent if matches.
+     */
     Node matchNodeOrParent(Node node) {
         // Additions and removals in the underlying data structure may occur
         // before any iterations, and in this case the reference_node is null.
@@ -252,11 +281,12 @@ public class NodeIteratorImpl implements NodeIterator {
         return null;
     }
     
-    /** The method nextNode(Node, boolean) returns the next node 
-     *  from the actual DOM tree.
-     * 
-     *  The boolean visitChildren determines whether to visit the children.
-     *  The result is the nextNode.
+    /**
+     * The method nextNode(Node, boolean) returns the next node
+     * from the actual DOM tree.
+     *
+     * The boolean visitChildren determines whether to visit the children.
+     * The result is the nextNode.
      */
     Node nextNode(Node node, boolean visitChildren) {
             
@@ -297,8 +327,9 @@ public class NodeIteratorImpl implements NodeIterator {
         return null;            
     }
     
-    /** The method previousNode(Node) returns the previous node 
-     *  from the actual DOM tree.
+    /**
+     * The method previousNode(Node) returns the previous node
+     * from the actual DOM tree.
      */
     Node previousNode(Node node) {
         
@@ -330,8 +361,9 @@ public class NodeIteratorImpl implements NodeIterator {
         return result;
     }
     
-    /** Fix-up the iterator on a remove. Called by DOM or otherwise,
-     *  before an actual DOM remove.   
+    /**
+     * Fix-up the iterator on a remove. Called by DOM or otherwise,
+     * before an actual DOM remove.
      */
     public void removeNode(Node node) {
         

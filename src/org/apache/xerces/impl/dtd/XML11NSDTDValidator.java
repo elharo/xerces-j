@@ -41,28 +41,30 @@ import org.apache.xerces.xni.XNIException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/validation/dynamic</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *  <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/validation/dynamic</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
  * </ul>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @author Michael Glavassevich, IBM
- *
  * @version $Id$
  */
 public class XML11NSDTDValidator extends XML11DTDValidator {
 
-    /** Attribute QName. */
+    /**
+     * Attribute QName.
+     */
     private final QName fAttributeQName = new QName();
 
-    /** Bind namespaces */
+    /**
+     * Bind namespaces
+     */
     protected final void startNamespaceScope(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
 
@@ -197,7 +199,9 @@ public class XML11NSDTDValidator extends XML11DTDValidator {
 
     } // startNamespaceScope(QName,XMLAttributes)
 
-    /** Handles end element. */
+    /**
+     * Handles end element.
+     */
     protected void endNamespaceScope(QName element, Augmentations augs, boolean isEmpty)
         throws XNIException {
 

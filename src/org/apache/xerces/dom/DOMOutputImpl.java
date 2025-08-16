@@ -46,10 +46,10 @@ import org.w3c.dom.ls.LSOutput;
  * if necessary).
  *
  * @xerces.internal
- *
  * @author Arun Yadav, Sun Microsytems
  * @author Gopal Sharma, Sun Microsystems
- **/
+ *
+ */
 
 public class DOMOutputImpl implements LSOutput {
 
@@ -92,7 +92,7 @@ public class DOMOutputImpl implements LSOutput {
     * available. An attribute of a language and binding dependent type that
     * represents a writable stream to which 16-bit units can be output. The
     * application must encode the stream using UTF-16 (defined in [Unicode] and
-    *  Amendment 1 of [ISO/IEC 10646]).
+    * Amendment 1 of [ISO/IEC 10646]).
     */
 
     public OutputStream getByteStream(){
@@ -104,7 +104,7 @@ public class DOMOutputImpl implements LSOutput {
     * available. An attribute of a language and binding dependent type that
     * represents a writable stream to which 16-bit units can be output. The
     * application must encode the stream using UTF-16 (defined in [Unicode] and
-    *  Amendment 1 of [ISO/IEC 10646]).
+    * Amendment 1 of [ISO/IEC 10646]).
     */
 
     public void setByteStream(OutputStream byteStream){
@@ -113,11 +113,11 @@ public class DOMOutputImpl implements LSOutput {
 
    /**
     * The system identifier, a URI reference [IETF RFC 2396], for this output
-    *  destination. If the application knows the character encoding of the
-    *  object pointed to by the system identifier, it can set the encoding
-    *  using the encoding attribute. If the system ID is a relative URI
-    *  reference (see section 5 in [IETF RFC 2396]), the behavior is
-    *  implementation dependent.
+    * destination. If the application knows the character encoding of the
+    * object pointed to by the system identifier, it can set the encoding
+    * using the encoding attribute. If the system ID is a relative URI
+    * reference (see section 5 in [IETF RFC 2396]), the behavior is
+    * implementation dependent.
     */
 
     public String getSystemId(){
@@ -126,11 +126,11 @@ public class DOMOutputImpl implements LSOutput {
 
    /**
     * The system identifier, a URI reference [IETF RFC 2396], for this output
-    *  destination. If the application knows the character encoding of the
-    *  object pointed to by the system identifier, it can set the encoding
-    *  using the encoding attribute. If the system ID is a relative URI
-    *  reference (see section 5 in [IETF RFC 2396]), the behavior is
-    *  implementation dependent.
+    * destination. If the application knows the character encoding of the
+    * object pointed to by the system identifier, it can set the encoding
+    * using the encoding attribute. If the system ID is a relative URI
+    * reference (see section 5 in [IETF RFC 2396]), the behavior is
+    * implementation dependent.
     */
 
     public void setSystemId(String systemId){

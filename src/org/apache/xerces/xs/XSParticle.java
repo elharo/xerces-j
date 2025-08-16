@@ -22,16 +22,16 @@ package org.apache.xerces.xs;
  */
 public interface XSParticle extends XSObject {
     /**
-     * [min occurs]: determines the minimum number of terms that can occur. 
+     * [min occurs]: determines the minimum number of terms that can occur.
      */
     public int getMinOccurs();
 
     /**
-     *  [max occurs]: determines the maximum number of terms that can occur. 
-     * To query for the value of unbounded use 
-     * <code>maxOccursUnbounded</code>. When the value of 
-     * <code>maxOccursUnbounded</code> is <code>true</code>, the value of 
-     * <code>maxOccurs</code> is unspecified. 
+     * [max occurs]: determines the maximum number of terms that can occur.
+     * To query for the value of unbounded use
+     * <code>maxOccursUnbounded</code>. When the value of
+     * <code>maxOccursUnbounded</code> is <code>true</code>, the value of
+     * <code>maxOccurs</code> is unspecified.
      */
     public int getMaxOccurs();
 
@@ -41,7 +41,7 @@ public interface XSParticle extends XSObject {
     public boolean getMaxOccursUnbounded();
 
     /**
-     * [term]: one of a model group, a wildcard, or an element declaration. 
+     * [term]: one of a model group, a wildcard, or an element declaration.
      */
     public XSTerm getTerm();
 

@@ -49,9 +49,8 @@ package org.apache.xerces.dom;
  * simplest solution.
  *
  * @xerces.internal
- *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredEntityImpl
     extends EntityImpl
@@ -61,14 +60,18 @@ public class DeferredEntityImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 4760180431078941638L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -92,7 +95,9 @@ public class DeferredEntityImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -134,7 +139,9 @@ public class DeferredEntityImpl
 
     } // synchronizeData()
 
-    /** Synchronize the children. */
+    /**
+     * Synchronize the children.
+     */
     protected void synchronizeChildren() {
 
         // no need to synchronize again

@@ -47,7 +47,7 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
  * <p>StAX event result builder.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -175,7 +175,9 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
         try {
             int length = attributes.getLength();
             if (length == 0) {
-                /** Avoid creating a new StartElement event object (if possible). */
+                /**
+                 * Avoid creating a new StartElement event object (if possible).
+                 */
                 XMLEvent start = fStAXValidatorHelper.getCurrentEvent();
                 if (start != null) {
                     fEventWriter.add(start);
@@ -233,7 +235,9 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
     public void endElement(QName element, Augmentations augs)
             throws XNIException {
         try {
-            /** Avoid creating a new EndElement event object (if possible). */
+            /**
+             * Avoid creating a new EndElement event object (if possible).
+             */
             XMLEvent end = fStAXValidatorHelper.getCurrentEvent();
             if (end != null) {
                 fEventWriter.add(end);
@@ -278,7 +282,7 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
     }
     
     /**
-     * An iterator over XMLAttributes which returns Attribute event objects. 
+     * An iterator over XMLAttributes which returns Attribute event objects.
      */
     final class AttributeIterator implements Iterator {
 
@@ -316,7 +320,7 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
     }
     
     /**
-     * An iterator over the current context of a NamespaceContext 
+     * An iterator over the current context of a NamespaceContext
      * which returns Namespace event objects.
      */
     final class NamespaceIterator implements Iterator {

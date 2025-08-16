@@ -66,7 +66,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>StAXSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -74,22 +74,32 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
     
     // property identifiers
     
-    /** Property identifier: string interning. */
+    /**
+     * Property identifier: string interning.
+     */
     private static final String STRING_INTERNING = "javax.xml.stream.isInterning";
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     private static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     private static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
     
-    /** Property identifier: validation manager. */
+    /**
+     * Property identifier: validation manager.
+     */
     private static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
     
@@ -97,58 +107,94 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
     // Data
     //
     
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     private final XMLErrorReporter fErrorReporter;
     
-    /** Schema validator. **/
+    /**
+     * Schema validator. *
+     */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /**
+     * Symbol table *
+     */
     private final SymbolTable fSymbolTable;
     
-    /** Validation manager. **/
+    /**
+     * Validation manager. *
+     */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /**
+     * Component manager. *
+     */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** The namespace context of this document: stores namespaces in scope. **/
+    /**
+     * The namespace context of this document: stores namespaces in scope. *
+     */
     private final JAXPNamespaceContextWrapper fNamespaceContext;
     
-    /** XML Locator wrapper for StAX. **/
+    /**
+     * XML Locator wrapper for StAX. *
+     */
     private final StAXLocationWrapper fStAXLocationWrapper = new StAXLocationWrapper();
     
-    /** On demand reader of the Location from an XMLStreamReader. **/
+    /**
+     * On demand reader of the Location from an XMLStreamReader. *
+     */
     private final XMLStreamReaderLocation fXMLStreamReaderLocation = new XMLStreamReaderLocation();
     
-    /** Map for tracking entity declarations. */
+    /**
+     * Map for tracking entity declarations.
+     */
     private HashMap fEntities = null;
     
-    /** Flag used to track whether XML names and Namespace URIs have been internalized. */
+    /**
+     * Flag used to track whether XML names and Namespace URIs have been internalized.
+     */
     private boolean fStringsInternalized = false;
     
-    /** Validator helper for XMLStreamReaders. **/
+    /**
+     * Validator helper for XMLStreamReaders. *
+     */
     private StreamHelper fStreamHelper;
     
-    /** Validator helper for XMLEventReaders. **/
+    /**
+     * Validator helper for XMLEventReaders. *
+     */
     private EventHelper fEventHelper;
     
-    /** StAX document handler. **/
+    /**
+     * StAX document handler. *
+     */
     private StAXDocumentHandler fStAXValidatorHandler;
     
-    /** StAX stream result builder. **/
+    /**
+     * StAX stream result builder. *
+     */
     private StAXStreamResultBuilder fStAXStreamResultBuilder;
     
-    /** StAX event result builder. **/
+    /**
+     * StAX event result builder. *
+     */
     private StAXEventResultBuilder fStAXEventResultBuilder;
     
-    /** Document depth. **/
+    /**
+     * Document depth. *
+     */
     private int fDepth = 0;
     
-    /** Current event. **/
+    /**
+     * Current event. *
+     */
     private XMLEvent fCurrentEvent = null;
     
-    /** Fields for start element, end element and characters. **/
+    /**
+     * Fields for start element, end element and characters. *
+     */
     final QName fElementQName = new QName();
     final QName fAttributeQName = new QName();
     final XMLAttributesImpl fAttributes = new XMLAttributesImpl();
@@ -251,7 +297,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         return fCurrentEvent;
     }
     
-    /** Fills in a QName object. */
+    /**
+     * Fills in a QName object.
+     */
     final void fillQName(QName toFill, String uri, String localpart, String prefix) {
         if (!fStringsInternalized) {
             uri = (uri != null && uri.length() > 0) ? fSymbolTable.addSymbol(uri) : null;
@@ -280,7 +328,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         toFill.setValues(prefix, localpart, raw, uri);
     }
     
-    /** Setup for validation. **/
+    /**
+     * Setup for validation. *
+     */
     final void setup(Location location, StAXResult result, boolean stringsInternalized) {
         fDepth = 0;
         fComponentManager.reset();
@@ -295,7 +345,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         fStringsInternalized = stringsInternalized;
     }
     
-    /** Copies entity declarations into a hash map. */
+    /**
+     * Copies entity declarations into a hash map.
+     */
     final void processEntityDeclarations(List entityDecls) {
         int size = (entityDecls != null) ? entityDecls.size() : 0;
         if (size > 0) {
@@ -428,7 +480,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
             } 
         }
         
-        /** Fills in the XMLAttributes object. */
+        /**
+         * Fills in the XMLAttributes object.
+         */
         private void fillXMLAttributes(XMLStreamReader reader) {
             fAttributes.removeAllAttributes();
             final int len = reader.getAttributeCount();
@@ -442,7 +496,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
             }
         }
         
-        /** Fills in the list of declared prefixes. */
+        /**
+         * Fills in the list of declared prefixes.
+         */
         private void fillDeclaredPrefixes(XMLStreamReader reader) {
             fDeclaredPrefixes.clear();
             final int len = reader.getNamespaceCount();
@@ -462,17 +518,23 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         // Constants
         //
 
-        /** Chunk size (1024). */
+        /**
+         * Chunk size (1024).
+         */
         private static final int CHUNK_SIZE = (1 << 10);
         
-        /** Chunk mask (CHUNK_SIZE - 1). */
+        /**
+         * Chunk mask (CHUNK_SIZE - 1).
+         */
         private static final int CHUNK_MASK = CHUNK_SIZE - 1;
         
         //
         // Data
         //
         
-        /** Array for holding character data. **/
+        /**
+         * Array for holding character data. *
+         */
         private final char [] fCharBuffer = new char[CHUNK_SIZE];
         
         EventHelper() {}
@@ -581,12 +643,16 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
             }
         }
         
-        /** Fills in a QName object. */
+        /**
+         * Fills in a QName object.
+         */
         private void fillQName(QName toFill, javax.xml.namespace.QName toCopy) {
             StAXValidatorHelper.this.fillQName(toFill, toCopy.getNamespaceURI(), toCopy.getLocalPart(), toCopy.getPrefix());
         }
         
-        /** Fills in the XMLAttributes object. */
+        /**
+         * Fills in the XMLAttributes object.
+         */
         private void fillXMLAttributes(StartElement event) {
             fAttributes.removeAllAttributes();
             final Iterator attrs = event.getAttributes();
@@ -601,17 +667,23 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
             }
         }
         
-        /** Fills in the list of declared prefixes. */
+        /**
+         * Fills in the list of declared prefixes.
+         */
         private void fillDeclaredPrefixes(StartElement event) {
             fillDeclaredPrefixes(event.getNamespaces());
         }
         
-        /** Fills in the list of declared prefixes. */
+        /**
+         * Fills in the list of declared prefixes.
+         */
         private void fillDeclaredPrefixes(EndElement event) {
             fillDeclaredPrefixes(event.getNamespaces());
         }
         
-        /** Fills in the list of declared prefixes. */
+        /**
+         * Fills in the list of declared prefixes.
+         */
         private void fillDeclaredPrefixes(Iterator namespaces) {
             fDeclaredPrefixes.clear();
             while (namespaces.hasNext()) {
@@ -621,7 +693,9 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
             }
         }
         
-        /** Send characters to the validator in CHUNK_SIZE character chunks. */
+        /**
+         * Send characters to the validator in CHUNK_SIZE character chunks.
+         */
         private void sendCharactersToValidator(String str) {
             if (str != null) {
                 final int length = str.length();

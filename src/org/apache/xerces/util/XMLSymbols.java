@@ -19,7 +19,7 @@ package org.apache.xerces.util;
 
 /**
  * All internalized xml symbols. They can be compared using "==".
- * 
+ *
  * @author Sandy Gao, IBM
  * @version $Id$
  */
@@ -55,46 +55,74 @@ public class XMLSymbols {
     // DTD symbols
     //==========================
     
-    /** Symbol: "ANY". */
+    /**
+     * Symbol: "ANY".
+     */
     public static final String fANYSymbol = "ANY".intern();
 
-    /** Symbol: "CDATA". */
+    /**
+     * Symbol: "CDATA".
+     */
     public static final String fCDATASymbol = "CDATA".intern();
 
-    /** Symbol: "ID". */
+    /**
+     * Symbol: "ID".
+     */
     public static final String fIDSymbol = "ID".intern();
 
-    /** Symbol: "IDREF". */
+    /**
+     * Symbol: "IDREF".
+     */
     public static final String fIDREFSymbol = "IDREF".intern();
 
-    /** Symbol: "IDREFS". */
+    /**
+     * Symbol: "IDREFS".
+     */
     public static final String fIDREFSSymbol = "IDREFS".intern();
 
-    /** Symbol: "ENTITY". */
+    /**
+     * Symbol: "ENTITY".
+     */
     public static final String fENTITYSymbol = "ENTITY".intern();
 
-    /** Symbol: "ENTITIES". */
+    /**
+     * Symbol: "ENTITIES".
+     */
     public static final String fENTITIESSymbol = "ENTITIES".intern();
 
-    /** Symbol: "NMTOKEN". */
+    /**
+     * Symbol: "NMTOKEN".
+     */
     public static final String fNMTOKENSymbol = "NMTOKEN".intern();
 
-    /** Symbol: "NMTOKENS". */
+    /**
+     * Symbol: "NMTOKENS".
+     */
     public static final String fNMTOKENSSymbol = "NMTOKENS".intern();
 
-    /** Symbol: "NOTATION". */
+    /**
+     * Symbol: "NOTATION".
+     */
     public static final String fNOTATIONSymbol = "NOTATION".intern();
 
-    /** Symbol: "ENUMERATION". */
+    /**
+     * Symbol: "ENUMERATION".
+     */
     public static final String fENUMERATIONSymbol = "ENUMERATION".intern();
 
-    /** Symbol: "#IMPLIED. */
+    /**
+     * Symbol: "#IMPLIED.
+     */
     public static final String fIMPLIEDSymbol = "#IMPLIED".intern();
 
-    /** Symbol: "#REQUIRED". */
+    /**
+     * Symbol: "#REQUIRED".
+     */
     public static final String fREQUIREDSymbol = "#REQUIRED".intern();
 
-    /** Symbol: "#FIXED". */
+    /**
+     * Symbol: "#FIXED".
+     */
     public static final String fFIXEDSymbol = "#FIXED".intern();
     
     

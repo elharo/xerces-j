@@ -34,20 +34,26 @@ import org.apache.xerces.xni.parser.XMLDTDSource;
  * <p>This filter records which unparsed entities have been
  * declared in the DTD and provides this information to a ValidationManager.
  * Events are forwarded to the registered XMLDTDHandler without modification.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 final class UnparsedEntityHandler implements XMLDTDFilter, EntityState {
 
-    /** DTD source and handler. **/
+    /**
+     * DTD source and handler. *
+     */
     private XMLDTDSource fDTDSource;
     private XMLDTDHandler fDTDHandler;
     
-    /** Validation manager. */
+    /**
+     * Validation manager.
+     */
     private final ValidationManager fValidationManager;
     
-    /** Map for tracking unparsed entities. */
+    /**
+     * Map for tracking unparsed entities.
+     */
     private HashMap fUnparsedEntities = null;
     
     UnparsedEntityHandler(ValidationManager manager) {

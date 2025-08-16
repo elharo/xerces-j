@@ -73,9 +73,9 @@ import org.xml.sax.SAXException;
  * parser with a document scanner, a dtd scanner, and a validator, as
  * well as a grammar pool.
  *
- * @author Pavani Mukthipudi, Sun Microsystems Inc.
+ * @author Pavani Mukthipudi, Sun Microsystems Inc
  * @author Elena Litani, IBM
- * @author Rahul Srivastava, Sun Microsystems Inc.
+ * @author Rahul Srivastava, Sun Microsystems Inc
  * @version $Id$
  */
 public class DOMParserImpl
@@ -83,43 +83,63 @@ public class DOMParserImpl
 
     // SAX & Xerces feature ids
 
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     protected static final String NAMESPACES =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
 
-    /** Feature id: validation. */
+    /**
+     * Feature id: validation.
+     */
     protected static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX+Constants.VALIDATION_FEATURE;
 
-    /** XML Schema validation */
+    /**
+     * XML Schema validation
+     */
     protected static final String XMLSCHEMA =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
     
-    /** XML Schema full checking */
+    /**
+     * XML Schema full checking
+     */
     protected static final String XMLSCHEMA_FULL_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_FULL_CHECKING;    
 
-    /** Dynamic validation */
+    /**
+     * Dynamic validation
+     */
     protected static final String DYNAMIC_VALIDATION =
         Constants.XERCES_FEATURE_PREFIX + Constants.DYNAMIC_VALIDATION_FEATURE;
 
-    /** Feature identifier: expose schema normalized value */
+    /**
+     * Feature identifier: expose schema normalized value
+     */
     protected static final String NORMALIZE_DATA =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
 
-    /** Feature identifier: disallow docType Decls. */
+    /**
+     * Feature identifier: disallow docType Decls.
+     */
     protected static final String DISALLOW_DOCTYPE_DECL_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.DISALLOW_DOCTYPE_DECL_FEATURE;
     
-    /** Feature identifier: honour all schemaLocations */
+    /**
+     * Feature identifier: honour all schemaLocations
+     */
     protected static final String HONOUR_ALL_SCHEMALOCATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.HONOUR_ALL_SCHEMALOCATIONS_FEATURE;
 
-    /** Feature identifier: namespace growth */
+    /**
+     * Feature identifier: namespace growth
+     */
     protected static final String NAMESPACE_GROWTH = 
         Constants.XERCES_FEATURE_PREFIX + Constants.NAMESPACE_GROWTH_FEATURE;
 
-    /** Feature identifier: tolerate duplicates */
+    /**
+     * Feature identifier: tolerate duplicates
+     */
     protected static final String TOLERATE_DUPLICATES = 
         Constants.XERCES_FEATURE_PREFIX + Constants.TOLERATE_DUPLICATES_FEATURE;
 
@@ -134,7 +154,9 @@ public class DOMParserImpl
     // Data
     //
 
-    /** Include namespace declaration attributes in the document. **/
+    /**
+     * Include namespace declaration attributes in the document. *
+     */
     protected boolean fNamespaceDeclarations = true;
 
     // REVISIT: this value should be null by default and should be set during creation of
@@ -289,7 +311,7 @@ public class DOMParserImpl
     /**
      * Resets the parser state.
      *
-     * @throws SAXException Thrown on initialization error.
+     * @throws SAXException thrown on initialization error
      */
     public void reset () {
         super.reset();
@@ -321,30 +343,30 @@ public class DOMParserImpl
     }
 
     /**
-     * When a filter is provided, the implementation will call out to the 
-     * filter as it is constructing the DOM tree structure. The filter can 
-     * choose to remove elements from the document being constructed, or to 
-     * terminate the parsing early. 
-     * <br> The filter is invoked after the operations requested by the 
-     * <code>DOMConfiguration</code> parameters have been applied. For 
+     * When a filter is provided, the implementation will call out to the
+     * filter as it is constructing the DOM tree structure. The filter can
+     * choose to remove elements from the document being constructed, or to
+     * terminate the parsing early.
+     * <br> The filter is invoked after the operations requested by the
+     * <code>DOMConfiguration</code> parameters have been applied. For
      * example, if "<a href='http://www.w3.org/TR/DOM-Level-3-Core/core.html#parameter-validate'>
-     * validate</a>" is set to <code>true</code>, the validation is done before invoking the 
-     * filter. 
+     * validate</a>" is set to <code>true</code>, the validation is done before invoking the
+     * filter.
      */
     public LSParserFilter getFilter () {
         return !fNullFilterInUse ? fDOMFilter : null;
     }
 
     /**
-     * When a filter is provided, the implementation will call out to the 
-     * filter as it is constructing the DOM tree structure. The filter can 
-     * choose to remove elements from the document being constructed, or to 
-     * terminate the parsing early. 
-     * <br> The filter is invoked after the operations requested by the 
-     * <code>DOMConfiguration</code> parameters have been applied. For 
+     * When a filter is provided, the implementation will call out to the
+     * filter as it is constructing the DOM tree structure. The filter can
+     * choose to remove elements from the document being constructed, or to
+     * terminate the parsing early.
+     * <br> The filter is invoked after the operations requested by the
+     * <code>DOMConfiguration</code> parameters have been applied. For
      * example, if "<a href='http://www.w3.org/TR/DOM-Level-3-Core/core.html#parameter-validate'>
-     * validate</a>" is set to <code>true</code>, the validation is done before invoking the 
-     * filter. 
+     * validate</a>" is set to <code>true</code>, the validation is done before invoking the
+     * filter.
      */
     public void setFilter (LSParserFilter filter) {
         if (fBusy && filter == null && fDOMFilter != null) {
@@ -863,9 +885,9 @@ public class DOMParserImpl
     }
 
     /**
-     *  DOM Level 3 CR - Experimental.
+     * DOM Level 3 CR - Experimental.
      *
-     *  The list of the parameters supported by this
+     * The list of the parameters supported by this
      * <code>DOMConfiguration</code> object and for which at least one value
      * can be set by the application. Note that this list can also contain
      * parameter names defined outside this specification.
@@ -914,7 +936,6 @@ public class DOMParserImpl
      * Parse an XML document from a location identified by an URI reference.
      * If the URI contains a fragment identifier (see section 4.1 in ), the
      * behavior is not defined by this specification.
-     *
      */
     public Document parseURI (String uri) throws LSException {
 
@@ -969,7 +990,6 @@ public class DOMParserImpl
     /**
      * Parse an XML document from a resource identified by an
      * <code>LSInput</code>.
-     *
      */
     public Document parse (LSInput is) throws LSException {
 
@@ -1028,21 +1048,21 @@ public class DOMParserImpl
     }
 
     /**
-     *  Parse an XML document or fragment from a resource identified by an
+     * Parse an XML document or fragment from a resource identified by an
      * <code>LSInput</code> and insert the content into an existing
      * document at the position epcified with the <code>contextNode</code>
      * and <code>action</code> arguments. When parsing the input stream the
      * context node is used for resolving unbound namespace prefixes.
      *
-     * @param is  The <code>LSInput</code> from which the source
-     *   document is to be read.
-     * @param cnode  The <code>Node</code> that is used as the context for
-     *   the data that is being parsed.
-     * @param action This parameter describes which action should be taken
+     * @param is  the <code>LSInput</code> from which the source
+     *   document is to be read
+     * @param cnode  the <code>Node</code> that is used as the context for
+     *   the data that is being parsed
+     * @param action this parameter describes which action should be taken
      *   between the new set of node being inserted and the existing
      *   children of the context node. The set of possible actions is
      *   defined above.
-     * @exception DOMException
+     * @throws DOMException
      *   HIERARCHY_REQUEST_ERR: Thrown if this action results in an invalid
      *   hierarchy (i.e. a Document with more than one document element).
      */
@@ -1103,6 +1123,7 @@ public class DOMParserImpl
     }
 
     /**
+     *
      * @see org.w3c.dom.ls.LSParser#getAsync()
      */
     public boolean getAsync () {
@@ -1110,6 +1131,7 @@ public class DOMParserImpl
     }
 
     /**
+     *
      * @see org.w3c.dom.ls.LSParser#getBusy()
      */
     public boolean getBusy () {
@@ -1117,6 +1139,7 @@ public class DOMParserImpl
     }
 
     /**
+     *
      * @see org.w3c.dom.ls.LSParser#abort()
      */
     public void abort () {
@@ -1146,11 +1169,10 @@ public class DOMParserImpl
      * be followed by the endElement method, with no intervening methods.
      * Overriding the parent to handle DOM_NAMESPACE_DECLARATIONS=false.
      *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startElement (QName element, XMLAttributes attributes, Augmentations augs) {
         // namespace declarations parameter has no effect if namespaces is false.

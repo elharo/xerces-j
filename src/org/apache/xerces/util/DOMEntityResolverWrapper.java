@@ -36,9 +36,8 @@ import org.w3c.dom.ls.LSResourceResolver;
  * This class wraps DOM entity resolver to XNI entity resolver.
  *
  * @see LSResourceResolver
- *
- * @author Gopal Sharma, SUN MicroSystems Inc.
- * @author Elena Litani, IBM 
+ * @author Gopal Sharma, SUN MicroSystems Inc
+ * @author Elena Litani, IBM
  * @author Ramesh Mandava, Sun Microsystems
  * @version $Id$
  */
@@ -49,23 +48,33 @@ public class DOMEntityResolverWrapper
     // Data
     //
 
-    /** XML 1.0 type constant according to DOM L3 LS CR spec "http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107" */
+    /**
+     * XML 1.0 type constant according to DOM L3 LS CR spec "http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107"
+     */
     private static final String XML_TYPE = "http://www.w3.org/TR/REC-xml";
     
-    /** XML Schema constant according to DOM L3 LS CR spec "http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107" */
+    /**
+     * XML Schema constant according to DOM L3 LS CR spec "http://www.w3.org/TR/2003/CR-DOM-Level-3-LS-20031107"
+     */
     private static final String XSD_TYPE = "http://www.w3.org/2001/XMLSchema";
 
-    /** The DOM entity resolver. */
+    /**
+     * The DOM entity resolver.
+     */
     protected LSResourceResolver fEntityResolver;
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public DOMEntityResolverWrapper() {}
 
-    /** Wraps the specified DOM entity resolver. */
+    /**
+     * Wraps the specified DOM entity resolver.
+     */
     public DOMEntityResolverWrapper(LSResourceResolver entityResolver) {
         setEntityResolver(entityResolver);
     } // LSResourceResolver
@@ -74,12 +83,16 @@ public class DOMEntityResolverWrapper
     // Public methods
     //
 
-    /** Sets the DOM entity resolver. */
+    /**
+     * Sets the DOM entity resolver.
+     */
     public void setEntityResolver(LSResourceResolver entityResolver) {
         fEntityResolver = entityResolver;
     } // setEntityResolver(LSResourceResolver)
 
-    /** Returns the DOM entity resolver. */
+    /**
+     * Returns the DOM entity resolver.
+     */
     public LSResourceResolver getEntityResolver() {
         return fEntityResolver;
     } // getEntityResolver():LSResourceResolver
@@ -93,9 +106,9 @@ public class DOMEntityResolverWrapper
      * resolved, this method should return null.
      *
      * @param resourceIdentifier	description of the resource to be resolved
-     * @throws XNIException Thrown on general error.
-     * @throws IOException  Thrown if resolved entity stream cannot be
-     *                      opened or some other i/o error occurs.
+     * @throws XNIException thrown on general error
+     * @throws IOException  thrown if resolved entity stream cannot be
+     *                      opened or some other i/o error occurs
      */
     public XMLInputSource resolveEntity(XMLResourceIdentifier resourceIdentifier)
         throws XNIException, IOException {
@@ -130,7 +143,7 @@ public class DOMEntityResolverWrapper
                  * An LSParser looks at inputs specified in LSInput in
                  * the following order: characterStream, byteStream,
                  * stringData, systemId, publicId.
-                 */          
+                 */
                 XMLInputSource xmlInputSource =
                     new XMLInputSource(publicId, systemId, baseSystemId);
                 
@@ -153,7 +166,9 @@ public class DOMEntityResolverWrapper
 
     } // resolveEntity(String,String,String):XMLInputSource
     
-    /** Determines the type of resource being resolved **/
+    /**
+     * Determines the type of resource being resolved *
+     */
     private String getType(XMLResourceIdentifier resourceIdentifier) {
         if (resourceIdentifier instanceof XMLGrammarDescription) {
             XMLGrammarDescription desc = (XMLGrammarDescription) resourceIdentifier;

@@ -20,15 +20,15 @@ package org.apache.xerces.impl.dv;
 /**
  * Datatype exception for invalid values.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class InvalidDatatypeValueException extends DatatypeException {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -5523739426958236125L;
     
     /**

@@ -32,7 +32,7 @@ import org.apache.xerces.xni.XMLDocumentHandler;
 
 /**
  * <p>An extension to XMLDocumentHandler for building StAX structures.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

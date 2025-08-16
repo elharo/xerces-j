@@ -24,17 +24,17 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndDocument;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class EndDocumentImpl extends XMLEventImpl implements EndDocument {
 
     /**
      * Constructor.
-     * @param location Location object for this event. 
+     *
+     * @param location location object for this event
      */
     public EndDocumentImpl(Location location) {
         super(END_DOCUMENT, location);

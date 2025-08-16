@@ -45,7 +45,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>StreamSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -53,37 +53,53 @@ final class StreamValidatorHelper implements ValidatorHelper {
     
     // feature identifiers
     
-    /** Feature identifier: parser settings. */
+    /**
+     * Feature identifier: parser settings.
+     */
     private static final String PARSER_SETTINGS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.PARSER_SETTINGS;    
     
     // property identifiers
     
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     private static final String ENTITY_RESOLVER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
     
-    /** Property identifier: error handler. */
+    /**
+     * Property identifier: error handler.
+     */
     private static final String ERROR_HANDLER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     private static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     private static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
     
-    /** Property identifier: validation manager. */
+    /**
+     * Property identifier: validation manager.
+     */
     private static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
     
-    /** Property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     private static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
     
@@ -91,13 +107,19 @@ final class StreamValidatorHelper implements ValidatorHelper {
     // Data
     //
     
-    /** SoftReference to parser configuration. **/
+    /**
+     * SoftReference to parser configuration. *
+     */
     private SoftReference fConfiguration = new SoftReference(null);
     
-    /** Schema validator. **/
+    /**
+     * Schema validator. *
+     */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Component manager. **/
+    /**
+     * Component manager. *
+     */
     private final XMLSchemaValidatorComponentManager fComponentManager;
 
     /**
@@ -105,7 +127,9 @@ final class StreamValidatorHelper implements ValidatorHelper {
      */
     private SoftReference fParser = new SoftReference(null);
     
-    /** Serializer factory. **/
+    /**
+     * Serializer factory. *
+     */
     private SerializerFactory fSerializerFactory;
     
     public StreamValidatorHelper(XMLSchemaValidatorComponentManager componentManager) {

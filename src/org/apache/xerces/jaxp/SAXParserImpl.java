@@ -55,36 +55,47 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * This is the implementation specific class for the
  * <code>javax.xml.parsers.SAXParser</code>.
- * 
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
- * 
  * @version $Id$
  */
 public class SAXParserImpl extends javax.xml.parsers.SAXParser
     implements JAXPConstants, PSVIProvider {
     
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     private static final String NAMESPACES_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
     
-    /** Feature identifier: namespace prefixes. */
+    /**
+     * Feature identifier: namespace prefixes.
+     */
     private static final String NAMESPACE_PREFIXES_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACE_PREFIXES_FEATURE;
     
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     private static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: XML Schema validation */
+    /**
+     * Feature identifier: XML Schema validation
+     */
     private static final String XMLSCHEMA_VALIDATION_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /**
+     * Feature identifier: XInclude processing
+     */
     private static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
-    /** Property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     private static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
 
@@ -97,15 +108,20 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     private final ValidationManager fSchemaValidationManager;
     private final UnparsedEntityHandler fUnparsedEntityHandler;
     
-    /** Initial ErrorHandler */
+    /**
+     * Initial ErrorHandler
+     */
     private final ErrorHandler fInitErrorHandler;
     
-    /** Initial EntityResolver */
+    /**
+     * Initial EntityResolver
+     */
     private final EntityResolver fInitEntityResolver;
     
     /**
      * Create a SAX parser with the associated features
-     * @param features Hashtable of SAX features, may be null
+     *
+     * @param features hashtable of SAX features, may be null
      */
     SAXParserImpl(SAXParserFactoryImpl spf, Hashtable features) 
         throws SAXException {
@@ -114,7 +130,8 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     
     /**
      * Create a SAX parser with the associated features
-     * @param features Hashtable of SAX features, may be null
+     *
+     * @param features hashtable of SAX features, may be null
      */
     SAXParserImpl(SAXParserFactoryImpl spf, Hashtable features, boolean secureProcessing)
         throws SAXException
@@ -164,7 +181,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
         if (grammar != null) {
             XMLParserConfiguration config = xmlReader.getXMLParserConfiguration();
             XMLComponent validatorComponent = null;
-            /** For Xerces grammars, use built-in schema validator. **/
+            /**
+             * For Xerces grammars, use built-in schema validator. *
+             */
             if (grammar instanceof XSGrammarPoolContainer) {
                 validatorComponent = new XMLSchemaValidator();
                 fSchemaValidationManager = new ValidationManager();
@@ -175,7 +194,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
                 fSchemaValidatorComponentManager = new SchemaValidatorConfiguration(config, 
                         (XSGrammarPoolContainer) grammar, fSchemaValidationManager);
             }
-            /** For third party grammars, use the JAXP validator component. **/
+            /**
+             * For third party grammars, use the JAXP validator component. *
+             */
             else {
                 validatorComponent = new JAXPValidatorComponent(grammar.newValidatorHandler());
                 fSchemaValidationManager = null;
@@ -254,6 +275,7 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     
     /**
      * Gets the XInclude processing mode for this parser
+     *
      * @return the state of XInclude processing mode
      */
     public boolean isXIncludeAware() {
@@ -266,7 +288,7 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     }
 
     /**
-     * Sets the particular property in the underlying implementation of 
+     * Sets the particular property in the underlying implementation of
      * org.xml.sax.XMLReader.
      */
     public void setProperty(String name, Object value)
@@ -275,7 +297,7 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     }
 
     /**
-     * returns the particular property requested for in the underlying 
+     * Returns the particular property requested for in the underlying
      * implementation of org.xml.sax.XMLReader.
      */
     public Object getProperty(String name)
@@ -319,7 +341,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     
     public void reset() {
         try {
-            /** Restore initial values of features and properties. **/
+            /**
+             * Restore initial values of features and properties. *
+             */
             xmlReader.restoreInitState();
         } 
         catch (SAXException exc) {
@@ -327,7 +351,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
             // features and properties in the hash maps. For now
             // just ignore it.
         }
-        /** Restore various handlers. **/
+        /**
+         * Restore various handlers. *
+         */
         xmlReader.setContentHandler(null);
         xmlReader.setDTDHandler(null);
         if (xmlReader.getErrorHandler() != fInitErrorHandler) {
@@ -355,7 +381,7 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
     }
     
     /**
-     * Extension of SAXParser. This class tracks changes to 
+     * Extension of SAXParser. This class tracks changes to
      * features and properties to allow the parser to be reset to
      * its initial state.
      */
@@ -409,7 +435,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
                 boolean current = super.getFeature(name);
                 fInitFeatures.put(name, current ? Boolean.TRUE : Boolean.FALSE); 
             }
-            /** Forward feature to the schema validator if there is one. **/
+            /**
+             * Forward feature to the schema validator if there is one. *
+             */
             if (fSAXParser != null && fSAXParser.fSchemaValidator != null) {
                 setSchemaValidatorFeature(name, value);
             }
@@ -507,7 +535,9 @@ public class SAXParserImpl extends javax.xml.parsers.SAXParser
             if (!fInitProperties.containsKey(name)) {
                 fInitProperties.put(name, super.getProperty(name));
             }
-            /** Forward property to the schema validator if there is one. **/
+            /**
+             * Forward property to the schema validator if there is one. *
+             */
             if (fSAXParser != null && fSAXParser.fSchemaValidator != null) {
                 setSchemaValidatorProperty(name, value);
             }

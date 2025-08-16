@@ -51,9 +51,8 @@ import org.xml.sax.helpers.LocatorImpl;
  * parser with a document scanner, a dtd scanner, and a validator, as
  * well as a grammar pool.
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class DOMParser
@@ -65,21 +64,29 @@ public class DOMParser
     
     // features
     
-    /** Feature identifier: EntityResolver2. */
+    /**
+     * Feature identifier: EntityResolver2.
+     */
     protected static final String USE_ENTITY_RESOLVER2 =
         Constants.SAX_FEATURE_PREFIX + Constants.USE_ENTITY_RESOLVER2_FEATURE;
 
     // properties
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: XML grammar pool. */
+    /**
+     * Property identifier: XML grammar pool.
+     */
     protected static final String XMLGRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX+Constants.XMLGRAMMAR_POOL_PROPERTY;
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         SYMBOL_TABLE,
         XMLGRAMMAR_POOL,
@@ -91,7 +98,9 @@ public class DOMParser
     
     // features
     
-    /** Use EntityResolver2. */
+    /**
+     * Use EntityResolver2.
+     */
     protected boolean fUseEntityResolver2 = true;
 
     //
@@ -150,13 +159,12 @@ public class DOMParser
      * <p>
      * This method is equivalent to the following:
      * <pre>
-     *     parse(new InputSource(systemId));
+     * parse(new InputSource(systemId));
      * </pre>
      *
-     * @param systemId The system identifier (URI).
-     *
-     * @exception org.xml.sax.SAXException Throws exception on SAX error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param systemId the system identifier (URI)
+     * @throws org.xml.sax.SAXException throws exception on SAX error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(String systemId) throws SAXException, IOException {
 
@@ -208,12 +216,11 @@ public class DOMParser
     } // parse(String)
 
     /**
-     * parse
+     * Parse
      *
      * @param inputSource
-     *
-     * @exception org.xml.sax.SAXException
-     * @exception java.io.IOException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException
      */
     public void parse(InputSource inputSource)
         throws SAXException, IOException {
@@ -274,7 +281,7 @@ public class DOMParser
      * Sets the resolver used to resolve external entities. The EntityResolver
      * interface supports resolution of public and system identifiers.
      *
-     * @param resolver The new entity resolver. Passing a null value will
+     * @param resolver the new entity resolver. Passing a null value will
      *                 uninstall the currently installed resolver.
      */
     public void setEntityResolver(EntityResolver resolver) {
@@ -311,8 +318,8 @@ public class DOMParser
     /**
      * Return the current entity resolver.
      *
-     * @return The current entity resolver, or null if none
-     *         has been registered.
+     * @return the current entity resolver, or null if none
+     *         has been registered
      * @see #setEntityResolver
      */
     public EntityResolver getEntityResolver() {
@@ -352,9 +359,9 @@ public class DOMParser
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.</p>
      *
-     * @param errorHandler The error handler.
-     * @exception java.lang.NullPointerException If the handler
-     *            argument is null.
+     * @param errorHandler the error handler
+     * @throws java.lang.NullPointerException if the handler
+     *            argument is null
      * @see #getErrorHandler
      */
     public void setErrorHandler(ErrorHandler errorHandler) {
@@ -379,8 +386,8 @@ public class DOMParser
     /**
      * Return the current error handler.
      *
-     * @return The current error handler, or null if none
-     *         has been registered.
+     * @return the current error handler, or null if none
+     *         has been registered
      * @see #setErrorHandler
      */
     public ErrorHandler getErrorHandler() {
@@ -406,14 +413,13 @@ public class DOMParser
      * might not recognize the feature, and if it does recognize
      * it, it might not be able to fulfill the request.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     * @param state The requested state of the feature (true or false).
-     *
-     * @exception SAXNotRecognizedException If the
-     *            requested feature is not known.
-     * @exception SAXNotSupportedException If the
+     * @param featureId the unique identifier (URI) of the feature
+     * @param state the requested state of the feature (true or false)
+     * @throws SAXNotRecognizedException if the
+     *            requested feature is not known
+     * @throws SAXNotSupportedException if the
      *            requested feature is known, but the requested
-     *            state is not supported.
+     *            state is not supported
      */
     public void setFeature(String featureId, boolean state)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -461,13 +467,13 @@ public class DOMParser
      * Query the current state of any feature in a SAX2 parser.  The
      * parser might not recognize the feature.
      *
-     * @param featureId The unique identifier (URI) of the feature
-     *                  being set.
-     * @return The current state of the feature.
-     * @exception org.xml.sax.SAXNotRecognizedException If the
-     *            requested feature is not known.
-     * @exception SAXNotSupportedException If the
-     *            requested feature is known but not supported.
+     * @param featureId the unique identifier (URI) of the feature
+     *                  being set
+     * @return the current state of the feature
+     * @throws org.xml.sax.SAXNotRecognizedException if the
+     *            requested feature is not known
+     * @throws SAXNotSupportedException if the
+     *            requested feature is known but not supported
      */
     public boolean getFeature(String featureId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -509,15 +515,14 @@ public class DOMParser
      * might not recognize the property, and if it does recognize
      * it, it might not support the requested value.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     * @param value The value to which the property is being set.
-     *
-     * @exception SAXNotRecognizedException If the
-     *            requested property is not known.
-     * @exception SAXNotSupportedException If the
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @param value the value to which the property is being set
+     * @throws SAXNotRecognizedException if the
+     *            requested property is not known
+     * @throws SAXNotSupportedException if the
      *            requested property is known, but the requested
-     *            value is not supported.
+     *            value is not supported
      */
     public void setProperty(String propertyId, Object value)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -547,13 +552,13 @@ public class DOMParser
      * Return the current value of a property in a SAX2 parser.
      * The parser might not recognize the property.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     * @return The current value of the property.
-     * @exception org.xml.sax.SAXNotRecognizedException If the
-     *            requested property is not known.
-     * @exception SAXNotSupportedException If the
-     *            requested property is known but not supported.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @return the current value of the property
+     * @throws org.xml.sax.SAXNotRecognizedException if the
+     *            requested property is not known
+     * @throws SAXNotSupportedException if the
+     *            requested property is known but not supported
      */
     public Object getProperty(String propertyId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -595,7 +600,7 @@ public class DOMParser
 
     } // getProperty(String):Object
     
-    /** 
+    /**
      * Returns this parser's XMLParserConfiguration.
      */
     public XMLParserConfiguration getXMLParserConfiguration() {

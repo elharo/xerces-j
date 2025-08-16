@@ -19,15 +19,13 @@ package org.apache.xerces.dom;
 import org.w3c.dom.Node;
 
 /**
- * This interface provides support for checking equality 
- * of two XML element nodes, where considering XML element 
+ * This interface provides support for checking equality
+ * of two XML element nodes, where considering XML element
  * names by their QName values, to support use cases like
  * XPath 3.1 function fn:deep-equal.
- * 
+ *
  * @xerces.internal
- * 
  * @author Mukul Gandhi <mukulg@apache.org>
- * 
  * @version $Id$
  */
 public interface NodeEqualityWithQname {

@@ -27,16 +27,16 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndElement;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class EndElementImpl extends ElementImpl implements EndElement {
 
     /**
-     * @param location The location object for this event.
+     *
+     * @param location the location object for this event
      */
     public EndElementImpl(final QName name, final Iterator namespaces, final Location location) {
         super(name, false, namespaces, location);

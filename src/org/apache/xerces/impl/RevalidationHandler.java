@@ -21,7 +21,7 @@ import org.apache.xerces.xni.Augmentations;
 import org.apache.xerces.xni.parser.XMLDocumentFilter;
 /**
  * DOM Revalidation handler adds additional functionality to XMLDocumentHandler
- * 
+ *
  * @xerces.internal
  * @author Elena Litani, IBM
  * @version $Id$
@@ -30,10 +30,10 @@ public interface RevalidationHandler extends XMLDocumentFilter {
 
     /**
      * Character content.
-     * 
-     * @param data   The character data.
-     * @param augs   Augmentations
-     * @return True if data is whitespace only
+     *
+     * @param data   the character data
+     * @param augs   augmentations
+     * @return true if data is whitespace only
      */
     public boolean characterData(String data, Augmentations augs);
     

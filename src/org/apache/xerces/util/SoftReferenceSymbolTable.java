@@ -25,11 +25,9 @@ import java.lang.ref.SoftReference;
  * that have no references to them can be garbage collected when memory is needed.  Thus, in
  * documents with very very large numbers of unique strings, using this SymbolTable will prevent
  * an out of memory error from occurring.
- * 
+ *
  * @see SymbolTable
- *
  * @author Peter McCracken, IBM
- *
  * @version $Id$
  */
 /*
@@ -55,13 +53,13 @@ public class SoftReferenceSymbolTable extends SymbolTable {
     //
     
     /**
-     * Constructs a new, empty SymbolTable with the specified initial 
+     * Constructs a new, empty SymbolTable with the specified initial
      * capacity and the specified load factor.
      *
-     * @param      initialCapacity   the initial capacity of the SymbolTable.
-     * @param      loadFactor        the load factor of the SymbolTable.
+     * @param      initialCapacity   the initial capacity of the SymbolTable
+     * @param      loadFactor        the load factor of the SymbolTable
      * @throws     IllegalArgumentException  if the initial capacity is less
-     *             than zero, or if the load factor is nonpositive.
+     *             than zero, or if the load factor is nonpositive
      */
     public SoftReferenceSymbolTable(int initialCapacity, float loadFactor) {
         /*
@@ -96,9 +94,9 @@ public class SoftReferenceSymbolTable extends SymbolTable {
      * Constructs a new, empty SymbolTable with the specified initial capacity
      * and default load factor, which is <tt>0.75</tt>.
      *
-     * @param     initialCapacity   the initial capacity of the hashtable.
+     * @param     initialCapacity   the initial capacity of the hashtable
      * @throws    IllegalArgumentException if the initial capacity is less
-     *            than zero.
+     *            than zero
      */
     public SoftReferenceSymbolTable(int initialCapacity) {
         this(initialCapacity, 0.75f);
@@ -106,7 +104,7 @@ public class SoftReferenceSymbolTable extends SymbolTable {
     
     /**
      * Constructs a new, empty SymbolTable with a default initial capacity (101)
-     * and load factor, which is <tt>0.75</tt>. 
+     * and load factor, which is <tt>0.75</tt>.
      */
     public SoftReferenceSymbolTable() {
         this(TABLE_SIZE, 0.75f);
@@ -122,7 +120,7 @@ public class SoftReferenceSymbolTable extends SymbolTable {
      * the previous symbol reference is returned instead, in order
      * guarantee that symbol references remain unique.
      *
-     * @param symbol The new symbol.
+     * @param symbol the new symbol
      */
     public String addSymbol(String symbol) {
         clean();
@@ -169,9 +167,9 @@ public class SoftReferenceSymbolTable extends SymbolTable {
      * the previous symbol reference is returned instead, in order
      * guarantee that symbol references remain unique.
      *
-     * @param buffer The buffer containing the new symbol.
-     * @param offset The offset into the buffer of the new symbol.
-     * @param length The length of the new symbol in the buffer.
+     * @param buffer the buffer containing the new symbol
+     * @param offset the offset into the buffer of the new symbol
+     * @param length the length of the new symbol in the buffer
      */
     public String addSymbol(char[] buffer, int offset, int length) {
         clean();
@@ -219,20 +217,20 @@ public class SoftReferenceSymbolTable extends SymbolTable {
     } // addSymbol0(char[],int,int,int,int):String
 
     /**
-     * Increases the capacity of and internally reorganizes this 
-     * SymbolTable, in order to accommodate and access its entries more 
-     * efficiently.  This method is called automatically when the 
-     * number of keys in the SymbolTable exceeds this hashtable's capacity 
-     * and load factor. 
+     * Increases the capacity of and internally reorganizes this
+     * SymbolTable, in order to accommodate and access its entries more
+     * efficiently.  This method is called automatically when the
+     * number of keys in the SymbolTable exceeds this hashtable's capacity
+     * and load factor.
      */
     protected void rehash() {
         rehashCommon(fBuckets.length * 2 + 1);
     }
     
     /**
-     * Reduces the capacity of and internally reorganizes this 
+     * Reduces the capacity of and internally reorganizes this
      * SymbolTable, in order to accommodate and access its entries in
-     * a more memory efficient way. This method is called automatically when 
+     * a more memory efficient way. This method is called automatically when
      * the number of keys in the SymbolTable drops below 25% of this
      * hashtable's load factor (as a result of SoftReferences which have
      * been cleared).
@@ -243,8 +241,8 @@ public class SoftReferenceSymbolTable extends SymbolTable {
     
     /**
      * Randomly selects a new hash function and reorganizes this SymbolTable
-     * in order to more evenly distribute its entries across the table. This 
-     * method is called automatically when the number keys in one of the 
+     * in order to more evenly distribute its entries across the table. This
+     * method is called automatically when the number keys in one of the
      * SymbolTable's buckets exceeds the given collision threshold.
      */
     protected void rebalance() {
@@ -294,7 +292,7 @@ public class SoftReferenceSymbolTable extends SymbolTable {
      * Returns true if the symbol table already contains the specified
      * symbol.
      *
-     * @param symbol The symbol to look for.
+     * @param symbol the symbol to look for
      */
     public boolean containsSymbol(String symbol) {
 
@@ -324,9 +322,9 @@ public class SoftReferenceSymbolTable extends SymbolTable {
      * Returns true if the symbol table already contains the specified
      * symbol.
      *
-     * @param buffer The buffer containing the symbol to look for.
-     * @param offset The offset into the buffer.
-     * @param length The length of the symbol in the buffer.
+     * @param buffer the buffer containing the symbol to look for
+     * @param offset the offset into the buffer
+     * @param length the length of the symbol in the buffer
      */
     public boolean containsSymbol(char[] buffer, int offset, int length) {
 
@@ -393,18 +391,24 @@ public class SoftReferenceSymbolTable extends SymbolTable {
     /**
      * This class is a symbol table entry. Each entry acts as a node
      * in a doubly-linked list.
-     * 
+     *
      * The "SR" stands for SoftReference.
      */
     protected static final class SREntry extends SoftReference {
 
-        /** The next entry. */
+        /**
+         * The next entry.
+         */
         public SREntry next;
 
-        /** The previous entry. */
+        /**
+         * The previous entry.
+         */
         public SREntry prev;
 
-        /** The bucket this entry is contained in; -1 if it has been removed from the table. */
+        /**
+         * The bucket this entry is contained in; -1 if it has been removed from the table.
+         */
         public int bucket;
         
         //

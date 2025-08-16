@@ -30,17 +30,16 @@ import org.apache.xerces.xni.parser.XMLComponentManager;
  * attack when the document is parsed.
  *
  * In addition to the features and properties recognized by the base
- * parser configuration, this class recognizes these additional 
+ * parser configuration, this class recognizes these additional
  * features and properties:
  * <ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/security-manager</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/security-manager</li>
+ * </ul>
  * </ul>
  *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class SecurityConfiguration extends XIncludeAwareParserConfiguration
@@ -57,15 +56,17 @@ public class SecurityConfiguration extends XIncludeAwareParserConfiguration
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public SecurityConfiguration () {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public SecurityConfiguration (SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -75,12 +76,12 @@ public class SecurityConfiguration extends XIncludeAwareParserConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public SecurityConfiguration (SymbolTable symbolTable,
                                          XMLGrammarPool grammarPool) {
@@ -91,13 +92,13 @@ public class SecurityConfiguration extends XIncludeAwareParserConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public SecurityConfiguration (SymbolTable symbolTable,
                                          XMLGrammarPool grammarPool,

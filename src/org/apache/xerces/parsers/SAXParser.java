@@ -27,9 +27,8 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
  * parser with a document scanner, a dtd scanner, and a validator, as
  * well as a grammar pool.
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class SAXParser
@@ -41,26 +40,36 @@ public class SAXParser
 
     // features
 
-    /** Feature identifier: notify built-in refereces. */
+    /**
+     * Feature identifier: notify built-in refereces.
+     */
     protected static final String NOTIFY_BUILTIN_REFS =
         Constants.XERCES_FEATURE_PREFIX + Constants.NOTIFY_BUILTIN_REFS_FEATURE;
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         NOTIFY_BUILTIN_REFS,
     };
 
     // properties
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: XML grammar pool. */
+    /**
+     * Property identifier: XML grammar pool.
+     */
     protected static final String XMLGRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX+Constants.XMLGRAMMAR_POOL_PROPERTY;
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         SYMBOL_TABLE,
         XMLGRAMMAR_POOL,

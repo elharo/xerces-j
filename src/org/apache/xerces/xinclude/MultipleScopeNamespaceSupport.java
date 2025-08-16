@@ -28,13 +28,12 @@ import org.apache.xerces.xni.NamespaceContext;
  * scopes of namespace/prefix bindings.  This is useful in situations when it is
  * not always appropriate for elements to inherit the namespace bindings of their
  * ancestors (such as included elements in XInclude).
- * 
+ *
  * When searching for a URI to match a prefix, or a prefix to match a URI, it is
  * searched for in the current context, then the ancestors of the current context,
  * up to the beginning of the current scope.  Other scopes are not searched.
- * 
+ *
  * @author Peter McCracken, IBM
- * 
  * @version $Id$
  */
 public class MultipleScopeNamespaceSupport extends NamespaceSupport {
@@ -43,7 +42,6 @@ public class MultipleScopeNamespaceSupport extends NamespaceSupport {
     protected int fCurrentScope;
 
     /**
-     * 
      */
     public MultipleScopeNamespaceSupport() {
         super();
@@ -52,6 +50,7 @@ public class MultipleScopeNamespaceSupport extends NamespaceSupport {
     }
 
     /**
+     *
      * @param context
      */
     public MultipleScopeNamespaceSupport(NamespaceContext context) {

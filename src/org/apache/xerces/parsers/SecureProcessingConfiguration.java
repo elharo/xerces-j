@@ -51,9 +51,8 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 
 /**
  * This configuration enhances Xerces support for the JAXP secure processing feature.
- * 
+ *
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public final class SecureProcessingConfiguration extends
@@ -63,39 +62,59 @@ public final class SecureProcessingConfiguration extends
     // Constants
     //
     
-    /** Property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     private static final String SECURITY_MANAGER_PROPERTY =
             Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
     
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     private static final String ENTITY_RESOLVER_PROPERTY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
     
-    /** Feature identifier: external general entities. */
+    /**
+     * Feature identifier: external general entities.
+     */
     private static final String EXTERNAL_GENERAL_ENTITIES =
         Constants.SAX_FEATURE_PREFIX + Constants.EXTERNAL_GENERAL_ENTITIES_FEATURE;
 
-    /** Feature identifier: external parameter entities. */
+    /**
+     * Feature identifier: external parameter entities.
+     */
     private static final String EXTERNAL_PARAMETER_ENTITIES =
         Constants.SAX_FEATURE_PREFIX + Constants.EXTERNAL_PARAMETER_ENTITIES_FEATURE;
     
-    /** Feature identifier: load external DTD. */
+    /**
+     * Feature identifier: load external DTD.
+     */
     private static final String LOAD_EXTERNAL_DTD =
         Constants.XERCES_FEATURE_PREFIX + Constants.LOAD_EXTERNAL_DTD_FEATURE;
     
-    /** Set to true for debugging */
+    /**
+     * Set to true for debugging
+     */
     private static final boolean DEBUG = isDebugEnabled();
     
-    /** Cache the contents of the jaxp.properties file, if used. */
+    /**
+     * Cache the contents of the jaxp.properties file, if used.
+     */
     private static Properties jaxpProperties = null;
 
-    /** Cache the timestamp of the jaxp.properties file, if used. */
+    /**
+     * Cache the timestamp of the jaxp.properties file, if used.
+     */
     private static long lastModified = -1;
     
-    /** Xerces SecurityManager default value for entity expansion limit. **/
+    /**
+     * Xerces SecurityManager default value for entity expansion limit. *
+     */
     private static final int SECURITY_MANAGER_DEFAULT_ENTITY_EXPANSION_LIMIT = 100000;
     
-    /** Xerces SecurityManager default value of number of nodes created. **/
+    /**
+     * Xerces SecurityManager default value of number of nodes created. *
+     */
     private static final int SECURITY_MANAGER_DEFAULT_MAX_OCCUR_NODE_LIMIT = 3000;
     
     private static final String ENTITY_EXPANSION_LIMIT_PROPERTY_NAME = "jdk.xml.entityExpansionLimit";
@@ -130,15 +149,17 @@ public final class SecureProcessingConfiguration extends
     private final ExternalEntityMonitor fExternalEntityMonitor;
     private int fTotalEntitySize = 0;
     
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public SecureProcessingConfiguration() {
         this(null, null, null);
     } // <init>()
     
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public SecureProcessingConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -149,8 +170,8 @@ public final class SecureProcessingConfiguration extends
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public SecureProcessingConfiguration(
             SymbolTable symbolTable,
@@ -163,9 +184,9 @@ public final class SecureProcessingConfiguration extends
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public SecureProcessingConfiguration(
             SymbolTable symbolTable,
@@ -220,15 +241,14 @@ public final class SecureProcessingConfiguration extends
     
     /**
      * Returns the value of a property.
-     * 
-     * @param propertyId The property identifier.
+     *
+     * @param propertyId the property identifier
      * @return the value of the property
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public Object getProperty(String propertyId)
         throws XMLConfigurationException {
@@ -242,10 +262,10 @@ public final class SecureProcessingConfiguration extends
     }
     
     /**
-     * setProperty
-     * 
-     * @param propertyId 
-     * @param value 
+     * SetProperty
+     *
+     * @param propertyId
+     * @param value
      */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
@@ -273,13 +293,17 @@ public final class SecureProcessingConfiguration extends
         super.setProperty(propertyId, value);
     }
     
-    /** Configures the XML 1.0 pipeline. */
+    /**
+     * Configures the XML 1.0 pipeline.
+     */
     protected void configurePipeline() {
         super.configurePipeline();
         configurePipelineCommon(true);
     }
     
-    /** Configures the XML 1.1 pipeline. */
+    /**
+     * Configures the XML 1.1 pipeline.
+     */
     protected void configureXML11Pipeline() {
         super.configureXML11Pipeline();
         configurePipelineCommon(false);
@@ -597,7 +621,9 @@ public final class SecureProcessingConfiguration extends
     // Private static methods
     //
     
-    /** Returns true if debug has been enabled. */
+    /**
+     * Returns true if debug has been enabled.
+     */
     private static boolean isDebugEnabled() {
         try {
             String val = SecuritySupport.getSystemProperty("xerces.debug");
@@ -608,7 +634,9 @@ public final class SecureProcessingConfiguration extends
         return false;
     } // isDebugEnabled()
 
-    /** Prints a message to standard error if debugging is enabled. */
+    /**
+     * Prints a message to standard error if debugging is enabled.
+     */
     private static void debugPrintln(String msg) {
         if (DEBUG) {
             System.err.println("XERCES: " + msg);
@@ -616,12 +644,14 @@ public final class SecureProcessingConfiguration extends
     } // debugPrintln(String)
     
     /**
-     * XMLDTDFilter which checks limits imposed by the application 
+     * XMLDTDFilter which checks limits imposed by the application
      * on the sizes of general and parameter entities.
      */
     final class InternalEntityMonitor implements XMLDTDFilter {
         
-        /** DTD source and handler. **/
+        /**
+         * DTD source and handler. *
+         */
         private XMLDTDSource fDTDSource;
         private XMLDTDHandler fDTDHandler;
         
@@ -802,13 +832,13 @@ public final class SecureProcessingConfiguration extends
     }
     
     /**
-     * XMLEntityResolver which checks limits imposed by the application 
+     * XMLEntityResolver which checks limits imposed by the application
      * on the sizes of general and parameter entities.
      */
     final class ExternalEntityMonitor implements XMLEntityResolver {
         
         /**
-         * java.io.InputStream wrapper which check entity size limits.
+         * Java.io.InputStream wrapper which check entity size limits.
          */
         final class InputStreamMonitor extends FilterInputStream {
             
@@ -840,7 +870,7 @@ public final class SecureProcessingConfiguration extends
         }
         
         /**
-         * java.io.Reader wrapper which check entity size limits.
+         * Java.io.Reader wrapper which check entity size limits.
          */
         final class ReaderMonitor extends FilterReader {
             
@@ -908,12 +938,16 @@ public final class SecureProcessingConfiguration extends
             return source;
         }
         
-        /** Sets the XNI entity resolver. */
+        /**
+         * Sets the XNI entity resolver.
+         */
         public void setEntityResolver(XMLEntityResolver entityResolver) {
             fEntityResolver = entityResolver;
         } // setEntityResolver(XMLEntityResolver)
 
-        /** Returns the XNI entity resolver. */
+        /**
+         * Returns the XNI entity resolver.
+         */
         public XMLEntityResolver getEntityResolver() {
             return fEntityResolver;
         } // getEntityResolver():XMLEntityResolver

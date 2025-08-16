@@ -27,9 +27,8 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
  * with either a BasicConfiguration object or the one specified by the
  * application.
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLDocumentParser

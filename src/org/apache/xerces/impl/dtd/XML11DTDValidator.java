@@ -23,9 +23,8 @@ import org.apache.xerces.xni.parser.XMLComponentManager;
 /**
  * This allows the validator to correctlyhandle XML 1.1
  * documents.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Neil Graham
  * @version $Id$
  */
@@ -42,7 +41,9 @@ public class XML11DTDValidator extends XMLDTDValidator {
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XML11DTDValidator() {
 
         super();

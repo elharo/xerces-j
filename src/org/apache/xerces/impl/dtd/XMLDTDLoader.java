@@ -50,18 +50,16 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties.  It
  * know ho to set them if no one else does:from the
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *  <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
  * </ul>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Neil Graham, IBM
  * @author Michael Glavassevich, IBM
- *
  * @version $Id$
  */
 public class XMLDTDLoader
@@ -74,11 +72,15 @@ public class XMLDTDLoader
 
     // feature identifiers
 
-    /** Feature identifier: standard uri conformant feature. */
+    /**
+     * Feature identifier: standard uri conformant feature.
+     */
     protected static final String STANDARD_URI_CONFORMANT_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.STANDARD_URI_CONFORMANT_FEATURE;
     
-    /** Feature identifier: balance syntax trees. */
+    /**
+     * Feature identifier: balance syntax trees.
+     */
     protected static final String BALANCE_SYNTAX_TREES =
         Constants.XERCES_FEATURE_PREFIX + Constants.BALANCE_SYNTAX_TREES;
 
@@ -94,19 +96,27 @@ public class XMLDTDLoader
 
     // property identifiers
 
-    /** Property identifier: error handler. */
+    /**
+     * Property identifier: error handler.
+     */
     protected static final String ERROR_HANDLER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
 
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     protected static final String ENTITY_RESOLVER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
     
-    /** Property identifier: locale. */
+    /**
+     * Property identifier: locale.
+     */
     protected static final String LOCALE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.LOCALE_PROPERTY;
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] LOADER_RECOGNIZED_PROPERTIES = {
         SYMBOL_TABLE,       
         ERROR_REPORTER,
@@ -120,10 +130,14 @@ public class XMLDTDLoader
     // enforcing strict uri?
     private boolean fStrictURI = false;
     
-    /** Controls whether the DTD grammar produces balanced syntax trees. */
+    /**
+     * Controls whether the DTD grammar produces balanced syntax trees.
+     */
     private boolean fBalanceSyntaxTrees = false;
 
-    /** Entity resolver . */
+    /**
+     * Entity resolver .
+     */
     protected XMLEntityResolver fEntityResolver;
 
     // the scanner we use to actually read the DTD
@@ -139,7 +153,9 @@ public class XMLDTDLoader
     // Constructors
     //
 
-    /** Deny default construction; we need a SymtolTable! */
+    /**
+     * Deny default construction; we need a SymtolTable!
+     */
     public XMLDTDLoader() {
         this(new SymbolTable());
     } // <init>()
@@ -195,18 +211,17 @@ public class XMLDTDLoader
 
     /**
      * Sets the state of a feature. This method is called by the component
-     * manager any time after reset when a feature changes state. 
+     * manager any time after reset when a feature changes state.
      * <p>
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
-     * 
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
             throws XMLConfigurationException {
@@ -244,10 +259,9 @@ public class XMLDTDLoader
 
     /**
      * Returns the state of a property.
-     * 
-     * @param propertyId The property identifier.
-     * 
-     * @throws XMLConfigurationException Thrown on configuration error.
+     *
+     * @param propertyId the property identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public Object getProperty(String propertyId) 
             throws XMLConfigurationException {
@@ -277,18 +291,17 @@ public class XMLDTDLoader
 
     /**
      * Sets the value of a property. This method is called by the component
-     * manager any time after reset when a property changes value. 
+     * manager any time after reset when a property changes value.
      * <p>
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
-     * 
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
             throws XMLConfigurationException {
@@ -328,10 +341,9 @@ public class XMLDTDLoader
 
     /**
      * Returns the state of a feature.
-     * 
-     * @param featureId The feature identifier.
-     * 
-     * @throws XMLConfigurationException Thrown on configuration error.
+     *
+     * @param featureId the feature identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public boolean getFeature(String featureId) 
             throws XMLConfigurationException {
@@ -359,17 +371,18 @@ public class XMLDTDLoader
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) {
         fLocale = locale;
         fErrorReporter.setLocale(locale);
     } // setLocale(Locale)
 
-    /** Return the Locale the XMLGrammarLoader is using. */
+    /**
+     * Return the Locale the XMLGrammarLoader is using.
+     */
     public Locale getLocale() {
         return fLocale;
     } // getLocale():  Locale
@@ -378,13 +391,15 @@ public class XMLDTDLoader
     /**
      * Sets the error handler.
      *
-     * @param errorHandler The error handler.
+     * @param errorHandler the error handler
      */
     public void setErrorHandler(XMLErrorHandler errorHandler) {
         fErrorReporter.setProperty(ERROR_HANDLER, errorHandler);
     } // setErrorHandler(XMLErrorHandler)
 
-    /** Returns the registered error handler.  */
+    /**
+     * Returns the registered error handler.
+     */
     public XMLErrorHandler getErrorHandler() {
         return fErrorReporter.getErrorHandler();
     } // getErrorHandler():  XMLErrorHandler
@@ -392,14 +407,16 @@ public class XMLDTDLoader
     /**
      * Sets the entity resolver.
      *
-     * @param entityResolver The new entity resolver.
+     * @param entityResolver the new entity resolver
      */
     public void setEntityResolver(XMLEntityResolver entityResolver) {
         fEntityResolver = entityResolver;
         fEntityManager.setProperty(ENTITY_RESOLVER, entityResolver);
     } // setEntityResolver(XMLEntityResolver)
 
-    /** Returns the registered entity resolver.  */
+    /**
+     * Returns the registered entity resolver.
+     */
     public XMLEntityResolver getEntityResolver() {
         return fEntityResolver;
     } // getEntityResolver():  XMLEntityResolver
@@ -409,10 +426,10 @@ public class XMLDTDLoader
      * entity pointed to by source.
      *
      * @param source        the location of the entity which forms
-     *                          the starting point of the grammar to be constructed.
-     * @throws IOException      When a problem is encountered reading the entity
+     *                          the starting point of the grammar to be constructed
+     * @throws IOException      when a problem is encountered reading the entity
      *          XNIException    When a condition arises (such as a FatalError) that requires parsing
-     *                              of the entity be terminated.
+     *                              of the entity be terminated
      */
     public Grammar loadGrammar(XMLInputSource source)
             throws IOException, XNIException {

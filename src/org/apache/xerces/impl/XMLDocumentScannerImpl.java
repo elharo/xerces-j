@@ -49,24 +49,22 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
- *  <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
- *  <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *  <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
+ * <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
+ * <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
  * </ul>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Glenn Marcy, IBM
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Eric Ye, IBM
- *
  * @version $Id$
  */
 public class XMLDocumentScannerImpl
@@ -78,45 +76,67 @@ public class XMLDocumentScannerImpl
 
     // scanner states
 
-    /** Scanner state: XML declaration. */
+    /**
+     * Scanner state: XML declaration.
+     */
     protected static final int SCANNER_STATE_XML_DECL = 0;
 
-    /** Scanner state: prolog. */
+    /**
+     * Scanner state: prolog.
+     */
     protected static final int SCANNER_STATE_PROLOG = 5;
 
-    /** Scanner state: trailing misc. */
+    /**
+     * Scanner state: trailing misc.
+     */
     protected static final int SCANNER_STATE_TRAILING_MISC = 12;
 
-    /** Scanner state: DTD internal declarations. */
+    /**
+     * Scanner state: DTD internal declarations.
+     */
     protected static final int SCANNER_STATE_DTD_INTERNAL_DECLS = 17;
 
-    /** Scanner state: open DTD external subset. */
+    /**
+     * Scanner state: open DTD external subset.
+     */
     protected static final int SCANNER_STATE_DTD_EXTERNAL = 18;
 
-    /** Scanner state: DTD external declarations. */
+    /**
+     * Scanner state: DTD external declarations.
+     */
     protected static final int SCANNER_STATE_DTD_EXTERNAL_DECLS = 19;
 
     // feature identifiers
 
-    /** Feature identifier: load external DTD. */
+    /**
+     * Feature identifier: load external DTD.
+     */
     protected static final String LOAD_EXTERNAL_DTD =
         Constants.XERCES_FEATURE_PREFIX + Constants.LOAD_EXTERNAL_DTD_FEATURE;
 
-    /** Feature identifier: load external DTD. */
+    /**
+     * Feature identifier: load external DTD.
+     */
     protected static final String DISALLOW_DOCTYPE_DECL_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.DISALLOW_DOCTYPE_DECL_FEATURE;
 
     // property identifiers
 
-    /** Property identifier: DTD scanner. */
+    /**
+     * Property identifier: DTD scanner.
+     */
     protected static final String DTD_SCANNER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.DTD_SCANNER_PROPERTY;
 
-    /** property identifier:  ValidationManager */
+    /**
+     * Property identifier:  ValidationManager
+     */
     protected static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
 
-    /** property identifier:  NamespaceContext */
+    /**
+     * Property identifier:  NamespaceContext
+     */
     protected static final String NAMESPACE_CONTEXT =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_CONTEXT_PROPERTY;
         
@@ -124,26 +144,34 @@ public class XMLDocumentScannerImpl
 
     // recognized features and properties
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         LOAD_EXTERNAL_DTD,
         DISALLOW_DOCTYPE_DECL_FEATURE,
     };
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = {
         Boolean.TRUE,
         Boolean.FALSE,
     };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         DTD_SCANNER,
         VALIDATION_MANAGER,
         NAMESPACE_CONTEXT,
     };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS = {
         null,
         null,
@@ -156,79 +184,119 @@ public class XMLDocumentScannerImpl
 
     // properties
 
-    /** DTD scanner. */
+    /**
+     * DTD scanner.
+     */
     protected XMLDTDScanner fDTDScanner;
-    /** Validation manager . */
+    /**
+     * Validation manager .
+     */
     protected ValidationManager fValidationManager;
 
     // protected data
 
-    /** Scanning DTD. */
+    /**
+     * Scanning DTD.
+     */
     protected boolean fScanningDTD;
 
     // other info
 
-    /** Doctype name. */
+    /**
+     * Doctype name.
+     */
     protected String fDoctypeName;
 
-    /** Doctype declaration public identifier. */
+    /**
+     * Doctype declaration public identifier.
+     */
     protected String fDoctypePublicId;
 
-    /** Doctype declaration system identifier. */
+    /**
+     * Doctype declaration system identifier.
+     */
     protected String fDoctypeSystemId;
 
-    /** Namespace support. */
+    /**
+     * Namespace support.
+     */
     protected NamespaceContext fNamespaceContext = new NamespaceSupport();
 
     // features
 
-    /** Load external DTD. */
+    /**
+     * Load external DTD.
+     */
     protected boolean fLoadExternalDTD = true;
 
-    /** Disallow doctype declaration. */
+    /**
+     * Disallow doctype declaration.
+     */
     protected boolean fDisallowDoctype = false;
 
     // state
 
-    /** Seen doctype declaration. */
+    /**
+     * Seen doctype declaration.
+     */
     protected boolean fSeenDoctypeDecl;
 
     // dispatchers
 
-    /** XML declaration dispatcher. */
+    /**
+     * XML declaration dispatcher.
+     */
     protected final Dispatcher fXMLDeclDispatcher = new XMLDeclDispatcher();
 
-    /** Prolog dispatcher. */
+    /**
+     * Prolog dispatcher.
+     */
     protected final Dispatcher fPrologDispatcher = new PrologDispatcher();
 
-    /** DTD dispatcher. */
+    /**
+     * DTD dispatcher.
+     */
     protected final Dispatcher fDTDDispatcher = new DTDDispatcher();
 
-    /** Trailing miscellaneous section dispatcher. */
+    /**
+     * Trailing miscellaneous section dispatcher.
+     */
     protected final Dispatcher fTrailingMiscDispatcher = new TrailingMiscDispatcher();
 
     // temporary variables
 
-    /** Array of 3 strings. */
+    /**
+     * Array of 3 strings.
+     */
     private final String[] fStrings = new String[3];
 
-    /** String. */
+    /**
+     * String.
+     */
     private final XMLString fString = new XMLString();
 
-    /** String buffer. */
+    /**
+     * String buffer.
+     */
     private final XMLStringBuffer fStringBuffer = new XMLStringBuffer();
     
-    /** External subset source. */
+    /**
+     * External subset source.
+     */
     private XMLInputSource fExternalSubsetSource = null;
     
-    /** A DTD Description. */
+    /**
+     * A DTD Description.
+     */
     private final XMLDTDDescription fDTDDescription = new XMLDTDDescription(null, null, null, null, null);
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLDocumentScannerImpl() {} // <init>()
 
     //
@@ -238,9 +306,8 @@ public class XMLDocumentScannerImpl
     /**
      * Sets the input source.
      *
-     * @param inputSource The input source.
-     *
-     * @throws IOException Thrown on i/o error.
+     * @param inputSource the input source
+     * @throws IOException thrown on i/o error
      */
     public void setInputSource(XMLInputSource inputSource) throws IOException {
         fEntityManager.setEntityHandler(this);
@@ -257,14 +324,13 @@ public class XMLDocumentScannerImpl
      * about any features and properties that affect the operation of the
      * component.
      *
-     * @param componentManager The component manager.
-     *
-     * @throws SAXException Thrown by component on initialization error.
+     * @param componentManager the component manager
+     * @throws SAXException thrown by component on initialization error.
      *                      For example, if a feature or property is
      *                      required for the operation of the component, the
      *                      component manager may throw a
      *                      SAXNotRecognizedException or a
-     *                      SAXNotSupportedException.
+     *                      SAXNotSupportedException
      */
     public void reset(XMLComponentManager componentManager)
         throws XMLConfigurationException {
@@ -349,13 +415,12 @@ public class XMLDocumentScannerImpl
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -403,13 +468,12 @@ public class XMLDocumentScannerImpl
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
      *
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
@@ -436,14 +500,13 @@ public class XMLDocumentScannerImpl
 
     } // setProperty(String,Object)
 
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
 
@@ -455,14 +518,13 @@ public class XMLDocumentScannerImpl
         return super.getFeatureDefault(featureId);
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -482,15 +544,14 @@ public class XMLDocumentScannerImpl
      * pseudo-name of "[dtd]" parameter entity names start with '%'; and
      * general entities are just specified by their name.
      *
-     * @param name     The name of the entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param name     the name of the entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
      *                 parsed from a java.io.Reader).
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startEntity(String name,
                             XMLResourceIdentifier identifier,
@@ -515,9 +576,8 @@ public class XMLDocumentScannerImpl
      * of "[dtd]" parameter entity names start with '%'; and general entities
      * are just specified by their name.
      *
-     * @param name The name of the entity.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name the name of the entity
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endEntity(String name, Augmentations augs) throws XNIException {
 
@@ -536,14 +596,18 @@ public class XMLDocumentScannerImpl
 
     // dispatcher factory methods
 
-    /** Creates a content dispatcher. */
+    /**
+     * Creates a content dispatcher.
+     */
     protected Dispatcher createContentDispatcher() {
         return new ContentDispatcher();
     } // createContentDispatcher():Dispatcher
 
     // scanning methods
 
-    /** Scans a doctype declaration. */
+    /**
+     * Scans a doctype declaration.
+     */
     protected boolean scanDoctypeDecl() throws IOException, XNIException {
 
         // spaces
@@ -610,7 +674,9 @@ public class XMLDocumentScannerImpl
     // Private methods
     //
 
-    /** Returns the scanner state name. */
+    /**
+     * Returns the scanner state name.
+     */
     protected String getScannerStateName(int state) {
 
         switch (state) {
@@ -644,14 +710,12 @@ public class XMLDocumentScannerImpl
         /**
          * Dispatch an XML "event".
          *
-         * @param complete True if this dispatcher is intended to scan
-         *                 and dispatch as much as possible.
-         *
-         * @return True if there is more to dispatch either from this
-         *          or a another dispatcher.
-         *
-         * @throws IOException  Thrown on i/o error.
-         * @throws XNIException Thrown on parse error.
+         * @param complete true if this dispatcher is intended to scan
+         *                 and dispatch as much as possible
+         * @return true if there is more to dispatch either from this
+         *          or a another dispatcher
+         * @throws IOException  thrown on i/o error
+         * @throws XNIException thrown on parse error
          */
         public boolean dispatch(boolean complete)
             throws IOException, XNIException {
@@ -735,14 +799,12 @@ public class XMLDocumentScannerImpl
         /**
          * Dispatch an XML "event".
          *
-         * @param complete True if this dispatcher is intended to scan
-         *                 and dispatch as much as possible.
-         *
-         * @return True if there is more to dispatch either from this
-         *          or a another dispatcher.
-         *
-         * @throws IOException  Thrown on i/o error.
-         * @throws XNIException Thrown on parse error.
+         * @param complete true if this dispatcher is intended to scan
+         *                 and dispatch as much as possible
+         * @return true if there is more to dispatch either from this
+         *          or a another dispatcher
+         * @throws IOException  thrown on i/o error
+         * @throws XNIException thrown on parse error
          */
         public boolean dispatch(boolean complete)
             throws IOException, XNIException {
@@ -929,14 +991,12 @@ public class XMLDocumentScannerImpl
         /**
          * Dispatch an XML "event".
          *
-         * @param complete True if this dispatcher is intended to scan
-         *                 and dispatch as much as possible.
-         *
-         * @return True if there is more to dispatch either from this
-         *          or a another dispatcher.
-         *
-         * @throws IOException  Thrown on i/o error.
-         * @throws XNIException Thrown on parse error.
+         * @param complete true if this dispatcher is intended to scan
+         *                 and dispatch as much as possible
+         * @return true if there is more to dispatch either from this
+         *          or a another dispatcher
+         * @throws IOException  thrown on i/o error
+         * @throws XNIException thrown on parse error
          */
         public boolean dispatch(boolean complete)
             throws IOException, XNIException {
@@ -1080,8 +1140,8 @@ public class XMLDocumentScannerImpl
          * to add code to handle scanning for a the "DOCTYPE" string
          * after the string "<!" has been scanned.
          *
-         * @return True if the "DOCTYPE" was scanned; false if "DOCTYPE"
-         *          was not scanned.
+         * @return true if the "DOCTYPE" was scanned; false if "DOCTYPE"
+         *          was not scanned
          */
         protected boolean scanForDoctypeHook()
             throws IOException, XNIException {
@@ -1102,7 +1162,7 @@ public class XMLDocumentScannerImpl
          * scanner must handle the trailing miscellanous section of
          * the document after the end of the document's root element.
          *
-         * @return True if the caller should stop and return true which
+         * @return true if the caller should stop and return true which
          *          allows the scanner to switch to a new scanning
          *          dispatcher. A return value of false indicates that
          *          the content dispatcher should continue as normal.
@@ -1123,7 +1183,7 @@ public class XMLDocumentScannerImpl
          * "root" element. However, when scanning a full XML document,
          * the scanner must handle the root element specially.
          *
-         * @return True if the caller should stop and return true which
+         * @return true if the caller should stop and return true which
          *          allows the scanner to switch to a new scanning
          *          dispatcher. A return value of false indicates that
          *          the content dispatcher should continue as normal.
@@ -1221,14 +1281,12 @@ public class XMLDocumentScannerImpl
         /**
          * Dispatch an XML "event".
          *
-         * @param complete True if this dispatcher is intended to scan
-         *                 and dispatch as much as possible.
-         *
-         * @return True if there is more to dispatch either from this
-         *          or a another dispatcher.
-         *
-         * @throws IOException  Thrown on i/o error.
-         * @throws XNIException Thrown on parse error.
+         * @param complete true if this dispatcher is intended to scan
+         *                 and dispatch as much as possible
+         * @return true if there is more to dispatch either from this
+         *          or a another dispatcher
+         * @throws IOException  thrown on i/o error
+         * @throws XNIException thrown on parse error
          */
         public boolean dispatch(boolean complete)
             throws IOException, XNIException {

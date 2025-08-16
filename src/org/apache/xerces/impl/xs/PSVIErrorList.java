@@ -25,9 +25,7 @@ import org.apache.xerces.xs.StringList;
  * StringList implementation for schema error codes and error messages.
  *
  * @xerces.internal
- *
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 final class PSVIErrorList extends AbstractList implements StringList {

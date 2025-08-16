@@ -31,11 +31,9 @@ import org.apache.xerces.xs.XSObjectList;
  *
  * The implementation should store the built-in datatypes in static data, so
  * that they can be shared by multiple parser instance, and multiple threads.
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public abstract class SchemaDVFactory {
@@ -46,7 +44,7 @@ public abstract class SchemaDVFactory {
      * Get a default instance of SchemaDVFactory implementation.
      *
      * @return  an instance of SchemaDVFactory implementation
-     * @exception DVFactoryException  cannot create an instance of the specified
+     * @throws DVFactoryException  cannot create an instance of the specified
      *                                class name or the default class name
      */
     public static final SchemaDVFactory getInstance() throws DVFactoryException {
@@ -57,9 +55,9 @@ public abstract class SchemaDVFactory {
     /**
      * Get an instance of SchemaDVFactory implementation.
      *
-     * @param factoryClass   name of the schema factory implementation to instantiate.
+     * @param factoryClass   name of the schema factory implementation to instantiate
      * @return  an instance of SchemaDVFactory implementation
-     * @exception DVFactoryException  cannot create an instance of the specified
+     * @throws DVFactoryException  cannot create an instance of the specified
      *                                class name or the default class name
      */
     public static final SchemaDVFactory getInstance(String factoryClass) throws DVFactoryException {
@@ -79,21 +77,21 @@ public abstract class SchemaDVFactory {
     /**
      * Get a built-in simple type of the given name
      * REVISIT: its still not decided within the Schema WG how to define the
-     *          ur-types and if all simple types should be derived from a
-     *          complex type, so as of now we ignore the fact that anySimpleType
-     *          is derived from anyType, and pass 'null' as the base of
-     *          anySimpleType. It needs to be changed as per the decision taken.
+     * ur-types and if all simple types should be derived from a
+     * complex type, so as of now we ignore the fact that anySimpleType
+     * is derived from anyType, and pass 'null' as the base of
+     * anySimpleType. It needs to be changed as per the decision taken.
      *
      * @param name  the name of the datatype
-     * @return      the datatype validator of the given name
+     * @return  the datatype validator of the given name
      */
     public abstract XSSimpleType getBuiltInType(String name);
 
     /**
-     * get all built-in simple types, which are stored in a SymbolHash keyed by
+     * Get all built-in simple types, which are stored in a SymbolHash keyed by
      * the name
      *
-     * @return      a SymbolHash which contains all built-in simple types
+     * @return  a SymbolHash which contains all built-in simple types
      */
     public abstract SymbolHash getBuiltInTypes();
 
@@ -106,7 +104,7 @@ public abstract class SchemaDVFactory {
      * @param finalSet          value of "final"
      * @param base              base type of the new type
      * @param annotations       set of annotations
-     * @return                  the newly created simple type
+     * @return  the newly created simple type
      */
     public abstract XSSimpleType createTypeRestriction(String name, String targetNamespace,
                                                        short finalSet, XSSimpleType base,
@@ -121,7 +119,7 @@ public abstract class SchemaDVFactory {
      * @param finalSet          value of "final"
      * @param itemType          item type of the list type
      * @param annotations       set of annotations
-     * @return                  the newly created simple type
+     * @return  the newly created simple type
      */
     public abstract XSSimpleType createTypeList(String name, String targetNamespace,
                                                 short finalSet, XSSimpleType itemType,
@@ -136,7 +134,7 @@ public abstract class SchemaDVFactory {
      * @param finalSet          value of "final"
      * @param memberTypes       member types of the union type
      * @param annotations       set of annotations
-     * @return                  the newly created simple type
+     * @return  the newly created simple type
      */
     public abstract XSSimpleType createTypeUnion(String name, String targetNamespace,
                                                  short finalSet, XSSimpleType[] memberTypes,

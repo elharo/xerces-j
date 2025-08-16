@@ -13,11 +13,12 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- * An attribute declaration in the context of a <code>ASObject</code>.The 
+ * an attribute declaration in the context of a <code>ASObject</code>.The 
  * constant 'REQUIRED' is missing from this interface.
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
-and Save Specification</a>.
+and Save Specification</a>
  */
 public interface ASAttributeDeclaration extends ASObject {
     // VALUE_TYPES
@@ -62,12 +63,12 @@ public interface ASAttributeDeclaration extends ASObject {
     public void setEnumAttr(String enumAttr);
 
     /**
-     * Owner elements <code>ASObject</code> of attribute, meaning that an 
+     * Owner elements <code>ASObject</code> of attribute, meaning that an
      * attribute declaration can be shared by multiple elements.
      */
     public ASObjectList getOwnerElements();
     /**
-     * Owner elements <code>ASObject</code> of attribute, meaning that an 
+     * Owner elements <code>ASObject</code> of attribute, meaning that an
      * attribute declaration can be shared by multiple elements.
      */
     public void setOwnerElements(ASObjectList ownerElements);

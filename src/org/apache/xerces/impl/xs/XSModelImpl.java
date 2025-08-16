@@ -51,10 +51,8 @@ import org.apache.xerces.xs.XSTypeDefinition;
  * Implements XSModel:  a read-only interface that represents an XML Schema,
  * which could be components from different namespaces.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public final class XSModelImpl extends AbstractList implements XSModel, XSNamespaceItemList {
@@ -107,7 +105,7 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
    /**
     * Construct an XSModelImpl, by storing some grammars and grammars imported
     * by them to this object.
-    * 
+    *
     * @param grammars   the array of schema grammars
     */
     public XSModelImpl(SchemaGrammar[] grammars) {
@@ -262,37 +260,39 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a list of all namespaces that belong to
      * this schema.
-     * @return A list of all namespaces that belong to this schema or
-     *   <code>null</code> if all components don't have a targetNamespace.
+     *
+     * @return a list of all namespaces that belong to this schema or
+     *   <code>null</code> if all components don't have a targetNamespace
      */
     public StringList getNamespaces() {
         return fNamespacesList;
     }
 
     /**
-     * A set of namespace schema information information items (of type 
-     * <code>XSNamespaceItem</code>), one for each namespace name which 
-     * appears as the target namespace of any schema component in the schema 
-     * used for that assessment, and one for absent if any schema component 
-     * in the schema had no target namespace. For more information see 
-     * schema information. 
+     * A set of namespace schema information information items (of type
+     * <code>XSNamespaceItem</code>), one for each namespace name which
+     * appears as the target namespace of any schema component in the schema
+     * used for that assessment, and one for absent if any schema component
+     * in the schema had no target namespace. For more information see
+     * schema information.
      */
     public XSNamespaceItemList getNamespaceItems() {
         return this;
     }
 
     /**
-     * Returns a list of top-level components, i.e. element declarations, 
-     * attribute declarations, etc. 
-     * @param objectType The type of the declaration, i.e. 
+     * Returns a list of top-level components, i.e. element declarations,
+     * attribute declarations, etc.
+     *
+     * @param objectType the type of the declaration, i.e.
      *   <code>ELEMENT_DECLARATION</code>. Note that 
      *   <code>XSTypeDefinition.SIMPLE_TYPE</code> and 
      *   <code>XSTypeDefinition.COMPLEX_TYPE</code> can also be used as the 
      *   <code>objectType</code> to retrieve only complex types or simple 
      *   types, instead of all types.
-     * @return  A list of top-level definitions of the specified type in 
+     * @return A list of top-level definitions of the specified type in
      *   <code>objectType</code> or an empty <code>XSNamedMap</code> if no 
-     *   such definitions exist. 
+     *   such definitions exist
      */
     public synchronized XSNamedMap getComponents(short objectType) {
         if (objectType <= 0 || objectType > MAX_COMP_IDX ||
@@ -345,16 +345,17 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     }
 
     /**
-     * Convenience method. Returns a list of top-level component declarations 
-     * that are defined within the specified namespace, i.e. element 
-     * declarations, attribute declarations, etc. 
-     * @param objectType The type of the declaration, i.e. 
-     *   <code>ELEMENT_DECLARATION</code>.
-     * @param namespace The namespace to which the declaration belongs or 
-     *   <code>null</code> (for components with no target namespace).
-     * @return  A list of top-level definitions of the specified type in 
+     * Convenience method. Returns a list of top-level component declarations
+     * that are defined within the specified namespace, i.e. element
+     * declarations, attribute declarations, etc.
+     *
+     * @param objectType the type of the declaration, i.e.
+     *   <code>ELEMENT_DECLARATION</code>
+     * @param namespace the namespace to which the declaration belongs or
+     *   <code>null</code> (for components with no target namespace)
+     * @return A list of top-level definitions of the specified type in
      *   <code>objectType</code> and defined in the specified 
-     *   <code>namespace</code> or an empty <code>XSNamedMap</code>. 
+     *   <code>namespace</code> or an empty <code>XSNamedMap</code>
      */
     public synchronized XSNamedMap getComponentsByNamespace(short objectType,
                                                             String namespace) {
@@ -429,10 +430,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level simple or complex type
      * definition.
-     * @param name The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return An <code>XSTypeDefinition</code> or null if such definition
-     *   does not exist.
+     *
+     * @param name the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @return an <code>XSTypeDefinition</code> or null if such definition
+     *   does not exist
      */
     public XSTypeDefinition getTypeDefinition(String name,
                                               String namespace) {
@@ -446,11 +448,12 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level simple or complex type
      * definition.
-     * @param name The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return An <code>XSTypeDefinition</code> or null if such definition
-     *   does not exist.
+     *
+     * @param name the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return an <code>XSTypeDefinition</code> or null if such definition
+     *   does not exist
      */
     public XSTypeDefinition getTypeDefinition(String name,
                                               String namespace,
@@ -464,10 +467,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
     /**
      * Convenience method. Returns a top-level attribute declaration.
-     * @param name The name of the declaration.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return A top-level attribute declaration or null if such declaration
-     *   does not exist.
+     *
+     * @param name the name of the declaration
+     * @param namespace the namespace of the definition, otherwise null
+     * @return a top-level attribute declaration or null if such declaration
+     *   does not exist
      */
     public XSAttributeDeclaration getAttributeDeclaration(String name,
                                                    String namespace) {
@@ -480,11 +484,12 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
     /**
      * Convenience method. Returns a top-level attribute declaration.
-     * @param name The name of the declaration.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return A top-level attribute declaration or null if such declaration
-     *   does not exist.
+     *
+     * @param name the name of the declaration
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return a top-level attribute declaration or null if such declaration
+     *   does not exist
      */
     public XSAttributeDeclaration getAttributeDeclaration(String name,
                                                    String namespace,
@@ -498,10 +503,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
     /**
      * Convenience method. Returns a top-level element declaration.
-     * @param name The name of the declaration.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return A top-level element declaration or null if such declaration
-     *   does not exist.
+     *
+     * @param name the name of the declaration
+     * @param namespace the namespace of the definition, otherwise null
+     * @return a top-level element declaration or null if such declaration
+     *   does not exist
      */
     public XSElementDeclaration getElementDeclaration(String name,
                                                String namespace) {
@@ -514,11 +520,12 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
     /**
      * Convenience method. Returns a top-level element declaration.
-     * @param name The name of the declaration.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return A top-level element declaration or null if such declaration
-     *   does not exist.
+     *
+     * @param name the name of the declaration
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return a top-level element declaration or null if such declaration
+     *   does not exist
      */
     public XSElementDeclaration getElementDeclaration(String name,
                                                String namespace,
@@ -532,10 +539,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
     /**
      * Convenience method. Returns a top-level attribute group definition.
-     * @param name The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return A top-level attribute group definition or null if such
-     *   definition does not exist.
+     *
+     * @param name the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @return a top-level attribute group definition or null if such
+     *   definition does not exist
      */
     public XSAttributeGroupDefinition getAttributeGroup(String name,
                                                         String namespace) {
@@ -548,11 +556,12 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     
     /**
      * Convenience method. Returns a top-level attribute group definition.
-     * @param name The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return A top-level attribute group definition or null if such
-     *   definition does not exist.
+     *
+     * @param name the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return a top-level attribute group definition or null if such
+     *   definition does not exist
      */
     public XSAttributeGroupDefinition getAttributeGroup(String name,
                                                         String namespace,
@@ -567,10 +576,10 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level model group definition.
      *
-     * @param name      The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return A top-level model group definition definition or null if such
-     *         definition does not exist.
+     * @param name      the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @return a top-level model group definition definition or null if such
+     *         definition does not exist
      */
     public XSModelGroupDefinition getModelGroupDefinition(String name,
                                                           String namespace) {
@@ -584,11 +593,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level model group definition.
      *
-     * @param name      The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return A top-level model group definition definition or null if such
-     *         definition does not exist.
+     * @param name      the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return a top-level model group definition definition or null if such
+     *         definition does not exist
      */
     public XSModelGroupDefinition getModelGroupDefinition(String name,
                                                           String namespace,
@@ -603,10 +612,10 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level model group definition.
      *
-     * @param name      The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @return A top-level model group definition definition or null if such
-     *         definition does not exist.
+     * @param name      the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @return a top-level model group definition definition or null if such
+     *         definition does not exist
      */
     public XSIDCDefinition getIDCDefinition(String name, String namespace) {
         SchemaGrammar sg = (SchemaGrammar)fGrammarMap.get(null2EmptyString(namespace));
@@ -619,11 +628,11 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     /**
      * Convenience method. Returns a top-level model group definition.
      *
-     * @param name      The name of the definition.
-     * @param namespace The namespace of the definition, otherwise null.
-     * @param loc The schema location where the component was defined
-     * @return A top-level model group definition definition or null if such
-     *         definition does not exist.
+     * @param name      the name of the definition
+     * @param namespace the namespace of the definition, otherwise null
+     * @param loc the schema location where the component was defined
+     * @return a top-level model group definition definition or null if such
+     *         definition does not exist
      */
     public XSIDCDefinition getIDCDefinition(String name, String namespace,
                                                           String loc) {
@@ -636,6 +645,7 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
 
 
     /**
+     *
      * @see org.apache.xerces.xs.XSModel#getNotationDeclaration(String, String)
      */
     public XSNotationDeclaration getNotationDeclaration(String name,
@@ -658,8 +668,8 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     }
 
     /**
-     *  [annotations]: a set of annotations if it exists, otherwise an empty 
-     * <code>XSObjectList</code>. 
+     * [annotations]: a set of annotations if it exists, otherwise an empty
+     * <code>XSObjectList</code>.
      */
     public synchronized XSObjectList getAnnotations() {
         if (fAnnotations != null) {
@@ -707,11 +717,12 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
      * substitution group for the given <code>XSElementDeclaration</code>
      * or an empty <code>XSObjectList</code> if the substitution group
      * contains no members.
-     * @param head The substitution group head.
-     * @return A list containing the members of the substitution group 
+     *
+     * @param head the substitution group head
+     * @return a list containing the members of the substitution group
      *  for the given <code>XSElementDeclaration</code> or an empty 
      *  <code>XSObjectList</code> if the substitution group contains 
-     *  no members.
+     *  no members
      */
     public XSObjectList getSubstitutionGroup(XSElementDeclaration head) {
         return (XSObjectList)fSubGroupMap.get(head);
@@ -722,21 +733,22 @@ public final class XSModelImpl extends AbstractList implements XSModel, XSNamesp
     // 
 
     /**
-     * The number of <code>XSNamespaceItem</code>s in the list. The range of 
-     * valid child object indices is 0 to <code>length-1</code> inclusive. 
+     * The number of <code>XSNamespaceItem</code>s in the list. The range of
+     * valid child object indices is 0 to <code>length-1</code> inclusive.
      */
     public int getLength() {
         return fGrammarCount;
     }
 
     /**
-     * Returns the <code>index</code>th item in the collection or 
-     * <code>null</code> if <code>index</code> is greater than or equal to 
-     * the number of objects in the list. The index starts at 0. 
-     * @param index  index into the collection. 
-     * @return  The <code>XSNamespaceItem</code> at the <code>index</code>th 
+     * Returns the <code>index</code>th item in the collection or
+     * <code>null</code> if <code>index</code> is greater than or equal to
+     * the number of objects in the list. The index starts at 0.
+     *
+     * @param index  index into the collection
+     * @return The <code>XSNamespaceItem</code> at the <code>index</code>th
      *   position in the <code>XSNamespaceItemList</code>, or 
-     *   <code>null</code> if the index specified is not valid. 
+     *   <code>null</code> if the index specified is not valid
      */
     public XSNamespaceItem item(int index) {
         if (index < 0 || index >= fGrammarCount) {

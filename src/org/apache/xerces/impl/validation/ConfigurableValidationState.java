@@ -20,11 +20,10 @@ package org.apache.xerces.impl.validation;
 import java.util.Iterator;
 
 /**
- * <p>An extension of ValidationState which can be configured to turn 
+ * <p>An extension of ValidationState which can be configured to turn
  * off checking for ID/IDREF errors and unparsed entity errors.</p>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Peter McCracken, IBM
  * @version $Id$
  */
@@ -42,7 +41,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Creates a new ConfigurableValidationState.
-     * By default, error checking for both ID/IDREFs 
+     * By default, error checking for both ID/IDREFs
      * and unparsed entities are turned on.
      */
     public ConfigurableValidationState() {
@@ -53,6 +52,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Turns checking for ID/IDREF errors on and off.
+     *
      * @param setting true to turn on error checking,
      *                 false to turn off error checking
      */
@@ -62,6 +62,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Turns checking for unparsed entity errors on and off.
+     *
      * @param setting true to turn on error checking,
      *                 false to turn off error checking
      */
@@ -71,6 +72,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Checks if all IDREFs have a corresponding ID.
+     *
      * @return null, if ID/IDREF checking is turned off
      *         otherwise, returns the value of the super implementation
      */
@@ -80,6 +82,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Checks if an ID has already been declared.
+     *
      * @return false, if ID/IDREF checking is turned off
      *         otherwise, returns the value of the super implementation
      */
@@ -89,6 +92,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Checks if an entity is declared.
+     *
      * @return true, if unparsed entity checking is turned off
      *         otherwise, returns the value of the super implementation
      */
@@ -98,6 +102,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Checks if an entity is unparsed.
+     *
      * @return true, if unparsed entity checking is turned off
      *         otherwise, returns the value of the super implementation
      */
@@ -107,6 +112,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Adds the ID, if ID/IDREF checking is enabled.
+     *
      * @param name the ID to add
      */
     public void addId(String name) {
@@ -117,6 +123,7 @@ public final class ConfigurableValidationState extends ValidationState {
     
     /**
      * Adds the IDREF, if ID/IDREF checking is enabled.
+     *
      * @param name the IDREF to add
      */
     public void addIdRef(String name) {

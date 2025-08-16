@@ -22,11 +22,10 @@ import org.xml.sax.Locator;
 import org.xml.sax.ext.Locator2;
 
 /**
- * Wraps {@link XMLLocator} and make it look like a SAX {@link Locator}.  
- * 
+ * Wraps {@link XMLLocator} and make it look like a SAX {@link Locator}.
+ *
  * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- * 
  * @version $Id$
  */
 public class LocatorProxy implements Locator2 {
@@ -35,14 +34,18 @@ public class LocatorProxy implements Locator2 {
     // Data
     //
         
-    /** XML locator. */
+    /**
+     * XML locator.
+     */
     private final XMLLocator fLocator;
     
     //
     // Constructors
     //
         
-    /** Constructs an XML locator proxy. */
+    /**
+     * Constructs an XML locator proxy.
+     */
     public LocatorProxy(XMLLocator locator) {
         fLocator = locator;
     }
@@ -51,22 +54,30 @@ public class LocatorProxy implements Locator2 {
     // Locator methods
     //
         
-    /** Public identifier. */
+    /**
+     * Public identifier.
+     */
     public String getPublicId() {
         return fLocator.getPublicId();
     }
         
-    /** System identifier. */
+    /**
+     * System identifier.
+     */
     public String getSystemId() {
         return fLocator.getExpandedSystemId();
     }
     
-    /** Line number. */
+    /**
+     * Line number.
+     */
     public int getLineNumber() {
         return fLocator.getLineNumber();
     }
         
-    /** Column number. */
+    /**
+     * Column number.
+     */
     public int getColumnNumber() {
         return fLocator.getColumnNumber();
     }

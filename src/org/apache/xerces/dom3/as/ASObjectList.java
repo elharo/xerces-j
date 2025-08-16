@@ -13,8 +13,9 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- * The <code>ASObjectList</code> interface provides the abstraction of an 
+ * the <code>ASObjectList</code> interface provides the abstraction of an 
  * ordered collection of AS nodes, without defining or constraining how this 
  * collection is implemented. <code>ASObjectList</code> objects in the DOM 
  * AS are live.
@@ -23,19 +24,20 @@ and Save Specification</a>.
  */
 public interface ASObjectList {
     /**
-     * The number of <code>ASObjects</code> in the list. The range of valid 
+     * The number of <code>ASObjects</code> in the list. The range of valid
      * child node indices is 0 to <code>length-1</code> inclusive.
      */
     public int getLength();
 
     /**
-     * Returns the <code>index</code>th item in the collection. The index 
-     * starts at 0. If <code>index</code> is greater than or equal to the 
+     * Returns the <code>index</code>th item in the collection. The index
+     * starts at 0. If <code>index</code> is greater than or equal to the
      * number of nodes in the list, this returns <code>null</code>.
-     * @param index index into the collection.
-     * @return The <code>ASObject</code> at the <code>index</code>th position 
+     *
+     * @param index index into the collection
+     * @return the <code>ASObject</code> at the <code>index</code>th position
      *   in the <code>ASObjectList</code>, or <code>null</code> if that is 
-     *   not a valid index.
+     *   not a valid index
      */
     public ASObject item(int index);
 

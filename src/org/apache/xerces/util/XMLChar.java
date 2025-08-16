@@ -37,10 +37,9 @@ import java.util.Arrays;
  * @author Glenn Marcy, IBM
  * @author Andy Clark, IBM
  * @author Eric Ye, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Michael Glavassevich, IBM
- * @author Rahul Srivastava, Sun Microsystems Inc.
- *
+ * @author Rahul Srivastava, Sun Microsystems Inc
  * @version $Id$
  */
 public class XMLChar {
@@ -49,27 +48,39 @@ public class XMLChar {
     // Constants
     //
 
-    /** Character flags. */
+    /**
+     * Character flags.
+     */
     private static final byte[] CHARS = new byte[1 << 16];
 
-    /** Valid character mask. */
+    /**
+     * Valid character mask.
+     */
     public static final int MASK_VALID = 0x01;
 
-    /** Space character mask. */
+    /**
+     * Space character mask.
+     */
     public static final int MASK_SPACE = 0x02;
 
-    /** Name start character mask. */
+    /**
+     * Name start character mask.
+     */
     public static final int MASK_NAME_START = 0x04;
 
-    /** Name character mask. */
+    /**
+     * Name character mask.
+     */
     public static final int MASK_NAME = 0x08;
 
-    /** Pubid character mask. */
+    /**
+     * Pubid character mask.
+     */
     public static final int MASK_PUBID = 0x10;
     
-    /** 
+    /**
      * Content character mask. Special characters are those that can
-     * be considered the start of markup, such as '&lt;' and '&amp;'. 
+     * be considered the start of markup, such as '&lt;' and '&amp;'.
      * The various newline characters are considered special as well.
      * All other valid XML characters can be considered content.
      * <p>
@@ -77,10 +88,14 @@ public class XMLChar {
      */
     public static final int MASK_CONTENT = 0x20;
 
-    /** NCName start character mask. */
+    /**
+     * NCName start character mask.
+     */
     public static final int MASK_NCNAME_START = 0x40;
 
-    /** NCName character mask. */
+    /**
+     * NCName character mask.
+     */
     public static final int MASK_NCNAME = 0x80;
 
     //
@@ -721,7 +736,7 @@ public class XMLChar {
     /**
      * Returns true if the specified character is a supplemental character.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isSupplemental(int c) {
         return (c >= 0x10000 && c <= 0x10FFFF);
@@ -731,8 +746,8 @@ public class XMLChar {
      * Returns true the supplemental character corresponding to the given
      * surrogates.
      *
-     * @param h The high surrogate.
-     * @param l The low surrogate.
+     * @param h the high surrogate
+     * @param l the low surrogate
      */
     public static int supplemental(char h, char l) {
         return (h - 0xD800) * 0x400 + (l - 0xDC00) + 0x10000;
@@ -741,7 +756,7 @@ public class XMLChar {
     /**
      * Returns the high surrogate of a supplemental character
      *
-     * @param c The supplemental character to "split".
+     * @param c the supplemental character to "split"
      */
     public static char highSurrogate(int c) {
         return (char) (((c - 0x00010000) >> 10) + 0xD800);
@@ -750,7 +765,7 @@ public class XMLChar {
     /**
      * Returns the low surrogate of a supplemental character
      *
-     * @param c The supplemental character to "split".
+     * @param c the supplemental character to "split"
      */
     public static char lowSurrogate(int c) {
         return (char) (((c - 0x00010000) & 0x3FF) + 0xDC00);
@@ -759,7 +774,7 @@ public class XMLChar {
     /**
      * Returns whether the given character is a high surrogate
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isHighSurrogate(int c) {
         return (0xD800 <= c && c <= 0xDBFF);
@@ -768,7 +783,7 @@ public class XMLChar {
     /**
      * Returns whether the given character is a low surrogate
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isLowSurrogate(int c) {
         return (0xDC00 <= c && c <= 0xDFFF);
@@ -783,7 +798,7 @@ public class XMLChar {
      * <code>CHARS</code> array, then they are responsible for checking
      * the surrogate character range.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isValid(int c) {
         return (c < 0x10000 && (CHARS[c] & MASK_VALID) != 0) ||
@@ -793,7 +808,7 @@ public class XMLChar {
     /**
      * Returns true if the specified character is invalid.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isInvalid(int c) {
         return !isValid(c);
@@ -802,7 +817,7 @@ public class XMLChar {
     /**
      * Returns true if the specified character can be considered content.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isContent(int c) {
         return (c < 0x10000 && (CHARS[c] & MASK_CONTENT) != 0) ||
@@ -813,7 +828,7 @@ public class XMLChar {
      * Returns true if the specified character can be considered markup.
      * Markup characters include '&lt;', '&amp;', and '%'.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isMarkup(int c) {
         return c == '<' || c == '&' || c == '%';
@@ -823,7 +838,7 @@ public class XMLChar {
      * Returns true if the specified character is a space character
      * as defined by production [3] in the XML 1.0 specification.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isSpace(int c) {
         return c <= 0x20 && (CHARS[c] & MASK_SPACE) != 0;
@@ -834,7 +849,7 @@ public class XMLChar {
      * character as defined by production [5] in the XML 1.0
      * specification.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isNameStart(int c) {
         return c < 0x10000 && (CHARS[c] & MASK_NAME_START) != 0;
@@ -845,7 +860,7 @@ public class XMLChar {
      * character as defined by production [4] in the XML 1.0
      * specification.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isName(int c) {
         return c < 0x10000 && (CHARS[c] & MASK_NAME) != 0;
@@ -856,7 +871,7 @@ public class XMLChar {
      * character as defined by production [4] in Namespaces in XML
      * recommendation.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isNCNameStart(int c) {
         return c < 0x10000 && (CHARS[c] & MASK_NCNAME_START) != 0;
@@ -867,7 +882,7 @@ public class XMLChar {
      * character as defined by production [5] in Namespaces in XML
      * recommendation.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isNCName(int c) {
         return c < 0x10000 && (CHARS[c] & MASK_NCNAME) != 0;
@@ -878,7 +893,7 @@ public class XMLChar {
      * character as defined by production [13] in the XML 1.0
      * specification.
      *
-     * @param c The character to check.
+     * @param c the character to check
      */
     public static boolean isPubid(int c) {
         return c < 0x10000 && (CHARS[c] & MASK_PUBID) != 0;
@@ -949,7 +964,7 @@ public class XMLChar {
      * in the XML 1.0 Recommendation
      *
      * @param nmtoken string to check
-     * @return true if nmtoken is a valid Nmtoken 
+     * @return true if nmtoken is a valid Nmtoken
      */
     public static boolean isValidNmtoken(String nmtoken) {
         final int length = nmtoken.length();
@@ -977,7 +992,7 @@ public class XMLChar {
      * for this encoding, only that the characters are valid for an
      * IANA encoding name.
      *
-     * @param ianaEncoding The IANA encoding name.
+     * @param ianaEncoding the IANA encoding name
      */
     public static boolean isValidIANAEncoding(String ianaEncoding) {
         if (ianaEncoding != null) {
@@ -1006,7 +1021,7 @@ public class XMLChar {
      * for this encoding, only that the characters are valid for an
      * Java encoding name.
      *
-     * @param javaEncoding The Java encoding name.
+     * @param javaEncoding the Java encoding name
      */
     public static boolean isValidJavaEncoding(String javaEncoding) {
         if (javaEncoding != null) {
@@ -1029,9 +1044,9 @@ public class XMLChar {
     // other methods
     
     /**
-     * Trims space characters as defined by production [3] in 
+     * Trims space characters as defined by production [3] in
      * the XML 1.0 specification from both ends of the given string.
-     * 
+     *
      * @param value the string to be trimmed
      * @return the given string with the space characters trimmed
      * from both ends

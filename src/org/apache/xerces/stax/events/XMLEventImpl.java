@@ -31,16 +31,15 @@ import org.apache.xerces.stax.EmptyLocation;
 import org.apache.xerces.stax.ImmutableLocation;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 abstract class XMLEventImpl implements XMLEvent {
 
     /**
-     * Constant representing the type of this event. 
+     * Constant representing the type of this event.
      * {@see javax.xml.stream.XMLStreamConstants}
      */
     private int fEventType;
@@ -64,6 +63,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#getEventType()
      */
     public final int getEventType() {
@@ -71,6 +71,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#getLocation()
      */
     public final Location getLocation() {
@@ -78,6 +79,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isStartElement()
      */
     public final boolean isStartElement() {
@@ -85,6 +87,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isAttribute()
      */
     public final boolean isAttribute() {
@@ -92,6 +95,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isNamespace()
      */
     public final boolean isNamespace() {
@@ -99,6 +103,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isEndElement()
      */
     public final boolean isEndElement() {
@@ -106,6 +111,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isEntityReference()
      */
     public final boolean isEntityReference() {
@@ -113,6 +119,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isProcessingInstruction()
      */
     public final boolean isProcessingInstruction() {
@@ -120,6 +127,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isCharacters()
      */
     public final boolean isCharacters() {
@@ -129,6 +137,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isStartDocument()
      */
     public final boolean isStartDocument() {
@@ -136,6 +145,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#isEndDocument()
      */
     public final boolean isEndDocument() {
@@ -143,6 +153,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#asStartElement()
      */
     public final StartElement asStartElement() {
@@ -150,6 +161,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#asEndElement()
      */
     public final EndElement asEndElement() {
@@ -157,6 +169,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#asCharacters()
      */
     public final Characters asCharacters() {
@@ -164,6 +177,7 @@ abstract class XMLEventImpl implements XMLEvent {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.XMLEvent#getSchemaType()
      */
     public final QName getSchemaType() {

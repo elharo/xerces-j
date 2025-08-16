@@ -49,6 +49,7 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
 /**
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
  * @version $Id$
@@ -56,39 +57,57 @@ import org.xml.sax.SAXNotSupportedException;
 public class DocumentBuilderImpl extends DocumentBuilder
         implements JAXPConstants
 {
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     private static final String NAMESPACES_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
     
-    /** Feature identifier: include ignorable white space. */
+    /**
+     * Feature identifier: include ignorable white space.
+     */
     private static final String INCLUDE_IGNORABLE_WHITESPACE =
         Constants.XERCES_FEATURE_PREFIX + Constants.INCLUDE_IGNORABLE_WHITESPACE;
     
-    /** Feature identifier: create entiry ref nodes feature. */
+    /**
+     * Feature identifier: create entiry ref nodes feature.
+     */
     private static final String CREATE_ENTITY_REF_NODES_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.CREATE_ENTITY_REF_NODES_FEATURE;
     
-    /** Feature identifier: include comments feature. */
+    /**
+     * Feature identifier: include comments feature.
+     */
     private static final String INCLUDE_COMMENTS_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.INCLUDE_COMMENTS_FEATURE;
     
-    /** Feature identifier: create cdata nodes feature. */
+    /**
+     * Feature identifier: create cdata nodes feature.
+     */
     private static final String CREATE_CDATA_NODES_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.CREATE_CDATA_NODES_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /**
+     * Feature identifier: XInclude processing
+     */
     private static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
 
-    /** feature identifier: XML Schema validation */
+    /**
+     * Feature identifier: XML Schema validation
+     */
     private static final String XMLSCHEMA_VALIDATION_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
     
-    /** Feature identifier: validation */
+    /**
+     * Feature identifier: validation
+     */
     private static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     private static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
     
@@ -100,10 +119,14 @@ public class DocumentBuilderImpl extends DocumentBuilder
     private final ValidationManager fSchemaValidationManager;
     private final UnparsedEntityHandler fUnparsedEntityHandler;
     
-    /** Initial ErrorHandler */
+    /**
+     * Initial ErrorHandler
+     */
     private final ErrorHandler fInitErrorHandler;
     
-    /** Initial EntityResolver */
+    /**
+     * Initial EntityResolver
+     */
     private final EntityResolver fInitEntityResolver;
     
     DocumentBuilderImpl(DocumentBuilderFactoryImpl dbf, Hashtable dbfAttrs, Hashtable features)
@@ -158,7 +181,9 @@ public class DocumentBuilderImpl extends DocumentBuilder
         if (grammar != null) {
             XMLParserConfiguration config = domParser.getXMLParserConfiguration();
             XMLComponent validatorComponent = null;
-            /** For Xerces grammars, use built-in schema validator. **/
+            /**
+             * For Xerces grammars, use built-in schema validator. *
+             */
             if (grammar instanceof XSGrammarPoolContainer) {
                 validatorComponent = new XMLSchemaValidator();
                 fSchemaValidationManager = new ValidationManager();
@@ -169,7 +194,9 @@ public class DocumentBuilderImpl extends DocumentBuilder
                 fSchemaValidatorComponentManager = new SchemaValidatorConfiguration(config, 
                         (XSGrammarPoolContainer) grammar, fSchemaValidationManager);
             }
-            /** For third party grammars, use the JAXP validator component. **/
+            /**
+             * For third party grammars, use the JAXP validator component. *
+             */
             else {
                 validatorComponent = new JAXPValidatorComponent(grammar.newValidatorHandler());
                 fSchemaValidationManager = null;
@@ -321,6 +348,7 @@ public class DocumentBuilderImpl extends DocumentBuilder
     
     /**
      * Gets the XInclude processing mode for this parser
+     *
      * @return the state of XInclude processing mode
      */
     public boolean isXIncludeAware() {
@@ -345,11 +373,15 @@ public class DocumentBuilderImpl extends DocumentBuilder
     }
     
     public void reset() {
-        /** Restore the initial error handler. **/
+        /**
+         * Restore the initial error handler. *
+         */
         if (domParser.getErrorHandler() != fInitErrorHandler) {
             domParser.setErrorHandler(fInitErrorHandler);
         }
-        /** Restore the initial entity resolver. **/
+        /**
+         * Restore the initial entity resolver. *
+         */
         if (domParser.getEntityResolver() != fInitEntityResolver) {
             domParser.setEntityResolver(fInitEntityResolver);
         }

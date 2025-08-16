@@ -22,14 +22,12 @@ import org.w3c.dom.DOMImplementation;
  * <p>This DOMImplementation class is description of a particular
  * implementation of the Document Object Model. As such its data is
  * static, shared by all instances of this implementation.</p>
- * 
+ *
  * <p>This implementation simply extends DOMImplementationImpl to differentiate
  * between the Deferred DOM Implementations and Non-Deferred DOM Implementations.</p>
- * 
+ *
  * @xerces.internal
- *
  * @author Neil Delima, IBM
- *
  * @version $Id$
  */
 public class DeferredDOMImplementationImpl 
@@ -41,7 +39,9 @@ public class DeferredDOMImplementationImpl
     
     // static
     
-    /** Dom implementation singleton. */
+    /**
+     * Dom implementation singleton.
+     */
     static final DeferredDOMImplementationImpl singleton = new DeferredDOMImplementationImpl();
     
     
@@ -49,7 +49,9 @@ public class DeferredDOMImplementationImpl
     // Public methods
     //
     
-    /** NON-DOM: Obtain and return the single shared object */
+    /**
+     * NON-DOM: Obtain and return the single shared object
+     */
     public static DOMImplementation getDOMImplementation() {
         return singleton;
     }

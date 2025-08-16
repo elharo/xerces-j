@@ -13,30 +13,31 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- * This interface represents a notation declaration. 
+ * this interface represents a notation declaration. 
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
 and Save Specification</a>.
  */
 public interface ASNotationDeclaration extends ASObject {
     /**
-     * the URI reference representing the system identifier for the notation 
+     * The URI reference representing the system identifier for the notation
      * declaration, if present, <code>null</code> otherwise.
      */
     public String getSystemId();
     /**
-     * the URI reference representing the system identifier for the notation 
+     * The URI reference representing the system identifier for the notation
      * declaration, if present, <code>null</code> otherwise.
      */
     public void setSystemId(String systemId);
 
     /**
-     * The string representing the public identifier for this notation 
+     * The string representing the public identifier for this notation
      * declaration, if present; <code>null</code> otherwise.
      */
     public String getPublicId();
     /**
-     * The string representing the public identifier for this notation 
+     * The string representing the public identifier for this notation
      * declaration, if present; <code>null</code> otherwise.
      */
     public void setPublicId(String publicId);

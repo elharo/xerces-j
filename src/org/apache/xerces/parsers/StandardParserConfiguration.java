@@ -27,37 +27,36 @@ import org.apache.xerces.xni.parser.XMLConfigurationException;
 
 /**
  * This is the "standard" parser configuration. It extends the DTD
- * configuration with the standard set of parser components. 
+ * configuration with the standard set of parser components.
  * The standard set of parser components include those needed
  * to parse and validate with DTD's, and those needed for XML
  * Schema.</p>
  * <p>
  * In addition to the features and properties recognized by the base
- * parser configuration, this class recognizes these additional 
+ * parser configuration, this class recognizes these additional
  * features and properties:
  * <ul>
  * <li>Features
- *  <ul>
- *  <li>http://apache.org/xml/features/validation/schema</li>
- *  <li>http://apache.org/xml/features/validation/schema-full-checking</li>
- *  <li>http://apache.org/xml/features/validation/schema/normalized-value</li>
- *  <li>http://apache.org/xml/features/validation/schema/element-default</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/features/validation/schema</li>
+ * <li>http://apache.org/xml/features/validation/schema-full-checking</li>
+ * <li>http://apache.org/xml/features/validation/schema/normalized-value</li>
+ * <li>http://apache.org/xml/features/validation/schema/element-default</li>
+ * </ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *   <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *   <li>http://apache.org/xml/properties/internal/document-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *   <li>http://apache.org/xml/properties/internal/validator/dtd</li>
- *   <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/document-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/validator/dtd</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * </ul>
  * </ul>
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class StandardParserConfiguration
@@ -69,88 +68,128 @@ public class StandardParserConfiguration
 
     // feature identifiers
 
-    /** Feature identifier: expose schema normalized value */
+    /**
+     * Feature identifier: expose schema normalized value
+     */
     protected static final String NORMALIZE_DATA =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
 
 
-    /** Feature identifier: send element default value via characters() */
+    /**
+     * Feature identifier: send element default value via characters()
+     */
     protected static final String SCHEMA_ELEMENT_DEFAULT =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_ELEMENT_DEFAULT;
 
 
-    /** Feature identifier: augment PSVI */
+    /**
+     * Feature identifier: augment PSVI
+     */
     protected static final String SCHEMA_AUGMENT_PSVI =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_AUGMENT_PSVI;
 
 
-    /** feature identifier: XML Schema validation */
+    /**
+     * Feature identifier: XML Schema validation
+     */
     protected static final String XMLSCHEMA_VALIDATION = 
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
 
-    /** feature identifier: XML Schema validation -- full checking */
+    /**
+     * Feature identifier: XML Schema validation -- full checking
+     */
     protected static final String XMLSCHEMA_FULL_CHECKING = 
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_FULL_CHECKING;
     
-    /** Feature: generate synthetic annotations */
+    /**
+     * Feature: generate synthetic annotations
+     */
     protected static final String GENERATE_SYNTHETIC_ANNOTATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.GENERATE_SYNTHETIC_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: validate annotations */
+    /**
+     * Feature identifier: validate annotations
+     */
     protected static final String VALIDATE_ANNOTATIONS =
         Constants.XERCES_FEATURE_PREFIX + Constants.VALIDATE_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: honour all schemaLocations */
+    /**
+     * Feature identifier: honour all schemaLocations
+     */
     protected static final String HONOUR_ALL_SCHEMALOCATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.HONOUR_ALL_SCHEMALOCATIONS_FEATURE;
 
-    /** Feature identifier: namespace growth */
+    /**
+     * Feature identifier: namespace growth
+     */
     protected static final String NAMESPACE_GROWTH = 
         Constants.XERCES_FEATURE_PREFIX + Constants.NAMESPACE_GROWTH_FEATURE;
 
-    /** Feature identifier: tolerate duplicates */
+    /**
+     * Feature identifier: tolerate duplicates
+     */
     protected static final String TOLERATE_DUPLICATES = 
         Constants.XERCES_FEATURE_PREFIX + Constants.TOLERATE_DUPLICATES_FEATURE;
 
-    /** Feature identifier: whether to ignore xsi:type attributes until a global element declaration is encountered */
+    /**
+     * Feature identifier: whether to ignore xsi:type attributes until a global element declaration is encountered
+     */
     protected static final String IGNORE_XSI_TYPE =
         Constants.XERCES_FEATURE_PREFIX + Constants.IGNORE_XSI_TYPE_FEATURE;
     
-    /** Feature identifier: whether to ignore ID/IDREF errors */
+    /**
+     * Feature identifier: whether to ignore ID/IDREF errors
+     */
     protected static final String ID_IDREF_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.ID_IDREF_CHECKING_FEATURE;
     
-    /** Feature identifier: whether to ignore unparsed entity errors */
+    /**
+     * Feature identifier: whether to ignore unparsed entity errors
+     */
     protected static final String UNPARSED_ENTITY_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.UNPARSED_ENTITY_CHECKING_FEATURE;
     
-    /** Feature identifier: whether to ignore identity constraint errors */
+    /**
+     * Feature identifier: whether to ignore identity constraint errors
+     */
     protected static final String IDENTITY_CONSTRAINT_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.IDC_CHECKING_FEATURE;
 
     // property identifiers
 
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     protected static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
 
-    /** Property identifier: schema location. */
+    /**
+     * Property identifier: schema location.
+     */
     protected static final String SCHEMA_LOCATION =
     Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_LOCATION;
 
-    /** Property identifier: no namespace schema location. */
+    /**
+     * Property identifier: no namespace schema location.
+     */
     protected static final String SCHEMA_NONS_LOCATION =
     Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_NONS_LOCATION;
 
-    /** Property identifier: root type definition. */
+    /**
+     * Property identifier: root type definition.
+     */
     protected static final String ROOT_TYPE_DEF =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ROOT_TYPE_DEFINITION_PROPERTY;
     
-    /** Property identifier: root element declaration. */
+    /**
+     * Property identifier: root element declaration.
+     */
     protected static final String ROOT_ELEMENT_DECL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ROOT_ELEMENT_DECLARATION_PROPERTY;
 
-    /** Property identifier: Schema DV Factory */
+    /**
+     * Property identifier: Schema DV Factory
+     */
     protected static final String SCHEMA_DV_FACTORY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_DV_FACTORY_PROPERTY;
     
@@ -160,22 +199,26 @@ public class StandardParserConfiguration
 
     // components (non-configurable)
 
-    /** XML Schema Validator. */
+    /**
+     * XML Schema Validator.
+     */
     protected XMLSchemaValidator fSchemaValidator;
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public StandardParserConfiguration() {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public StandardParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -185,12 +228,12 @@ public class StandardParserConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public StandardParserConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool) {
@@ -201,13 +244,13 @@ public class StandardParserConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public StandardParserConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool,
@@ -273,7 +316,9 @@ public class StandardParserConfiguration
     // Public methods
     //
 
-    /** Configures the pipeline. */
+    /**
+     * Configures the pipeline.
+     */
     protected void configurePipeline() {
         super.configurePipeline();
         if ( getFeature(XMLSCHEMA_VALIDATION )) {
@@ -307,13 +352,12 @@ public class StandardParserConfiguration
      * Check a feature. If feature is know and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId)
         throws XMLConfigurationException {
@@ -364,14 +408,13 @@ public class StandardParserConfiguration
      * Check a property. If the property is know and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {

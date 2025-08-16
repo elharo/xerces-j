@@ -35,11 +35,10 @@ import org.w3c.dom.Node;
  * Most notably, absolutely no provision was made for storing
  * and using Element and Attribute information. Nor was the linkage
  * between Entities and Entity References nailed down solidly.
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredDocumentTypeImpl
     extends DocumentTypeImpl
@@ -49,14 +48,18 @@ public class DeferredDocumentTypeImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -2172579663227313509L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -80,7 +83,9 @@ public class DeferredDocumentTypeImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -89,7 +94,9 @@ public class DeferredDocumentTypeImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected void synchronizeData() {
 
         // no need to sync in the future
@@ -107,7 +114,9 @@ public class DeferredDocumentTypeImpl
         internalSubset = ownerDocument.getNodeValue(extraDataIndex);
     } // synchronizeData()
 
-    /** Synchronizes the entities, notations, and elements. */
+    /**
+     * Synchronizes the entities, notations, and elements.
+     */
     protected void synchronizeChildren() {
         
         // we don't want to generate any event for this so turn them off

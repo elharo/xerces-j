@@ -32,10 +32,9 @@ import org.w3c.dom.NamedNodeMap;
 
 /**
  * DeferredElementNSImpl is to ElementNSImpl, what DeferredElementImpl is to
- * ElementImpl. 
- * 
+ * ElementImpl.
+ *
  * @xerces.internal
- * 
  * @see DeferredElementImpl
  */
 public class DeferredElementNSImpl
@@ -46,14 +45,18 @@ public class DeferredElementNSImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -5001885145370927385L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -76,7 +79,9 @@ public class DeferredElementNSImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public final int getNodeIndex() {
         return fNodeIndex;
     }
@@ -85,7 +90,9 @@ public class DeferredElementNSImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected final void synchronizeData() {
 
         // no need to sync in the future

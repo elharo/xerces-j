@@ -22,6 +22,7 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
+ *
  * @version $Id$
  */
 

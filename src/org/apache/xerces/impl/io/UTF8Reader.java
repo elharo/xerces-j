@@ -27,11 +27,9 @@ import org.apache.xerces.util.MessageFormatter;
 
 /**
  * <p>A UTF-8 reader.</p>
- * 
- * @xerces.internal
- * 
- * @author Andy Clark, IBM
  *
+ * @xerces.internal
+ * @author Andy Clark, IBM
  * @version $Id$
  */
 public final class UTF8Reader
@@ -41,28 +39,40 @@ public final class UTF8Reader
     // Constants
     //
 
-    /** Default byte buffer size (2048). */
+    /**
+     * Default byte buffer size (2048).
+     */
     public static final int DEFAULT_BUFFER_SIZE = 2048;
 
     // debugging
 
-    /** Debug read. */
+    /**
+     * Debug read.
+     */
     private static final boolean DEBUG_READ = false;
 
     //
     // Data
     //
 
-    /** Input stream. */
+    /**
+     * Input stream.
+     */
     protected final InputStream fInputStream;
 
-    /** Byte buffer. */
+    /**
+     * Byte buffer.
+     */
     protected final byte[] fBuffer;
 
-    /** Offset into buffer. */
+    /**
+     * Offset into buffer.
+     */
     protected int fOffset;
 
-    /** Surrogate character. */
+    /**
+     * Surrogate character.
+     */
     private int fSurrogate = -1;
 
     // message formatter; used to produce localized
@@ -80,7 +90,7 @@ public final class UTF8Reader
      * Constructs a UTF-8 reader from the specified input stream
      * using the default buffer size.  Primarily for testing.
      *
-     * @param inputStream The input stream.
+     * @param inputStream the input stream
      */
     public UTF8Reader(InputStream inputStream) {
         this(inputStream, DEFAULT_BUFFER_SIZE, new XMLMessageFormatter(), Locale.getDefault());
@@ -90,9 +100,9 @@ public final class UTF8Reader
      * Constructs a UTF-8 reader from the specified input stream
      * using the default buffer size and the given MessageFormatter.
      *
-     * @param inputStream The input stream.
+     * @param inputStream the input stream
      * @param messageFormatter  given MessageFormatter
-     * @param locale    Locale to use for messages
+     * @param locale    locale to use for messages
      */
     public UTF8Reader(InputStream inputStream, MessageFormatter messageFormatter,
             Locale locale) {
@@ -103,9 +113,9 @@ public final class UTF8Reader
      * Constructs a UTF-8 reader from the specified input stream,
      * buffer size and MessageFormatter.
      *
-     * @param inputStream The input stream.
-     * @param size        The initial buffer size.
-     * @param messageFormatter  the formatter for localizing/formatting errors.
+     * @param inputStream the input stream
+     * @param size        the initial buffer size
+     * @param messageFormatter  the formatter for localizing/formatting errors
      * @param locale    the Locale to use for messages
      */
     public UTF8Reader(InputStream inputStream, int size,
@@ -117,9 +127,9 @@ public final class UTF8Reader
      * Constructs a UTF-8 reader from the specified input stream,
      * buffer and MessageFormatter.
      *
-     * @param inputStream The input stream.
-     * @param buffer      The byte buffer.
-     * @param messageFormatter  the formatter for localizing/formatting errors.
+     * @param inputStream the input stream
+     * @param buffer      the byte buffer
+     * @param messageFormatter  the formatter for localizing/formatting errors
      * @param locale    the Locale to use for messages
      */
     public UTF8Reader(InputStream inputStream, byte [] buffer,
@@ -141,11 +151,10 @@ public final class UTF8Reader
      * <p> Subclasses that intend to support efficient single-character input
      * should override this method.
      *
-     * @return     The character read, as an integer in the range 0 to 16383
+     * @return  The character read, as an integer in the range 0 to 16383
      *             (<tt>0x00-0xffff</tt>), or -1 if the end of the stream has
      *             been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read() throws IOException {
 
@@ -278,11 +287,9 @@ public final class UTF8Reader
      * @param      ch     Destination buffer
      * @param      offset Offset at which to start storing characters
      * @param      length Maximum number of characters to read
-     *
-     * @return     The number of characters read, or -1 if the end of the
+     * @return  The number of characters read, or -1 if the end of the
      *             stream has been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read(char ch[], int offset, int length) throws IOException {
 
@@ -580,10 +587,8 @@ public final class UTF8Reader
      * available, an I/O error occurs, or the end of the stream is reached.
      *
      * @param  n  The number of characters to skip
-     *
-     * @return    The number of characters actually skipped
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @return  The number of characters actually skipped
+     * @throws  IOException  If an I/O error occurs
      */
     public long skip(long n) throws IOException {
 
@@ -608,11 +613,10 @@ public final class UTF8Reader
     /**
      * Tell whether this stream is ready to be read.
      *
-     * @return True if the next read() is guaranteed not to block for input,
+     * @return true if the next read() is guaranteed not to block for input,
      * false otherwise.  Note that returning false does not guarantee that the
      * next read will block.
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public boolean ready() throws IOException {
         return false;
@@ -634,8 +638,7 @@ public final class UTF8Reader
      *                         read while still preserving the mark.  After
      *                         reading this many characters, attempting to
      *                         reset the stream may fail.
-     *
-     * @exception  IOException  If the stream does not support mark(),
+     * @throws  IOException  If the stream does not support mark(),
      *                          or if some other I/O error occurs
      */
     public void mark(int readAheadLimit) throws IOException {
@@ -650,7 +653,7 @@ public final class UTF8Reader
      * character-input streams support the reset() operation, and some support
      * reset() without supporting mark().
      *
-     * @exception  IOException  If the stream has not been marked,
+     * @throws  IOException  If the stream has not been marked,
      *                          or if the mark has been invalidated,
      *                          or if the stream does not support reset(),
      *                          or if some other I/O error occurs
@@ -665,7 +668,7 @@ public final class UTF8Reader
      * ready(), mark(), or reset() invocations will throw an IOException.
      * Closing a previously-closed stream, however, has no effect.
      *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public void close() throws IOException {
         fInputStream.close();
@@ -675,7 +678,9 @@ public final class UTF8Reader
     // Private methods
     //
 
-    /** Throws an exception for expected byte. */
+    /**
+     * Throws an exception for expected byte.
+     */
     private void expectedByte(int position, int count)
         throws MalformedByteSequenceException {
 
@@ -687,7 +692,9 @@ public final class UTF8Reader
 
     } // expectedByte(int,int)
 
-    /** Throws an exception for invalid byte. */
+    /**
+     * Throws an exception for invalid byte.
+     */
     private void invalidByte(int position, int count, int c)
         throws MalformedByteSequenceException {
 
@@ -699,7 +706,9 @@ public final class UTF8Reader
 
     } // invalidByte(int,int,int)
 
-    /** Throws an exception for invalid surrogate bits. */
+    /**
+     * Throws an exception for invalid surrogate bits.
+     */
     private void invalidSurrogate(int uuuuu) throws MalformedByteSequenceException {
 
         throw new MalformedByteSequenceException(fFormatter,

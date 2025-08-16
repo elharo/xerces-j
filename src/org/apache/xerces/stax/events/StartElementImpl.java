@@ -36,10 +36,9 @@ import javax.xml.stream.events.StartElement;
 import org.apache.xerces.stax.DefaultNamespaceContext;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class StartElementImpl extends ElementImpl implements StartElement {
@@ -58,6 +57,7 @@ public final class StartElementImpl extends ElementImpl implements StartElement 
     private final NamespaceContext fNamespaceContext;
 
     /**
+     *
      * @param location
      * @param schemaType
      */
@@ -78,6 +78,7 @@ public final class StartElementImpl extends ElementImpl implements StartElement 
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getAttributes()
      */
     public Iterator getAttributes() {
@@ -85,6 +86,7 @@ public final class StartElementImpl extends ElementImpl implements StartElement 
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getAttributeByName(javax.xml.namespace.QName)
      */
     public Attribute getAttributeByName(final QName name) {
@@ -92,6 +94,7 @@ public final class StartElementImpl extends ElementImpl implements StartElement 
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getNamespaceContext()
      */
     public NamespaceContext getNamespaceContext() {
@@ -99,6 +102,7 @@ public final class StartElementImpl extends ElementImpl implements StartElement 
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getNamespaceURI(java.lang.String)
      */
     public String getNamespaceURI(final String prefix) {

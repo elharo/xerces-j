@@ -91,15 +91,15 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/allow-dtd-events-after-endDTD</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * <li>http://xml.org/sax/features/allow-dtd-events-after-endDTD</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
  * </ul>
  * Optional property:
  * <ul>
- *  <li>http://apache.org/xml/properties/input-buffer-size</li>
+ * <li>http://apache.org/xml/properties/input-buffer-size</li>
  * </ul>
- * 
+ *
  * Furthermore, the <code>NamespaceContext</code> used in the pipeline is required
  * to be an instance of <code>XIncludeNamespaceSupport</code>.
  * </p>
@@ -111,9 +111,7 @@ import org.xml.sax.SAXNotSupportedException;
  *
  * @author Peter McCracken, IBM
  * @author Michael Glavassevich, IBM
- *
  * @version $Id$
- *
  * @see XIncludeNamespaceSupport
  */
 public class XIncludeHandler
@@ -142,7 +140,9 @@ public class XIncludeHandler
     // Top Level Information Items have [included] property in infoset
     public final static String XINCLUDE_INCLUDED = "[included]".intern();
 
-    /** The identifier for the Augmentation that contains the current base URI */
+    /**
+     * The identifier for the Augmentation that contains the current base URI
+     */
     public final static String CURRENT_BASE_URI = "currentBaseURI";
 
     // used for adding [base URI] attributes
@@ -181,70 +181,102 @@ public class XIncludeHandler
 
     // recognized features and properties
     
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: schema validation. */
+    /**
+     * Feature identifier: schema validation.
+     */
     protected static final String SCHEMA_VALIDATION =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_VALIDATION_FEATURE;
     
-    /** Feature identifier: dynamic validation. */
+    /**
+     * Feature identifier: dynamic validation.
+     */
     protected static final String DYNAMIC_VALIDATION = 
         Constants.XERCES_FEATURE_PREFIX + Constants.DYNAMIC_VALIDATION_FEATURE;
 
-    /** Feature identifier: allow notation and unparsed entity events to be sent out of order. */
+    /**
+     * Feature identifier: allow notation and unparsed entity events to be sent out of order.
+     */
     protected static final String ALLOW_UE_AND_NOTATION_EVENTS =
         Constants.SAX_FEATURE_PREFIX
             + Constants.ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE;
     
-    /** Feature identifier: fixup base URIs. */
+    /**
+     * Feature identifier: fixup base URIs.
+     */
     protected static final String XINCLUDE_FIXUP_BASE_URIS =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_BASE_URIS_FEATURE;
     
-    /** Feature identifier: fixup language. */
+    /**
+     * Feature identifier: fixup language.
+     */
     protected static final String XINCLUDE_FIXUP_LANGUAGE =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_LANGUAGE_FEATURE;
     
-    /** Property identifier: JAXP schema language. */
+    /**
+     * Property identifier: JAXP schema language.
+     */
     protected static final String JAXP_SCHEMA_LANGUAGE =
         Constants.JAXP_PROPERTY_PREFIX + Constants.SCHEMA_LANGUAGE;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     protected static final String ENTITY_RESOLVER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
 
-    /** property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     protected static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
     
-    /** property identifier: buffer size. */
+    /**
+     * Property identifier: buffer size.
+     */
     protected static final String BUFFER_SIZE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.BUFFER_SIZE_PROPERTY;
     
     protected static final String PARSER_SETTINGS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.PARSER_SETTINGS;
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES =
         { ALLOW_UE_AND_NOTATION_EVENTS, XINCLUDE_FIXUP_BASE_URIS, XINCLUDE_FIXUP_LANGUAGE };
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = { Boolean.TRUE, Boolean.TRUE, Boolean.TRUE };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES =
         { ERROR_REPORTER, ENTITY_RESOLVER, SECURITY_MANAGER, BUFFER_SIZE };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS = { null, null, null, new Integer(XMLEntityManager.DEFAULT_BUFFER_SIZE) };
 
     // instance variables
@@ -607,13 +639,12 @@ public class XIncludeHandler
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -642,13 +673,12 @@ public class XIncludeHandler
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
      *
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
@@ -706,9 +736,8 @@ public class XIncludeHandler
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -724,9 +753,8 @@ public class XIncludeHandler
      * component does not want to report a default value for this
      * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -1825,6 +1853,7 @@ public class XIncludeHandler
 
     /**
      * Returns true if the element has the namespace "http://www.w3.org/2001/XInclude"
+     *
      * @param element the element to check
      * @return true if the element has the namespace "http://www.w3.org/2001/XInclude"
      */
@@ -1869,6 +1898,7 @@ public class XIncludeHandler
      * of a fallback element, or the root elements in an included document.
      * The "include parent" is the element which, in the result infoset, will be the
      * direct parent of the current element.
+     *
      * @return true if the [base URIs] are the same string
      */
     protected boolean sameBaseURIAsIncludeParent() {
@@ -1893,9 +1923,9 @@ public class XIncludeHandler
      * of a fallback element, or the root elements in an included document.
      * The "include parent" is the element which, in the result infoset, will be the
      * direct parent of the current element.
-     * 
+     *
      * @return true if the [language] properties have the same value
-     * taking case-insensitivity into account as per [RFC 3066].
+     * taking case-insensitivity into account as per [RFC 3066]
      */
     protected boolean sameLanguageAsIncludeParent() {
         String parentLanguage = getIncludeParentLanguage();
@@ -1935,6 +1965,7 @@ public class XIncludeHandler
     /**
      * Checks if the file indicated by the given system id has already been
      * included in the current stack.
+     *
      * @param includedSysId the system id to check for inclusion
      * @return true if the source has already been included
      */
@@ -1954,6 +1985,7 @@ public class XIncludeHandler
      * Returns true if the current element is a top level included item.  This means
      * it's either the child of a fallback element, or the top level item in an
      * included document
+     *
      * @return true if the current element is a top level included item
      */
     protected boolean isTopLevelIncludedItem() {
@@ -1984,6 +2016,7 @@ public class XIncludeHandler
      * <li> For all attributes with a type of ENTITY, ENTITIES or NOTATIONS, the notations and
      * unparsed entities are processed as described in the spec, sections 4.5.1 and 4.5.2
      * </ul>
+     *
      * @param attributes
      * @return the processed XMLAttributes
      */
@@ -2129,6 +2162,7 @@ public class XIncludeHandler
      * Returns a URI, relative to the include parent's base URI, of the current
      * [base URI].  For instance, if the current [base URI] was "dir1/dir2/file.xml"
      * and the include parent's [base URI] was "dir/", this would return "dir2/file.xml".
+     *
      * @return the relative URI
      */
     protected String getRelativeBaseURI() throws MalformedURIException {
@@ -2154,21 +2188,25 @@ public class XIncludeHandler
                 URI base = new URI(fParentRelativeURI, true);
                 URI uri = new URI(base, relativeURI);
                 
-                /** Check whether the scheme components are equal. */
+                /**
+                 * Check whether the scheme components are equal.
+                 */
                 final String baseScheme = base.getScheme();
                 final String literalScheme = uri.getScheme();
                 if (!isEqual(baseScheme, literalScheme)) {
                     return relativeURI;
                 }
                 
-                /** Check whether the authority components are equal. */
+                /**
+                 * Check whether the authority components are equal.
+                 */
                 final String baseAuthority = base.getAuthority();
                 final String literalAuthority = uri.getAuthority();
                 if (!isEqual(baseAuthority, literalAuthority)) {
                     return uri.getSchemeSpecificPart();
                 }
                 
-                /** 
+                /**
                  * The scheme and authority components are equal,
                  * return the path and the possible query and/or
                  * fragment which follow.
@@ -2201,7 +2239,8 @@ public class XIncludeHandler
 
     /**
      * Returns the [base URI] of the include parent.
-     * @return the base URI of the include parent.
+     *
+     * @return the base URI of the include parent
      */
     private String getIncludeParentBaseURI() {
         int depth = getIncludeParentDepth();
@@ -2215,8 +2254,8 @@ public class XIncludeHandler
     
     /**
      * Returns the [language] of the include parent.
-     * 
-     * @return the language property of the include parent.
+     *
+     * @return the language property of the include parent
      */
     private String getIncludeParentLanguage() {
         int depth = getIncludeParentDepth();
@@ -2234,6 +2273,7 @@ public class XIncludeHandler
      * this method is called when the current element is a top level included item.
      * Returning 0 indicates that the top level element in this document
      * was an include element.
+     *
      * @return the depth of the top level include element
      */
     private int getIncludeParentDepth() {
@@ -2255,7 +2295,7 @@ public class XIncludeHandler
         return 0;
     }
     
-    /** 
+    /**
      * Returns the current element depth of the result infoset.
      */
     private int getResultDepth() {
@@ -2265,7 +2305,8 @@ public class XIncludeHandler
     /**
      * Modify the augmentations.  Add an [included] infoset item, if the current
      * element is a top level included item.
-     * @param augs the Augmentations to modify.
+     *
+     * @param augs the Augmentations to modify
      * @return the modified Augmentations
      */
     protected Augmentations modifyAugmentations(Augmentations augs) {
@@ -2275,7 +2316,8 @@ public class XIncludeHandler
     /**
      * Modify the augmentations.  Add an [included] infoset item, if <code>force</code>
      * is true, or if the current element is a top level included item.
-     * @param augs the Augmentations to modify.
+     *
+     * @param augs the Augmentations to modify
      * @param force whether to force modification
      * @return the modified Augmentations
      */
@@ -2408,6 +2450,7 @@ public class XIncludeHandler
 
     /**
      * Set the parent of this XIncludeHandler in the tree
+     *
      * @param parent
      */
     protected void setParent(XIncludeHandler parent) {
@@ -2429,6 +2472,7 @@ public class XIncludeHandler
 
     /**
      * Caches an unparsed entity.
+     *
      * @param name the name of the unparsed entity
      * @param identifier the location of the unparsed entity
      * @param augmentations any Augmentations that were on the original unparsed entity declaration
@@ -2451,6 +2495,7 @@ public class XIncludeHandler
 
     /**
      * Caches a notation.
+     *
      * @param name the name of the notation
      * @param identifier the location of the notation
      * @param augmentations any Augmentations that were on the original notation declaration
@@ -2593,7 +2638,7 @@ public class XIncludeHandler
     
     /**
      * Checks whether the string only contains white space characters.
-     * 
+     *
      * @param value the text to check
      */
     private void checkWhitespace(XMLString value) {
@@ -2814,8 +2859,8 @@ public class XIncludeHandler
     
     /**
      * Saves the given language on the top of the stack.
-     * 
-     * @param language the language to push onto the stack.
+     *
+     * @param language the language to push onto the stack
      */
     protected void saveLanguage(String language) {
         fLanguageScope.push(fDepth);
@@ -2833,6 +2878,7 @@ public class XIncludeHandler
 
     /**
      * Gets the base URI that was in use at that depth
+     *
      * @param depth
      * @return the base URI
      */
@@ -2843,6 +2889,7 @@ public class XIncludeHandler
     
     /**
      * Gets the language that was in use at that depth.
+     *
      * @param depth
      * @return the language
      */
@@ -2855,6 +2902,7 @@ public class XIncludeHandler
      * Returns a relative URI, which when resolved against the base URI at the
      * specified depth, will create the current base URI.
      * This is accomplished by merged the literal system IDs.
+     *
      * @param depth the depth at which to start creating the relative URI
      * @return a relative URI to convert the base URI at the given depth to the current
      *         base URI
@@ -2925,7 +2973,7 @@ public class XIncludeHandler
     }
     
     /**
-     * Search for a xml:lang attribute, and if one is found, put the new 
+     * Search for a xml:lang attribute, and if one is found, put the new
      * [language] into effect.
      */
     protected void processXMLLangAttributes(XMLAttributes attributes) {
@@ -2937,9 +2985,9 @@ public class XIncludeHandler
     }
     
     /**
-     * Returns <code>true</code> if the given string 
+     * Returns <code>true</code> if the given string
      * would be valid in an HTTP header.
-     * 
+     *
      * @param value string to check
      * @return <code>true</code> if the given string
      * would be valid in an HTTP header

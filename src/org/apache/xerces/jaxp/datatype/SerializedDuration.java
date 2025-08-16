@@ -20,9 +20,9 @@ package org.apache.xerces.jaxp.datatype;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-/** 
+/**
  * <p>Serialized form of <code>javax.xml.datatype.Duration</code>.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

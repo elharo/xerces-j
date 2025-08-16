@@ -20,16 +20,14 @@ package org.apache.xerces.xni;
 import org.apache.xerces.xni.parser.XMLDTDContentModelSource;
 
 /**
- * The DTD content model handler interface defines callback methods 
+ * The DTD content model handler interface defines callback methods
  * to report information items in DTD content models of an element
  * declaration. Parser components interested in DTD content model
  * information implement this interface and are registered as the DTD
  * content model handler on the DTD content model source.
  *
  * @see XMLDTDHandler
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLDTDContentModelHandler {
@@ -40,7 +38,7 @@ public interface XMLDTDContentModelHandler {
 
     // separators
 
-    /** 
+    /**
      * A choice separator for children and mixed content models. This
      * separator is used to specify that the allowed child is one of a
      * collection.
@@ -58,7 +56,7 @@ public interface XMLDTDContentModelHandler {
     public static final short SEPARATOR_CHOICE = 0;
 
     /**
-     * A sequence separator for children content models. This separator 
+     * A sequence separator for children content models. This separator
      * is used to specify that the allowed children must follow in the
      * specified sequence.
      * <p>
@@ -74,7 +72,7 @@ public interface XMLDTDContentModelHandler {
 
     // occurrence counts
 
-    /** 
+    /**
      * This occurrence count limits the element, choice, or sequence in a
      * children content model to zero or one. In other words, the child
      * is optional.
@@ -89,7 +87,7 @@ public interface XMLDTDContentModelHandler {
      */
     public static final short OCCURS_ZERO_OR_ONE = 2;
 
-    /** 
+    /**
      * This occurrence count limits the element, choice, or sequence in a
      * children content model to zero or more. In other words, the child
      * may appear an arbitrary number of times, or not at all. This
@@ -106,7 +104,7 @@ public interface XMLDTDContentModelHandler {
      */
     public static final short OCCURS_ZERO_OR_MORE = 3;
 
-    /** 
+    /**
      * This occurrence count limits the element, choice, or sequence in a
      * children content model to one or more. In other words, the child
      * may appear an arbitrary number of times, but must appear at least
@@ -130,24 +128,21 @@ public interface XMLDTDContentModelHandler {
      * The start of a content model. Depending on the type of the content
      * model, specific methods may be called between the call to the
      * startContentModel method and the call to the endContentModel method.
-     * 
-     * @param elementName The name of the element.
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startContentModel(String elementName, Augmentations augmentations)
         throws XNIException;
 
-    /** 
-     * A content model of ANY. 
+    /**
+     * A content model of ANY.
      *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #empty
      * @see #startGroup
      */
@@ -156,11 +151,9 @@ public interface XMLDTDContentModelHandler {
     /**
      * A content model of EMPTY.
      *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *
+     * @throws XNIException thrown by handler to signal an error
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
      * @see #any
      * @see #startGroup
      */
@@ -172,11 +165,9 @@ public interface XMLDTDContentModelHandler {
      * <code>pcdata()</code> method. A children content model will
      * contain additional groups and/or elements.
      *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #empty
      */
@@ -187,23 +178,20 @@ public interface XMLDTDContentModelHandler {
      * mixed content model. This method will be the first called
      * following the content model's <code>startGroup()</code>.
      *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *     
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #startGroup
      */
     public void pcdata(Augmentations augmentations) throws XNIException;
 
     /**
      * A referenced element in a mixed or children content model.
-     * 
-     * @param elementName The name of the referenced element.
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the referenced element
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void element(String elementName, Augmentations augmentations) 
         throws XNIException;
@@ -211,13 +199,11 @@ public interface XMLDTDContentModelHandler {
     /**
      * The separator between choices or sequences of a mixed or children
      * content model.
-     * 
-     * @param separator The type of children separator.
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param separator the type of children separator
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #SEPARATOR_CHOICE
      * @see #SEPARATOR_SEQUENCE
      */
@@ -227,14 +213,12 @@ public interface XMLDTDContentModelHandler {
     /**
      * The occurrence count for a child in a children content model or
      * for the mixed content model group.
-     * 
-     * @param occurrence The occurrence count for the last element
-     *                   or group.
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param occurrence the occurrence count for the last element
+     *                   or group
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #OCCURS_ZERO_OR_ONE
      * @see #OCCURS_ZERO_OR_MORE
      * @see #OCCURS_ONE_OR_MORE
@@ -245,20 +229,18 @@ public interface XMLDTDContentModelHandler {
     /**
      * The end of a group for mixed or children content models.
      *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endGroup(Augmentations augmentations) throws XNIException;
 
     /**
      * The end of a content model.
      *
-     * @param augmentations Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augmentations additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endContentModel(Augmentations augmentations) throws XNIException;
 

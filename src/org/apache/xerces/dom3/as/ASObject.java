@@ -13,8 +13,9 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- * The <code>ASObject</code> interface is analogous to a <code>Node</code> in 
+ * the <code>ASObject</code> interface is analogous to a <code>Node</code> in 
  * , e.g., an element declaration. 
  * <p>Opaque.
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
@@ -53,72 +54,73 @@ public interface ASObject {
     public short getAsNodeType();
 
     /**
-     * The <code>ASModel</code> object associated with this 
-     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this 
-     * is <code>null</code>. 
+     * The <code>ASModel</code> object associated with this
+     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this
+     * is <code>null</code>.
      */
     public ASModel getOwnerASModel();
     /**
-     * The <code>ASModel</code> object associated with this 
-     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this 
-     * is <code>null</code>. 
+     * The <code>ASModel</code> object associated with this
+     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this
+     * is <code>null</code>.
      */
     public void setOwnerASModel(ASModel ownerASModel);
 
     /**
-     * The <code>name</code> of this <code>ASObject</code> depending on the 
+     * The <code>name</code> of this <code>ASObject</code> depending on the
      * <code>ASObject</code> type.
      */
     public String getNodeName();
     /**
-     * The <code>name</code> of this <code>ASObject</code> depending on the 
+     * The <code>name</code> of this <code>ASObject</code> depending on the
      * <code>ASObject</code> type.
      */
     public void setNodeName(String nodeName);
 
     /**
-     * The namespace prefix of this node, or <code>null</code> if it is 
+     * The namespace prefix of this node, or <code>null</code> if it is
      * unspecified.
      */
     public String getPrefix();
     /**
-     * The namespace prefix of this node, or <code>null</code> if it is 
+     * The namespace prefix of this node, or <code>null</code> if it is
      * unspecified.
      */
     public void setPrefix(String prefix);
 
     /**
-     * Returns the local part of the qualified name of this 
+     * Returns the local part of the qualified name of this
      * <code>ASObject</code>.
      */
     public String getLocalName();
     /**
-     * Returns the local part of the qualified name of this 
+     * Returns the local part of the qualified name of this
      * <code>ASObject</code>.
      */
     public void setLocalName(String localName);
 
     /**
-     * The namespace URI of this node, or <code>null</code> if it is 
-     * unspecified.  defines how a namespace URI is attached to schema 
+     * The namespace URI of this node, or <code>null</code> if it is
+     * unspecified.  defines how a namespace URI is attached to schema
      * components.
      */
     public String getNamespaceURI();
     /**
-     * The namespace URI of this node, or <code>null</code> if it is 
-     * unspecified.  defines how a namespace URI is attached to schema 
+     * The namespace URI of this node, or <code>null</code> if it is
+     * unspecified.  defines how a namespace URI is attached to schema
      * components.
      */
     public void setNamespaceURI(String namespaceURI);
 
     /**
-     * Creates a copy of this <code>ASObject</code>. See text for 
-     * <code>cloneNode</code> off of <code>Node</code> but substitute AS 
+     * Creates a copy of this <code>ASObject</code>. See text for
+     * <code>cloneNode</code> off of <code>Node</code> but substitute AS
      * functionality.
-     * @param deep Setting the <code>deep</code> flag on, causes the whole 
+     *
+     * @param deep setting the <code>deep</code> flag on, causes the whole
      *   subtree to be duplicated. Setting it to <code>false</code> only 
      *   duplicates its immediate child nodes.
-     * @return Cloned <code>ASObject</code>.
+     * @return cloned <code>ASObject</code>
      */
     public ASObject cloneASObject(boolean deep);
 

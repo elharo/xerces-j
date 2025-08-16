@@ -60,17 +60,15 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *  <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
  * </ul>
- * 
+ *
  * @xerces.internal
- *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class XMLDTDProcessor
@@ -80,24 +78,34 @@ public class XMLDTDProcessor
     // Constants
     //
 
-    /** Top level scope (-1). */
+    /**
+     * Top level scope (-1).
+     */
     private static final int TOP_LEVEL_SCOPE = -1;
 
     // feature identifiers
 
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
 
-    /** Feature identifier: notify character references. */
+    /**
+     * Feature identifier: notify character references.
+     */
     protected static final String NOTIFY_CHAR_REFS =
         Constants.XERCES_FEATURE_PREFIX + Constants.NOTIFY_CHAR_REFS_FEATURE;
     
-    /** Feature identifier: warn on duplicate attdef */
+    /**
+     * Feature identifier: warn on duplicate attdef
+     */
     protected static final String WARN_ON_DUPLICATE_ATTDEF = 
         Constants.XERCES_FEATURE_PREFIX +Constants.WARN_ON_DUPLICATE_ATTDEF_FEATURE;
     
-    /** Feature identifier: warn on undeclared element referenced in content model. */
+    /**
+     * Feature identifier: warn on undeclared element referenced in content model.
+     */
     protected static final String WARN_ON_UNDECLARED_ELEMDEF =
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_UNDECLARED_ELEMDEF_FEATURE;
         
@@ -106,25 +114,35 @@ public class XMLDTDProcessor
 
     // property identifiers
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: grammar pool. */
+    /**
+     * Property identifier: grammar pool.
+     */
     protected static final String GRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
 
-    /** Property identifier: validator . */
+    /**
+     * Property identifier: validator .
+     */
     protected static final String DTD_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.DTD_VALIDATOR_PROPERTY;
 
     // recognized features and properties
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         VALIDATION,
         WARN_ON_DUPLICATE_ATTDEF,
@@ -132,7 +150,9 @@ public class XMLDTDProcessor
         NOTIFY_CHAR_REFS,
     };
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = {
         null,
         Boolean.FALSE,
@@ -140,7 +160,9 @@ public class XMLDTDProcessor
         null,
     };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         SYMBOL_TABLE,       
         ERROR_REPORTER,
@@ -148,7 +170,9 @@ public class XMLDTDProcessor
         DTD_VALIDATOR,
     };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS = {
         null,
         null,
@@ -164,27 +188,41 @@ public class XMLDTDProcessor
 
     // features
 
-    /** Validation. */
+    /**
+     * Validation.
+     */
     protected boolean fValidation;
 
-    /** Validation against only DTD */
+    /**
+     * Validation against only DTD
+     */
     protected boolean fDTDValidation;
 
-    /** warn on duplicate attribute definition, this feature works only when validation is true */
+    /**
+     * Warn on duplicate attribute definition, this feature works only when validation is true
+     */
     protected boolean fWarnDuplicateAttdef;
     
-    /** warn on undeclared element referenced in content model, this feature only works when valiation is true */
+    /**
+     * Warn on undeclared element referenced in content model, this feature only works when valiation is true
+     */
     protected boolean fWarnOnUndeclaredElemdef;
         
     // properties
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected SymbolTable fSymbolTable;
 
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     protected XMLErrorReporter fErrorReporter;
 
-    /** Grammar bucket. */
+    /**
+     * Grammar bucket.
+     */
     protected DTDGrammarBucket fGrammarBucket;
 
     // the validator to which we look for our grammar bucket (the
@@ -200,72 +238,106 @@ public class XMLDTDProcessor
 
     // handlers
 
-    /** DTD handler. */
+    /**
+     * DTD handler.
+     */
     protected XMLDTDHandler fDTDHandler;
 
-    /** DTD source. */
+    /**
+     * DTD source.
+     */
     protected XMLDTDSource fDTDSource;
 
-    /** DTD content model handler. */
+    /**
+     * DTD content model handler.
+     */
     protected XMLDTDContentModelHandler fDTDContentModelHandler;
 
-    /** DTD content model source. */
+    /**
+     * DTD content model source.
+     */
     protected XMLDTDContentModelSource fDTDContentModelSource;
 
     // grammars
 
-    /** DTD Grammar. */
+    /**
+     * DTD Grammar.
+     */
     protected DTDGrammar fDTDGrammar;
 
     // state
 
-    /** Perform validation. */
+    /**
+     * Perform validation.
+     */
     private boolean fPerformValidation;
 
-    /** True if in an ignore conditional section of the DTD. */
+    /**
+     * True if in an ignore conditional section of the DTD.
+     */
     protected boolean fInDTDIgnore;
 
     // information regarding the current element
 
     // validation states
 
-    /** Mixed. */
+    /**
+     * Mixed.
+     */
     private boolean fMixed;
 
     // temporary variables
 
-    /** Temporary entity declaration. */
+    /**
+     * Temporary entity declaration.
+     */
     private final XMLEntityDecl fEntityDecl = new XMLEntityDecl();
 
-    /** Notation declaration hash. */
+    /**
+     * Notation declaration hash.
+     */
     private final HashMap fNDataDeclNotations = new HashMap();
 
-    /** DTD element declaration name. */
+    /**
+     * DTD element declaration name.
+     */
     private String fDTDElementDeclName = null;
 
-    /** Mixed element type "hash". */
+    /**
+     * Mixed element type "hash".
+     */
     private final ArrayList fMixedElementTypes = new ArrayList();
 
-    /** Element declarations in DTD. */
+    /**
+     * Element declarations in DTD.
+     */
     private final ArrayList fDTDElementDecls = new ArrayList();
 
     // to check for duplicate ID or ANNOTATION attribute declare in
     // ATTLIST, and misc VCs
 
-    /** ID attribute names. */
+    /**
+     * ID attribute names.
+     */
     private HashMap fTableOfIDAttributeNames;
 
-    /** NOTATION attribute names. */
+    /**
+     * NOTATION attribute names.
+     */
     private HashMap fTableOfNOTATIONAttributeNames;
 
-    /** NOTATION enumeration values. */
+    /**
+     * NOTATION enumeration values.
+     */
     private HashMap fNotationEnumVals;
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLDTDProcessor() {
 
         // initialize data
@@ -397,18 +469,17 @@ public class XMLDTDProcessor
 
     /**
      * Sets the state of a feature. This method is called by the component
-     * manager any time after reset when a feature changes state. 
+     * manager any time after reset when a feature changes state.
      * <p>
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
-     * 
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
             throws XMLConfigurationException {
@@ -425,31 +496,29 @@ public class XMLDTDProcessor
 
     /**
      * Sets the value of a property. This method is called by the component
-     * manager any time after reset when a property changes value. 
+     * manager any time after reset when a property changes value.
      * <p>
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
-     * 
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
             throws XMLConfigurationException {
     } // setProperty(String,Object)
 
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -460,14 +529,13 @@ public class XMLDTDProcessor
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -484,8 +552,8 @@ public class XMLDTDProcessor
 
     /**
      * Sets the DTD handler.
-     * 
-     * @param dtdHandler The DTD handler.
+     *
+     * @param dtdHandler the DTD handler
      */
     public void setDTDHandler(XMLDTDHandler dtdHandler) {
         fDTDHandler = dtdHandler;
@@ -493,8 +561,8 @@ public class XMLDTDProcessor
 
     /**
      * Returns the DTD handler.
-     * 
-     * @return The DTD handler.
+     *
+     * @return the DTD handler
      */
     public XMLDTDHandler getDTDHandler() {
         return fDTDHandler;
@@ -506,8 +574,8 @@ public class XMLDTDProcessor
 
     /**
      * Sets the DTD content model handler.
-     * 
-     * @param dtdContentModelHandler The DTD content model handler.
+     *
+     * @param dtdContentModelHandler the DTD content model handler
      */
     public void setDTDContentModelHandler(XMLDTDContentModelHandler dtdContentModelHandler) {
         fDTDContentModelHandler = dtdContentModelHandler;
@@ -515,8 +583,8 @@ public class XMLDTDProcessor
 
     /**
      * Gets the DTD content model handler.
-     * 
-     * @return dtdContentModelHandler The DTD content model handler.
+     *
+     * @return dtdContentModelHandler The DTD content model handler
      */
     public XMLDTDContentModelHandler getDTDContentModelHandler() {
         return fDTDContentModelHandler;
@@ -529,10 +597,9 @@ public class XMLDTDProcessor
     /**
      * The start of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startExternalSubset(XMLResourceIdentifier identifier, 
                                     Augmentations augs) throws XNIException {
@@ -546,10 +613,9 @@ public class XMLDTDProcessor
     /**
      * The end of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endExternalSubset(Augmentations augs) throws XNIException {
         if(fDTDGrammar != null) 
@@ -559,16 +625,15 @@ public class XMLDTDProcessor
         }
     }
 
-    /** 
-     * Check standalone entity reference. 
+    /**
+     * Check standalone entity reference.
      * Made static to make common between the validator and loader.
-     * 
+     *
      * @param name
      *@param grammar    grammar to which entity belongs
      * @param tempEntityDecl    empty entity declaration to put results in
      * @param errorReporter     error reporter to send errors to
-     *
-     * @throws XNIException Thrown by application to signal an error.
+     * @throws XNIException thrown by application to signal an error
      */
     protected static void checkStandaloneEntityRef(String name, DTDGrammar grammar,
                     XMLEntityDecl tempEntityDecl, XMLErrorReporter errorReporter) throws XNIException {
@@ -586,11 +651,10 @@ public class XMLDTDProcessor
 
     /**
      * A comment.
-     * 
-     * @param text The text in the comment.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
 
@@ -614,12 +678,11 @@ public class XMLDTDProcessor
      * element attributes but are <strong>not</strong> parsed or presented
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
-     * 
-     * @param target The target.
-     * @param data   The data or null if none specified.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
     throws XNIException {
@@ -639,16 +702,15 @@ public class XMLDTDProcessor
     /**
      * The start of the DTD.
      *
-     * @param locator  The document locator, or null if the document
+     * @param locator  the document locator, or null if the document
      *                 location cannot be reported during the parsing of 
      *                 the document DTD. However, it is <em>strongly</em>
      *                 recommended that a locator be supplied that can 
      *                 at least report the base system identifier of the
      *                 DTD.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startDTD(XMLLocator locator, Augmentations augs) throws XNIException {
 
@@ -677,11 +739,10 @@ public class XMLDTDProcessor
     /**
      * Characters within an IGNORE conditional section.
      *
-     * @param text The ignored text.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the ignored text
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void ignoredCharacters(XMLString text, Augmentations augs) throws XNIException {
 
@@ -699,13 +760,12 @@ public class XMLDTDProcessor
      * <p>
      * <strong>Note:</strong> This method is only called for external
      * parameter entities referenced in the DTD.
-     * 
-     * @param version  The XML version, or null if not specified.
-     * @param encoding The IANA encoding name of the entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version  the XML version, or null if not specified
+     * @param encoding the IANA encoding name of the entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void textDecl(String version, String encoding, Augmentations augs) throws XNIException {
 
@@ -720,17 +780,16 @@ public class XMLDTDProcessor
     /**
      * This method notifies of the start of a parameter entity. The parameter
      * entity name start with a '%' character.
-     * 
-     * @param name     The name of the parameter entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     *
+     * @param name     the name of the parameter entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal parameter entities).
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startParameterEntity(String name, 
                                      XMLResourceIdentifier identifier,
@@ -752,12 +811,11 @@ public class XMLDTDProcessor
     /**
      * This method notifies the end of a parameter entity. Parameter entity
      * names begin with a '%' character.
-     * 
-     * @param name The name of the parameter entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name the name of the parameter entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endParameterEntity(String name, Augmentations augs) throws XNIException {
 
@@ -771,13 +829,12 @@ public class XMLDTDProcessor
 
     /**
      * An element declaration.
-     * 
-     * @param name         The name of the element.
-     * @param contentModel The element content model.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name         the name of the element
+     * @param contentModel the element content model
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void elementDecl(String name, String contentModel, Augmentations augs)
     throws XNIException {
@@ -806,13 +863,12 @@ public class XMLDTDProcessor
 
     /**
      * The start of an attribute list.
-     * 
-     * @param elementName The name of the element that this attribute
-     *                    list is associated with.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element that this attribute
+     *                    list is associated with
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startAttlist(String elementName, Augmentations augs) 
         throws XNIException {
@@ -828,28 +884,27 @@ public class XMLDTDProcessor
 
     /**
      * An attribute declaration.
-     * 
-     * @param elementName   The name of the element that this attribute
-     *                      is associated with.
-     * @param attributeName The name of the attribute.
-     * @param type          The attribute type. This value will be one of
+     *
+     * @param elementName   the name of the element that this attribute
+     *                      is associated with
+     * @param attributeName the name of the attribute
+     * @param type          the attribute type. This value will be one of
      *                      the following: "CDATA", "ENTITY", "ENTITIES",
      *                      "ENUMERATION", "ID", "IDREF", "IDREFS", 
      *                      "NMTOKEN", "NMTOKENS", or "NOTATION".
-     * @param enumeration   If the type has the value "ENUMERATION" or
+     * @param enumeration   if the type has the value "ENUMERATION" or
      *                      "NOTATION", this array holds the allowed attribute
-     *                      values; otherwise, this array is null.
-     * @param defaultType   The attribute default type. This value will be
+     *                      values; otherwise, this array is null
+     * @param defaultType   the attribute default type. This value will be
      *                      one of the following: "#FIXED", "#IMPLIED",
      *                      "#REQUIRED", or null.
-     * @param defaultValue  The attribute default value, or null if no
-     *                      default value is specified.
-     * @param nonNormalizedDefaultValue  The attribute default value with no normalization 
-     *                      performed, or null if no default value is specified.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param defaultValue  the attribute default value, or null if no
+     *                      default value is specified
+     * @param nonNormalizedDefaultValue  the attribute default value with no normalization
+     *                      performed, or null if no default value is specified
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void attributeDecl(String elementName, String attributeName, 
                               String type, String[] enumeration, 
@@ -1068,10 +1123,9 @@ public class XMLDTDProcessor
     /**
      * The end of an attribute list.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endAttlist(Augmentations augs) throws XNIException {
 
@@ -1086,19 +1140,18 @@ public class XMLDTDProcessor
 
     /**
      * An internal entity declaration.
-     * 
-     * @param name The name of the entity. Parameter entity names start with
+     *
+     * @param name the name of the entity. Parameter entity names start with
      *             '%', whereas the name of a general entity is just the 
      *             entity name.
-     * @param text The value of the entity.
-     * @param nonNormalizedText The non-normalized value of the entity. This
+     * @param text the value of the entity
+     * @param nonNormalizedText the non-normalized value of the entity. This
      *             value contains the same sequence of characters that was in 
      *             the internal entity declaration, without any entity
      *             references expanded.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void internalEntityDecl(String name, XMLString text,
                                    XMLString nonNormalizedText,
@@ -1130,16 +1183,15 @@ public class XMLDTDProcessor
 
     /**
      * An external entity declaration.
-     * 
-     * @param name     The name of the entity. Parameter entity names start
+     *
+     * @param name     the name of the entity. Parameter entity names start
      *                 with '%', whereas the name of a general entity is just
      *                 the entity name.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this external entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param identifier    an object containing all location information
+     *                      pertinent to this external entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void externalEntityDecl(String name, XMLResourceIdentifier identifier,
                                    Augmentations augs) throws XNIException {
@@ -1169,15 +1221,14 @@ public class XMLDTDProcessor
 
     /**
      * An unparsed entity declaration.
-     * 
-     * @param name     The name of the entity.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this entity.
-     * @param notation The name of the notation.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the entity
+     * @param identifier    an object containing all location information
+     *                      pertinent to this entity
+     * @param notation the name of the notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void unparsedEntityDecl(String name, XMLResourceIdentifier identifier,
                                    String notation, 
@@ -1199,14 +1250,13 @@ public class XMLDTDProcessor
 
     /**
      * A notation declaration
-     * 
-     * @param name     The name of the notation.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this notation.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the notation
+     * @param identifier    an object containing all location information
+     *                      pertinent to this notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void notationDecl(String name, XMLResourceIdentifier identifier,
                              Augmentations augs) throws XNIException {
@@ -1233,14 +1283,12 @@ public class XMLDTDProcessor
 
     /**
      * The start of a conditional section.
-     * 
-     * @param type The type of the conditional section. This value will
+     *
+     * @param type the type of the conditional section. This value will
      *             either be CONDITIONAL_INCLUDE or CONDITIONAL_IGNORE.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #CONDITIONAL_INCLUDE
      * @see #CONDITIONAL_IGNORE
      */
@@ -1261,10 +1309,9 @@ public class XMLDTDProcessor
     /**
      * The end of a conditional section.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endConditional(Augmentations augs) throws XNIException {
 
@@ -1283,10 +1330,9 @@ public class XMLDTDProcessor
     /**
      * The end of the DTD.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDTD(Augmentations augs) throws XNIException {
 
@@ -1391,12 +1437,11 @@ public class XMLDTDProcessor
      * The start of a content model. Depending on the type of the content
      * model, specific methods may be called between the call to the
      * startContentModel method and the call to the endContentModel method.
-     * 
-     * @param elementName The name of the element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startContentModel(String elementName, Augmentations augs) 
         throws XNIException {
@@ -1415,14 +1460,12 @@ public class XMLDTDProcessor
 
     } // startContentModel(String)
 
-    /** 
-     * A content model of ANY. 
+    /**
+     * A content model of ANY.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #empty
      * @see #startGroup
      */
@@ -1437,11 +1480,9 @@ public class XMLDTDProcessor
     /**
      * A content model of EMPTY.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #startGroup
      */
@@ -1459,11 +1500,9 @@ public class XMLDTDProcessor
      * <code>pcdata()</code> method. A children content model will
      * contain additional groups and/or elements.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #empty
      */
@@ -1484,11 +1523,9 @@ public class XMLDTDProcessor
      * mixed content model. This method will be the first called
      * following the content model's <code>startGroup()</code>.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *     
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #startGroup
      */
     public void pcdata(Augmentations augs) {
@@ -1502,12 +1539,11 @@ public class XMLDTDProcessor
 
     /**
      * A referenced element in a mixed or children content model.
-     * 
-     * @param elementName The name of the referenced element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the referenced element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void element(String elementName, Augmentations augs) throws XNIException {
 
@@ -1536,13 +1572,11 @@ public class XMLDTDProcessor
     /**
      * The separator between choices or sequences of a mixed or children
      * content model.
-     * 
-     * @param separator The type of children separator.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param separator the type of children separator
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #SEPARATOR_CHOICE
      * @see #SEPARATOR_SEQUENCE
      */
@@ -1561,14 +1595,12 @@ public class XMLDTDProcessor
     /**
      * The occurrence count for a child in a children content model or
      * for the mixed content model group.
-     * 
-     * @param occurrence The occurrence count for the last element
-     *                   or group.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param occurrence the occurrence count for the last element
+     *                   or group
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #OCCURS_ZERO_OR_ONE
      * @see #OCCURS_ZERO_OR_MORE
      * @see #OCCURS_ONE_OR_MORE
@@ -1588,10 +1620,9 @@ public class XMLDTDProcessor
     /**
      * The end of a group for mixed or children content models.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endGroup(Augmentations augs) throws XNIException {
 
@@ -1607,10 +1638,9 @@ public class XMLDTDProcessor
     /**
      * The end of a content model.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endContentModel(Augmentations augs) throws XNIException {
 
@@ -1631,8 +1661,8 @@ public class XMLDTDProcessor
      * Normalize the attribute value of a non CDATA default attribute
      * collapsing sequences of space characters (x20)
      *
-     * @param value The value to normalize
-     * @return Whether the value was changed or not.
+     * @param value the value to normalize
+     * @return whether the value was changed or not
      */
     private boolean normalizeDefaultAttrValue(XMLString value) {
 
@@ -1679,9 +1709,9 @@ public class XMLDTDProcessor
         return XMLChar.isValidName(name);
     } // isValidName(String):  boolean
     
-    /** 
+    /**
      * Checks that all elements referenced in content models have
-     * been declared. This method calls out to the error handler 
+     * been declared. This method calls out to the error handler
      * to indicate warnings.
      */
     private void checkDeclaredElements(DTDGrammar grammar) {
@@ -1699,7 +1729,7 @@ public class XMLDTDProcessor
         }
     }
     
-    /** 
+    /**
      * Does a recursive (if necessary) check on the specified element's
      * content spec to make sure that all children refer to declared
      * elements.

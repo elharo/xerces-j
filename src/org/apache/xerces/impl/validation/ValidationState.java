@@ -29,9 +29,8 @@ import org.apache.xerces.xni.NamespaceContext;
 /**
  * Implementation of the ValidationContext interface. Used to establish an
  * environment for simple type validation.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -87,7 +86,7 @@ public class ValidationState implements ValidationContext {
     }
 
     /**
-     * return null if all IDREF values have a corresponding ID value;
+     * Return null if all IDREF values have a corresponding ID value;
      * otherwise return an iterator for all the IDREF values without
      * a matching ID value.
      */

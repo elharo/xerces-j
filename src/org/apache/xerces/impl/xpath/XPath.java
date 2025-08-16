@@ -28,9 +28,8 @@ import org.apache.xerces.xni.QName;
 
 /**
  * Bare minimum XPath parser.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Andy Clark, IBM
  * @version $Id$
  */
@@ -50,20 +49,28 @@ public class XPath {
     // Data
     //
 
-    /** Expression. */
+    /**
+     * Expression.
+     */
     protected final String fExpression;
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected final SymbolTable fSymbolTable;
 
-    /** Location paths. */
+    /**
+     * Location paths.
+     */
     protected final LocationPath[] fLocationPaths;
 
     //
     // Constructors
     //
 
-    /** Constructs an XPath object from the specified expression. */
+    /**
+     * Constructs an XPath object from the specified expression.
+     */
     public XPath(String xpath, SymbolTable symbolTable,
                  NamespaceContext context)
         throws XPathException {
@@ -91,7 +98,9 @@ public class XPath {
         return ret;
     } // getLocationPath(LocationPath)
 
-    /** Returns a representation of the first location path for this XPath. */
+    /**
+     * Returns a representation of the first location path for this XPath.
+     */
     public LocationPath getLocationPath() {
         return (LocationPath)fLocationPaths[0].clone();
     } // getLocationPath(LocationPath)
@@ -100,7 +109,9 @@ public class XPath {
     // Object methods
     //
 
-    /** Returns a string representation of this object. */
+    /**
+     * Returns a string representation of this object.
+     */
     public String toString() {
         StringBuffer buf=new StringBuffer();
         for (int  i=0;i<fLocationPaths.length;i++){
@@ -119,7 +130,7 @@ public class XPath {
     /**
      * Used by the {@link #parseExpression(NamespaceContext)} method
      * to verify the assumption.
-     * 
+     *
      * If <tt>b</tt> is false, this method throws XPathException
      * to report the error.
      */
@@ -361,9 +372,8 @@ public class XPath {
 
     /**
      * A location path representation for an XPath expression.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public static class LocationPath
@@ -373,19 +383,25 @@ public class XPath {
         // Data
         //
 
-        /** List of steps. */
+        /**
+         * List of steps.
+         */
         public final Step[] steps;
 
         //
         // Constructors
         //
 
-        /** Creates a location path from a series of steps. */
+        /**
+         * Creates a location path from a series of steps.
+         */
         public LocationPath(Step[] steps) {
             this.steps = steps;
         } // <init>(Step[])
 
-        /** Copy constructor. */
+        /**
+         * Copy constructor.
+         */
         protected LocationPath(LocationPath path) {
             steps = new Step[path.steps.length];
             for (int i = 0; i < steps.length; i++) {
@@ -397,7 +413,9 @@ public class XPath {
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
             StringBuffer str = new StringBuffer();
             for (int i = 0; i < steps.length; i++) {
@@ -419,7 +437,9 @@ public class XPath {
             return str.toString();
         } // toString():String
 
-        /** Returns a clone of this object. */
+        /**
+         * Returns a clone of this object.
+         */
         public Object clone() {
             return new LocationPath(this);
         } // clone():Object
@@ -428,9 +448,8 @@ public class XPath {
 
     /**
      * A location path step comprised of an axis and node test.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public static class Step
@@ -440,23 +459,31 @@ public class XPath {
         // Data
         //
 
-        /** Axis. */
+        /**
+         * Axis.
+         */
         public final Axis axis;
 
-        /** Node test. */
+        /**
+         * Node test.
+         */
         public final NodeTest nodeTest;
 
         //
         // Constructors
         //
 
-        /** Constructs a step from an axis and node test. */
+        /**
+         * Constructs a step from an axis and node test.
+         */
         public Step(Axis axis, NodeTest nodeTest) {
             this.axis = axis;
             this.nodeTest = nodeTest;
         } // <init>(Axis,NodeTest)
 
-        /** Copy constructor. */
+        /**
+         * Copy constructor.
+         */
         protected Step(Step step) {
             axis = (Axis)step.axis.clone();
             nodeTest = (NodeTest)step.nodeTest.clone();
@@ -466,7 +493,9 @@ public class XPath {
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
             if (axis.type == Axis.SELF) {
                 return ".";
@@ -483,7 +512,9 @@ public class XPath {
             return "??? ("+axis.type+')';
         } // toString():String
 
-        /** Returns a clone of this object. */
+        /**
+         * Returns a clone of this object.
+         */
         public Object clone() {
             return new Step(this);
         } // clone():Object
@@ -492,9 +523,8 @@ public class XPath {
 
     /**
      * Axis.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public static class Axis
@@ -504,35 +534,49 @@ public class XPath {
         // Constants
         //
 
-        /** Type: child. */
+        /**
+         * Type: child.
+         */
         public static final short CHILD = 1;
 
-        /** Type: attribute. */
+        /**
+         * Type: attribute.
+         */
         public static final short ATTRIBUTE = 2;
 
-        /** Type: self. */
+        /**
+         * Type: self.
+         */
         public static final short SELF = 3;
 
 
-        /** Type: descendant. */
+        /**
+         * Type: descendant.
+         */
         public static final short DESCENDANT = 4;
         //
         // Data
         //
 
-        /** Axis type. */
+        /**
+         * Axis type.
+         */
         public final short type;
 
         //
         // Constructors
         //
 
-        /** Constructs an axis with the specified type. */
+        /**
+         * Constructs an axis with the specified type.
+         */
         public Axis(short type) {
             this.type = type;
         } // <init>(short)
 
-        /** Copy constructor. */
+        /**
+         * Copy constructor.
+         */
         protected Axis(Axis axis) {
             type = axis.type;
         } // <init>(Axis)
@@ -541,7 +585,9 @@ public class XPath {
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
             switch (type) {
                 case CHILD: return "child";
@@ -552,7 +598,9 @@ public class XPath {
             return "???";
         } // toString():String
 
-        /** Returns a clone of this object. */
+        /**
+         * Returns a clone of this object.
+         */
         public Object clone() {
             return new Axis(this);
         } // clone():Object
@@ -561,9 +609,8 @@ public class XPath {
 
     /**
      * Node test.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public static class NodeTest
@@ -573,49 +620,69 @@ public class XPath {
         // Constants
         //
 
-        /** Type: qualified name. */
+        /**
+         * Type: qualified name.
+         */
         public static final short QNAME = 1;
 
-        /** Type: wildcard. */
+        /**
+         * Type: wildcard.
+         */
         public static final short WILDCARD = 2;
 
-        /** Type: node. */
+        /**
+         * Type: node.
+         */
         public static final short NODE = 3;
 
-        /** Type: namespace */
+        /**
+         * Type: namespace
+         */
         public static final short NAMESPACE= 4;
 
         //
         // Data
         //
 
-        /** Node test type. */
+        /**
+         * Node test type.
+         */
         public final short type;
 
-        /** Node qualified name. */
+        /**
+         * Node qualified name.
+         */
         public final QName name = new QName();
 
         //
         // Constructors
         //
 
-        /** Constructs a node test of type WILDCARD or NODE. */
+        /**
+         * Constructs a node test of type WILDCARD or NODE.
+         */
         public NodeTest(short type) {
             this.type = type;
         } // <init>(int)
 
-        /** Constructs a node test of type QName. */
+        /**
+         * Constructs a node test of type QName.
+         */
         public NodeTest(QName name) {
             this.type = QNAME;
             this.name.setValues(name);
         } // <init>(QName)
-        /** Constructs a node test of type Namespace. */
+        /**
+         * Constructs a node test of type Namespace.
+         */
         public NodeTest(String prefix, String uri) {
             this.type = NAMESPACE;
             this.name.setValues(prefix, null, null, uri);
         } // <init>(String,String)
 
-        /** Copy constructor. */
+        /**
+         * Copy constructor.
+         */
         public NodeTest(NodeTest nodeTest) {
             type = nodeTest.type;
             name.setValues(nodeTest.name);
@@ -625,7 +692,9 @@ public class XPath {
         // Object methods
         //
 
-        /** Returns a string representation of this object. */
+        /**
+         * Returns a string representation of this object.
+         */
         public String toString() {
 
             switch (type) {
@@ -658,7 +727,9 @@ public class XPath {
 
         } // toString():String
 
-        /** Returns a clone of this object. */
+        /**
+         * Returns a clone of this object.
+         */
         public Object clone() {
             return new NodeTest(this);
         } // clone():Object
@@ -675,12 +746,10 @@ public class XPath {
 
     /**
      * List of tokens.
-     * 
+     *
      * @xerces.internal
-     * 
      * @author Glenn Marcy, IBM
      * @author Andy Clark, IBM
-     *
      * @version $Id$
      */
     private static final class Tokens {
@@ -689,8 +758,8 @@ public class XPath {
 
         /**
          * [28] ExprToken ::= '(' | ')' | '[' | ']' | '.' | '..' | '@' | ',' | '::'
-         *                  | NameTest | NodeType | Operator | FunctionName
-         *                  | AxisName | Literal | Number | VariableReference
+         * | NameTest | NodeType | Operator | FunctionName
+         * | AxisName | Literal | Number | VariableReference
          */
         public static final int
             EXPRTOKEN_OPEN_PAREN                    =   0,
@@ -847,7 +916,6 @@ public class XPath {
         };
 
         /**
-         *
          */
         private static final int INITIAL_TOKEN_COUNT = 1 << 8;
         private int[] fTokens = new int[INITIAL_TOKEN_COUNT];
@@ -862,7 +930,7 @@ public class XPath {
         private java.util.Hashtable fTokenNames = new java.util.Hashtable();
 
         /**
-         * Current position in the token list. 
+         * Current position in the token list.
          */
         private int fCurrentTokenIndex;
         
@@ -990,7 +1058,7 @@ public class XPath {
         /**
          * Obtains the token at the current position, then advance
          * the current position by one.
-         * 
+         *
          * If there's no such next token, this method throws
          * <tt>new XPathException("c-general-xpath");</tt>.
          */
@@ -1002,7 +1070,7 @@ public class XPath {
         /**
          * Obtains the token at the current position, without advancing
          * the current position.
-         * 
+         *
          * If there's no such next token, this method throws
          * <tt>new XPathException("c-general-xpath");</tt>.
          */
@@ -1013,9 +1081,9 @@ public class XPath {
         }
         /**
          * Obtains the token at the current position as a String.
-         * 
+         *
          * If there's no current token or if the current token
-         * is not a string token, this method throws 
+         * is not a string token, this method throws
          * <tt>new XPathException("c-general-xpath");</tt>.
          */
         public String nextTokenAsString() throws XPathException {
@@ -1209,11 +1277,10 @@ public class XPath {
     } // class Tokens
 
     /**
+     *
      * @xerces.internal
-     * 
      * @author Glenn Marcy, IBM
      * @author Andy Clark, IBM
-     *
      * @version $Id$
      */
     private static class Scanner {
@@ -1221,12 +1288,13 @@ public class XPath {
         /**
          * 7-bit ASCII subset
          *
-         *  0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
-         *  0,  0,  0,  0,  0,  0,  0,  0,  0, HT, LF,  0,  0, CR,  0,  0,  // 0
-         *  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  // 1
+         * 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+         * 0,  0,  0,  0,  0,  0,  0,  0,  0, HT, LF,  0,  0, CR,  0,  0,  // 0
+         * 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  // 1
          * SP,  !,  ",  #,  $,  %,  &,  ',  (,  ),  *,  +,  ,,  -,  .,  /,  // 2
-         *  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  :,  ;,  <,  =,  >,  ?,  // 3
-         *  @,  A,  B,  C,  D,  E,  F,  G,  H,  I,  J,  K,  L,  M,  N,  O,  // 4
+         * 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  :,  ;,  <,  =,  >,  ?,  // 3
+         *
+         * @,  a,  B,  C,  D,  E,  F,  G,  H,  I,  J,  K,  L,  M,  N,  O,  // 4
          *  P,  Q,  R,  S,  T,  U,  V,  W,  X,  Y,  Z,  [,  \,  ],  ^,  _,  // 5
          *  `,  a,  b,  c,  d,  e,  f,  g,  h,  i,  j,  k,  l,  m,  n,  o,  // 6
          *  p,  q,  r,  s,  t,  u,  v,  w,  x,  y,  z,  {,  |,  },  ~, DEL  // 7
@@ -1278,7 +1346,9 @@ public class XPath {
         // Data
         //
 
-        /** Symbol table. */
+        /**
+         * Symbol table.
+         */
         private SymbolTable fSymbolTable;
 
         // symbols
@@ -1311,7 +1381,9 @@ public class XPath {
         // Constructors
         //
 
-        /** Constructs an XPath expression scanner. */
+        /**
+         * Constructs an XPath expression scanner.
+         */
         public Scanner(SymbolTable symbolTable) {
 
             // save pool and tokens
@@ -1320,7 +1392,6 @@ public class XPath {
         } // <init>(SymbolTable)
 
         /**
-         *
          */
         public boolean scanExpr(SymbolTable symbolTable,
                                 XPath.Tokens tokens, String data,
@@ -1900,10 +1971,12 @@ public class XPath {
             int ch = data.charAt(currentOffset);
             if (ch >= 0x80) {
                 if (!XMLChar.isNameStart(ch))
-                /*** // REVISIT: Make sure this is a negation. ***
-                if ((XMLCharacterProperties.fgCharFlags[ch] &
-                     XMLCharacterProperties.E_InitialNameCharFlag) == 0)
-                /***/
+                /**
+                 * // REVISIT: Make sure this is a negation. ***
+                 * if ((XMLCharacterProperties.fgCharFlags[ch] &
+                 * XMLCharacterProperties.E_InitialNameCharFlag) == 0)
+                 * /**
+                 */
                 {
                     return currentOffset;
                 }
@@ -1918,10 +1991,12 @@ public class XPath {
                 ch = data.charAt(currentOffset);
                 if (ch >= 0x80) {
                     if (!XMLChar.isName(ch))
-                    /*** // REVISIT: Make sure this is a negation. ***
-                    if ((XMLCharacterProperties.fgCharFlags[ch] &
-                         XMLCharacterProperties.E_NameCharFlag) == 0)
-                    /***/
+                    /**
+                     * // REVISIT: Make sure this is a negation. ***
+                     * if ((XMLCharacterProperties.fgCharFlags[ch] &
+                     * XMLCharacterProperties.E_NameCharFlag) == 0)
+                     * /**
+                     */
                     {
                         break;
                     }
@@ -1955,7 +2030,9 @@ public class XPath {
             }
             if (ch == '.') {
                 if (++currentOffset < endOffset) {
-                    /** int start = currentOffset; **/
+                    /**
+                     * Int start = currentOffset; *
+                     */
                     ch = data.charAt(currentOffset);
                     while (ch >= '0' && ch <= '9') {
                         part = (part * 10) + (ch - '0');
@@ -1965,12 +2042,14 @@ public class XPath {
                         ch = data.charAt(currentOffset);
                     }
                     if (part != 0) {
-                        /***
-                        part = tokens.addSymbol(data, start, currentOffset - start, encoding);
-                        /***/
+                        /**
+                         * Part = tokens.addSymbol(data, start, currentOffset - start, encoding);
+                         * /**
+                         */
                         throw new RuntimeException("find a solution!");
                         //part = fStringPool.addSymbol(data.substring(start, currentOffset));
-                        /***/
+                        /**
+                         */
                     }
                 }
             }
@@ -2002,7 +2081,9 @@ public class XPath {
     // MAIN
     //
 
-    /** Main program entry. */
+    /**
+     * Main program entry.
+     */
     public static void main(String[] argv) throws Exception {
 
         for (int i = 0; i < argv.length; i++) {

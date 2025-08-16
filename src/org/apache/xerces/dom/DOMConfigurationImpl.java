@@ -54,11 +54,10 @@ import org.w3c.dom.ls.LSResourceResolver;
 
 /**
  * Xerces implementation of DOMConfiguration that maintains a table of recognized parameters.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Elena Litani, IBM
- * @author Neeraj Bajaj, Sun Microsystems.
+ * @author Neeraj Bajaj, Sun Microsystems
  * @version $Id$
  */
 public class DOMConfigurationImpl extends ParserConfigurationSettings
@@ -73,11 +72,15 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
 
     // feature identifiers
 
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String XERCES_VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
 
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     protected static final String XERCES_NAMESPACES =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
 
@@ -93,43 +96,63 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     protected static final String NORMALIZE_DATA =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
     
-    /** Feature identifier: send element default value via characters() */
+    /**
+     * Feature identifier: send element default value via characters()
+     */
     protected static final String SCHEMA_ELEMENT_DEFAULT =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_ELEMENT_DEFAULT;
 
-    /** sending psvi in the pipeline */
+    /**
+     * Sending psvi in the pipeline
+     */
     protected static final String SEND_PSVI =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_AUGMENT_PSVI;
     
-    /** Feature: generate synthetic annotations */
+    /**
+     * Feature: generate synthetic annotations
+     */
     protected static final String GENERATE_SYNTHETIC_ANNOTATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.GENERATE_SYNTHETIC_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: validate annotations */
+    /**
+     * Feature identifier: validate annotations
+     */
     protected static final String VALIDATE_ANNOTATIONS =
         Constants.XERCES_FEATURE_PREFIX + Constants.VALIDATE_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: honour all schemaLocations */
+    /**
+     * Feature identifier: honour all schemaLocations
+     */
     protected static final String HONOUR_ALL_SCHEMALOCATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.HONOUR_ALL_SCHEMALOCATIONS_FEATURE;
     
-    /** Feature identifier: use grammar pool only */
+    /**
+     * Feature identifier: use grammar pool only
+     */
     protected static final String USE_GRAMMAR_POOL_ONLY =
         Constants.XERCES_FEATURE_PREFIX + Constants.USE_GRAMMAR_POOL_ONLY_FEATURE;
     
-    /** Feature identifier: load external DTD. */
+    /**
+     * Feature identifier: load external DTD.
+     */
     protected static final String DISALLOW_DOCTYPE_DECL_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.DISALLOW_DOCTYPE_DECL_FEATURE;
     
-    /** Feature identifier: balance syntax trees. */
+    /**
+     * Feature identifier: balance syntax trees.
+     */
     protected static final String BALANCE_SYNTAX_TREES =
         Constants.XERCES_FEATURE_PREFIX + Constants.BALANCE_SYNTAX_TREES;
     
-    /** Feature identifier: warn on duplicate attribute definition. */
+    /**
+     * Feature identifier: warn on duplicate attribute definition.
+     */
     protected static final String WARN_ON_DUPLICATE_ATTDEF =
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_DUPLICATE_ATTDEF_FEATURE;
     
-    /** Feature identifier: namespace growth */
+    /**
+     * Feature identifier: namespace growth
+     */
     protected static final String NAMESPACE_GROWTH = 
         Constants.XERCES_FEATURE_PREFIX + Constants.NAMESPACE_GROWTH_FEATURE;
     
@@ -137,66 +160,96 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
         Constants.XERCES_FEATURE_PREFIX + Constants.TOLERATE_DUPLICATES_FEATURE;    
     // property identifiers
 
-    /** Property identifier: entity manager. */
+    /**
+     * Property identifier: entity manager.
+     */
     protected static final String ENTITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: xml string. */
+    /**
+     * Property identifier: xml string.
+     */
     protected static final String XML_STRING =
         Constants.SAX_PROPERTY_PREFIX + Constants.XML_STRING_PROPERTY;
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property id: Grammar pool. */
+    /**
+     * Property id: Grammar pool.
+     */
     protected static final String GRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
     
-    /** property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     protected static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
 
-    /** Property identifier: error handler. */
+    /**
+     * Property identifier: error handler.
+     */
     protected static final String ERROR_HANDLER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
 
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     protected static final String ENTITY_RESOLVER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
 
-    /** Property identifier: JAXP schema language / DOM schema-type. */
+    /**
+     * Property identifier: JAXP schema language / DOM schema-type.
+     */
     protected static final String JAXP_SCHEMA_LANGUAGE =
         Constants.JAXP_PROPERTY_PREFIX + Constants.SCHEMA_LANGUAGE;
 
-    /** Property identifier: JAXP schema source/ DOM schema-location. */
+    /**
+     * Property identifier: JAXP schema source/ DOM schema-location.
+     */
     protected static final String JAXP_SCHEMA_SOURCE =
         Constants.JAXP_PROPERTY_PREFIX + Constants.SCHEMA_SOURCE;
     
-    /** Property identifier: DTD validator. */
+    /**
+     * Property identifier: DTD validator.
+     */
     protected final static String DTD_VALIDATOR_PROPERTY =
         Constants.XERCES_PROPERTY_PREFIX + Constants.DTD_VALIDATOR_PROPERTY;
     
-    /** Property identifier: datatype validator factory. */
+    /**
+     * Property identifier: datatype validator factory.
+     */
     protected static final String DTD_VALIDATOR_FACTORY_PROPERTY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DATATYPE_VALIDATOR_FACTORY_PROPERTY;
 
     protected static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
     
-    /** Property identifier: schema location. */
+    /**
+     * Property identifier: schema location.
+     */
     protected static final String SCHEMA_LOCATION =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_LOCATION;
 
-    /** Property identifier: no namespace schema location. */
+    /**
+     * Property identifier: no namespace schema location.
+     */
     protected static final String SCHEMA_NONS_LOCATION =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_NONS_LOCATION;
     
-    /** Property identifier: Schema DV Factory */
+    /**
+     * Property identifier: Schema DV Factory
+     */
     protected static final String SCHEMA_DV_FACTORY =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_DV_FACTORY_PROPERTY;
     
@@ -205,7 +258,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     //
     XMLDocumentHandler fDocumentHandler;
 
-    /** Normalization features*/
+    /**
+     * Normalization features
+     */
     protected short features = 0;
 
     protected final static short NAMESPACES          = 0x1<<0;
@@ -225,30 +280,44 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
 
     // components
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected SymbolTable fSymbolTable;
 
-    /** Components. */
+    /**
+     * Components.
+     */
     protected ArrayList fComponents;
 
     protected ValidationManager fValidationManager;
 
-    /** Locale. */
+    /**
+     * Locale.
+     */
     protected Locale fLocale;
 
-    /** Error reporter */
+    /**
+     * Error reporter
+     */
     protected XMLErrorReporter fErrorReporter;
 
     protected final DOMErrorHandlerWrapper fErrorHandlerWrapper =
                 new DOMErrorHandlerWrapper();
     
-    /** Current Datatype validator factory. */
+    /**
+     * Current Datatype validator factory.
+     */
     protected DTDDVFactory fCurrentDVFactory;
     
-    /** The XML 1.0 Datatype validator factory. */
+    /**
+     * The XML 1.0 Datatype validator factory.
+     */
     protected DTDDVFactory fDatatypeValidatorFactory;
     
-    /** The XML 1.1 Datatype validator factory. **/
+    /**
+     * The XML 1.1 Datatype validator factory. *
+     */
     protected DTDDVFactory fXML11DatatypeFactory;
 
     // private data
@@ -260,7 +329,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     // Constructors
     //
 
-    /** Default Constructor. */
+    /**
+     * Default Constructor.
+     */
     protected DOMConfigurationImpl() {
         this(null, null);
     } // <init>()
@@ -268,7 +339,7 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     protected DOMConfigurationImpl(SymbolTable symbolTable) {
         this(symbolTable, null);
@@ -278,8 +349,8 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * Constructs a parser configuration using the specified symbol table
      * and parent settings.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param parentSettings the parent settings
      */
     protected DOMConfigurationImpl(SymbolTable symbolTable,
                                     XMLComponentManager parentSettings) {
@@ -448,14 +519,13 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * has ended.  If a client application wants to terminate
      * parsing early, it should throw an exception.
      *
-     * @param inputSource The input source for the top-level of the
-     *                    XML document.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping
-     *                         another exception.
-     * @exception IOException  An IO exception from the parser, possibly
+     * @param inputSource the input source for the top-level of the
+     *                    XML document
+     * @throws XNIException any XNI exception, possibly wrapping
+     *                         another exception
+     * @throws IOException  an IO exception from the parser, possibly
      *                         from a byte stream or character stream
-     *                         supplied by the parser.
+     *                         supplied by the parser
      */
     public void parse(XMLInputSource inputSource)
         throws XNIException, IOException{
@@ -466,13 +536,15 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * Sets the document handler on the last component in the pipeline
      * to receive information about the document.
      *
-     * @param documentHandler   The document handler.
+     * @param documentHandler   the document handler
      */
     public void setDocumentHandler(XMLDocumentHandler documentHandler) {
         fDocumentHandler = documentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
 
-    /** Returns the registered document handler. */
+    /**
+     * Returns the registered document handler.
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // getDocumentHandler():XMLDocumentHandler
@@ -480,13 +552,15 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Sets the DTD handler.
      *
-     * @param dtdHandler The DTD handler.
+     * @param dtdHandler the DTD handler
      */
     public void setDTDHandler(XMLDTDHandler dtdHandler) {
         //no-op
     } // setDTDHandler(XMLDTDHandler)
 
-    /** Returns the registered DTD handler. */
+    /**
+     * Returns the registered DTD handler.
+     */
     public XMLDTDHandler getDTDHandler() {
         return null;
     } // getDTDHandler():XMLDTDHandler
@@ -494,14 +568,16 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Sets the DTD content model handler.
      *
-     * @param handler The DTD content model handler.
+     * @param handler the DTD content model handler
      */
     public void setDTDContentModelHandler(XMLDTDContentModelHandler handler) {
         //no-op
 
     } // setDTDContentModelHandler(XMLDTDContentModelHandler)
 
-    /** Returns the registered DTD content model handler. */
+    /**
+     * Returns the registered DTD content model handler.
+     */
     public XMLDTDContentModelHandler getDTDContentModelHandler() {
         return null;
     } // getDTDContentModelHandler():XMLDTDContentModelHandler
@@ -510,7 +586,7 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * Sets the resolver used to resolve external entities. The EntityResolver
      * interface supports resolution of public and system identifiers.
      *
-     * @param resolver The new entity resolver. Passing a null value will
+     * @param resolver the new entity resolver. Passing a null value will
      *                 uninstall the currently installed resolver.
      */
     public void setEntityResolver(XMLEntityResolver resolver) {
@@ -520,8 +596,8 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Return the current entity resolver.
      *
-     * @return The current entity resolver, or null if none
-     *         has been registered.
+     * @return the current entity resolver, or null if none
+     *         has been registered
      * @see #setEntityResolver
      */
     public XMLEntityResolver getEntityResolver() {
@@ -541,9 +617,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.</p>
      *
-     * @param errorHandler The error handler.
-     * @exception java.lang.NullPointerException If the handler
-     *            argument is null.
+     * @param errorHandler the error handler
+     * @throws java.lang.NullPointerException if the handler
+     *            argument is null
      * @see #getErrorHandler
      */
     public void setErrorHandler(XMLErrorHandler errorHandler) {
@@ -555,8 +631,8 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Return the current error handler.
      *
-     * @return The current error handler, or null if none
-     *         has been registered.
+     * @return the current error handler, or null if none
+     *         has been registered
      * @see #setErrorHandler
      */
     public XMLErrorHandler getErrorHandler() {
@@ -565,15 +641,14 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     
     /**
      * Returns the state of a feature.
-     * 
-     * @param featureId The feature identifier.
+     *
+     * @param featureId the feature identifier
      * @return true if the feature is supported
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public boolean getFeature(String featureId)
         throws XMLConfigurationException {
@@ -590,11 +665,10 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * might not recognize the feature, and if it does recognize
      * it, it might not be able to fulfill the request.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     * @param state The requested state of the feature (true or false).
-     *
-     * @exception org.apache.xerces.xni.parser.XMLConfigurationException If the
-     *            requested feature is not known.
+     * @param featureId the unique identifier (URI) of the feature
+     * @param state the requested state of the feature (true or false)
+     * @throws org.apache.xerces.xni.parser.XMLConfigurationException if the
+     *            requested feature is not known
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -605,7 +679,7 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     } // setFeature(String,boolean)
 
     /**
-     * setProperty
+     * SetProperty
      *
      * @param propertyId
      * @param value
@@ -621,10 +695,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) throws XNIException {
         fLocale = locale;
@@ -632,7 +705,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
 
     } // setLocale(Locale)
 
-    /** Returns the locale. */
+    /**
+     * Returns the locale.
+     */
     public Locale getLocale() {
         return fLocale;
     } // getLocale():Locale
@@ -952,10 +1027,8 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * DOM Level 3 WD - Experimental.
      * Check if setting a parameter to a specific value is supported.
      *
-     * @param name The name of the parameter to check.
-     *
-     * @param value An object. if null, the returned value is true.
-     *
+     * @param name the name of the parameter to check
+     * @param value an object. if null, the returned value is true.
      * @return true if the parameter could be successfully set to the
      * specified value, or false if the parameter is not recognized or
      * the requested value is not supported. This does not change the
@@ -1042,9 +1115,9 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
 	} //canSetParameter
 
     /**
-     *  DOM Level 3 CR - Experimental.
+     * DOM Level 3 CR - Experimental.
      *
-     *  The list of the parameters supported by this
+     * The list of the parameters supported by this
      * <code>DOMConfiguration</code> object and for which at least one value
      * can be set by the application. Note that this list can also contain
      * parameter names defined outside this specification.
@@ -1098,7 +1171,7 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
     //
 
     /**
-     * reset all components before parsing
+     * Reset all components before parsing
      */
     protected void reset() throws XNIException {
 
@@ -1117,10 +1190,10 @@ public class DOMConfigurationImpl extends ParserConfigurationSettings
      * Check a property. If the property is known and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     * @exception org.apache.xerces.xni.parser.XMLConfigurationException If the
-     *            requested feature is not known or supported.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws org.apache.xerces.xni.parser.XMLConfigurationException if the
+     *            requested feature is not known or supported
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {

@@ -29,11 +29,9 @@ import org.apache.xerces.xni.grammars.XMLGrammarDescription;
  * filled from the GrammarPool when the DTDValidator is invoked on a
  * document, and, if a new DTD grammar is parsed, the new set will be
  * offered back to the GrammarPool for possible inclusion.
- * 
+ *
  * @xerces.internal
- *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class DTDGrammarBucket {
@@ -44,7 +42,9 @@ public class DTDGrammarBucket {
     // Data
     //
 
-    /** Grammars associated with element root name. */
+    /**
+     * Grammars associated with element root name.
+     */
     protected final Hashtable fGrammars;
 
     // the unique grammar from fGrammars (or that we're
@@ -58,7 +58,9 @@ public class DTDGrammarBucket {
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public DTDGrammarBucket() {
         fGrammars = new Hashtable();
     } // <init>()
@@ -70,8 +72,8 @@ public class DTDGrammarBucket {
     /**
      * Puts the specified grammar into the grammar pool and associate it to
      * a root element name (this being internal, the lack of generality is irrelevant).
-     * 
-     * @param grammar     The grammar.
+     *
+     * @param grammar     the grammar
      */
     public void putGrammar(DTDGrammar grammar) {
         XMLDTDDescription desc = (XMLDTDDescription)grammar.getGrammarDescription();

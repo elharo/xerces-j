@@ -25,13 +25,11 @@ import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 
 /**
- * <p>A <code>NamespaceContext</code> which only 
+ * <p>A <code>NamespaceContext</code> which only
  * contains bindings for the xml and xmlns prefixes.</p>
- * 
+ *
  * @xerces.internal
- * 
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public final class DefaultNamespaceContext implements NamespaceContext {
@@ -44,7 +42,9 @@ public final class DefaultNamespaceContext implements NamespaceContext {
     
     private DefaultNamespaceContext() {}
     
-    /** Returns the one and only instance of this class. */
+    /**
+     * Returns the one and only instance of this class.
+     */
     public static DefaultNamespaceContext getInstance() {
         return DEFAULT_NAMESPACE_CONTEXT_INSTANCE;
     }

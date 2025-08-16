@@ -37,8 +37,7 @@ import org.apache.xerces.xs.XSValue;
  * The XML representation for an element declaration
  * schema component is an &lt;element&gt; element information item
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @author Sandy Gao, IBM
  * @version $Id$
@@ -129,7 +128,7 @@ public class XSElementDecl implements XSElementDeclaration {
     }
 
     /**
-     * get the string description of this element
+     * Get the string description of this element
      */
     private String fDescription = null;
     public String toString() {
@@ -153,7 +152,7 @@ public class XSElementDecl implements XSElementDeclaration {
     }
 
     /**
-     * get the hash code
+     * Get the hash code
      */
     public int hashCode() {
         int code = fName.hashCode();
@@ -163,15 +162,15 @@ public class XSElementDecl implements XSElementDeclaration {
     }
 
     /**
-     * whether two decls are the same
+     * Whether two decls are the same
      */
     public boolean equals(Object o) {
         return o == this;
     }
 
     /**
-      * Reset current element declaration
-      */
+     * Reset current element declaration
+     */
     public void reset(){
         fScope = XSConstants.SCOPE_ABSENT;
         fName = null;
@@ -290,10 +289,11 @@ public class XSElementDecl implements XSElementDeclaration {
     /**
      * Convenience method. Check if <code>exclusion</code> is a substitution
      * group exclusion for this element declaration.
-     * @param exclusion Extension, restriction or none. Represents final
+     *
+     * @param exclusion extension, restriction or none. Represents final
      *   set for the element.
-     * @return True if <code>exclusion</code> is a part of the substitution
-     *   group exclusion subset.
+     * @return true if <code>exclusion</code> is a part of the substitution
+     *   group exclusion subset
      */
     public boolean isSubstitutionGroupExclusion(short exclusion) {
         return (fFinal & exclusion) != 0;
@@ -305,7 +305,7 @@ public class XSElementDecl implements XSElementDeclaration {
      * element declarations having the same {type definition}
      * or types derived therefrom.
      *
-     * @return A bit flag representing {extension, restriction} or NONE.
+     * @return a bit flag representing {extension, restriction} or NONE
      */
     public short getSubstitutionGroupExclusions() {
         return fFinal;
@@ -314,10 +314,11 @@ public class XSElementDecl implements XSElementDeclaration {
     /**
      * Convenience method. Check if <code>disallowed</code> is a disallowed
      * substitution for this element declaration.
-     * @param disallowed Substitution, extension, restriction or none.
-     *   Represents a block set for the element.
-     * @return True if <code>disallowed</code> is a part of the substitution
-     *   group exclusion subset.
+     *
+     * @param disallowed substitution, extension, restriction or none.
+     *   Represents a block set for the element
+     * @return true if <code>disallowed</code> is a part of the substitution
+     *   group exclusion subset
      */
     public boolean isDisallowedSubstitution(short disallowed) {
         return (fBlock & disallowed) != 0;
@@ -326,7 +327,7 @@ public class XSElementDecl implements XSElementDeclaration {
     /**
      * The supplied values for {disallowed substitutions}
      *
-     * @return A bit flag representing {substitution, extension, restriction} or NONE.
+     * @return a bit flag representing {substitution, extension, restriction} or NONE
      */
     public short getDisallowedSubstitutions() {
         return fBlock;
@@ -355,6 +356,7 @@ public class XSElementDecl implements XSElementDeclaration {
     
 
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

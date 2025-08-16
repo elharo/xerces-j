@@ -86,7 +86,6 @@ import org.xml.sax.ext.LexicalHandler;
  *
  * @author Kohsuke Kawaguchi (kohsuke.kawaguchi@sun.com)
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 final class ValidatorHandlerImpl extends ValidatorHandler implements
@@ -94,45 +93,65 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     
     // feature identifiers
     
-    /** Feature identifier: namespace prefixes. */
+    /**
+     * Feature identifier: namespace prefixes.
+     */
     private static final String NAMESPACE_PREFIXES =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACE_PREFIXES_FEATURE;
     
-    /** Feature identifier: string interning. */
+    /**
+     * Feature identifier: string interning.
+     */
     private static final String STRING_INTERNING =
         Constants.SAX_FEATURE_PREFIX + Constants.STRING_INTERNING_FEATURE;
     
-    /** Feature identifier: strings interned. */
+    /**
+     * Feature identifier: strings interned.
+     */
     private static final String STRINGS_INTERNED =
         Constants.XERCES_FEATURE_PREFIX + Constants.STRINGS_INTERNED_FEATURE;
     
     // property identifiers
     
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     private static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
     
-    /** Property identifier: lexical handler. */
+    /**
+     * Property identifier: lexical handler.
+     */
     private static final String LEXICAL_HANDLER =
         Constants.SAX_PROPERTY_PREFIX + Constants.LEXICAL_HANDLER_PROPERTY;
     
-    /** Property identifier: namespace context. */
+    /**
+     * Property identifier: namespace context.
+     */
     private static final String NAMESPACE_CONTEXT =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_CONTEXT_PROPERTY;
     
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     private static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
     
-    /** Property identifier: security manager. */
+    /**
+     * Property identifier: security manager.
+     */
     private static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
     
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     private static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: validation manager. */
+    /**
+     * Property identifier: validation manager.
+     */
     private static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
  
@@ -140,37 +159,59 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     // Data
     //
     
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     private final XMLErrorReporter fErrorReporter;
     
-    /** The namespace context of this document: stores namespaces in scope */
+    /**
+     * The namespace context of this document: stores namespaces in scope
+     */
     private final NamespaceContext fNamespaceContext;
     
-    /** Schema validator. **/
+    /**
+     * Schema validator. *
+     */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /**
+     * Symbol table *
+     */
     private final SymbolTable fSymbolTable;
     
-    /** Validation manager. */
+    /**
+     * Validation manager.
+     */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /**
+     * Component manager. *
+     */
     private final XMLSchemaValidatorComponentManager fComponentManager;
 
-    /** XML Locator wrapper for SAX. **/
+    /**
+     * XML Locator wrapper for SAX. *
+     */
     private final SAXLocatorWrapper fSAXLocatorWrapper = new SAXLocatorWrapper();
     
-    /** Flag used to track whether the namespace context needs to be pushed. */
+    /**
+     * Flag used to track whether the namespace context needs to be pushed.
+     */
     private boolean fNeedPushNSContext = true;
     
-    /** Map for tracking unparsed entities. */
+    /**
+     * Map for tracking unparsed entities.
+     */
     private HashMap fUnparsedEntities = null;
     
-    /** Flag used to track whether XML names and Namespace URIs have been internalized. */
+    /**
+     * Flag used to track whether XML names and Namespace URIs have been internalized.
+     */
     private boolean fStringsInternalized = false;
     
-    /** Fields for start element, end element and characters. */
+    /**
+     * Fields for start element, end element and characters.
+     */
     private final QName fElementQName = new QName();
     private final QName fAttributeQName = new QName();
     private final XMLAttributesImpl fAttributes = new XMLAttributesImpl();
@@ -410,7 +451,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
 
     public void emptyElement(QName element, XMLAttributes attributes,
             Augmentations augs) throws XNIException {
-        /** Split empty element event. **/
+        /**
+         * Split empty element event. *
+         */
         startElement(element, attributes, augs);
         endElement(element, augs);
     }
@@ -643,10 +686,10 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
 
     public void processingInstruction(String target, String data)
             throws SAXException {
-        /** 
+        /**
          * Processing instructions do not participate in schema validation,
          * so just forward the event to the application's content
-         * handler. 
+         * handler.
          */
         if (fContentHandler != null) {
             fContentHandler.processingInstruction(target, data);
@@ -690,7 +733,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
             if (result != null) {
                 ContentHandler ch = saxResult.getHandler();
                 lh = saxResult.getLexicalHandler();
-                /** If the lexical handler is not set try casting the ContentHandler. **/
+                /**
+                 * If the lexical handler is not set try casting the ContentHandler. *
+                 */
                 if (lh == null && ch instanceof LexicalHandler) {
                     lh = (LexicalHandler) ch;
                 }
@@ -796,7 +841,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     //
     //
     
-    /** Fills in a QName object. */
+    /**
+     * Fills in a QName object.
+     */
     private void fillQName(QName toFill, String uri, String localpart, String raw) {
         if (!fStringsInternalized) {
             uri = (uri != null && uri.length() > 0) ? fSymbolTable.addSymbol(uri) : null;
@@ -822,7 +869,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         toFill.setValues(prefix, localpart, raw, uri);
     }
     
-    /** Fills in the XMLAttributes object. */
+    /**
+     * Fills in the XMLAttributes object.
+     */
     private void fillXMLAttributes(Attributes att) {
         fAttributes.removeAllAttributes();
         final int len = att.getLength();
@@ -832,7 +881,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         }
     }
     
-    /** Fills in the XMLAttributes object. */
+    /**
+     * Fills in the XMLAttributes object.
+     */
     private void fillXMLAttributes2(Attributes2 att) {
         fAttributes.removeAllAttributes();
         final int len = att.getLength();
@@ -845,7 +896,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         }
     }
     
-    /** Adds an attribute to the XMLAttributes object. */
+    /**
+     * Adds an attribute to the XMLAttributes object.
+     */
     private void fillXMLAttribute(Attributes att, int index) {
         fillQName(fAttributeQName, att.getURI(index), att.getLocalName(index), att.getQName(index));
         String type = att.getType(index);
@@ -860,37 +913,51 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     private final XMLSchemaTypeInfoProvider fTypeInfoProvider = new XMLSchemaTypeInfoProvider();
     private class XMLSchemaTypeInfoProvider extends TypeInfoProvider {
         
-        /** Element augmentations: contains ElementPSVI. **/
+        /**
+         * Element augmentations: contains ElementPSVI. *
+         */
         private Augmentations fElementAugs;
         
-        /** Attributes: augmentations for each attribute contain AttributePSVI. **/
+        /**
+         * Attributes: augmentations for each attribute contain AttributePSVI. *
+         */
         private XMLAttributes fAttributes;
         
-        /** In start element. **/
+        /**
+         * In start element. *
+         */
         private boolean fInStartElement = false;
         private boolean fInEndElement = false;
         
-        /** Initializes the TypeInfoProvider with type information for the current element. **/
+        /**
+         * Initializes the TypeInfoProvider with type information for the current element. *
+         */
         void beginStartElement(Augmentations elementAugs, XMLAttributes attributes) {
             fInStartElement = true;
             fElementAugs = elementAugs;
             fAttributes = attributes;
         }
         
-        /** Cleanup at the end of start element. **/
+        /**
+         * Cleanup at the end of start element. *
+         */
         void finishStartElement() {
             fInStartElement = false;
             fElementAugs = null;
             fAttributes = null;
         }
         
-        /** Initializes the TypeInfoProvider with type information for the current element. **/
+        /**
+         * Initializes the TypeInfoProvider with type information for the current element. *
+         */
         void beginEndElement(Augmentations elementAugs) {
             fInEndElement = true;
             fElementAugs = elementAugs;
         }
         
-        /** Cleanup at the end of end element. **/
+        /**
+         * Cleanup at the end of end element. *
+         */
         void finishEndElement() {
             fInEndElement = false;
             fElementAugs = null;
@@ -899,7 +966,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         /**
          * Throws a {@link IllegalStateException} if we are not in
          * the startElement callback. the JAXP API requires this
-         * for most of the public methods which access attribute 
+         * for most of the public methods which access attribute
          * type information.
          */
         private void checkStateAttribute() {
@@ -911,7 +978,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         
         /**
          * Throws a {@link IllegalStateException} if we are not in
-         * the startElement or endElement callbacks. the JAXP API requires 
+         * the startElement or endElement callbacks. the JAXP API requires
          * this for the public methods which access element type information.
          */
         private void checkStateElement() {
@@ -1024,7 +1091,9 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         }
     }
     
-    /** SAX adapter for an LSResourceResolver. */
+    /**
+     * SAX adapter for an LSResourceResolver.
+     */
     private final ResolutionForwarder fResolutionForwarder = new ResolutionForwarder(null);
     static final class ResolutionForwarder 
         implements EntityResolver2 {
@@ -1033,20 +1102,28 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         // Data
         //
 
-        /** XML 1.0 type constant according to DOM L3 LS REC spec "http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/" */
+        /**
+         * XML 1.0 type constant according to DOM L3 LS REC spec "http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/"
+         */
         private static final String XML_TYPE = "http://www.w3.org/TR/REC-xml";
 
-        /** The DOM entity resolver. */
+        /**
+         * The DOM entity resolver.
+         */
         protected LSResourceResolver fEntityResolver;
 
         //
         // Constructors
         //
 
-        /** Default constructor. */
+        /**
+         * Default constructor.
+         */
         public ResolutionForwarder() {}
 
-        /** Wraps the specified DOM entity resolver. */
+        /**
+         * Wraps the specified DOM entity resolver.
+         */
         public ResolutionForwarder(LSResourceResolver entityResolver) {
             setEntityResolver(entityResolver);
         }
@@ -1055,12 +1132,16 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         // Public methods
         //
 
-        /** Sets the DOM entity resolver. */
+        /**
+         * Sets the DOM entity resolver.
+         */
         public void setEntityResolver(LSResourceResolver entityResolver) {
             fEntityResolver = entityResolver;
         } // setEntityResolver(LSResourceResolver)
 
-        /** Returns the DOM entity resolver. */
+        /**
+         * Returns the DOM entity resolver.
+         */
         public LSResourceResolver getEntityResolver() {
             return fEntityResolver;
         } // getEntityResolver():LSResourceResolver
@@ -1117,13 +1198,17 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
             return null;
         }
         
-        /** Delegates to EntityResolver2.resolveEntity(String, String, String, String). */
+        /**
+         * Delegates to EntityResolver2.resolveEntity(String, String, String, String).
+         */
         public InputSource resolveEntity(String publicId, String systemId)
                 throws SAXException, IOException {
             return resolveEntity(null, publicId, null, systemId);
         }
         
-        /** Resolves a system identifier against a base URI. */
+        /**
+         * Resolves a system identifier against a base URI.
+         */
         private String resolveSystemId(String systemId, String baseURI) {
             try {
                 return XMLEntityManager.expandSystemId(systemId, baseURI, false);

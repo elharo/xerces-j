@@ -22,11 +22,9 @@ import java.util.NoSuchElementException;
 
 /**
  * Commonly used constants.
- * 
+ *
  * @xerces.internal
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public final class Constants {
@@ -43,75 +41,121 @@ public final class Constants {
     
     // sax features
     
-    /** SAX feature prefix ("http://xml.org/sax/features/"). */
+    /**
+     * SAX feature prefix ("http://xml.org/sax/features/").
+     */
     public static final String SAX_FEATURE_PREFIX = "http://xml.org/sax/features/";
     
-    /** Namespaces feature ("namespaces"). */
+    /**
+     * Namespaces feature ("namespaces").
+     */
     public static final String NAMESPACES_FEATURE = "namespaces";
     
-    /** Namespace prefixes feature ("namespace-prefixes"). */
+    /**
+     * Namespace prefixes feature ("namespace-prefixes").
+     */
     public static final String NAMESPACE_PREFIXES_FEATURE = "namespace-prefixes";
     
-    /** String interning feature ("string-interning"). */
+    /**
+     * String interning feature ("string-interning").
+     */
     public static final String STRING_INTERNING_FEATURE = "string-interning";
     
-    /** Validation feature ("validation"). */
+    /**
+     * Validation feature ("validation").
+     */
     public static final String VALIDATION_FEATURE = "validation";
     
-    /** External general entities feature ("external-general-entities "). */
+    /**
+     * External general entities feature ("external-general-entities ").
+     */
     public static final String EXTERNAL_GENERAL_ENTITIES_FEATURE = "external-general-entities";
     
-    /** External parameter entities feature ("external-parameter-entities "). */
+    /**
+     * External parameter entities feature ("external-parameter-entities ").
+     */
     public static final String EXTERNAL_PARAMETER_ENTITIES_FEATURE = "external-parameter-entities";
     
-    /** Lexical handler parameter entities feature ("lexical-handler/parameter-entities"). */
+    /**
+     * Lexical handler parameter entities feature ("lexical-handler/parameter-entities").
+     */
     public static final String LEXICAL_HANDLER_PARAMETER_ENTITIES_FEATURE = "lexical-handler/parameter-entities";
     
-    /** Is standalone feature ("is-standalone"). */
+    /**
+     * Is standalone feature ("is-standalone").
+     */
     public static final String IS_STANDALONE_FEATURE = "is-standalone";
     
-    /** Resolve DTD URIs feature ("resolve-dtd-uris"). */
+    /**
+     * Resolve DTD URIs feature ("resolve-dtd-uris").
+     */
     public static final String RESOLVE_DTD_URIS_FEATURE = "resolve-dtd-uris";
     
-    /** Use Attributes2 feature ("use-attributes2"). */
+    /**
+     * Use Attributes2 feature ("use-attributes2").
+     */
     public static final String USE_ATTRIBUTES2_FEATURE = "use-attributes2";
     
-    /** Use Locator2 feature ("use-locator2"). */
+    /**
+     * Use Locator2 feature ("use-locator2").
+     */
     public static final String USE_LOCATOR2_FEATURE = "use-locator2";
     
-    /** Use EntityResolver2 feature ("use-entity-resolver2"). */
+    /**
+     * Use EntityResolver2 feature ("use-entity-resolver2").
+     */
     public static final String USE_ENTITY_RESOLVER2_FEATURE = "use-entity-resolver2";
     
-    /** Unicode normalization checking feature ("unicode-normalization-checking"). */
+    /**
+     * Unicode normalization checking feature ("unicode-normalization-checking").
+     */
     public static final String UNICODE_NORMALIZATION_CHECKING_FEATURE = "unicode-normalization-checking";
     
-    /** xmlns URIs feature ("xmlns-uris"). */
+    /**
+     * Xmlns URIs feature ("xmlns-uris").
+     */
     public static final String XMLNS_URIS_FEATURE = "xmlns-uris";
     
-    /** XML 1.1 feature ("xml-1.1"). */
+    /**
+     * XML 1.1 feature ("xml-1.1").
+     */
     public static final String XML_11_FEATURE = "xml-1.1";
     
-    /** Allow unparsed entity and notation declaration events to be sent after the end DTD event ("allow-dtd-events-after-endDTD") */
+    /**
+     * Allow unparsed entity and notation declaration events to be sent after the end DTD event ("allow-dtd-events-after-endDTD")
+     */
     public static final String ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE = "allow-dtd-events-after-endDTD";
     
     // sax properties
     
-    /** SAX property prefix ("http://xml.org/sax/properties/"). */
+    /**
+     * SAX property prefix ("http://xml.org/sax/properties/").
+     */
     public static final String SAX_PROPERTY_PREFIX = "http://xml.org/sax/properties/";
     
-    /** Declaration handler property ("declaration-handler"). */
+    /**
+     * Declaration handler property ("declaration-handler").
+     */
     public static final String DECLARATION_HANDLER_PROPERTY = "declaration-handler";
     
-    /** Lexical handler property ("lexical-handler"). */
+    /**
+     * Lexical handler property ("lexical-handler").
+     */
     public static final String LEXICAL_HANDLER_PROPERTY = "lexical-handler";
     
-    /** DOM node property ("dom-node"). */
+    /**
+     * DOM node property ("dom-node").
+     */
     public static final String DOM_NODE_PROPERTY = "dom-node";
     
-    /** XML string property ("xml-string"). */
+    /**
+     * XML string property ("xml-string").
+     */
     public static final String XML_STRING_PROPERTY = "xml-string";
     
-    /** Document XML version property ("document-xml-version"). */
+    /**
+     * Document XML version property ("document-xml-version").
+     */
     public static final String DOCUMENT_XML_VERSION_PROPERTY = "document-xml-version";
     
     
@@ -119,14 +163,20 @@ public final class Constants {
     // JAXP properties
     //
     
-    /** JAXP property prefix ("http://java.sun.com/xml/jaxp/properties/"). */
+    /**
+     * JAXP property prefix ("http://java.sun.com/xml/jaxp/properties/").
+     */
     public static final String JAXP_PROPERTY_PREFIX =
         "http://java.sun.com/xml/jaxp/properties/";
     
-    /** JAXP schemaSource property: when used internally may include DTD sources (DOM) */
+    /**
+     * JAXP schemaSource property: when used internally may include DTD sources (DOM)
+     */
     public static final String SCHEMA_SOURCE = "schemaSource";
     
-    /** JAXP schemaSource language: when used internally may include DTD namespace (DOM) */
+    /**
+     * JAXP schemaSource language: when used internally may include DTD namespace (DOM)
+     */
     public static final String SCHEMA_LANGUAGE = "schemaLanguage";
     
     
@@ -134,13 +184,19 @@ public final class Constants {
     // DOM features
     //
     
-    /** Comments feature ("include-comments"). */
+    /**
+     * Comments feature ("include-comments").
+     */
     public static final String INCLUDE_COMMENTS_FEATURE = "include-comments";
     
-    /** Create cdata nodes feature ("create-cdata-nodes"). */
+    /**
+     * Create cdata nodes feature ("create-cdata-nodes").
+     */
     public static final String CREATE_CDATA_NODES_FEATURE = "create-cdata-nodes";
     
-    /** Feature id: load as infoset. */
+    /**
+     * Feature id: load as infoset.
+     */
     public static final String LOAD_AS_INFOSET = "load-as-infoset";
     
     
@@ -196,106 +252,174 @@ public final class Constants {
     
     // xerces features
     
-    /** Xerces features prefix ("http://apache.org/xml/features/"). */
+    /**
+     * Xerces features prefix ("http://apache.org/xml/features/").
+     */
     public static final String XERCES_FEATURE_PREFIX = "http://apache.org/xml/features/";
     
-    /** Schema validation feature ("validation/schema"). */
+    /**
+     * Schema validation feature ("validation/schema").
+     */
     public static final String SCHEMA_VALIDATION_FEATURE = "validation/schema";
     
-    /** Expose schema normalized values */
+    /**
+     * Expose schema normalized values
+     */
     public static final String SCHEMA_NORMALIZED_VALUE = "validation/schema/normalized-value";
     
-    /** Send schema default value via characters() */
+    /**
+     * Send schema default value via characters()
+     */
     public static final String SCHEMA_ELEMENT_DEFAULT = "validation/schema/element-default";
     
-    /** Schema full constraint checking ("validation/schema-full-checking"). */
+    /**
+     * Schema full constraint checking ("validation/schema-full-checking").
+     */
     public static final String SCHEMA_FULL_CHECKING = "validation/schema-full-checking";
     
-    /** Augment Post-Schema-Validation-Infoset */
+    /**
+     * Augment Post-Schema-Validation-Infoset
+     */
     public static final String SCHEMA_AUGMENT_PSVI = "validation/schema/augment-psvi";
     
-    /** Dynamic validation feature ("validation/dynamic"). */
+    /**
+     * Dynamic validation feature ("validation/dynamic").
+     */
     public static final String DYNAMIC_VALIDATION_FEATURE = "validation/dynamic";
     
-    /** Warn on duplicate attribute declaration feature ("validation/warn-on-duplicate-attdef"). */
+    /**
+     * Warn on duplicate attribute declaration feature ("validation/warn-on-duplicate-attdef").
+     */
     public static final String WARN_ON_DUPLICATE_ATTDEF_FEATURE = "validation/warn-on-duplicate-attdef";
     
-    /** Warn on undeclared element feature ("validation/warn-on-undeclared-elemdef"). */
+    /**
+     * Warn on undeclared element feature ("validation/warn-on-undeclared-elemdef").
+     */
     public static final String WARN_ON_UNDECLARED_ELEMDEF_FEATURE = "validation/warn-on-undeclared-elemdef";
     
-    /** Warn on duplicate entity declaration feature ("warn-on-duplicate-entitydef"). */
+    /**
+     * Warn on duplicate entity declaration feature ("warn-on-duplicate-entitydef").
+     */
     public static final String WARN_ON_DUPLICATE_ENTITYDEF_FEATURE = "warn-on-duplicate-entitydef";
     
-    /** Allow Java encoding names feature ("allow-java-encodings"). */
+    /**
+     * Allow Java encoding names feature ("allow-java-encodings").
+     */
     public static final String ALLOW_JAVA_ENCODINGS_FEATURE = "allow-java-encodings";
     
-    /** Disallow DOCTYPE declaration feature ("disallow-doctype-decl"). */
+    /**
+     * Disallow DOCTYPE declaration feature ("disallow-doctype-decl").
+     */
     public static final String DISALLOW_DOCTYPE_DECL_FEATURE = "disallow-doctype-decl";
     
-    /** Continue after fatal error feature ("continue-after-fatal-error"). */
+    /**
+     * Continue after fatal error feature ("continue-after-fatal-error").
+     */
     public static final String CONTINUE_AFTER_FATAL_ERROR_FEATURE = "continue-after-fatal-error";
     
-    /** Load dtd grammar when nonvalidating feature ("nonvalidating/load-dtd-grammar"). */
+    /**
+     * Load dtd grammar when nonvalidating feature ("nonvalidating/load-dtd-grammar").
+     */
     public static final String LOAD_DTD_GRAMMAR_FEATURE = "nonvalidating/load-dtd-grammar";
     
-    /** Load external dtd when nonvalidating feature ("nonvalidating/load-external-dtd"). */
+    /**
+     * Load external dtd when nonvalidating feature ("nonvalidating/load-external-dtd").
+     */
     public static final String LOAD_EXTERNAL_DTD_FEATURE = "nonvalidating/load-external-dtd";
     
-    /** Defer node expansion feature ("dom/defer-node-expansion"). */
+    /**
+     * Defer node expansion feature ("dom/defer-node-expansion").
+     */
     public static final String DEFER_NODE_EXPANSION_FEATURE = "dom/defer-node-expansion";
     
-    /** Create entity reference nodes feature ("dom/create-entity-ref-nodes"). */
+    /**
+     * Create entity reference nodes feature ("dom/create-entity-ref-nodes").
+     */
     public static final String CREATE_ENTITY_REF_NODES_FEATURE = "dom/create-entity-ref-nodes";
     
-    /** Include ignorable whitespace feature ("dom/include-ignorable-whitespace"). */
+    /**
+     * Include ignorable whitespace feature ("dom/include-ignorable-whitespace").
+     */
     public static final String INCLUDE_IGNORABLE_WHITESPACE = "dom/include-ignorable-whitespace";
     
-    /** Default attribute values feature ("validation/default-attribute-values"). */
+    /**
+     * Default attribute values feature ("validation/default-attribute-values").
+     */
     public static final String DEFAULT_ATTRIBUTE_VALUES_FEATURE = "validation/default-attribute-values";
     
-    /** Validate content models feature ("validation/validate-content-models"). */
+    /**
+     * Validate content models feature ("validation/validate-content-models").
+     */
     public static final String VALIDATE_CONTENT_MODELS_FEATURE = "validation/validate-content-models";
     
-    /** Validate datatypes feature ("validation/validate-datatypes"). */
+    /**
+     * Validate datatypes feature ("validation/validate-datatypes").
+     */
     public static final String VALIDATE_DATATYPES_FEATURE = "validation/validate-datatypes";
     
-    /** Balance syntax trees feature ("validation/balance-syntax-trees"). */
+    /**
+     * Balance syntax trees feature ("validation/balance-syntax-trees").
+     */
     public static final String BALANCE_SYNTAX_TREES = "validation/balance-syntax-trees";
     
-    /** Notify character references feature (scanner/notify-char-refs"). */
+    /**
+     * Notify character references feature (scanner/notify-char-refs").
+     */
     public static final String NOTIFY_CHAR_REFS_FEATURE = "scanner/notify-char-refs";
     
-    /** Notify built-in (&amp;amp;, etc.) references feature (scanner/notify-builtin-refs"). */
+    /**
+     * Notify built-in (&amp;amp;, etc.) references feature (scanner/notify-builtin-refs").
+     */
     public static final String NOTIFY_BUILTIN_REFS_FEATURE = "scanner/notify-builtin-refs";
     
-    /** Standard URI conformant feature ("standard-uri-conformant"). */
+    /**
+     * Standard URI conformant feature ("standard-uri-conformant").
+     */
     public static final String STANDARD_URI_CONFORMANT_FEATURE = "standard-uri-conformant";
     
-    /** Generate synthetic annotations feature ("generate-synthetic-annotations"). */
+    /**
+     * Generate synthetic annotations feature ("generate-synthetic-annotations").
+     */
     public static final String GENERATE_SYNTHETIC_ANNOTATIONS_FEATURE = "generate-synthetic-annotations";
     
-    /** Validate annotations feature ("validate-annotations"). */
+    /**
+     * Validate annotations feature ("validate-annotations").
+     */
     public static final String VALIDATE_ANNOTATIONS_FEATURE = "validate-annotations";
     
-    /** Honour all schemaLocations feature ("honour-all-schemaLocations"). */
+    /**
+     * Honour all schemaLocations feature ("honour-all-schemaLocations").
+     */
     public static final String HONOUR_ALL_SCHEMALOCATIONS_FEATURE = "honour-all-schemaLocations";
     
-    /** Namespace growth feature ("namespace-growth"). */
+    /**
+     * Namespace growth feature ("namespace-growth").
+     */
     public static final String NAMESPACE_GROWTH_FEATURE = "namespace-growth";
 
-    /** Tolerate duplicates feature ("internal/tolerate-duplicates"). */
+    /**
+     * Tolerate duplicates feature ("internal/tolerate-duplicates").
+     */
     public static final String TOLERATE_DUPLICATES_FEATURE = "internal/tolerate-duplicates";
     
-    /** String interned feature ("internal/strings-interned"). */
+    /**
+     * String interned feature ("internal/strings-interned").
+     */
     public static final String STRINGS_INTERNED_FEATURE = "internal/strings-interned";
     
-    /** XInclude processing feature ("xinclude"). */
+    /**
+     * XInclude processing feature ("xinclude").
+     */
     public static final String XINCLUDE_FEATURE = "xinclude";
     
-    /** XInclude fixup base URIs feature ("xinclude/fixup-base-uris"). */
+    /**
+     * XInclude fixup base URIs feature ("xinclude/fixup-base-uris").
+     */
     public static final String XINCLUDE_FIXUP_BASE_URIS_FEATURE = "xinclude/fixup-base-uris";
     
-    /** XInclude fixup language feature ("xinclude/fixup-language"). */
+    /**
+     * XInclude fixup language feature ("xinclude/fixup-language").
+     */
     public static final String XINCLUDE_FIXUP_LANGUAGE_FEATURE = "xinclude/fixup-language";    
     
     /**
@@ -306,30 +430,36 @@ public final class Constants {
      * found for an element.  Once a global element declaration has been found, xsi:type
      * attributes will start being processed for the sub-tree beginning at the element for
      * which the declaration was found.
-     * 
+     *
      * Suppose an element A has two element children, B and C.
-     * 
+     *
      * If a global element declaration is found for A, xsi:type attributes on A, B and C,
      * and all of B and C's descendents, will be processed.
-     * 
+     *
      * If no global element declaration is found for A or B, but one is found for C,
      * then xsi:type attributes will be ignored on A and B (and any descendents of B,
      * until a global element declaration is found), but xsi:type attributes will be
      * processed for C and all of C's descendents.
-     * 
+     *
      * Once xsi:type attributes stop being ignored for a subtree, they do not start
      * being ignored again, even if more elements are encountered for which no global
      * element declaration can be found.
      */
     public static final String IGNORE_XSI_TYPE_FEATURE = "validation/schema/ignore-xsi-type-until-elemdecl";
     
-    /** Perform checking of ID/IDREFs ("validation/id-idref-checking") */
+    /**
+     * Perform checking of ID/IDREFs ("validation/id-idref-checking")
+     */
     public static final String ID_IDREF_CHECKING_FEATURE = "validation/id-idref-checking";
     
-    /** Feature to ignore errors caused by identity constraints ("validation/identity-constraint-checking") */
+    /**
+     * Feature to ignore errors caused by identity constraints ("validation/identity-constraint-checking")
+     */
     public static final String IDC_CHECKING_FEATURE = "validation/identity-constraint-checking";
     
-    /** Feature to ignore errors caused by unparsed entities ("validation/unparsed-entity-checking") */
+    /**
+     * Feature to ignore errors caused by unparsed entities ("validation/unparsed-entity-checking")
+     */
     public static final String UNPARSED_ENTITY_CHECKING_FEATURE = "validation/unparsed-entity-checking";
     
     /**
@@ -338,130 +468,193 @@ public final class Constants {
      */
     public static final String USE_GRAMMAR_POOL_ONLY_FEATURE = "internal/validation/schema/use-grammar-pool-only";
     
-    /** Internal performance related feature: 
+    /**
+     * Internal performance related feature:
      * false - the parser settings (features/properties) have not changed between 2 parses
-     * true - the parser settings have changed between 2 parses  
+     * true - the parser settings have changed between 2 parses
      * NOTE: this feature should only be set by the parser configuration.
      */
     public static final String PARSER_SETTINGS = "internal/parser-settings";
     
     // xerces properties
     
-    /** Xerces properties prefix ("http://apache.org/xml/properties/"). */
+    /**
+     * Xerces properties prefix ("http://apache.org/xml/properties/").
+     */
     public static final String XERCES_PROPERTY_PREFIX = "http://apache.org/xml/properties/";
     
-    /** Current element node property ("dom/current-element-node"). */
+    /**
+     * Current element node property ("dom/current-element-node").
+     */
     public static final String CURRENT_ELEMENT_NODE_PROPERTY = "dom/current-element-node";
     
-    /** Document class name property ("dom/document-class-name"). */
+    /**
+     * Document class name property ("dom/document-class-name").
+     */
     public static final String DOCUMENT_CLASS_NAME_PROPERTY = "dom/document-class-name";
     
-    /** Symbol table property ("internal/symbol-table"). */
+    /**
+     * Symbol table property ("internal/symbol-table").
+     */
     public static final String SYMBOL_TABLE_PROPERTY = "internal/symbol-table";
     
-    /** Error reporter property ("internal/error-reporter"). */
+    /**
+     * Error reporter property ("internal/error-reporter").
+     */
     public static final String ERROR_REPORTER_PROPERTY = "internal/error-reporter";
     
-    /** Error handler property ("internal/error-handler"). */
+    /**
+     * Error handler property ("internal/error-handler").
+     */
     public static final String ERROR_HANDLER_PROPERTY = "internal/error-handler";
     
-    /** XInclude handler property ("internal/xinclude-handler"). */
+    /**
+     * XInclude handler property ("internal/xinclude-handler").
+     */
     public static final String XINCLUDE_HANDLER_PROPERTY = "internal/xinclude-handler";
     
-    /** XPointer handler property ("internal/xpointer-handler"). */
+    /**
+     * XPointer handler property ("internal/xpointer-handler").
+     */
     public static final String XPOINTER_HANDLER_PROPERTY = "internal/xpointer-handler";
     
-    /** Entity manager property ("internal/entity-manager"). */
+    /**
+     * Entity manager property ("internal/entity-manager").
+     */
     public static final String ENTITY_MANAGER_PROPERTY = "internal/entity-manager";
     
-    /** Input buffer size property ("input-buffer-size"). */
+    /**
+     * Input buffer size property ("input-buffer-size").
+     */
     public static final String BUFFER_SIZE_PROPERTY = "input-buffer-size";
     
-    /** Security manager property ("security-manager"). */
+    /**
+     * Security manager property ("security-manager").
+     */
     public static final String SECURITY_MANAGER_PROPERTY = "security-manager";
     
-    /** Locale property ("locale"). */
+    /**
+     * Locale property ("locale").
+     */
     public static final String LOCALE_PROPERTY = "locale";
     
-    /** Entity resolver property ("internal/entity-resolver"). */
+    /**
+     * Entity resolver property ("internal/entity-resolver").
+     */
     public static final String ENTITY_RESOLVER_PROPERTY = "internal/entity-resolver";
     
-    /** Grammar pool property ("internal/grammar-pool"). */
+    /**
+     * Grammar pool property ("internal/grammar-pool").
+     */
     public static final String XMLGRAMMAR_POOL_PROPERTY = "internal/grammar-pool";
     
-    /** Datatype validator factory ("internal/datatype-validator-factory"). */
+    /**
+     * Datatype validator factory ("internal/datatype-validator-factory").
+     */
     public static final String DATATYPE_VALIDATOR_FACTORY_PROPERTY = "internal/datatype-validator-factory";
     
-    /** Document scanner property ("internal/document-scanner"). */
+    /**
+     * Document scanner property ("internal/document-scanner").
+     */
     public static final String DOCUMENT_SCANNER_PROPERTY = "internal/document-scanner";
     
-    /** DTD scanner property ("internal/dtd-scanner"). */
+    /**
+     * DTD scanner property ("internal/dtd-scanner").
+     */
     public static final String DTD_SCANNER_PROPERTY = "internal/dtd-scanner";
     
-    /** DTD processor property ("internal/dtd-processor"). */
+    /**
+     * DTD processor property ("internal/dtd-processor").
+     */
     public static final String DTD_PROCESSOR_PROPERTY = "internal/dtd-processor";
     
-    /** Validator property ("internal/validator"). */
+    /**
+     * Validator property ("internal/validator").
+     */
     public static final String VALIDATOR_PROPERTY = "internal/validator";
     
-    /** Validator property ("internal/validator/dtd"). */
+    /**
+     * Validator property ("internal/validator/dtd").
+     */
     public static final String DTD_VALIDATOR_PROPERTY = "internal/validator/dtd";
     
-    /** Validator property ("internal/validator/schema"). */
+    /**
+     * Validator property ("internal/validator/schema").
+     */
     public static final String SCHEMA_VALIDATOR_PROPERTY = "internal/validator/schema";
     
-    /** No namespace schema location property ("schema/external-schemaLocation"). */
+    /**
+     * No namespace schema location property ("schema/external-schemaLocation").
+     */
     public static final String SCHEMA_LOCATION = "schema/external-schemaLocation";
     
-    /** Schema location property ("schema/external-noNamespaceSchemaLocation"). */
+    /**
+     * Schema location property ("schema/external-noNamespaceSchemaLocation").
+     */
     public static final String SCHEMA_NONS_LOCATION = "schema/external-noNamespaceSchemaLocation";
     
-    /** Namespace binder property ("internal/namespace-binder"). */
+    /**
+     * Namespace binder property ("internal/namespace-binder").
+     */
     public static final String NAMESPACE_BINDER_PROPERTY = "internal/namespace-binder";
     
-    /** Namespace context property ("internal/namespace-context"). */
+    /**
+     * Namespace context property ("internal/namespace-context").
+     */
     public static final String NAMESPACE_CONTEXT_PROPERTY = "internal/namespace-context";
     
-    /** Validation manager property ("internal/validation-manager"). */
+    /**
+     * Validation manager property ("internal/validation-manager").
+     */
     public static final String VALIDATION_MANAGER_PROPERTY = "internal/validation-manager";
     
-    /** Schema type for the root element in a document ("validation/schema/root-type-definition"). */
+    /**
+     * Schema type for the root element in a document ("validation/schema/root-type-definition").
+     */
     public static final String ROOT_TYPE_DEFINITION_PROPERTY = "validation/schema/root-type-definition";
     
-    /** Schema element declaration for the root element in a document ("validation/schema/root-element-declaration"). */
+    /**
+     * Schema element declaration for the root element in a document ("validation/schema/root-element-declaration").
+     */
     public static final String ROOT_ELEMENT_DECLARATION_PROPERTY = "validation/schema/root-element-declaration";
     
-    /** Schema element declaration for the root element in a document ("internal/validation/schema/dv-factory"). */
+    /**
+     * Schema element declaration for the root element in a document ("internal/validation/schema/dv-factory").
+     */
     public static final String SCHEMA_DV_FACTORY_PROPERTY = "internal/validation/schema/dv-factory";
     
     // general constants
     
-    /** Element PSVI is stored in augmentations using string "ELEMENT_PSVI" */
+    /**
+     * Element PSVI is stored in augmentations using string "ELEMENT_PSVI"
+     */
     public final static String ELEMENT_PSVI = "ELEMENT_PSVI";
     
-    /** Attribute PSVI is stored in augmentations using string "ATTRIBUTE_PSVI" */
+    /**
+     * Attribute PSVI is stored in augmentations using string "ATTRIBUTE_PSVI"
+     */
     public final static String ATTRIBUTE_PSVI = "ATTRIBUTE_PSVI";
     
-    /** 
-     * Boolean indicating whether an attribute is declared in the DTD is stored 
+    /**
+     * Boolean indicating whether an attribute is declared in the DTD is stored
      * in augmentations using the string "ATTRIBUTE_DECLARED". The absence of this
      * augmentation indicates that the attribute was not declared in the DTD.
      */
     public final static String ATTRIBUTE_DECLARED = "ATTRIBUTE_DECLARED";
     
-    /** 
+    /**
      * Boolean indicating whether an entity referenced in the document has
-     * not been read is stored in augmentations using the string "ENTITY_SKIPPED". 
-     * The absence of this augmentation indicates that the entity had a 
+     * not been read is stored in augmentations using the string "ENTITY_SKIPPED".
+     * The absence of this augmentation indicates that the entity had a
      * declaration and was expanded.
      */
     public final static String ENTITY_SKIPPED = "ENTITY_SKIPPED";
     
     /**
      * Boolean indicating whether a character is a probable white space
-     * character (ch <= 0x20) that was the replacement text of a character 
-     * reference is stored in augmentations using the string "CHAR_REF_PROBABLE_WS". 
-     * The absence of this augmentation indicates that the character is not 
+     * character (ch <= 0x20) that was the replacement text of a character
+     * reference is stored in augmentations using the string "CHAR_REF_PROBABLE_WS".
+     * The absence of this augmentation indicates that the character is not
      * probable white space and/or was not included from a character reference.
      */
     public final static String CHAR_REF_PROBABLE_WS = "CHAR_REF_PROBABLE_WS";
@@ -478,7 +671,9 @@ public final class Constants {
     
     // private
     
-    /** SAX features. */
+    /**
+     * SAX features.
+     */
     private static final String[] fgSAXFeatures = {
             NAMESPACES_FEATURE,
             NAMESPACE_PREFIXES_FEATURE,
@@ -488,7 +683,9 @@ public final class Constants {
             EXTERNAL_PARAMETER_ENTITIES_FEATURE,
     };
     
-    /** SAX properties. */
+    /**
+     * SAX properties.
+     */
     private static final String[] fgSAXProperties = {
             DECLARATION_HANDLER_PROPERTY,
             LEXICAL_HANDLER_PROPERTY,
@@ -496,7 +693,9 @@ public final class Constants {
             XML_STRING_PROPERTY,
     };
     
-    /** Xerces features. */
+    /**
+     * Xerces features.
+     */
     private static final String[] fgXercesFeatures = {
             SCHEMA_VALIDATION_FEATURE,
             SCHEMA_FULL_CHECKING,
@@ -534,7 +733,9 @@ public final class Constants {
             STRINGS_INTERNED_FEATURE,
     };
     
-    /** Xerces properties. */
+    /**
+     * Xerces properties.
+     */
     private static final String[] fgXercesProperties = {
             CURRENT_ELEMENT_NODE_PROPERTY,
             DOCUMENT_CLASS_NAME_PROPERTY,
@@ -559,14 +760,18 @@ public final class Constants {
             SCHEMA_DV_FACTORY_PROPERTY,
     };
     
-    /** Empty enumeration. */
+    /**
+     * Empty enumeration.
+     */
     private static final Enumeration fgEmptyEnumeration = new ArrayEnumeration(new Object[] {});
     
     //
     // Constructors
     //
     
-    /** This class cannot be instantiated. */
+    /**
+     * This class cannot be instantiated.
+     */
     private Constants() {}
     
     //
@@ -575,13 +780,17 @@ public final class Constants {
     
     // sax
     
-    /** Returns an enumeration of the SAX features. */
+    /**
+     * Returns an enumeration of the SAX features.
+     */
     public static Enumeration getSAXFeatures() {
         return fgSAXFeatures.length > 0
         ? new ArrayEnumeration(fgSAXFeatures) : fgEmptyEnumeration;
     } // getSAXFeatures():Enumeration
     
-    /** Returns an enumeration of the SAX properties. */
+    /**
+     * Returns an enumeration of the SAX properties.
+     */
     public static Enumeration getSAXProperties() {
         return fgSAXProperties.length > 0
         ? new ArrayEnumeration(fgSAXProperties) : fgEmptyEnumeration;
@@ -589,13 +798,17 @@ public final class Constants {
     
     // xerces
     
-    /** Returns an enumeration of the Xerces features. */
+    /**
+     * Returns an enumeration of the Xerces features.
+     */
     public static Enumeration getXercesFeatures() {
         return fgXercesFeatures.length > 0
         ? new ArrayEnumeration(fgXercesFeatures) : fgEmptyEnumeration;
     } // getXercesFeatures():Enumeration
     
-    /** Returns an enumeration of the Xerces properties. */
+    /**
+     * Returns an enumeration of the Xerces properties.
+     */
     public static Enumeration getXercesProperties() {
         return fgXercesProperties.length > 0
         ? new ArrayEnumeration(fgXercesProperties) : fgEmptyEnumeration;
@@ -617,17 +830,23 @@ public final class Constants {
         // Data
         //
         
-        /** Array. */
+        /**
+         * Array.
+         */
         private Object[] array;
         
-        /** Index. */
+        /**
+         * Index.
+         */
         private int index;
         
         //
         // Constructors
         //
         
-        /** Constructs an array enumeration. */
+        /**
+         * Constructs an array enumeration.
+         */
         public ArrayEnumeration(Object[] array) {
             this.array = array;
         } // <init>(Object[])
@@ -639,9 +858,9 @@ public final class Constants {
         /**
          * Tests if this enumeration contains more elements.
          *
-         * @return  <code>true</code> if this enumeration contains more elements;
-         *          <code>false</code> otherwise.
-         * @since   JDK1.0
+         * @return <code>true</code> if this enumeration contains more elements;
+         *          <code>false</code> otherwise
+         * @since  JDK1.0
          */
         public boolean hasMoreElements() {
             return index < array.length;
@@ -650,9 +869,9 @@ public final class Constants {
         /**
          * Returns the next element of this enumeration.
          *
-         * @return     the next element of this enumeration.
-         * @exception  NoSuchElementException  if no more elements exist.
-         * @since      JDK1.0
+         * @return the next element of this enumeration
+         * @throws  NoSuchElementException  if no more elements exist
+         * @since  JDK1.0
          */
         public Object nextElement() {
             if (index < array.length) {
@@ -667,7 +886,9 @@ public final class Constants {
     // MAIN
     //
     
-    /** Prints all of the constants to standard output. */
+    /**
+     * Prints all of the constants to standard output.
+     */
     public static void main(String[] argv) {
         
         print("SAX features:", SAX_FEATURE_PREFIX, fgSAXFeatures);
@@ -677,7 +898,9 @@ public final class Constants {
         
     } // main(String[])
     
-    /** Prints a list of features/properties. */
+    /**
+     * Prints a list of features/properties.
+     */
     private static void print(String header, String prefix, Object[] array) {
         System.out.print(header);
         if (array.length > 0) {

@@ -22,26 +22,29 @@ package org.apache.xerces.xni;
  * can be constructed with an error message or used to wrap another
  * exception object.
  * <p>
- * <strong>Note:</strong> By extending the Java 
- * <code>RuntimeException</code>, XNI handlers and components are 
+ * <strong>Note:</strong> By extending the Java
+ * <code>RuntimeException</code>, XNI handlers and components are
  * not required to catch XNI exceptions but may explicitly catch
  * them, if so desired.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XNIException 
     extends RuntimeException {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 9019819772686063775L;
     
     //
     // Data
     //
 
-    /** The wrapped exception. */
+    /**
+     * The wrapped exception.
+     */
     private Exception fException = this;
 
     //
@@ -49,18 +52,18 @@ public class XNIException
     //
 
     /**
-     * Constructs an XNI exception with a message. 
+     * Constructs an XNI exception with a message.
      *
-     * @param message The exception message.
+     * @param message the exception message
      */
     public XNIException(String message) {
         super(message);
     } // <init>(String)
 
     /**
-     * Constructs an XNI exception with a wrapped exception. 
+     * Constructs an XNI exception with a wrapped exception.
      *
-     * @param exception The wrapped exception.
+     * @param exception the wrapped exception
      */
     public XNIException(Exception exception) {
         super(exception.getMessage());
@@ -68,10 +71,10 @@ public class XNIException
     } // <init>(Exception)
 
     /**
-     * Constructs an XNI exception with a message and wrapped exception. 
+     * Constructs an XNI exception with a message and wrapped exception.
      *
-     * @param message The exception message.
-     * @param exception The wrapped exception.
+     * @param message the exception message
+     * @param exception the wrapped exception
      */
     public XNIException(String message, Exception exception) {
         super(message);
@@ -82,7 +85,9 @@ public class XNIException
     // Public methods
     //
 
-    /** Returns the wrapped exception. */
+    /**
+     * Returns the wrapped exception.
+     */
     public Exception getException() {
         return fException != this ? fException : null;
     } // getException():Exception
@@ -91,10 +96,9 @@ public class XNIException
      * Initializes the cause of this <code>XNIException</code>.
      * The value must be an instance of <code>Exception</code> or
      * <code>null</code>.
-     * 
+     *
      * @param throwable the cause
      * @return this exception
-     * 
      * @throws IllegalStateException if a cause has already been set
      * @throws IllegalArgumentException if the cause is this exception
      * @throws ClassCastException if the cause is not assignable to <code>Exception</code>
@@ -112,7 +116,9 @@ public class XNIException
         return this;
     } // initCause(Throwable):Throwable
     
-    /** Returns the cause of this <code>XNIException</code>. */
+    /**
+     * Returns the cause of this <code>XNIException</code>.
+     */
     public Throwable getCause() {
         return getException();
     } // getCause():Throwable

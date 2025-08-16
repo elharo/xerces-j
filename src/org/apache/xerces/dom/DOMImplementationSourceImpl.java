@@ -29,11 +29,10 @@ import org.w3c.dom.DOMImplementationSource;
  * implemented <code>DOMImplementationSource</code> object is listed in the
  * binding-specific list of available sources so that its
  * <code>DOMImplementation</code> objects are made available.
- * 
+ *
  * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#DOMImplementationSource'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * 
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class DOMImplementationSourceImpl
@@ -41,12 +40,13 @@ public class DOMImplementationSourceImpl
 
     /**
      * A method to request a DOM implementation.
-     * @param features A string that specifies which features are required. 
+     *
+     * @param features a string that specifies which features are required.
      *   This is a space separated list in which each feature is specified 
      *   by its name optionally followed by a space and a version number. 
      *   This is something like: "XML 1.0 Traversal Events 2.0"
-     * @return An implementation that has the desired features, or 
-     *   <code>null</code> if this source has none.
+     * @return an implementation that has the desired features, or
+     *   <code>null</code> if this source has none
      */
     public DOMImplementation getDOMImplementation(String features) {
         // first check whether the CoreDOMImplementation would do
@@ -65,15 +65,16 @@ public class DOMImplementationSourceImpl
     }
     
     /**
-     * A method to request a list of DOM implementations that support the 
+     * A method to request a list of DOM implementations that support the
      * specified features and versions, as specified in .
-     * @param features A string that specifies which features and versions 
+     *
+     * @param features a string that specifies which features and versions
      *   are required. This is a space separated list in which each feature 
      *   is specified by its name optionally followed by a space and a 
      *   version number. This is something like: "XML 3.0 Traversal +Events 
      *   2.0"
-     * @return A list of DOM implementations that support the desired 
-     *   features.
+     * @return a list of DOM implementations that support the desired
+     *   features
      */
     public DOMImplementationList getDOMImplementationList(String features) {
         // first check whether the CoreDOMImplementation would do

@@ -36,7 +36,7 @@ final class Util {
     /**
      * Creates a proper {@link XMLInputSource} from a {@link StreamSource}.
      *
-     * @return always return non-null valid object.
+     * @return always return non-null valid object
      */
     public static final XMLInputSource toXMLInputSource( StreamSource in ) {
         if( in.getReader()!=null )

@@ -20,8 +20,8 @@ package org.apache.xerces.impl.dtd;
 import org.apache.xerces.xni.QName;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class XMLAttributeDecl {
@@ -30,13 +30,19 @@ public class XMLAttributeDecl {
     // Data
     //
 
-    /** name */
+    /**
+     * Name
+     */
     public final QName name = new QName();
 
-    /** simpleType */
+    /**
+     * SimpleType
+     */
     public final XMLSimpleType simpleType = new XMLSimpleType();
 
-    /** optional */
+    /**
+     * Optional
+     */
     public boolean optional;
 
     //
@@ -44,11 +50,11 @@ public class XMLAttributeDecl {
     //
 
     /**
-     * setValues
-     * 
-     * @param name 
-     * @param simpleType 
-     * @param optional 
+     * SetValues
+     *
+     * @param name
+     * @param simpleType
+     * @param optional
      */
     public void setValues(QName name, XMLSimpleType simpleType, boolean optional) {
         this.name.setValues(name);
@@ -57,7 +63,7 @@ public class XMLAttributeDecl {
     } // setValues
 
     /**
-     * clear
+     * Clear
      */
     public void clear() {
         this.name.clear();

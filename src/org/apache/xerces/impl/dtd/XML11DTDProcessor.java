@@ -33,11 +33,9 @@ import org.apache.xerces.xni.parser.XMLEntityResolver;
  * as a DTD loader, so that XML 1.1 external subsets can
  * be processed correctly (hence it's rather anomalous-appearing
  * derivation from XMLDTDLoader).
- * 
+ *
  * @xerces.internal
- *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class XML11DTDProcessor extends XMLDTDLoader{

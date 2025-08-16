@@ -25,10 +25,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartDocument;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class StartDocumentImpl extends XMLEventImpl implements StartDocument {
@@ -40,6 +39,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     private final boolean fStandaloneSet;
 
     /**
+     *
      * @param location
      */
     public StartDocumentImpl(final String charEncoding, final boolean encodingSet, final boolean isStandalone, final boolean standaloneSet, final String version, final Location location) {
@@ -52,6 +52,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#getSystemId()
      */
     public String getSystemId() {
@@ -59,6 +60,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#getCharacterEncodingScheme()
      */
     public String getCharacterEncodingScheme() {
@@ -66,6 +68,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#encodingSet()
      */
     public boolean encodingSet() {
@@ -73,6 +76,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#isStandalone()
      */
     public boolean isStandalone() {
@@ -80,6 +84,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#standaloneSet()
      */
     public boolean standaloneSet() {
@@ -87,6 +92,7 @@ public final class StartDocumentImpl extends XMLEventImpl implements StartDocume
     }
 
     /**
+     *
      * @see javax.xml.stream.events.StartDocument#getVersion()
      */
     public String getVersion() {

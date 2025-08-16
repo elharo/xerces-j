@@ -18,7 +18,7 @@
 package org.apache.xerces.xs;
 
 /**
- *  This interface defines constants used by this specification.
+ * This interface defines constants used by this specification.
  */
 public interface XSConstants {
     // XML Schema Components
@@ -71,12 +71,12 @@ public interface XSConstants {
      */
     public static final short ANNOTATION                = 12;
     /**
-     * The object describes a constraining facet. Note: this object does not 
+     * The object describes a constraining facet. Note: this object does not
      * describe pattern and enumeration facets.
      */
     public static final short FACET                     = 13;
     /**
-     * The object describes enumeration and pattern facets. 
+     * The object describes enumeration and pattern facets.
      */
     public static final short MULTIVALUE_FACET          = 14;
 
@@ -86,12 +86,12 @@ public interface XSConstants {
      */
     public static final short DERIVATION_NONE           = 0;
     /**
-     * <code>XSTypeDefinition</code> final set or 
+     * <code>XSTypeDefinition</code> final set or
      * <code>XSElementDeclaration</code> disallowed substitution group.
      */
     public static final short DERIVATION_EXTENSION      = 1;
     /**
-     * <code>XSTypeDefinition</code> final set or 
+     * <code>XSTypeDefinition</code> final set or
      * <code>XSElementDeclaration</code> disallowed substitution group.
      */
     public static final short DERIVATION_RESTRICTION    = 2;
@@ -110,18 +110,18 @@ public interface XSConstants {
 
     // Scope
     /**
-     * The scope of a declaration within named model groups or attribute 
-     * groups is <code>absent</code>. The scope of such a declaration is 
-     * determined when it is used in the construction of complex type 
-     * definitions. 
+     * The scope of a declaration within named model groups or attribute
+     * groups is <code>absent</code>. The scope of such a declaration is
+     * determined when it is used in the construction of complex type
+     * definitions.
      */
     public static final short SCOPE_ABSENT              = 0;
     /**
-     * A scope of <code>global</code> identifies top-level declarations. 
+     * A scope of <code>global</code> identifies top-level declarations.
      */
     public static final short SCOPE_GLOBAL              = 1;
     /**
-     * <code>Locally scoped</code> declarations are available for use only 
+     * <code>Locally scoped</code> declarations are available for use only
      * within the complex type.
      */
     public static final short SCOPE_LOCAL               = 2;
@@ -142,75 +142,75 @@ public interface XSConstants {
 
     // Built-in types: primitive and derived
     /**
-     * anySimpleType
+     * AnySimpleType
      */
     public static final short ANYSIMPLETYPE_DT          = 1;
     /**
-     * string
+     * String
      */
     public static final short STRING_DT                 = 2;
     /**
-     * boolean
+     * Boolean
      */
     public static final short BOOLEAN_DT                = 3;
     /**
-     * decimal
+     * Decimal
      */
     public static final short DECIMAL_DT                = 4;
     /**
-     * float
+     * Float
      */
     public static final short FLOAT_DT                  = 5;
     /**
-     * double
+     * Double
      */
     public static final short DOUBLE_DT                 = 6;
     /**
-     * duration
+     * Duration
      */
     public static final short DURATION_DT               = 7;
     /**
-     * dateTime
+     * DateTime
      */
     public static final short DATETIME_DT               = 8;
     /**
-     * time
+     * Time
      */
     public static final short TIME_DT                   = 9;
     /**
-     * date
+     * Date
      */
     public static final short DATE_DT                   = 10;
     /**
-     * gYearMonth
+     * GYearMonth
      */
     public static final short GYEARMONTH_DT             = 11;
     /**
-     * gYear
+     * GYear
      */
     public static final short GYEAR_DT                  = 12;
     /**
-     * gMonthDay
+     * GMonthDay
      */
     public static final short GMONTHDAY_DT              = 13;
     /**
-     * gDay
+     * GDay
      */
     public static final short GDAY_DT                   = 14;
     /**
-     * gMonth
+     * GMonth
      */
     public static final short GMONTH_DT                 = 15;
     /**
-     * hexBinary
+     * HexBinary
      */
     public static final short HEXBINARY_DT              = 16;
     /**
-     * base64Binary
+     * Base64Binary
      */
     public static final short BASE64BINARY_DT           = 17;
     /**
-     * anyURI
+     * AnyURI
      */
     public static final short ANYURI_DT                 = 18;
     /**
@@ -222,15 +222,15 @@ public interface XSConstants {
      */
     public static final short NOTATION_DT               = 20;
     /**
-     * normalizedString
+     * NormalizedString
      */
     public static final short NORMALIZEDSTRING_DT       = 21;
     /**
-     * token
+     * Token
      */
     public static final short TOKEN_DT                  = 22;
     /**
-     * language
+     * Language
      */
     public static final short LANGUAGE_DT               = 23;
     /**
@@ -258,59 +258,59 @@ public interface XSConstants {
      */
     public static final short ENTITY_DT                 = 29;
     /**
-     * integer
+     * Integer
      */
     public static final short INTEGER_DT                = 30;
     /**
-     * nonPositiveInteger
+     * NonPositiveInteger
      */
     public static final short NONPOSITIVEINTEGER_DT     = 31;
     /**
-     * negativeInteger
+     * NegativeInteger
      */
     public static final short NEGATIVEINTEGER_DT        = 32;
     /**
-     * long
+     * Long
      */
     public static final short LONG_DT                   = 33;
     /**
-     * int
+     * Int
      */
     public static final short INT_DT                    = 34;
     /**
-     * short
+     * Short
      */
     public static final short SHORT_DT                  = 35;
     /**
-     * byte
+     * Byte
      */
     public static final short BYTE_DT                   = 36;
     /**
-     * nonNegativeInteger
+     * NonNegativeInteger
      */
     public static final short NONNEGATIVEINTEGER_DT     = 37;
     /**
-     * unsignedLong
+     * UnsignedLong
      */
     public static final short UNSIGNEDLONG_DT           = 38;
     /**
-     * unsignedInt
+     * UnsignedInt
      */
     public static final short UNSIGNEDINT_DT            = 39;
     /**
-     * unsignedShort
+     * UnsignedShort
      */
     public static final short UNSIGNEDSHORT_DT          = 40;
     /**
-     * unsignedByte
+     * UnsignedByte
      */
     public static final short UNSIGNEDBYTE_DT           = 41;
     /**
-     * positiveInteger
+     * PositiveInteger
      */
     public static final short POSITIVEINTEGER_DT        = 42;
     /**
-     * The type represents a list type definition whose item type (itemType) 
+     * The type represents a list type definition whose item type (itemType)
      * is a union type definition
      */
     public static final short LISTOFUNION_DT            = 43;

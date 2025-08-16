@@ -65,11 +65,10 @@ import org.w3c.dom.NodeList;
  * <P>
  * NOTE: Level 2 of the DOM will probably _not_ use NodeList for its
  * extended search mechanisms, partly for the reasons just discussed.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeepNodeListImpl 
     implements NodeList {
@@ -90,14 +89,18 @@ public class DeepNodeListImpl
     // Constructors
     //
 
-    /** Constructor. */
+    /**
+     * Constructor.
+     */
     public DeepNodeListImpl(NodeImpl rootNode, String tagName) {
         this.rootNode = rootNode;
         this.tagName  = tagName;
         nodes = new ArrayList();
     }  
 
-    /** Constructor for Namespace support. */
+    /**
+     * Constructor for Namespace support.
+     */
     public DeepNodeListImpl(NodeImpl rootNode,
                             String nsName, String tagName) {
         this(rootNode, tagName);
@@ -109,14 +112,18 @@ public class DeepNodeListImpl
     // NodeList methods
     //
 
-    /** Returns the length of the node list. */
+    /**
+     * Returns the length of the node list.
+     */
     public int getLength() {
         // Preload all matching elements. (Stops when we run out of subtree!)
         item(java.lang.Integer.MAX_VALUE);
         return nodes.size();
     }  
 
-    /** Returns the node at the specified index. */
+    /**
+     * Returns the node at the specified index.
+     */
     public Node item(int index) {
     	Node thisNode;
 
@@ -160,7 +167,7 @@ public class DeepNodeListImpl
     // Protected methods (might be overridden by an extending DOM)
     //
 
-    /** 
+    /**
      * Iterative tree-walker. When you have a Parent link, there's often no
      * need to resort to recursion. NOTE THAT only Element nodes are matched
      * since we're specifically supporting getElementsByTagName().

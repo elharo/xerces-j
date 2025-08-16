@@ -68,22 +68,20 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/validation/dynamic</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *  <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/validation/dynamic</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
  * </ul>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Eric Ye, IBM
  * @author Andy Clark, IBM
  * @author Jeffrey Rodriguez IBM
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class XMLDTDValidator
@@ -93,30 +91,44 @@ public class XMLDTDValidator
     // Constants
     //
 
-    /** Symbol: "&lt;&lt;datatypes>>". */
+    /**
+     * Symbol: "&lt;&lt;datatypes>>".
+     */
 
-    /** Top level scope (-1). */
+    /**
+     * Top level scope (-1).
+     */
     private static final int TOP_LEVEL_SCOPE = -1;
 
     // feature identifiers
 
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     protected static final String NAMESPACES =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
 
-    /** Feature identifier: validation. */
+    /**
+     * Feature identifier: validation.
+     */
     protected static final String VALIDATION =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
 
-    /** Feature identifier: dynamic validation. */
+    /**
+     * Feature identifier: dynamic validation.
+     */
     protected static final String DYNAMIC_VALIDATION = 
         Constants.XERCES_FEATURE_PREFIX + Constants.DYNAMIC_VALIDATION_FEATURE;
     
-    /** Feature identifier: balance syntax trees. */
+    /**
+     * Feature identifier: balance syntax trees.
+     */
     protected static final String BALANCE_SYNTAX_TREES =
         Constants.XERCES_FEATURE_PREFIX + Constants.BALANCE_SYNTAX_TREES;
 
-    /** Feature identifier: warn on duplicate attdef */
+    /**
+     * Feature identifier: warn on duplicate attdef
+     */
     protected static final String WARN_ON_DUPLICATE_ATTDEF = 
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_DUPLICATE_ATTDEF_FEATURE; 
     
@@ -127,19 +139,27 @@ public class XMLDTDValidator
 
     // property identifiers
 
-    /** Property identifier: symbol table. */
+    /**
+     * Property identifier: symbol table.
+     */
     protected static final String SYMBOL_TABLE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: grammar pool. */
+    /**
+     * Property identifier: grammar pool.
+     */
     protected static final String GRAMMAR_POOL =
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
 
-    /** Property identifier: datatype validator factory. */
+    /**
+     * Property identifier: datatype validator factory.
+     */
     protected static final String DATATYPE_VALIDATOR_FACTORY =
         Constants.XERCES_PROPERTY_PREFIX + Constants.DATATYPE_VALIDATOR_FACTORY_PROPERTY;
 
@@ -149,7 +169,9 @@ public class XMLDTDValidator
 
     // recognized features and properties
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         NAMESPACES,
         VALIDATION,
@@ -157,7 +179,9 @@ public class XMLDTDValidator
         BALANCE_SYNTAX_TREES
     };
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = {
         null,
         null,
@@ -165,7 +189,9 @@ public class XMLDTDValidator
         Boolean.FALSE,
     };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         SYMBOL_TABLE,       
         ERROR_REPORTER,
@@ -174,7 +200,9 @@ public class XMLDTDValidator
         VALIDATION_MANAGER
     };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS = {
         null,
         null,
@@ -185,10 +213,14 @@ public class XMLDTDValidator
 
     // debugging
 
-    /** Compile to true to debug attributes. */
+    /**
+     * Compile to true to debug attributes.
+     */
     private static final boolean DEBUG_ATTRIBUTES = false;
 
-    /** Compile to true to debug element children. */
+    /**
+     * Compile to true to debug element children.
+     */
     private static final boolean DEBUG_ELEMENT_CHILDREN = false;
 
     //        
@@ -203,101 +235,145 @@ public class XMLDTDValidator
 
     // features
 
-    /** Namespaces. */
+    /**
+     * Namespaces.
+     */
     protected boolean fNamespaces;
 
-    /** Validation. */
+    /**
+     * Validation.
+     */
     protected boolean fValidation;
 
-    /** Validation against only DTD */
+    /**
+     * Validation against only DTD
+     */
     protected boolean fDTDValidation;
 
-    /** 
+    /**
      * Dynamic validation. This state of this feature is only useful when
      * the validation feature is set to <code>true</code>.
      */
     protected boolean fDynamicValidation;
     
-    /** Controls whether the DTD grammar produces balanced syntax trees. */
+    /**
+     * Controls whether the DTD grammar produces balanced syntax trees.
+     */
     protected boolean fBalanceSyntaxTrees;
 
-    /** warn on duplicate attribute definition, this feature works only when validation is true */
+    /**
+     * Warn on duplicate attribute definition, this feature works only when validation is true
+     */
     protected boolean fWarnDuplicateAttdef;
         
     // properties
 
-    /** Symbol table. */
+    /**
+     * Symbol table.
+     */
     protected SymbolTable fSymbolTable;
 
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     protected XMLErrorReporter fErrorReporter;
 
     // the grammar pool
     protected XMLGrammarPool fGrammarPool;
 
-    /** Grammar bucket. */
+    /**
+     * Grammar bucket.
+     */
     protected DTDGrammarBucket fGrammarBucket;
 
     /* location of the document as passed in from startDocument call */
     protected XMLLocator fDocLocation;
 
-    /** Namespace support. */
+    /**
+     * Namespace support.
+     */
     protected NamespaceContext fNamespaceContext = null;
 
-    /** Datatype validator factory. */
+    /**
+     * Datatype validator factory.
+     */
     protected DTDDVFactory fDatatypeValidatorFactory;
 
     // handlers
 
-    /** Document handler. */
+    /**
+     * Document handler.
+     */
     protected XMLDocumentHandler fDocumentHandler;
 
     protected XMLDocumentSource fDocumentSource;
     // grammars
 
-    /** DTD Grammar. */
+    /**
+     * DTD Grammar.
+     */
     protected DTDGrammar fDTDGrammar;
 
     // state
 
-    /** True if seen DOCTYPE declaration. */
+    /**
+     * True if seen DOCTYPE declaration.
+     */
     protected boolean fSeenDoctypeDecl = false;
 
-    /** Perform validation. */
+    /**
+     * Perform validation.
+     */
     private boolean fPerformValidation;
     
-    /** Schema type: None, DTD, Schema */
+    /**
+     * Schema type: None, DTD, Schema
+     */
     private String fSchemaType;
 
     // information regarding the current element
 
-    /** Current element name. */
+    /**
+     * Current element name.
+     */
     private final QName fCurrentElement = new QName();
 
-    /** Current element index. */
+    /**
+     * Current element index.
+     */
     private int fCurrentElementIndex = -1;
 
-    /** Current content spec type. */
+    /**
+     * Current content spec type.
+     */
     private int fCurrentContentSpecType = -1;
 
-    /** The root element name. */
+    /**
+     * The root element name.
+     */
     private final QName fRootElement = new QName();
 
     private boolean fInCDATASection = false;
     // element stack
 
-    /** Element index stack. */
+    /**
+     * Element index stack.
+     */
     private int[] fElementIndexStack = new int[8];
 
-    /** Content spec type stack. */
+    /**
+     * Content spec type stack.
+     */
     private int[] fContentSpecTypeStack = new int[8];
 
-    /** Element name stack. */
+    /**
+     * Element name stack.
+     */
     private QName[] fElementQNamePartsStack = new QName[8];
 
     // children list and offset stack
 
-    /** 
+    /**
      * Element children. This data structure is a growing stack that
      * holds the children of elements from the root to the current
      * element depth. This structure never gets "deeper" than the
@@ -312,70 +388,105 @@ public class XMLDTDValidator
      */
     private QName[] fElementChildren = new QName[32];
 
-    /** Element children count. */
+    /**
+     * Element children count.
+     */
     private int fElementChildrenLength = 0;
 
-    /** 
+    /**
      * Element children offset stack. This stack refers to offsets
      * into the <code>fElementChildren</code> array.
+     *
      * @see #fElementChildren
      */
     private int[] fElementChildrenOffsetStack = new int[32];
 
-    /** Element depth. */
+    /**
+     * Element depth.
+     */
     private int fElementDepth = -1;
 
     // validation states
 
-    /** True if seen the root element. */
+    /**
+     * True if seen the root element.
+     */
     private boolean fSeenRootElement = false;
 
-    /** True if inside of element content. */
+    /**
+     * True if inside of element content.
+     */
     private boolean fInElementContent = false;
 
     // temporary variables
 
-    /** Temporary element declaration. */
+    /**
+     * Temporary element declaration.
+     */
     private final XMLElementDecl fTempElementDecl = new XMLElementDecl();
 
-    /** Temporary atribute declaration. */
+    /**
+     * Temporary atribute declaration.
+     */
     private final XMLAttributeDecl fTempAttDecl = new XMLAttributeDecl();
 
-    /** Temporary entity declaration. */
+    /**
+     * Temporary entity declaration.
+     */
     private final XMLEntityDecl fEntityDecl = new XMLEntityDecl();
 
-    /** Temporary qualified name. */
+    /**
+     * Temporary qualified name.
+     */
     private final QName fTempQName = new QName();
 
-    /** Temporary string buffers. */
+    /**
+     * Temporary string buffers.
+     */
     private final StringBuffer fBuffer = new StringBuffer();
 
     // symbols: general
 
     // attribute validators
 
-    /** Datatype validator: ID. */
+    /**
+     * Datatype validator: ID.
+     */
     protected DatatypeValidator fValID;
 
-    /** Datatype validator: IDREF. */
+    /**
+     * Datatype validator: IDREF.
+     */
     protected DatatypeValidator fValIDRef;
 
-    /** Datatype validator: IDREFS. */
+    /**
+     * Datatype validator: IDREFS.
+     */
     protected DatatypeValidator fValIDRefs;
 
-    /** Datatype validator: ENTITY. */
+    /**
+     * Datatype validator: ENTITY.
+     */
     protected DatatypeValidator fValENTITY;
 
-    /** Datatype validator: ENTITIES. */
+    /**
+     * Datatype validator: ENTITIES.
+     */
     protected DatatypeValidator fValENTITIES;
 
-    /** Datatype validator: NMTOKEN. */
+    /**
+     * Datatype validator: NMTOKEN.
+     */
     protected DatatypeValidator fValNMTOKEN;
 
-    /** Datatype validator: NMTOKENS. */
+    /**
+     * Datatype validator: NMTOKENS.
+     */
     protected DatatypeValidator fValNMTOKENS;
 
-    /** Datatype validator: NOTATION. */
+    /**
+     * Datatype validator: NOTATION.
+     */
     protected DatatypeValidator fValNOTATION;
 
     // to check for duplicate ID or ANNOTATION attribute declare in
@@ -385,7 +496,9 @@ public class XMLDTDValidator
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLDTDValidator() {
 
         // initialize data
@@ -533,18 +646,17 @@ public class XMLDTDValidator
 
     /**
      * Sets the state of a feature. This method is called by the component
-     * manager any time after reset when a feature changes state. 
+     * manager any time after reset when a feature changes state.
      * <p>
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
-     * 
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
     throws XMLConfigurationException {
@@ -561,31 +673,29 @@ public class XMLDTDValidator
 
     /**
      * Sets the value of a property. This method is called by the component
-     * manager any time after reset when a property changes value. 
+     * manager any time after reset when a property changes value.
      * <p>
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
-     * 
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
     throws XMLConfigurationException {
     } // setProperty(String,Object)
 
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -596,14 +706,13 @@ public class XMLDTDValidator
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -618,12 +727,16 @@ public class XMLDTDValidator
     // XMLDocumentSource methods
     //
 
-    /** Sets the document handler to receive information about the document. */
+    /**
+     * Sets the document handler to receive information about the document.
+     */
     public void setDocumentHandler(XMLDocumentHandler documentHandler) {
         fDocumentHandler = documentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
 
-    /** Returns the document handler */
+    /**
+     * Returns the document handler
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // getDocumentHandler():  XMLDocumentHandler
@@ -633,12 +746,16 @@ public class XMLDTDValidator
     // XMLDocumentHandler methods
     //
 
-    /** Sets the document source */
+    /**
+     * Sets the document source
+     */
     public void setDocumentSource(XMLDocumentSource source){
         fDocumentSource = source;
     } // setDocumentSource
 
-    /** Returns the document source */
+    /**
+     * Returns the document source
+     */
     public XMLDocumentSource getDocumentSource (){
         return fDocumentSource;
     } // getDocumentSource
@@ -646,9 +763,9 @@ public class XMLDTDValidator
     /**
      * The start of the document.
      *
-     * @param locator The system identifier of the entity if the entity
-     *                 is external, null otherwise.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param locator the system identifier of the entity if the entity
+     *                 is external, null otherwise
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
@@ -660,10 +777,9 @@ public class XMLDTDValidator
      *                 Implementors of this class are responsible
      *                 for copying the namespace bindings from the
      *                 the current context (and its parent contexts)
-     *                 if that information is important.
-     * @param augs   Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     *                 if that information is important
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startDocument(XMLLocator locator, String encoding, 
                               NamespaceContext namespaceContext, Augmentations augs) 
@@ -691,14 +807,13 @@ public class XMLDTDValidator
      * Notifies of the presence of an XMLDecl line in the document. If
      * present, this method will be called immediately following the
      * startDocument call.
-     * 
-     * @param version    The XML version.
-     * @param encoding   The IANA encoding name of the document, or null if
-     *                   not specified.
-     * @param standalone The standalone value, or null if not specified.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version    the XML version
+     * @param encoding   the IANA encoding name of the document, or null if
+     *                   not specified
+     * @param standalone the standalone value, or null if not specified
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void xmlDecl(String version, String encoding, String standalone, Augmentations augs)
     throws XNIException {
@@ -715,15 +830,14 @@ public class XMLDTDValidator
 
     /**
      * Notifies of the presence of the DOCTYPE line in the document.
-     * 
-     * @param rootElement The name of the root element.
-     * @param publicId    The public identifier if an external DTD or null
-     *                    if the external DTD is specified using SYSTEM.
-     * @param systemId    The system identifier if an external DTD, null
-     *                    otherwise.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param rootElement the name of the root element
+     * @param publicId    the public identifier if an external DTD or null
+     *                    if the external DTD is specified using SYSTEM
+     * @param systemId    the system identifier if an external DTD, null
+     *                    otherwise
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void doctypeDecl(String rootElement, String publicId, String systemId, 
                             Augmentations augs)
@@ -778,12 +892,11 @@ public class XMLDTDValidator
 
     /**
      * The start of an element.
-     * 
-     * @param element    The name of the element.
-     * @param attributes The element attributes.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
     throws XNIException {
@@ -799,12 +912,11 @@ public class XMLDTDValidator
 
     /**
      * An empty element.
-     * 
-     * @param element    The name of the element.
-     * @param attributes The element attributes.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs)
     throws XNIException {
@@ -823,12 +935,10 @@ public class XMLDTDValidator
 
     /**
      * Character content.
-     * 
-     * @param text The content.
      *
-     * @param augs   Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the content
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void characters(XMLString text, Augmentations augs) throws XNIException {
 
@@ -900,11 +1010,10 @@ public class XMLDTDValidator
      * example, the validator can determine if a length of whitespace
      * characters in the document are ignorable based on the element
      * content model.
-     * 
-     * @param text The ignorable whitespace.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the ignorable whitespace
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void ignorableWhitespace(XMLString text, Augmentations augs) throws XNIException {
 
@@ -917,11 +1026,10 @@ public class XMLDTDValidator
 
     /**
      * The end of an element.
-     * 
-     * @param element The name of the element.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element the name of the element
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endElement(QName element, Augmentations augs) throws XNIException {
 
@@ -929,11 +1037,11 @@ public class XMLDTDValidator
 
     } // endElement(QName)
 
-    /** 
-     * The start of a CDATA section. 
-     * @param augs   Additional information that may include infoset augmentations
+    /**
+     * The start of a CDATA section.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startCDATA(Augmentations augs) throws XNIException {
 
@@ -949,10 +1057,10 @@ public class XMLDTDValidator
     } // startCDATA()
 
     /**
-     * The end of a CDATA section. 
-     * @param augs   Additional information that may include infoset augmentations
+     * The end of a CDATA section.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endCDATA(Augmentations augs) throws XNIException {
 
@@ -966,9 +1074,9 @@ public class XMLDTDValidator
 
     /**
      * The end of the document.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDocument(Augmentations augs) throws XNIException {
 
@@ -981,11 +1089,10 @@ public class XMLDTDValidator
 
     /**
      * A comment.
-     * 
-     * @param text The text in the comment.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
         // fixes E15.1
@@ -1018,12 +1125,11 @@ public class XMLDTDValidator
      * element attributes but are <strong>not</strong> parsed or presented
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
-     * 
-     * @param target The target.
-     * @param data   The data or null if none specified.     
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
     throws XNIException {
@@ -1051,17 +1157,16 @@ public class XMLDTDValidator
      * <p>
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
-     * 
-     * @param name     The name of the general entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     *
+     * @param name     the name of the general entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
      *                 parsed from a java.io.Reader).
-     * @param augs     Additional information that may include infoset augmentations
-     *                 
-     * @exception XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startGeneralEntity(String name, 
                                    XMLResourceIdentifier identifier,
@@ -1091,12 +1196,11 @@ public class XMLDTDValidator
      * <p>
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
-     * 
-     * @param name   The name of the entity.
-     * @param augs   Additional information that may include infoset augmentations
-     *               
-     * @exception XNIException
-     *                   Thrown by handler to signal an error.
+     *
+     * @param name   the name of the entity
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException
+     *                   Thrown by handler to signal an error
      */
     public void endGeneralEntity(String name, Augmentations augs) throws XNIException {
         // call handlers
@@ -1111,13 +1215,12 @@ public class XMLDTDValidator
      * <p>
      * <strong>Note:</strong> This method is only called for external
      * parameter entities referenced in the DTD.
-     * 
-     * @param version  The XML version, or null if not specified.
-     * @param encoding The IANA encoding name of the entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version  the XML version, or null if not specified
+     * @param encoding the IANA encoding name of the entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void textDecl(String version, String encoding, Augmentations augs) throws XNIException {
 
@@ -1153,7 +1256,9 @@ public class XMLDTDValidator
     
             //REVISIT:we can convert into functions.. adding default attribute values.. and one validating.
 
-    /** Add default attributes and validate. */
+    /**
+     * Add default attributes and validate.
+     */
     protected void addDTDDefaultAttrsAndValidate(QName elementName, int elementIndex, 
                                                XMLAttributes attributes) 
     throws XNIException {
@@ -1363,7 +1468,9 @@ public class XMLDTDValidator
 
     } // addDTDDefaultAttrsAndValidate(int,XMLAttrList)
 
-    /** Checks entities in attribute values for standalone VC. */
+    /**
+     * Checks entities in attribute values for standalone VC.
+     */
     protected String getExternalEntityRefInAttrValue(String nonNormalizedValue) {
         int valLength = nonNormalizedValue.length();
         int ampIndex = nonNormalizedValue.indexOf('&');
@@ -1521,7 +1628,9 @@ public class XMLDTDValidator
     } // validateDTDattribute(QName,String,XMLAttributeDecl)
 
 
-    /** Returns true if invalid standalone attribute definition. */
+    /**
+     * Returns true if invalid standalone attribute definition.
+     */
     protected boolean invalidStandaloneAttDef(QName element, QName attribute) {
         // REVISIT: This obviously needs to be fixed! -Ac
         boolean state = true;
@@ -1548,8 +1657,8 @@ public class XMLDTDValidator
      * Normalize the attribute value of a non CDATA attributes collapsing
      * sequences of space characters (x20)
      *
-     * @param attributes The list of attributes
-     * @param index The index of the attribute to normalize
+     * @param attributes the list of attributes
+     * @param index the index of the attribute to normalize
      */
     private boolean normalizeAttrValue(XMLAttributes attributes, int index) {
         // vars
@@ -1581,25 +1690,27 @@ public class XMLDTDValidator
                 else {
                     if (leadingSpace || !spaceStart) {
                         eaten ++;
-                        /*** BUG #3512 ***
-                        int entityCount = attributes.getEntityCount(index);
-                        for (int j = 0;  j < entityCount; j++) {
-                            int offset = attributes.getEntityOffset(index, j);
-                            int length = attributes.getEntityLength(index, j);
-                            if (offset <= i-eaten+1) {
-                                if (offset+length >= i-eaten+1) {
-                                    if (length > 0)
-                                        length--;
-                                }
-                            } 
-                            else {
-                                if (offset > 0)
-                                    offset--;
-                            }
-                            attributes.setEntityOffset(index, j, offset);
-                            attributes.setEntityLength(index, j, length);
-                        }
-                        /***/
+                        /**
+                         * BUG #3512 ***
+                         * int entityCount = attributes.getEntityCount(index);
+                         * for (int j = 0;  j < entityCount; j++) {
+                         * int offset = attributes.getEntityOffset(index, j);
+                         * int length = attributes.getEntityLength(index, j);
+                         * if (offset <= i-eaten+1) {
+                         * if (offset+length >= i-eaten+1) {
+                         * if (length > 0)
+                         * length--;
+                         * }
+                         * }
+                         * else {
+                         * if (offset > 0)
+                         * offset--;
+                         * }
+                         * attributes.setEntityOffset(index, j, offset);
+                         * attributes.setEntityLength(index, j, length);
+                         * }
+                         * /**
+                         */
                     }
                 }
 
@@ -1616,30 +1727,34 @@ public class XMLDTDValidator
         // check if the last appended character is a space.
         if (count > 0 && fBuffer.charAt(count-1) == ' ') {
             fBuffer.setLength(count-1);
-            /*** BUG #3512 ***
-            int entityCount = attributes.getEntityCount(index);
-            for (int j=0;  j < entityCount; j++) {
-                int offset = attributes.getEntityOffset(index, j);
-                int length = attributes.getEntityLength(index, j);
-                if (offset < count-1) {
-                    if (offset+length == count) {
-                        length--;
-                    }
-                } 
-                else {
-                    offset--;
-                }
-                attributes.setEntityOffset(index, j, offset);
-                attributes.setEntityLength(index, j, length);
-            }
-            /***/
+            /**
+             * BUG #3512 ***
+             * int entityCount = attributes.getEntityCount(index);
+             * for (int j=0;  j < entityCount; j++) {
+             * int offset = attributes.getEntityOffset(index, j);
+             * int length = attributes.getEntityLength(index, j);
+             * if (offset < count-1) {
+             * if (offset+length == count) {
+             * length--;
+             * }
+             * }
+             * else {
+             * offset--;
+             * }
+             * attributes.setEntityOffset(index, j, offset);
+             * attributes.setEntityLength(index, j, length);
+             * }
+             * /**
+             */
         }
         String newValue = fBuffer.toString();
         attributes.setValue(index, newValue);
         return ! attrValue.equals(newValue);
     }
 
-    /** Root element specified. */
+    /**
+     * Root element specified.
+     */
     private final void rootElementSpecified(QName rootElement) throws XNIException {
         if (fPerformValidation) {
             String root1 = fRootElement.rawname;
@@ -1674,17 +1789,15 @@ public class XMLDTDValidator
      * zero, since some elements have the EMPTY content model and that must be
      * confirmed.
      *
-     * @param elementIndex The index within the <code>ElementDeclPool</code> of this
-     *                     element.
-     * @param childCount The number of entries in the <code>children</code> array.
-     * @param children The children of this element.  
-     *
-     * @return The value -1 if fully valid, else the 0 based index of the child
+     * @param elementIndex the index within the <code>ElementDeclPool</code> of this
+     *                     element
+     * @param childCount the number of entries in the <code>children</code> array
+     * @param children the children of this element
+     * @return the value -1 if fully valid, else the 0 based index of the child
      *         that first failed. If the value returned is equal to the number
      *         of children, then additional content is required to reach a valid
      *         ending state.
-     *
-     * @exception Exception Thrown on error.
+     * @throws Exception thrown on error
      */
     private int checkContent(int elementIndex, 
                              QName[] children,
@@ -1730,11 +1843,13 @@ public class XMLDTDValidator
         }
         else if (contentType == -1) {
             //REVISIT
-            /****
-            reportRecoverableXMLError(XMLMessages.MSG_ELEMENT_NOT_DECLARED,
-                                      XMLMessages.VC_ELEMENT_VALID,
-                                      elementType);
-            /****/
+            /**
+             * *
+             * reportRecoverableXMLError(XMLMessages.MSG_ELEMENT_NOT_DECLARED,
+             * XMLMessages.VC_ELEMENT_VALID,
+             * elementType);
+             * /***
+             */
         }
         else if (contentType == XMLElementDecl.TYPE_SIMPLE) {
 
@@ -1744,14 +1859,16 @@ public class XMLDTDValidator
         }
         else {
             //REVISIT
-            /****
-            fErrorReporter.reportError(fErrorReporter.getLocator(),
-                                       ImplementationMessages.XERCES_IMPLEMENTATION_DOMAIN,
-                                       ImplementationMessages.VAL_CST,
-                                       0,
-                                       null,
-                                       XMLErrorReporter.ERRORTYPE_FATAL_ERROR);
-            /****/
+            /**
+             * *
+             * fErrorReporter.reportError(fErrorReporter.getLocator(),
+             * ImplementationMessages.XERCES_IMPLEMENTATION_DOMAIN,
+             * ImplementationMessages.VAL_CST,
+             * 0,
+             * null,
+             * XMLErrorReporter.ERRORTYPE_FATAL_ERROR);
+             * /***
+             */
         }
 
         // We succeeded
@@ -1759,7 +1876,9 @@ public class XMLDTDValidator
 
     } // checkContent(int,int,QName[]):int
 
-    /** Returns the content spec type for an element index. */
+    /**
+     * Returns the content spec type for an element index.
+     */
     private int getContentSpecType(int elementIndex) {
 
         int contentSpecType = -1;
@@ -1771,7 +1890,9 @@ public class XMLDTDValidator
         return contentSpecType;
     }
 
-    /** Character data in content. */
+    /**
+     * Character data in content.
+     */
     private void charDataInContent() {
 
         if (DEBUG_ELEMENT_CHILDREN) {
@@ -1794,7 +1915,9 @@ public class XMLDTDValidator
 
     } // charDataInCount()
 
-    /** convert attribute type from ints to strings */
+    /**
+     * Convert attribute type from ints to strings
+     */
     private String getAttributeTypeName(XMLAttributeDecl attrDecl) {
 
         switch (attrDecl.simpleType.type) {
@@ -1830,7 +1953,9 @@ public class XMLDTDValidator
 
     } // getAttributeTypeName(XMLAttributeDecl):String
 
-    /** initialization */
+    /**
+     * Initialization
+     */
     protected void init() {
 
         // datatype validators
@@ -1857,7 +1982,9 @@ public class XMLDTDValidator
 
     } // init()
 
-    /** ensure element stack capacity */
+    /**
+     * Ensure element stack capacity
+     */
     private void ensureStackCapacity (int newElementDepth) {
         if (newElementDepth == fElementQNamePartsStack.length) {
 
@@ -1888,7 +2015,9 @@ public class XMLDTDValidator
     // Protected methods
     //
 
-    /** Handle element
+    /**
+     * Handle element
+     *
      * @return true if validator is removed from the pipeline
      */
     protected boolean handleStartElement(QName element, XMLAttributes attributes, Augmentations augs) 
@@ -2012,7 +2141,9 @@ public class XMLDTDValidator
     protected void startNamespaceScope(QName element, XMLAttributes attributes, Augmentations augs){
     }
 
-    /** Handle end element. */
+    /**
+     * Handle end element.
+     */
     protected void handleEndElement(QName element,  Augmentations augs, boolean isEmpty)
     throws XNIException {
 

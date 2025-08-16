@@ -25,46 +25,54 @@ import org.apache.xerces.xni.XNIException;
  * parsing errors and configuration errors.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLConfigurationException
     extends XNIException {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -5437427404547669188L;
     
     //
     // Constants
     //
 
-    /** Exception type: identifier not recognized. */
+    /**
+     * Exception type: identifier not recognized.
+     */
     public static final short NOT_RECOGNIZED = 0;
 
-    /** Exception type: identifier not supported. */
+    /**
+     * Exception type: identifier not supported.
+     */
     public static final short NOT_SUPPORTED = 1;
 
     //
     // Data
     //
 
-    /** Exception type. */
+    /**
+     * Exception type.
+     */
     protected short fType;
 
-    /** Identifier. */
+    /**
+     * Identifier.
+     */
     protected String fIdentifier;
 
     //
     // Constructors
     //
 
-    /** 
+    /**
      * Constructs a configuration exception with the specified type
      * and feature/property identifier.
      *
-     * @param type       The type of the exception.
-     * @param identifier The feature or property identifier.
-     *
+     * @param type       the type of the exception
+     * @param identifier the feature or property identifier
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED
      */
@@ -74,14 +82,13 @@ public class XMLConfigurationException
         fIdentifier = identifier;
     } // <init>(short,String)
 
-    /** 
+    /**
      * Constructs a configuration exception with the specified type,
      * feature/property identifier, and error message
      *
-     * @param type       The type of the exception.
-     * @param identifier The feature or property identifier.
-     * @param message    The error message.
-     *
+     * @param type       the type of the exception
+     * @param identifier the feature or property identifier
+     * @param message    the error message
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED
      */
@@ -96,8 +103,8 @@ public class XMLConfigurationException
     // Public methods
     //
 
-    /** 
-     * Returns the exception type. 
+    /**
+     * Returns the exception type.
      *
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED
@@ -106,7 +113,9 @@ public class XMLConfigurationException
         return fType;
     } // getType():short
 
-    /** Returns the feature or property identifier. */
+    /**
+     * Returns the feature or property identifier.
+     */
     public String getIdentifier() {
         return fIdentifier;
     } // getIdentifier():String

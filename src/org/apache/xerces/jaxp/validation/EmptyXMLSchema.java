@@ -24,13 +24,15 @@ import org.apache.xerces.xni.grammars.XMLGrammarPool;
 /**
  * <p>Implementation of Schema for W3C XML Schemas
  * which contains no schema components.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 final class EmptyXMLSchema extends AbstractXMLSchema implements XMLGrammarPool {
     
-    /** Zero length grammar array. */
+    /**
+     * Zero length grammar array.
+     */
     private static final Grammar [] ZERO_LENGTH_GRAMMAR_ARRAY = new Grammar [0];
 
     public EmptyXMLSchema() {}

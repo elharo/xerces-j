@@ -48,19 +48,22 @@ import org.xml.sax.SAXNotSupportedException;
  *
  * @author <a href="mailto:Kohsuke.Kawaguchi@Sun.com">Kohsuke Kawaguchi</a>
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 final class ValidatorImpl extends Validator implements PSVIProvider {
     
     // feature identifiers
     
-    /** JAXP Source/Result feature prefix. */
+    /**
+     * JAXP Source/Result feature prefix.
+     */
     private static final String JAXP_SOURCE_RESULT_FEATURE_PREFIX = "http://javax.xml.transform";
     
     // property identifiers
     
-    /** Property identifier: Current element node. */
+    /**
+     * Property identifier: Current element node.
+     */
     private static final String CURRENT_ELEMENT_NODE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.CURRENT_ELEMENT_NODE_PROPERTY;
     
@@ -68,28 +71,44 @@ final class ValidatorImpl extends Validator implements PSVIProvider {
     // Data
     //
     
-    /** Component manager. **/
+    /**
+     * Component manager. *
+     */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** SAX validator helper. **/
+    /**
+     * SAX validator helper. *
+     */
     private ValidatorHandlerImpl fSAXValidatorHelper;
     
-    /** DOM validator helper. **/
+    /**
+     * DOM validator helper. *
+     */
     private DOMValidatorHelper fDOMValidatorHelper;
     
-    /** StAX validator helper. **/
+    /**
+     * StAX validator helper. *
+     */
     private StAXValidatorHelper fStAXValidatorHelper;
     
-    /** Stream validator helper. **/
+    /**
+     * Stream validator helper. *
+     */
     private StreamValidatorHelper fStreamValidatorHelper;
     
-    /** Flag for tracking whether features/properties changed since last reset. */
+    /**
+     * Flag for tracking whether features/properties changed since last reset.
+     */
     private boolean fConfigurationChanged = false;
     
-    /** Flag for tracking whether the error handler changed since last reset. */
+    /**
+     * Flag for tracking whether the error handler changed since last reset.
+     */
     private boolean fErrorHandlerChanged = false;
     
-    /** Flag for tracking whether the resource resolver changed since last reset. */
+    /**
+     * Flag for tracking whether the resource resolver changed since last reset.
+     */
     private boolean fResourceResolverChanged = false;
     
     public ValidatorImpl(XSGrammarPoolContainer grammarContainer) {

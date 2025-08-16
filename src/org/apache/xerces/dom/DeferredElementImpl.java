@@ -40,12 +40,11 @@ import org.w3c.dom.NamedNodeMap;
  * <P>
  * DeferredElementImpl inherits from ElementImpl which does not support
  * Namespaces. DeferredElementNSImpl, which inherits from ElementNSImpl, does.
+ *
  * @see DeferredElementNSImpl
- *
  * @xerces.internal
- *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredElementImpl
     extends ElementImpl
@@ -55,14 +54,18 @@ public class DeferredElementImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = -7670981133940934842L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -85,7 +88,9 @@ public class DeferredElementImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public final int getNodeIndex() {
         return fNodeIndex;
     }
@@ -94,7 +99,9 @@ public class DeferredElementImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected final void synchronizeData() {
 
         // no need to sync in the future

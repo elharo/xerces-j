@@ -37,11 +37,9 @@ import org.apache.xerces.xs.XSTypeDefinition;
 
 /**
  * Constraints shared by traversers and validator
- * 
+ *
  * @xerces.internal
- *
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class XSConstraints {
@@ -106,7 +104,7 @@ public class XSConstraints {
     };
 
     /**
-     * check whether derived is valid derived from base, given a subset
+     * Check whether derived is valid derived from base, given a subset
      * of {restriction, extension}.B
      */
     public static boolean checkTypeDerivationOk(XSTypeDefinition derived, XSTypeDefinition base, short block) {
@@ -140,7 +138,7 @@ public class XSConstraints {
     }
 
     /**
-     * check whether simple type derived is valid derived from base,
+     * Check whether simple type derived is valid derived from base,
      * given a subset of {restriction, extension}.
      */
     public static boolean checkSimpleDerivationOk(XSSimpleType derived, XSTypeDefinition base, short block) {
@@ -165,7 +163,7 @@ public class XSConstraints {
     }
 
     /**
-     * check whether complex type derived is valid derived from base,
+     * Check whether complex type derived is valid derived from base,
      * given a subset of {restriction, extension}.
      */
     public static boolean checkComplexDerivationOk(XSComplexTypeDecl derived, XSTypeDefinition base, short block) {
@@ -177,8 +175,8 @@ public class XSConstraints {
 
     /**
      * Note: this will be a private method, and it assumes that derived is not
-     *       anySimpleType, and base is not anyType. Another method will be
-     *       introduced for public use, which will call this method.
+     * anySimpleType, and base is not anyType. Another method will be
+     * introduced for public use, which will call this method.
      */
     private static boolean checkSimpleDerivation(XSSimpleType derived, XSSimpleType base, short block) {
         // 1 They are the same type definition.
@@ -227,8 +225,8 @@ public class XSConstraints {
 
     /**
      * Note: this will be a private method, and it assumes that derived is not
-     *       anyType. Another method will be introduced for public use,
-     *       which will call this method.
+     * anyType. Another method will be introduced for public use,
+     * which will call this method.
      */
     private static boolean checkComplexDerivation(XSComplexTypeDecl derived, XSTypeDefinition base, short block) {
         // 2.1 B and D must be the same type definition.
@@ -276,7 +274,7 @@ public class XSConstraints {
     }
 
     /**
-     * check whether a value is a valid default for some type
+     * Check whether a value is a valid default for some type
      * returns the compiled form of the value
      * The parameter value could be either a String or a ValidatedInfo object
      */
@@ -345,7 +343,7 @@ public class XSConstraints {
     }
 
     /**
-     * used to check the 3 constraints against each complex type
+     * Used to check the 3 constraints against each complex type
      * (should be each model group):
      * Unique Particle Attribution, Particle Derivation (Restriction),
      * Element Declrations Consistent.

@@ -25,16 +25,16 @@ import java.util.ResourceBundle;
  * created from an error message. For Schema types, it needs an error code
  * (as defined in Appendix C of the structure spec), plus an array of arguments,
  * for error message substitution.
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class DatatypeException extends Exception {
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 1940805832730465578L;
     
     // used to store error code and error substitution arguments
@@ -74,10 +74,10 @@ public class DatatypeException extends Exception {
     
     /**
      * Overrides this method to get the formatted&localized error message.
-     * 
+     *
      * REVISIT: the system locale is used to load the property file.
-     *          do we want to allow the appilcation to specify a
-     *          different locale?
+     * do we want to allow the appilcation to specify a
+     * different locale?
      */
     public String getMessage() {
         ResourceBundle resourceBundle = null;

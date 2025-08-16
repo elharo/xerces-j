@@ -21,74 +21,84 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Locale;
 
-/**********************************************************************
-* A class to represent a Uniform Resource Identifier (URI). This class
-* is designed to handle the parsing of URIs and provide access to
-* the various components (scheme, host, port, userinfo, path, query
-* string and fragment) that may constitute a URI.
-* <p>
-* Parsing of a URI specification is done according to the URI
-* syntax described in 
-* <a href="http://www.ietf.org/rfc/rfc2396.txt?number=2396">RFC 2396</a>,
-* and amended by
-* <a href="http://www.ietf.org/rfc/rfc2732.txt?number=2732">RFC 2732</a>. 
-* <p>
-* Every absolute URI consists of a scheme, followed by a colon (':'), 
-* followed by a scheme-specific part. For URIs that follow the 
-* "generic URI" syntax, the scheme-specific part begins with two 
-* slashes ("//") and may be followed by an authority segment (comprised 
-* of user information, host, and port), path segment, query segment 
-* and fragment. Note that RFC 2396 no longer specifies the use of the 
-* parameters segment and excludes the "user:password" syntax as part of 
-* the authority segment. If "user:password" appears in a URI, the entire 
-* user/password string is stored as userinfo.
-* <p>
-* For URIs that do not follow the "generic URI" syntax (e.g. mailto),
-* the entire scheme-specific part is treated as the "path" portion
-* of the URI.
-* <p>
-* Note that, unlike the java.net.URL class, this class does not provide
-* any built-in network access functionality nor does it provide any
-* scheme-specific functionality (for example, it does not know a
-* default port for a specific scheme). Rather, it only knows the
-* grammar and basic set of operations that can be applied to a URI.
-*
-* @version  $Id$
-*
-**********************************************************************/
+/**
+ * *******************************************************************
+ * A class to represent a Uniform Resource Identifier (URI). This class
+ * is designed to handle the parsing of URIs and provide access to
+ * the various components (scheme, host, port, userinfo, path, query
+ * string and fragment) that may constitute a URI.
+ * <p>
+ * Parsing of a URI specification is done according to the URI
+ * syntax described in
+ * <a href="http://www.ietf.org/rfc/rfc2396.txt?number=2396">RFC 2396</a>,
+ * and amended by
+ * <a href="http://www.ietf.org/rfc/rfc2732.txt?number=2732">RFC 2732</a>.
+ * <p>
+ * Every absolute URI consists of a scheme, followed by a colon (':'),
+ * followed by a scheme-specific part. For URIs that follow the
+ * "generic URI" syntax, the scheme-specific part begins with two
+ * slashes ("//") and may be followed by an authority segment (comprised
+ * of user information, host, and port), path segment, query segment
+ * and fragment. Note that RFC 2396 no longer specifies the use of the
+ * parameters segment and excludes the "user:password" syntax as part of
+ * the authority segment. If "user:password" appears in a URI, the entire
+ * user/password string is stored as userinfo.
+ * <p>
+ * For URIs that do not follow the "generic URI" syntax (e.g. mailto),
+ * the entire scheme-specific part is treated as the "path" portion
+ * of the URI.
+ * <p>
+ * Note that, unlike the java.net.URL class, this class does not provide
+ * any built-in network access functionality nor does it provide any
+ * scheme-specific functionality (for example, it does not know a
+ * default port for a specific scheme). Rather, it only knows the
+ * grammar and basic set of operations that can be applied to a URI.
+ *
+ * @version  $Id$
+ *
+ */
  public class URI implements Serializable {
 
-  /*******************************************************************
-  * MalformedURIExceptions are thrown in the process of building a URI
-  * or setting fields on a URI when an operation would result in an
-  * invalid URI specification.
-  *
-  ********************************************************************/
+  /**
+   * ****************************************************************
+   * MalformedURIExceptions are thrown in the process of building a URI
+   * or setting fields on a URI when an operation would result in an
+   * invalid URI specification.
+   *
+   * ******************************************************************
+   */
   public static class MalformedURIException extends IOException {
 
-   /** Serialization version. */
+   /**
+    * Serialization version.
+    */
    static final long serialVersionUID = -6695054834342951930L;
    
-   /******************************************************************
+   /**
+    * ***************************************************************
     * Constructs a <code>MalformedURIException</code> with no specified
     * detail message.
-    ******************************************************************/
+    * ****************************************************************
+    */
     public MalformedURIException() {
       super();
     }
 
-    /*****************************************************************
-    * Constructs a <code>MalformedURIException</code> with the
-    * specified detail message.
-    *
-    * @param p_msg the detail message.
-    ******************************************************************/
+    /**
+     * **************************************************************
+     * Constructs a <code>MalformedURIException</code> with the
+     * specified detail message.
+     *
+     * @param p_msg the detail message
+     */
     public MalformedURIException(String p_msg) {
       super(p_msg);
     }
   }
 
-  /** Serialization version. */
+  /**
+   * Serialization version.
+   */
   static final long serialVersionUID = 1601921774685357214L;
 
   private static final byte [] fgLookupTable = new byte[128];
@@ -97,49 +107,77 @@ import java.util.Locale;
    * Character Classes
    */
   
-  /** reserved characters ;/?:@&=+$,[] */
+  /**
+   * Reserved characters ;/?:@&=+$,[]
+   */
   //RFC 2732 added '[' and ']' as reserved characters
   private static final int RESERVED_CHARACTERS = 0x01;
   
-  /** URI punctuation mark characters: -_.!~*'() - these, combined with
-      alphanumerics, constitute the "unreserved" characters */
+  /**
+   * URI punctuation mark characters: -_.!~*'() - these, combined with
+   * alphanumerics, constitute the "unreserved" characters
+   */
   private static final int MARK_CHARACTERS = 0x02;
   
-  /** scheme can be composed of alphanumerics and these characters: +-. */
+  /**
+   * Scheme can be composed of alphanumerics and these characters: +-.
+   */
   private static final int SCHEME_CHARACTERS = 0x04;
   
-  /** userinfo can be composed of unreserved, escaped and these
-      characters: ;:&=+$, */
+  /**
+   * Userinfo can be composed of unreserved, escaped and these
+   * characters: ;:&=+$,
+   */
   private static final int USERINFO_CHARACTERS = 0x08;
   
-  /** ASCII letter characters */
+  /**
+   * ASCII letter characters
+   */
   private static final int ASCII_ALPHA_CHARACTERS = 0x10;
   
-  /** ASCII digit characters */
+  /**
+   * ASCII digit characters
+   */
   private static final int ASCII_DIGIT_CHARACTERS = 0x20;
   
-  /** ASCII hex characters */
+  /**
+   * ASCII hex characters
+   */
   private static final int ASCII_HEX_CHARACTERS = 0x40;
   
-  /** Path characters */
+  /**
+   * Path characters
+   */
   private static final int PATH_CHARACTERS = 0x80;
 
-  /** Mask for alpha-numeric characters */
+  /**
+   * Mask for alpha-numeric characters
+   */
   private static final int MASK_ALPHA_NUMERIC = ASCII_ALPHA_CHARACTERS | ASCII_DIGIT_CHARACTERS;
   
-  /** Mask for unreserved characters */
+  /**
+   * Mask for unreserved characters
+   */
   private static final int MASK_UNRESERVED_MASK = MASK_ALPHA_NUMERIC | MARK_CHARACTERS;
   
-  /** Mask for URI allowable characters except for % */
+  /**
+   * Mask for URI allowable characters except for %
+   */
   private static final int MASK_URI_CHARACTER = MASK_UNRESERVED_MASK | RESERVED_CHARACTERS;
   
-  /** Mask for scheme characters */
+  /**
+   * Mask for scheme characters
+   */
   private static final int MASK_SCHEME_CHARACTER = MASK_ALPHA_NUMERIC | SCHEME_CHARACTERS;
   
-  /** Mask for userinfo characters */
+  /**
+   * Mask for userinfo characters
+   */
   private static final int MASK_USERINFO_CHARACTER = MASK_UNRESERVED_MASK | USERINFO_CHARACTERS;
   
-  /** Mask for path characters */
+  /**
+   * Mask for path characters
+   */
   private static final int MASK_PATH_CHARACTER = MASK_UNRESERVED_MASK | PATH_CHARACTERS; 
 
   static {
@@ -211,34 +249,50 @@ import java.util.Locale;
       fgLookupTable[','] |= PATH_CHARACTERS;
   }
 
-  /** Stores the scheme (usually the protocol) for this URI. */
+  /**
+   * Stores the scheme (usually the protocol) for this URI.
+   */
   private String m_scheme = null;
 
-  /** If specified, stores the userinfo for this URI; otherwise null */
+  /**
+   * If specified, stores the userinfo for this URI; otherwise null
+   */
   private String m_userinfo = null;
 
-  /** If specified, stores the host for this URI; otherwise null */
+  /**
+   * If specified, stores the host for this URI; otherwise null
+   */
   private String m_host = null;
 
-  /** If specified, stores the port for this URI; otherwise -1 */
+  /**
+   * If specified, stores the port for this URI; otherwise -1
+   */
   private int m_port = -1;
   
-  /** If specified, stores the registry based authority for this URI; otherwise -1 */
+  /**
+   * If specified, stores the registry based authority for this URI; otherwise -1
+   */
   private String m_regAuthority = null;
 
-  /** If specified, stores the path for this URI; otherwise null */
+  /**
+   * If specified, stores the path for this URI; otherwise null
+   */
   private String m_path = null;
 
-  /** If specified, stores the query string for this URI; otherwise
-      null.  */
+  /**
+   * If specified, stores the query string for this URI; otherwise
+   * null.
+   */
   private String m_queryString = null;
 
-  /** If specified, stores the fragment for this URI; otherwise null */
+  /**
+   * If specified, stores the fragment for this URI; otherwise null
+   */
   private String m_fragment = null;
 
   /**
-  * Construct a new and uninitialized URI.
-  */
+   * Construct a new and uninitialized URI.
+   */
   public URI() {
   }
 
@@ -263,8 +317,7 @@ import java.util.Locale;
   *
   * @param p_uriSpec the URI specification string (cannot be null or
   *                  empty)
-  *
-  * @exception MalformedURIException if p_uriSpec violates any syntax
+  * @throws MalformedURIException if p_uriSpec violates any syntax
   *                                   rules
   */
   public URI(String p_uriSpec) throws MalformedURIException {
@@ -280,14 +333,13 @@ import java.util.Locale;
    * not follow the "generic URI" syntax, the specification is parsed
    * into a scheme and scheme-specific part (stored as the path) only.
    * Construct a relative URI if boolean is assigned to "true"
-   * and p_uriSpec is not valid absolute URI, instead of throwing an exception. 
-   * 
+   * and p_uriSpec is not valid absolute URI, instead of throwing an exception.
+   *
    * @param p_uriSpec the URI specification string (cannot be null or
    *                  empty)
-   * @param allowNonAbsoluteURI true to permit non-absolute URIs, 
-   *                            false otherwise.
-   *
-   * @exception MalformedURIException if p_uriSpec violates any syntax
+   * @param allowNonAbsoluteURI true to permit non-absolute URIs,
+   *                            false otherwise
+   * @throws MalformedURIException if p_uriSpec violates any syntax
    *                                   rules
    */
   public URI(String p_uriSpec, boolean allowNonAbsoluteURI) throws MalformedURIException {
@@ -302,8 +354,7 @@ import java.util.Locale;
   *               empty)
   * @param p_uriSpec the URI specification string (cannot be null or
   *                  empty if p_base is null)
-  *
-  * @exception MalformedURIException if p_uriSpec violates any syntax
+  * @throws MalformedURIException if p_uriSpec violates any syntax
   *                                  rules
   */
   public URI(URI p_base, String p_uriSpec) throws MalformedURIException {
@@ -315,16 +366,15 @@ import java.util.Locale;
    * The URI specification string may be a relative URI.
    * Construct a relative URI if boolean is assigned to "true"
    * and p_uriSpec is not valid absolute URI and p_base is null
-   * instead of throwing an exception. 
+   * instead of throwing an exception.
    *
    * @param p_base the base URI (cannot be null if p_uriSpec is null or
    *               empty)
    * @param p_uriSpec the URI specification string (cannot be null or
    *                  empty if p_base is null)
-   * @param allowNonAbsoluteURI true to permit non-absolute URIs, 
-   *                            false otherwise.
-   *
-   * @exception MalformedURIException if p_uriSpec violates any syntax
+   * @param allowNonAbsoluteURI true to permit non-absolute URIs,
+   *                            false otherwise
+   * @throws MalformedURIException if p_uriSpec violates any syntax
    *                                  rules
    */
   public URI(URI p_base, String p_uriSpec, boolean allowNonAbsoluteURI) throws MalformedURIException {
@@ -339,8 +389,7 @@ import java.util.Locale;
   * @param p_scheme the URI scheme (cannot be null or empty)
   * @param p_schemeSpecificPart the scheme-specific part (cannot be
   *                             null or empty)
-  *
-  * @exception MalformedURIException if p_scheme violates any
+  * @throws MalformedURIException if p_scheme violates any
   *                                  syntax rules
   */
   public URI(String p_scheme, String p_schemeSpecificPart)
@@ -375,8 +424,7 @@ import java.util.Locale;
   *                      if path is null)
   * @param p_fragment the URI fragment (cannot be specified if path
   *                   is null)
-  *
-  * @exception MalformedURIException if any of the parameters violates
+  * @throws MalformedURIException if any of the parameters violates
   *                                  syntax rules or semantic rules
   */
   public URI(String p_scheme, String p_host, String p_path,
@@ -406,8 +454,7 @@ import java.util.Locale;
   *                      if path is null)
   * @param p_fragment the URI fragment (cannot be specified if path
   *                   is null)
-  *
-  * @exception MalformedURIException if any of the parameters violates
+  * @throws MalformedURIException if any of the parameters violates
   *                                  syntax rules or semantic rules
   */
   public URI(String p_scheme, String p_userinfo,
@@ -477,10 +524,9 @@ import java.util.Locale;
    * @param p_uriSpec the URI spec string which may be an absolute or
    *                  relative URI (can only be null/empty if p_base
    *                  is not null)
-   * @param allowNonAbsoluteURI true to permit non-absolute URIs, 
-   *                         in case of relative URI, false otherwise.
-   *
-   * @exception MalformedURIException if p_base is null and p_uriSpec
+   * @param allowNonAbsoluteURI true to permit non-absolute URIs,
+   *                         in case of relative URI, false otherwise
+   * @throws MalformedURIException if p_base is null and p_uriSpec
    *                                  is not an absolute URI or if
    *                                  p_uriSpec violates syntax rules
    */
@@ -598,8 +644,7 @@ import java.util.Locale;
   * @param p_uriSpec the URI spec string which may be an absolute or
   *                  relative URI (can only be null/empty if p_base
   *                  is not null)
-  *
-  * @exception MalformedURIException if p_base is null and p_uriSpec
+  * @throws MalformedURIException if p_base is null and p_uriSpec
   *                                  is not an absolute URI or if
   *                                  p_uriSpec violates syntax rules
   */
@@ -832,8 +877,7 @@ import java.util.Locale;
   * Initialize the scheme for this URI from a URI string spec.
   *
   * @param p_uriSpec the URI specification (cannot be null)
-  *
-  * @exception MalformedURIException if URI does not have a conformant
+  * @throws MalformedURIException if URI does not have a conformant
   *                                  scheme
   */
   private void initializeScheme(String p_uriSpec)
@@ -866,7 +910,6 @@ import java.util.Locale;
   * for this URI from a URI string spec.
   *
   * @param p_uriSpec the URI specification (cannot be null)
-  * 
   * @return true if the given string matched server or registry
   * based authority
   */
@@ -928,13 +971,15 @@ import java.util.Locale;
         String portStr = p_uriSpec.substring(start, index);
         if (portStr.length() > 0) {
           // REVISIT: Remove this code.
-          /** for (int i = 0; i < portStr.length(); i++) {
-            if (!isDigit(portStr.charAt(i))) {
-              throw new MalformedURIException(
-                   portStr +
-                   " is invalid. Port should only contain digits!");
-            }
-          }**/
+          /**
+           * For (int i = 0; i < portStr.length(); i++) {
+           * if (!isDigit(portStr.charAt(i))) {
+           * throw new MalformedURIException(
+           * portStr +
+           * " is invalid. Port should only contain digits!");
+           * }
+           * }*
+           */
           // REVISIT: Remove this code.
           // Store port value as string instead of integer.
           try {
@@ -968,11 +1013,10 @@ import java.util.Locale;
   /**
    * Determines whether the components host, port, and user info
    * are valid as a server authority.
-   * 
+   *
    * @param host the host component of authority
    * @param port the port number component of authority
    * @param userinfo the user info component of authority
-   * 
    * @return true if the given host, port, and userinfo compose
    * a valid server authority
    */
@@ -1019,9 +1063,8 @@ import java.util.Locale;
   
   /**
    * Determines whether the given string is a registry based authority.
-   * 
+   *
    * @param authority the authority component of a URI
-   * 
    * @return true if the given string is a registry based authority
    */
   private boolean isValidRegistryBasedAuthority(String authority) {
@@ -1056,8 +1099,7 @@ import java.util.Locale;
   *
   * @param p_uriSpec the URI specification (cannot be null)
   * @param p_nStartIndex the index to begin scanning from
-  *
-  * @exception MalformedURIException if p_uriSpec violates syntax rules
+  * @throws MalformedURIException if p_uriSpec violates syntax rules
   */
   private void initializePath(String p_uriSpec, int p_nStartIndex)
                  throws MalformedURIException {
@@ -1255,17 +1297,17 @@ import java.util.Locale;
  /**
   * Get the userinfo for this URI.
   *
-  * @return the userinfo for this URI (null if not specified).
+  * @return the userinfo for this URI (null if not specified)
   */
   public String getUserinfo() {
     return m_userinfo;
   }
 
   /**
-  * Get the host for this URI.
-  *
-  * @return the host for this URI (null if not specified).
-  */
+   * Get the host for this URI.
+   *
+   * @return the host for this URI (null if not specified)
+   */
   public String getHost() {
     return m_host;
   }
@@ -1273,7 +1315,7 @@ import java.util.Locale;
  /**
   * Get the port for this URI.
   *
-  * @return the port for this URI (-1 if not specified).
+  * @return the port for this URI (-1 if not specified)
   */
   public int getPort() {
     return m_port;
@@ -1281,8 +1323,8 @@ import java.util.Locale;
   
   /**
    * Get the registry based authority for this URI.
-   * 
-   * @return the registry based authority (null if not specified).
+   *
+   * @return the registry based authority (null if not specified)
    */
   public String getRegBasedAuthority() {
     return m_regAuthority;
@@ -1290,7 +1332,7 @@ import java.util.Locale;
   
   /**
    * Get the authority for this URI.
-   * 
+   *
    * @return the authority
    */
   public String getAuthority() {
@@ -1331,7 +1373,6 @@ import java.util.Locale;
   * @param p_includeFragment if true (and fragment is not null),
   *                             then a "#" followed by the fragment
   *                             will be appended
-  *
   * @return the path for this URI possibly including the query string
   *         and fragment
   */
@@ -1355,7 +1396,7 @@ import java.util.Locale;
   * Get the path for this URI. Note that the value returned is the path
   * only and does not include the query string or fragment.
   *
-  * @return the path for this URI.
+  * @return the path for this URI
   */
   public String getPath() {
     return m_path;
@@ -1388,8 +1429,7 @@ import java.util.Locale;
   * before it is set.
   *
   * @param p_scheme the scheme for this URI (cannot be null)
-  *
-  * @exception MalformedURIException if p_scheme is not a conformant
+  * @throws MalformedURIException if p_scheme is not a conformant
   *                                  scheme name
   */
   public void setScheme(String p_scheme) throws MalformedURIException {
@@ -1409,8 +1449,7 @@ import java.util.Locale;
   * the host value is null, then an exception is thrown.
   *
   * @param p_userinfo the userinfo for this URI
-  *
-  * @exception MalformedURIException if p_userinfo contains invalid
+  * @throws MalformedURIException if p_userinfo contains invalid
   *                                  characters
   */
   public void setUserinfo(String p_userinfo) throws MalformedURIException {
@@ -1452,14 +1491,13 @@ import java.util.Locale;
  /**
   * <p>Set the host for this URI. If null is passed in, the userinfo
   * field is also set to null and the port is set to -1.</p>
-  * 
+  *
   * <p>Note: This method overwrites registry based authority if it
   * previously existed in this URI.</p>
   *
   * @param p_host the host for this URI
-  *
-  * @exception MalformedURIException if p_host is not a valid IP
-  *                                  address or DNS hostname.
+  * @throws MalformedURIException if p_host is not a valid IP
+  *                                  address or DNS hostname
   */
   public void setHost(String p_host) throws MalformedURIException {
     if (p_host == null || p_host.length() == 0) {
@@ -1485,8 +1523,7 @@ import java.util.Locale;
   * an exception is thrown.
   *
   * @param p_port the port number for this URI
-  *
-  * @exception MalformedURIException if p_port is not -1 and not a
+  * @throws MalformedURIException if p_port is not -1 and not a
   *                                  valid port number
   */
   public void setPort(int p_port) throws MalformedURIException {
@@ -1504,13 +1541,12 @@ import java.util.Locale;
   
   /**
    * <p>Sets the registry based authority for this URI.</p>
-   * 
+   *
    * <p>Note: This method overwrites server based authority
    * if it previously existed in this URI.</p>
-   * 
+   *
    * @param authority the registry based authority for this URI
-   * 
-   * @exception MalformedURIException it authority is not a
+   * @throws MalformedURIException it authority is not a
    * well formed registry based authority
    */
   public void setRegBasedAuthority(String authority) 
@@ -1543,8 +1579,7 @@ import java.util.Locale;
   * sets the scheme-specific part.
   *
   * @param p_path the path for this URI (may be null)
-  *
-  * @exception MalformedURIException if p_path contains invalid
+  * @throws MalformedURIException if p_path contains invalid
   *                                  characters
   */
   public void setPath(String p_path) throws MalformedURIException {
@@ -1567,8 +1602,7 @@ import java.util.Locale;
   * removed before the new segment is appended.
   *
   * @param p_addToPath the new segment to be added to the current path
-  *
-  * @exception MalformedURIException if p_addToPath contains syntax
+  * @throws MalformedURIException if p_addToPath contains syntax
   *                                  errors
   */
   public void appendPath(String p_addToPath)
@@ -1614,8 +1648,7 @@ import java.util.Locale;
   * the path value is not null.
   *
   * @param p_queryString the query string for this URI
-  *
-  * @exception MalformedURIException if p_queryString is not null and this
+  * @throws MalformedURIException if p_queryString is not null and this
   *                                  URI does not conform to the generic
   *                                  URI syntax or if the path is null
   */
@@ -1646,8 +1679,7 @@ import java.util.Locale;
   * the path value is not null.
   *
   * @param p_fragment the fragment for this URI
-  *
-  * @exception MalformedURIException if p_fragment is not null and this
+  * @throws MalformedURIException if p_fragment is not null and this
   *                                  URI does not conform to the generic
   *                                  URI syntax or if the path is null
   */
@@ -1675,8 +1707,7 @@ import java.util.Locale;
  /**
   * Determines if the passed-in Object is equivalent to this URI.
   *
-  * @param p_test the Object to test for equality.
-  *
+  * @param p_test the Object to test for equality
   * @return true if p_test is a URI with all values equal to this
   *         URI, false otherwise
   */
@@ -1778,14 +1809,14 @@ import java.util.Locale;
 
  /**
   * Determine whether a string is syntactically capable of representing
-  * a valid IPv4 address, IPv6 reference or the domain name of a network host. 
+  * a valid IPv4 address, IPv6 reference or the domain name of a network host.
   * A valid IPv4 address consists of four decimal digit groups separated by a
   * '.'. Each group must consist of one to three digits. See RFC 2732 Section 3,
-  * and RFC 2373 Section 2.2, for the definition of IPv6 references. A hostname 
-  * consists of domain labels (each of which must begin and end with an alphanumeric 
+  * and RFC 2373 Section 2.2, for the definition of IPv6 references. A hostname
+  * consists of domain labels (each of which must begin and end with an alphanumeric
   * but may contain '-') separated & by a '.'. See RFC 2396 Section 3.2.2.
   *
-  * @return true if the string is a syntactically valid IPv4 address, 
+  * @return true if the string is a syntactically valid IPv4 address,
   * IPv6 reference or hostname
   */
   public static boolean isWellFormedAddress(String address) {
@@ -1862,10 +1893,10 @@ import java.util.Locale;
   }
   
   /**
-   * <p>Determines whether a string is an IPv4 address as defined by 
+   * <p>Determines whether a string is an IPv4 address as defined by
    * RFC 2373, and under the further constraint that it must be a 32-bit
-   * address. Though not expressed in the grammar, in order to satisfy 
-   * the 32-bit address constraint, each segment of the address cannot 
+   * address. Though not expressed in the grammar, in order to satisfy
+   * the 32-bit address constraint, each segment of the address cannot
    * be greater than 255 (8 bits of information).</p>
    *
    * <p><code>IPv4address = 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT</code></p>
@@ -1926,14 +1957,14 @@ import java.util.Locale;
   
   /**
    * <p>Determines whether a string is an IPv6 reference as defined
-   * by RFC 2732, where IPv6address is defined in RFC 2373. The 
+   * by RFC 2732, where IPv6address is defined in RFC 2373. The
    * IPv6 address is parsed according to Section 2.2 of RFC 2373,
    * with the additional constraint that the address be composed of
    * 128 bits of information.</p>
    *
    * <p><code>IPv6reference = "[" IPv6address "]"</code></p>
    *
-   * <p>Note: The BNF expressed in RFC 2373 Appendix B does not 
+   * <p>Note: The BNF expressed in RFC 2373 Appendix B does not
    * accurately describe section 2.2, and was in fact removed from
    * RFC 3513, the successor of RFC 2373.</p>
    *
@@ -2001,17 +2032,16 @@ import java.util.Locale;
   }
   
   /**
-   * Helper method for isWellFormedIPv6Reference which scans the 
-   * hex sequences of an IPv6 address. It returns the index of the 
-   * next character to scan in the address, or -1 if the string 
-   * cannot match a valid IPv6 address. 
+   * Helper method for isWellFormedIPv6Reference which scans the
+   * hex sequences of an IPv6 address. It returns the index of the
+   * next character to scan in the address, or -1 if the string
+   * cannot match a valid IPv6 address.
    *
    * @param address the string to be scanned
    * @param index the beginning index (inclusive)
    * @param end the ending index (exclusive)
    * @param counter a counter for the number of 16-bit sections read
    * in the address
-   *
    * @return the index of the next character to scan, or -1 if the
    * string cannot match a valid IPv6 address
    */
@@ -2112,7 +2142,7 @@ import java.util.Locale;
   }
 
  /**
-  * Determine whether a char is a URI character (reserved or 
+  * Determine whether a char is a URI character (reserved or
   * unreserved, not including '%' for escaped octets).
   *
   * @return true if the char is a URI character, false otherwise
@@ -2141,7 +2171,7 @@ import java.util.Locale;
   
  /**
   * Determine whether a char is a path character.
-  * 
+  *
   * @return true if the char is a path character, false otherwise
   */
   private static boolean isPathCharacter (char p_char) {

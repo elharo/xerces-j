@@ -22,7 +22,7 @@ import java.io.IOException;
 import org.apache.xerces.xni.XNIException;
 
 /**
- * Represents a parser configuration that can be used as the 
+ * Represents a parser configuration that can be used as the
  * configuration for a "pull" parser. A pull parser allows the
  * application to drive the parser instead of having document
  * information events "pushed" to the registered handlers.
@@ -30,17 +30,16 @@ import org.apache.xerces.xni.XNIException;
  * A pull parser using this type of configuration first calls
  * the <code>setInputSource</code> method. After the input
  * source is set, the pull parser repeatedly calls the
- * <code>parse(boolean):boolean</code> method. This method 
+ * <code>parse(boolean):boolean</code> method. This method
  * returns a value of true if there is more to parse in the
  * document.
  * <p>
  * Calling the <code>parse(XMLInputSource)</code> is equivalent
- * to setting the input source and calling the 
- * <code>parse(boolean):boolean</code> method with a "complete" 
+ * to setting the input source and calling the
+ * <code>parse(boolean):boolean</code> method with a "complete"
  * value of <code>true</code>.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLPullParserConfiguration
@@ -55,13 +54,11 @@ public interface XMLPullParserConfiguration
     /**
      * Sets the input source for the document to parse.
      *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @param inputSource the document's input source
+     * @throws XMLConfigurationException thrown if there is a
      *                        configuration error when initializing the
-     *                        parser.
-     * @exception IOException Thrown on I/O error.
-     *
+     *                        parser
+     * @throws IOException thrown on I/O error
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -70,17 +67,14 @@ public interface XMLPullParserConfiguration
     /**
      * Parses the document in a pull parsing fashion.
      *
-     * @param complete True if the pull parser should parse the
-     *                 remaining document completely.
-     *
-     * @return True if there is more document to parse.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping 
-     *                         another exception.
-     * @exception IOException  An IO exception from the parser, possibly
+     * @param complete true if the pull parser should parse the
+     *                 remaining document completely
+     * @return true if there is more document to parse
+     * @throws XNIException any XNI exception, possibly wrapping
+     *                         another exception
+     * @throws IOException  an IO exception from the parser, possibly
      *                         from a byte stream or character stream
-     *                         supplied by the parser.
-     *
+     *                         supplied by the parser
      * @see #setInputSource
      */
     public boolean parse(boolean complete) throws XNIException, IOException;

@@ -32,15 +32,14 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
  * properties:
  * <ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/internal/error-handler</li>
- *   <li>http://apache.org/xml/properties/internal/entity-resolver</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/internal/error-handler</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * </ul>
  * </ul>
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public abstract class XMLParser {
@@ -51,15 +50,21 @@ public abstract class XMLParser {
 
     // properties
 
-    /** Property identifier: entity resolver. */
+    /**
+     * Property identifier: entity resolver.
+     */
     protected static final String ENTITY_RESOLVER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
 
-    /** Property identifier: error handler. */
+    /**
+     * Property identifier: error handler.
+     */
     protected static final String ERROR_HANDLER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         ENTITY_RESOLVER,
         ERROR_HANDLER,
@@ -69,7 +74,9 @@ public abstract class XMLParser {
     // Data
     //
 
-    /** The parser configuration. */
+    /**
+     * The parser configuration.
+     */
     protected final XMLParserConfiguration fConfiguration;
 
     //
@@ -94,12 +101,11 @@ public abstract class XMLParser {
     //
 
     /**
-     * parse
+     * Parse
      *
      * @param inputSource
-     *
-     * @exception XNIException
-     * @exception java.io.IOException
+     * @throws XNIException
+     * @throws java.io.IOException
      */
     public void parse(XMLInputSource inputSource) 
         throws XNIException, IOException {
@@ -114,7 +120,7 @@ public abstract class XMLParser {
     //
 
     /**
-     * reset all components before parsing
+     * Reset all components before parsing
      */
     protected void reset() throws XNIException {
     } // reset()

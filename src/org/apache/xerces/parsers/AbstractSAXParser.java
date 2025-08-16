@@ -72,7 +72,6 @@ import org.xml.sax.ext.Locator2Impl;
  *
  * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public abstract class AbstractSAXParser
@@ -87,21 +86,29 @@ public abstract class AbstractSAXParser
 
     // features
 
-    /** Feature identifier: namespaces. */
+    /**
+     * Feature identifier: namespaces.
+     */
     protected static final String NAMESPACES =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
 
-    /** Feature id: string interning. */
+    /**
+     * Feature id: string interning.
+     */
     protected static final String STRING_INTERNING =
         Constants.SAX_FEATURE_PREFIX + Constants.STRING_INTERNING_FEATURE;
     
-    /** Feature identifier: allow notation and unparsed entity events to be sent out of order. */
+    /**
+     * Feature identifier: allow notation and unparsed entity events to be sent out of order.
+     */
     // this is not meant to be a recognized feature, but we need it here to use
     // if it is already a recognized feature for the pipeline
     protected static final String ALLOW_UE_AND_NOTATION_EVENTS =
         Constants.SAX_FEATURE_PREFIX + Constants.ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE;
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         NAMESPACES,
         STRING_INTERNING,
@@ -109,19 +116,27 @@ public abstract class AbstractSAXParser
 
     // properties
 
-    /** Property id: lexical handler. */
+    /**
+     * Property id: lexical handler.
+     */
     protected static final String LEXICAL_HANDLER = 
         Constants.SAX_PROPERTY_PREFIX + Constants.LEXICAL_HANDLER_PROPERTY;
 
-    /** Property id: declaration handler. */
+    /**
+     * Property id: declaration handler.
+     */
     protected static final String DECLARATION_HANDLER =
         Constants.SAX_PROPERTY_PREFIX + Constants.DECLARATION_HANDLER_PROPERTY;
 
-    /** Property id: DOM node. */
+    /**
+     * Property id: DOM node.
+     */
     protected static final String DOM_NODE = 
         Constants.SAX_PROPERTY_PREFIX + Constants.DOM_NODE_PROPERTY;
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         LEXICAL_HANDLER,
         DECLARATION_HANDLER,
@@ -134,48 +149,72 @@ public abstract class AbstractSAXParser
 
     // features
 
-    /** Namespaces. */
+    /**
+     * Namespaces.
+     */
     protected boolean fNamespaces;
 
-    /** Namespace prefixes. */
+    /**
+     * Namespace prefixes.
+     */
     protected boolean fNamespacePrefixes = false;
     
-    /** Lexical handler parameter entities. */
+    /**
+     * Lexical handler parameter entities.
+     */
     protected boolean fLexicalHandlerParameterEntities = true;
     
-    /** Standalone document declaration. */
+    /**
+     * Standalone document declaration.
+     */
     protected boolean fStandalone;
     
-    /** Resolve DTD URIs. */
+    /**
+     * Resolve DTD URIs.
+     */
     protected boolean fResolveDTDURIs = true;
     
-    /** Use EntityResolver2. */
+    /**
+     * Use EntityResolver2.
+     */
     protected boolean fUseEntityResolver2 = true;
     
-    /** 
-     * XMLNS URIs: Namespace declarations in the 
+    /**
+     * XMLNS URIs: Namespace declarations in the
      * http://www.w3.org/2000/xmlns/ namespace.
      */
     protected boolean fXMLNSURIs = false;
 
     // parser handlers
 
-    /** Content handler. */
+    /**
+     * Content handler.
+     */
     protected ContentHandler fContentHandler;
 
-    /** Document handler. */
+    /**
+     * Document handler.
+     */
     protected DocumentHandler fDocumentHandler;
     
-    /** Namespace context */
+    /**
+     * Namespace context
+     */
     protected NamespaceContext fNamespaceContext;
 
-    /** DTD handler. */
+    /**
+     * DTD handler.
+     */
     protected org.xml.sax.DTDHandler fDTDHandler;
 
-    /** Decl handler. */
+    /**
+     * Decl handler.
+     */
     protected DeclHandler fDeclHandler;
 
-    /** Lexical handler. */
+    /**
+     * Lexical handler.
+     */
     protected LexicalHandler fLexicalHandler;
 
     protected final QName fQName = new QName();
@@ -205,7 +244,9 @@ public abstract class AbstractSAXParser
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     protected AbstractSAXParser(XMLParserConfiguration config) {
         super(config);
 
@@ -227,13 +268,13 @@ public abstract class AbstractSAXParser
     /**
      * The start of the document.
      *
-     * @param locator The document locator, or null if the document
+     * @param locator the document locator, or null if the document
      *                 location cannot be reported during the parsing
      *                 of this document. However, it is <em>strongly</em>
      *                 recommended that a locator be supplied that can
      *                 at least report the system identifier of the
      *                 document.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
@@ -245,10 +286,9 @@ public abstract class AbstractSAXParser
      *                 Implementors of this class are responsible
      *                 for copying the namespace bindings from the
      *                 the current context (and its parent contexts)
-     *                 if that information is important.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     *                 if that information is important
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startDocument(XMLLocator locator, String encoding, 
                               NamespaceContext namespaceContext, Augmentations augs)
@@ -291,14 +331,13 @@ public abstract class AbstractSAXParser
      * Notifies of the presence of an XMLDecl line in the document. If
      * present, this method will be called immediately following the
      * startDocument call.
-     * 
-     * @param version    The XML version.
-     * @param encoding   The IANA encoding name of the document, or null if
-     *                   not specified.
-     * @param standalone The standalone value, or null if not specified.
-     * @param augs   Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version    the XML version
+     * @param encoding   the IANA encoding name of the document, or null if
+     *                   not specified
+     * @param standalone the standalone value, or null if not specified
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void xmlDecl(String version, String encoding, String standalone, Augmentations augs)
         throws XNIException {
@@ -311,14 +350,13 @@ public abstract class AbstractSAXParser
     /**
      * Notifies of the presence of the DOCTYPE line in the document.
      *
-     * @param rootElement The name of the root element.
-     * @param publicId    The public identifier if an external DTD or null
-     *                    if the external DTD is specified using SYSTEM.
-     * @param systemId    The system identifier if an external DTD, null
-     *                    otherwise.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param rootElement the name of the root element
+     * @param publicId    the public identifier if an external DTD or null
+     *                    if the external DTD is specified using SYSTEM
+     * @param systemId    the system identifier if an external DTD, null
+     *                    otherwise
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void doctypeDecl(String rootElement,
                             String publicId, String systemId, Augmentations augs)
@@ -343,29 +381,28 @@ public abstract class AbstractSAXParser
     } // doctypeDecl(String,String,String)
 
         /**
-     * This method notifies of the start of an entity. The DTD has the
-     * pseudo-name of "[dtd]" parameter entity names start with '%'; and
-     * general entity names are just the entity name.
-     * <p>
-     * <strong>Note:</strong> Since the document is an entity, the handler
-     * will be notified of the start of the document entity by calling the
-     * startEntity method with the entity name "[xml]" <em>before</em> calling
-     * the startDocument method. When exposing entity boundaries through the
-     * SAX API, the document entity is never reported, however.
-     * <p>
-     * <strong>Note:</strong> This method is not called for entity references
-     * appearing as part of attribute values.
-     *
-     * @param name     The name of the entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+         * This method notifies of the start of an entity. The DTD has the
+         * pseudo-name of "[dtd]" parameter entity names start with '%'; and
+         * general entity names are just the entity name.
+         * <p>
+         * <strong>Note:</strong> Since the document is an entity, the handler
+         * will be notified of the start of the document entity by calling the
+         * startEntity method with the entity name "[xml]" <em>before</em> calling
+         * the startDocument method. When exposing entity boundaries through the
+         * SAX API, the document entity is never reported, however.
+         * <p>
+         * <strong>Note:</strong> This method is not called for entity references
+         * appearing as part of attribute values.
+         *
+         * @param name     the name of the entity
+         * @param identifier the resource identifier
+         * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal parameter entities).
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     */
+         * @param augs     additional information that may include infoset augmentations
+         * @throws XNIException thrown by handler to signal an error
+         */
     public void startGeneralEntity(String name, XMLResourceIdentifier identifier, 
                                    String encoding, Augmentations augs)
         throws XNIException {
@@ -405,10 +442,9 @@ public abstract class AbstractSAXParser
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param name The name of the entity.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name the name of the entity
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endGeneralEntity(String name, Augmentations augs) throws XNIException {
 
@@ -428,16 +464,15 @@ public abstract class AbstractSAXParser
     } // endEntity(String)
 
      /**
-     * The start of an element. If the document specifies the start element
-     * by using an empty tag, then the startElement method will immediately
-     * be followed by the endElement method, with no intervening methods.
-     *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     */
+      * The start of an element. If the document specifies the start element
+      * by using an empty tag, then the startElement method will immediately
+      * be followed by the endElement method, with no intervening methods.
+      *
+      * @param element    the name of the element
+      * @param attributes the element attributes
+      * @param augs     additional information that may include infoset augmentations
+      * @throws XNIException thrown by handler to signal an error
+      */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
 
@@ -508,10 +543,9 @@ public abstract class AbstractSAXParser
     /**
      * Character content.
      *
-     * @param text The content.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the content
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void characters(XMLString text, Augmentations augs) throws XNIException {
         
@@ -549,10 +583,9 @@ public abstract class AbstractSAXParser
      * characters in the document are ignorable based on the element
      * content model.
      *
-     * @param text The ignorable whitespace.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the ignorable whitespace
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void ignorableWhitespace(XMLString text, Augmentations augs) throws XNIException {
 
@@ -576,10 +609,9 @@ public abstract class AbstractSAXParser
     /**
      * The end of an element.
      *
-     * @param element The name of the element.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element the name of the element
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endElement(QName element, Augmentations augs) throws XNIException {
         
@@ -609,11 +641,11 @@ public abstract class AbstractSAXParser
     } // endElement(QName)
 
         /**
-     * The start of a CDATA section.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     */
+         * The start of a CDATA section.
+         *
+         * @param augs     additional information that may include infoset augmentations
+         * @throws XNIException thrown by handler to signal an error
+         */
     public void startCDATA(Augmentations augs) throws XNIException {
 
         try {
@@ -630,9 +662,9 @@ public abstract class AbstractSAXParser
 
     /**
      * The end of a CDATA section.
-     * @param augs     Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endCDATA(Augmentations augs) throws XNIException {
 
@@ -651,10 +683,9 @@ public abstract class AbstractSAXParser
     /**
      * A comment.
      *
-     * @param text The text in the comment.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
 
@@ -681,11 +712,10 @@ public abstract class AbstractSAXParser
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
      *
-     * @param target The target.
-     * @param data   The data or null if none specified.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
         throws XNIException {
@@ -717,9 +747,9 @@ public abstract class AbstractSAXParser
 
     /**
      * The end of the document.
-     * @param augs     Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDocument(Augmentations augs) throws XNIException {
 
@@ -747,10 +777,9 @@ public abstract class AbstractSAXParser
     /**
      * The start of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startExternalSubset(XMLResourceIdentifier identifier, 
                                     Augmentations augs) throws XNIException {
@@ -760,10 +789,9 @@ public abstract class AbstractSAXParser
     /**
      * The end of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endExternalSubset(Augmentations augs) throws XNIException {
         endParameterEntity("[dtd]", augs);
@@ -783,16 +811,15 @@ public abstract class AbstractSAXParser
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param name     The name of the parameter entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param name     the name of the parameter entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal parameter entities).
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startParameterEntity(String name, 
                                      XMLResourceIdentifier identifier,
@@ -834,11 +861,10 @@ public abstract class AbstractSAXParser
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param name The name of the parameter entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name the name of the parameter entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endParameterEntity(String name, Augmentations augs) throws XNIException {
 
@@ -860,13 +886,11 @@ public abstract class AbstractSAXParser
     /**
      * An element declaration.
      *
-     * @param name         The name of the element.
-     * @param contentModel The element content model.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name         the name of the element
+     * @param contentModel the element content model
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void elementDecl(String name, String contentModel, Augmentations augs)
         throws XNIException {
@@ -886,28 +910,26 @@ public abstract class AbstractSAXParser
     /**
      * An attribute declaration.
      *
-     * @param elementName   The name of the element that this attribute
-     *                      is associated with.
-     * @param attributeName The name of the attribute.
-     * @param type          The attribute type. This value will be one of
+     * @param elementName   the name of the element that this attribute
+     *                      is associated with
+     * @param attributeName the name of the attribute
+     * @param type          the attribute type. This value will be one of
      *                      the following: "CDATA", "ENTITY", "ENTITIES",
      *                      "ENUMERATION", "ID", "IDREF", "IDREFS",
      *                      "NMTOKEN", "NMTOKENS", or "NOTATION".
-     * @param enumeration   If the type has the value "ENUMERATION" or
+     * @param enumeration   if the type has the value "ENUMERATION" or
      *                      "NOTATION", this array holds the allowed attribute
-     *                      values; otherwise, this array is null.
-     * @param defaultType   The attribute default type. This value will be
+     *                      values; otherwise, this array is null
+     * @param defaultType   the attribute default type. This value will be
      *                      one of the following: "#FIXED", "#IMPLIED",
      *                      "#REQUIRED", or null.
-     * @param defaultValue  The attribute default value, or null if no
-     *                      default value is specified.
-     *
-     * @param nonNormalizedDefaultValue  The attribute default value with no normalization 
-     *                      performed, or null if no default value is specified.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param defaultValue  the attribute default value, or null if no
+     *                      default value is specified
+     * @param nonNormalizedDefaultValue  the attribute default value with no normalization
+     *                      performed, or null if no default value is specified
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void attributeDecl(String elementName, String attributeName,
                               String type, String[] enumeration,
@@ -958,19 +980,17 @@ public abstract class AbstractSAXParser
     /**
      * An internal entity declaration.
      *
-     * @param name The name of the entity. Parameter entity names start with
+     * @param name the name of the entity. Parameter entity names start with
      *             '%', whereas the name of a general entity is just the
      *             entity name.
-     * @param text The value of the entity.
-     * @param nonNormalizedText The non-normalized value of the entity. This
+     * @param text the value of the entity
+     * @param nonNormalizedText the non-normalized value of the entity. This
      *             value contains the same sequence of characters that was in
      *             the internal entity declaration, without any entity
      *             references expanded.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void internalEntityDecl(String name, XMLString text,
                                    XMLString nonNormalizedText,
@@ -991,15 +1011,14 @@ public abstract class AbstractSAXParser
     /**
      * An external entity declaration.
      *
-     * @param name     The name of the entity. Parameter entity names start
+     * @param name     the name of the entity. Parameter entity names start
      *                 with '%', whereas the name of a general entity is just
      *                 the entity name.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param identifier    an object containing all location information
+     *                      pertinent to this entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void externalEntityDecl(String name, XMLResourceIdentifier identifier,
                                    Augmentations augs) throws XNIException {
@@ -1021,15 +1040,13 @@ public abstract class AbstractSAXParser
     /**
      * An unparsed entity declaration.
      *
-     * @param name     The name of the entity.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this entity.
-     * @param notation The name of the notation.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the entity
+     * @param identifier    an object containing all location information
+     *                      pertinent to this entity
+     * @param notation the name of the notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void unparsedEntityDecl(String name, XMLResourceIdentifier identifier, 
                                    String notation,
@@ -1052,13 +1069,12 @@ public abstract class AbstractSAXParser
     /**
      * A notation declaration
      *
-     * @param name     The name of the notation.
-     * @param identifier    An object containing all location information 
-     *                      pertinent to this notation.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the notation
+     * @param identifier    an object containing all location information
+     *                      pertinent to this notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void notationDecl(String name, XMLResourceIdentifier identifier,
                              Augmentations augs) throws XNIException {
@@ -1080,10 +1096,9 @@ public abstract class AbstractSAXParser
     /**
      * The end of the DTD.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDTD(Augmentations augs) throws XNIException {
         fInDTD = false;
@@ -1113,13 +1128,12 @@ public abstract class AbstractSAXParser
      * <p>
      * This method is equivalent to the following:
      * <pre>
-     *     parse(new InputSource(systemId));
+     * parse(new InputSource(systemId));
      * </pre>
      *
-     * @param systemId The system identifier (URI).
-     *
-     * @exception org.xml.sax.SAXException Throws exception on SAX error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param systemId the system identifier (URI)
+     * @throws org.xml.sax.SAXException throws exception on SAX error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(String systemId) throws SAXException, IOException {
 
@@ -1176,12 +1190,11 @@ public abstract class AbstractSAXParser
     } // parse(String)
 
     /**
-     * parse
+     * Parse
      *
      * @param inputSource
-     *
-     * @exception org.xml.sax.SAXException
-     * @exception java.io.IOException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException
      */
     public void parse(InputSource inputSource)
         throws SAXException, IOException {
@@ -1248,7 +1261,7 @@ public abstract class AbstractSAXParser
      * Sets the resolver used to resolve external entities. The EntityResolver
      * interface supports resolution of public and system identifiers.
      *
-     * @param resolver The new entity resolver. Passing a null value will
+     * @param resolver the new entity resolver. Passing a null value will
      *                 uninstall the currently installed resolver.
      */
     public void setEntityResolver(EntityResolver resolver) {
@@ -1285,8 +1298,8 @@ public abstract class AbstractSAXParser
     /**
      * Return the current entity resolver.
      *
-     * @return The current entity resolver, or null if none
-     *         has been registered.
+     * @return the current entity resolver, or null if none
+     *         has been registered
      * @see #setEntityResolver
      */
     public EntityResolver getEntityResolver() {
@@ -1326,7 +1339,7 @@ public abstract class AbstractSAXParser
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.</p>
      *
-     * @param errorHandler The error handler.
+     * @param errorHandler the error handler
      * @see #getErrorHandler
      */
     public void setErrorHandler(ErrorHandler errorHandler) {
@@ -1351,8 +1364,8 @@ public abstract class AbstractSAXParser
     /**
      * Return the current error handler.
      *
-     * @return The current error handler, or null if none
-     *         has been registered.
+     * @return the current error handler, or null if none
+     *         has been registered
      * @see #setErrorHandler
      */
     public ErrorHandler getErrorHandler() {
@@ -1376,11 +1389,9 @@ public abstract class AbstractSAXParser
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception SAXException An exception thrown if the parser does not
-     *                         support the specified locale.
-     *
+     * @param locale the locale object to use for localization of messages
+     * @throws SAXException an exception thrown if the parser does not
+     *                         support the specified locale
      * @see org.xml.sax.Parser
      */
     public void setLocale(Locale locale) throws SAXException {
@@ -1400,9 +1411,7 @@ public abstract class AbstractSAXParser
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.
      *
-     * @param dtdHandler The DTD handler.
-     *
-
+     * @param dtdHandler the DTD handler
      * @see #getDTDHandler
      */
     public void setDTDHandler(DTDHandler dtdHandler) {
@@ -1425,7 +1434,7 @@ public abstract class AbstractSAXParser
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.
      *
-     * @param documentHandler The document handler.
+     * @param documentHandler the document handler
      */
     public void setDocumentHandler(DocumentHandler documentHandler) {
         fDocumentHandler = documentHandler;
@@ -1446,8 +1455,7 @@ public abstract class AbstractSAXParser
      * middle of a parse, and the SAX parser must begin using the new
      * handler immediately.
      *
-     * @param contentHandler The content handler.
-     *
+     * @param contentHandler the content handler
      * @see #getContentHandler
      */
     public void setContentHandler(ContentHandler contentHandler) {
@@ -1457,9 +1465,8 @@ public abstract class AbstractSAXParser
     /**
      * Return the current content handler.
      *
-     * @return The current content handler, or null if none
-     *         has been registered.
-     *
+     * @return the current content handler, or null if none
+     *         has been registered
      * @see #setContentHandler
      */
     public ContentHandler getContentHandler() {
@@ -1469,8 +1476,8 @@ public abstract class AbstractSAXParser
     /**
      * Return the current DTD handler.
      *
-     * @return The current DTD handler, or null if none
-     *         has been registered.
+     * @return the current DTD handler, or null if none
+     *         has been registered
      * @see #setDTDHandler
      */
     public DTDHandler getDTDHandler() {
@@ -1482,14 +1489,13 @@ public abstract class AbstractSAXParser
      * might not recognize the feature, and if it does recognize
      * it, it might not be able to fulfill the request.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     * @param state The requested state of the feature (true or false).
-     *
-     * @exception SAXNotRecognizedException If the
-     *            requested feature is not known.
-     * @exception SAXNotSupportedException If the
+     * @param featureId the unique identifier (URI) of the feature
+     * @param state the requested state of the feature (true or false)
+     * @throws SAXNotRecognizedException if the
+     *            requested feature is not known
+     * @throws SAXNotSupportedException if the
      *            requested feature is known, but the requested
-     *            state is not supported.
+     *            state is not supported
      */
     public void setFeature(String featureId, boolean state)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -1670,13 +1676,13 @@ public abstract class AbstractSAXParser
      * Query the current state of any feature in a SAX2 parser.  The
      * parser might not recognize the feature.
      *
-     * @param featureId The unique identifier (URI) of the feature
-     *                  being set.
-     * @return The current state of the feature.
-     * @exception org.xml.sax.SAXNotRecognizedException If the
-     *            requested feature is not known.
-     * @exception SAXNotSupportedException If the
-     *            requested feature is known but not supported.
+     * @param featureId the unique identifier (URI) of the feature
+     *                  being set
+     * @return the current state of the feature
+     * @throws org.xml.sax.SAXNotRecognizedException if the
+     *            requested feature is not known
+     * @throws SAXNotSupportedException if the
+     *            requested feature is known but not supported
      */
     public boolean getFeature(String featureId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -1825,15 +1831,14 @@ public abstract class AbstractSAXParser
      * might not recognize the property, and if it does recognize
      * it, it might not support the requested value.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     * @param value The value to which the property is being set.
-     *
-     * @exception SAXNotRecognizedException If the
-     *            requested property is not known.
-     * @exception SAXNotSupportedException If the
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @param value the value to which the property is being set
+     * @throws SAXNotRecognizedException if the
+     *            requested property is not known
+     * @throws SAXNotSupportedException if the
      *            requested property is known, but the requested
-     *            value is not supported.
+     *            value is not supported
      */
     public void setProperty(String propertyId, Object value)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -1949,13 +1954,13 @@ public abstract class AbstractSAXParser
      * Return the current value of a property in a SAX2 parser.
      * The parser might not recognize the property.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     * @return The current value of the property.
-     * @exception org.xml.sax.SAXNotRecognizedException If the
-     *            requested property is not known.
-     * @exception SAXNotSupportedException If the
-     *            requested property is known but not supported.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @return the current value of the property
+     * @throws org.xml.sax.SAXNotRecognizedException if the
+     *            requested property is not known
+     * @throws SAXNotSupportedException if the
+     *            requested property is known but not supported
      */
     public Object getProperty(String propertyId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -2071,8 +2076,7 @@ public abstract class AbstractSAXParser
      * http://xml.org/sax/properties/declaration-handler
      * </pre>
      *
-     * @param handler The new handler.
-     *
+     * @param handler the new handler
      * @see #getDeclHandler
      * @see #setProperty
      */
@@ -2108,7 +2112,6 @@ public abstract class AbstractSAXParser
      * </pre>
      *
      * @param handler lexical event handler
-     *
      * @see #getLexicalHandler
      * @see #setProperty
      */
@@ -2171,7 +2174,7 @@ public abstract class AbstractSAXParser
     /**
      * Reset all components before parsing.
      *
-     * @throws XNIException Thrown if an error occurs during initialization.
+     * @throws XNIException thrown if an error occurs during initialization
      */
     public void reset() throws XNIException {
         super.reset();
@@ -2199,14 +2202,18 @@ public abstract class AbstractSAXParser
         // Data
         //
 
-        /** XML locator. */
+        /**
+         * XML locator.
+         */
         protected XMLLocator fLocator;
 
         //
         // Constructors
         //
 
-        /** Constructs an XML locator proxy. */
+        /**
+         * Constructs an XML locator proxy.
+         */
         public LocatorProxy(XMLLocator locator) {
             fLocator = locator;
         }
@@ -2215,21 +2222,29 @@ public abstract class AbstractSAXParser
         // Locator methods
         //
 
-        /** Public identifier. */
+        /**
+         * Public identifier.
+         */
         public String getPublicId() {
             return fLocator.getPublicId();
         }
 
-        /** System identifier. */
+        /**
+         * System identifier.
+         */
         public String getSystemId() {
             return fLocator.getExpandedSystemId();
         }
-        /** Line number. */
+        /**
+         * Line number.
+         */
         public int getLineNumber() {
             return fLocator.getLineNumber();
         }
 
-        /** Column number. */
+        /**
+         * Column number.
+         */
         public int getColumnNumber() {
             return fLocator.getColumnNumber();
         }
@@ -2252,14 +2267,18 @@ public abstract class AbstractSAXParser
         // Data
         //
 
-        /** XML attributes. */
+        /**
+         * XML attributes.
+         */
         protected XMLAttributes fAttributes;
 
         //
         // Public methods
         //
 
-        /** Sets the XML attributes. */
+        /**
+         * Sets the XML attributes.
+         */
         public void setAttributes(XMLAttributes attributes) {
             fAttributes = attributes;
         } // setAttributes(XMLAttributes)

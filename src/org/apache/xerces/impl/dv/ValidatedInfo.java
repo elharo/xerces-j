@@ -28,11 +28,9 @@ import org.apache.xerces.xs.XSValue;
 /**
  * Class to get the information back after content is validated. This info
  * would be filled by validate().
- * 
- * @xerces.internal 
  *
- * @author Neeraj Bajaj, Sun Microsystems, inc.
- *
+ * @xerces.internal
+ * @author Neeraj Bajaj, Sun Microsystems, inc
  * @version $Id$
  */
 public class ValidatedInfo implements XSValue {
@@ -70,7 +68,7 @@ public class ValidatedInfo implements XSValue {
     /**
      * If
      * 1. the type is a union type where one of the member types is a list, or
-     *    if the type is a list; and
+     * if the type is a list; and
      * 2. the item type of the list is a union type
      * then an array of member types used to validate the values.
      */
@@ -85,7 +83,7 @@ public class ValidatedInfo implements XSValue {
     public ShortList itemValueTypes;
 
     /**
-     * reset the state of this object
+     * Reset the state of this object
      */
     public void reset() {
         this.normalizedValue = null;
@@ -146,23 +144,32 @@ public class ValidatedInfo implements XSValue {
     
     /**
      * Returns the primitive type of the given type.
-     * @param valueType A value type as defined in XSConstants.
-     * @return The primitive type from which valueType was derived.
+     *
+     * @param valueType a value type as defined in XSConstants
+     * @return the primitive type from which valueType was derived
      */
     private static short convertToPrimitiveKind(short valueType) {
-        /** Primitive datatypes. */
+        /**
+         * Primitive datatypes.
+         */
         if (valueType <= XSConstants.NOTATION_DT) {
             return valueType;
         }
-        /** Types derived from string. */
+        /**
+         * Types derived from string.
+         */
         if (valueType <= XSConstants.ENTITY_DT) {
             return XSConstants.STRING_DT;
         }
-        /** Types derived from decimal. */
+        /**
+         * Types derived from decimal.
+         */
         if (valueType <= XSConstants.POSITIVEINTEGER_DT) {
             return XSConstants.DECIMAL_DT;
         }
-        /** Other types. */
+        /**
+         * Other types.
+         */
         return valueType;
     }
 

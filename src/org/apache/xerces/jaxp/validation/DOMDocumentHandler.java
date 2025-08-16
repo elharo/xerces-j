@@ -29,26 +29,25 @@ import org.w3c.dom.Text;
 
 /**
  * <p>An extension to XMLDocumentHandler for building DOM structures.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 interface DOMDocumentHandler extends XMLDocumentHandler {
     
     /**
-     * <p>Sets the <code>DOMResult</code> object which 
+     * <p>Sets the <code>DOMResult</code> object which
      * receives the constructed DOM nodes.</p>
-     * 
+     *
      * @param result the object which receives the constructed DOM nodes
      */
     public void setDOMResult(DOMResult result);
     
     /**
      * A document type declaration.
-     * 
+     *
      * @param node a DocumentType node
-     *                 
-     * @exception XNIException Thrown by handler to signal an error.
+     * @throws XNIException thrown by handler to signal an error
      */
     public void doctypeDecl(DocumentType node) throws XNIException;
     
@@ -58,10 +57,9 @@ interface DOMDocumentHandler extends XMLDocumentHandler {
     
     /**
      * A comment.
-     * 
+     *
      * @param node a Comment node
-     *               
-     * @exception XNIException Thrown by application to signal an error.
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(Comment node) throws XNIException;
     
@@ -75,10 +73,9 @@ interface DOMDocumentHandler extends XMLDocumentHandler {
      * element attributes but are <strong>not</strong> parsed or presented
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
-     * 
+     *
      * @param node a ProcessingInstruction node
-     *               
-     * @exception XNIException Thrown by handler to signal an error.
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(ProcessingInstruction node) throws XNIException;
     

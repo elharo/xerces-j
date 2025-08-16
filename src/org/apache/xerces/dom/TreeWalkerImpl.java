@@ -23,11 +23,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.traversal.TreeWalker;
 
-/** 
- * This class implements the TreeWalker interface. 
+/**
+ * This class implements the TreeWalker interface.
  *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class TreeWalkerImpl implements TreeWalker {
@@ -36,17 +35,29 @@ public class TreeWalkerImpl implements TreeWalker {
     // Data
     //
     
-    /** When TRUE, the children of entites references are returned in the iterator. */
+    /**
+     * When TRUE, the children of entites references are returned in the iterator.
+     */
     private boolean fEntityReferenceExpansion = false;
-    /** The whatToShow mask. */
+    /**
+     * The whatToShow mask.
+     */
     int fWhatToShow = NodeFilter.SHOW_ALL;
-    /** The NodeFilter reference. */
+    /**
+     * The NodeFilter reference.
+     */
     NodeFilter fNodeFilter;
-    /** The current Node. */
+    /**
+     * The current Node.
+     */
     Node fCurrentNode;
-    /** The root Node. */
+    /**
+     * The root Node.
+     */
     Node fRoot;
-    /** Use Node.isSameNode() to check if one node is the same as another. */
+    /**
+     * Use Node.isSameNode() to check if one node is the same as another.
+     */
     private boolean fUseIsSameNode;
     
     //
@@ -60,7 +71,9 @@ public class TreeWalkerImpl implements TreeWalker {
     // Constructor
     //
     
-    /** Public constructor */
+    /**
+     * Public constructor
+     */
     public TreeWalkerImpl(Node root, 
                           int whatToShow, 
                           NodeFilter nodeFilter,
@@ -77,7 +90,9 @@ public class TreeWalkerImpl implements TreeWalker {
 	return fRoot;
     }
 
-    /** Return the whatToShow value */
+    /**
+     * Return the whatToShow value
+     */
     public int                getWhatToShow() {
         return fWhatToShow;
     }
@@ -85,21 +100,29 @@ public class TreeWalkerImpl implements TreeWalker {
     public void setWhatShow(int whatToShow){
         fWhatToShow = whatToShow;
     }
-    /** Return the NodeFilter */
+    /**
+     * Return the NodeFilter
+     */
     public NodeFilter         getFilter() {
         return fNodeFilter;
     }
     
-    /** Return whether children entity references are included in the iterator. */
+    /**
+     * Return whether children entity references are included in the iterator.
+     */
     public boolean            getExpandEntityReferences() {
         return fEntityReferenceExpansion;
     }
             
-    /** Return the current Node. */
+    /**
+     * Return the current Node.
+     */
     public Node               getCurrentNode() {
         return fCurrentNode;
     }
-    /** Return the current Node. */
+    /**
+     * Return the current Node.
+     */
     public void               setCurrentNode(Node node) {
         if (node == null) {
             String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -109,9 +132,10 @@ public class TreeWalkerImpl implements TreeWalker {
         fCurrentNode = node;
     }
     
-    /** Return the parent Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the parent Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               parentNode() {
 
@@ -125,9 +149,10 @@ public class TreeWalkerImpl implements TreeWalker {
         
     }
 
-    /** Return the first child Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the first child Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               firstChild() {
         
@@ -139,9 +164,10 @@ public class TreeWalkerImpl implements TreeWalker {
         }
         return node;
     }
-    /** Return the last child Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the last child Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               lastChild() {
 
@@ -154,9 +180,10 @@ public class TreeWalkerImpl implements TreeWalker {
         return node;
     }
     
-    /** Return the previous sibling Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the previous sibling Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               previousSibling() {
 
@@ -169,9 +196,10 @@ public class TreeWalkerImpl implements TreeWalker {
         return node;
     }
     
-    /** Return the next sibling Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the next sibling Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               nextSibling(){
         if (fCurrentNode == null) return null;
@@ -183,9 +211,10 @@ public class TreeWalkerImpl implements TreeWalker {
         return node;
     }
     
-    /** Return the previous Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the previous Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               previousNode() {
         Node result;
@@ -230,9 +259,10 @@ public class TreeWalkerImpl implements TreeWalker {
         return null;
     }
     
-    /** Return the next Node from the current node, 
-     *  after applying filter, whatToshow.
-     *  If result is not null, set the current Node.
+    /**
+     * Return the next Node from the current node,
+     * after applying filter, whatToshow.
+     * If result is not null, set the current Node.
      */
     public Node               nextNode() {
         
@@ -268,10 +298,11 @@ public class TreeWalkerImpl implements TreeWalker {
         return null;
     }
     
-    /** Internal function.
-     *  Return the parent Node, from the input node
-     *  after applying filter, whatToshow.
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the parent Node, from the input node
+     * after applying filter, whatToshow.
+     * The current node is not consulted or set.
      */
     Node getParentNode(Node node) {
         
@@ -293,20 +324,22 @@ public class TreeWalkerImpl implements TreeWalker {
         
     }
     
-    /** Internal function.
-     *  Return the nextSibling Node, from the input node
-     *  after applying filter, whatToshow.
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the nextSibling Node, from the input node
+     * after applying filter, whatToshow.
+     * The current node is not consulted or set.
      */
     Node getNextSibling(Node node) {
 		return getNextSibling(node, fRoot);
 	}
 
-    /** Internal function.
-     *  Return the nextSibling Node, from the input node
-     *  after applying filter, whatToshow.
-     *  NEVER TRAVERSES ABOVE THE SPECIFIED ROOT NODE. 
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the nextSibling Node, from the input node
+     * after applying filter, whatToshow.
+     * NEVER TRAVERSES ABOVE THE SPECIFIED ROOT NODE.
+     * The current node is not consulted or set.
      */
     Node getNextSibling(Node node, Node root) {
         
@@ -348,20 +381,22 @@ public class TreeWalkerImpl implements TreeWalker {
         
     } // getNextSibling(Node node) {
     
-    /** Internal function.
-     *  Return the previous sibling Node, from the input node
-     *  after applying filter, whatToshow.
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the previous sibling Node, from the input node
+     * after applying filter, whatToshow.
+     * The current node is not consulted or set.
      */
     Node getPreviousSibling(Node node) {
 		return getPreviousSibling(node, fRoot);
 	}
 
-    /** Internal function.
-     *  Return the previousSibling Node, from the input node
-     *  after applying filter, whatToshow.
-	 *  NEVER TRAVERSES ABOVE THE SPECIFIED ROOT NODE. 
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the previousSibling Node, from the input node
+     * after applying filter, whatToshow.
+     * NEVER TRAVERSES ABOVE THE SPECIFIED ROOT NODE.
+     * The current node is not consulted or set.
      */
     Node getPreviousSibling(Node node, Node root) {
         
@@ -402,10 +437,11 @@ public class TreeWalkerImpl implements TreeWalker {
         
     } // getPreviousSibling(Node node) {
     
-    /** Internal function.
-     *  Return the first child Node, from the input node
-     *  after applying filter, whatToshow.
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the first child Node, from the input node
+     * after applying filter, whatToshow.
+     * The current node is not consulted or set.
      */
     Node getFirstChild(Node node) {
         if (node == null) return null;
@@ -439,10 +475,11 @@ public class TreeWalkerImpl implements TreeWalker {
         
     }
    
-    /** Internal function.
-     *  Return the last child Node, from the input node
-     *  after applying filter, whatToshow.
-     *  The current node is not consulted or set.
+    /**
+     * Internal function.
+     * Return the last child Node, from the input node
+     * after applying filter, whatToshow.
+     * The current node is not consulted or set.
      */
     Node getLastChild(Node node) {
         
@@ -478,17 +515,20 @@ public class TreeWalkerImpl implements TreeWalker {
         
     }
     
-    /** Internal function. 
-     *  The node whatToShow and the filter are combined into one result. */
+    /**
+     * Internal function.
+     * The node whatToShow and the filter are combined into one result.
+     */
     short acceptNode(Node node) {
-        /***
-         7.1.2.4. Filters and whatToShow flags 
-
-         Iterator and TreeWalker apply whatToShow flags before applying Filters. If a node is rejected by the
-         active whatToShow flags, a Filter will not be called to evaluate that node. When a node is rejected by
-         the active whatToShow flags, children of that node will still be considered, and Filters may be called to
-         evaluate them.
-         ***/
+        /**
+         * 7.1.2.4. Filters and whatToShow flags
+         *
+         * Iterator and TreeWalker apply whatToShow flags before applying Filters. If a node is rejected by the
+         * active whatToShow flags, a Filter will not be called to evaluate that node. When a node is rejected by
+         * the active whatToShow flags, children of that node will still be considered, and Filters may be called to
+         * evaluate them.
+         * *
+         */
                 
         if (fNodeFilter == null) {
             if ( ( fWhatToShow & (1 << node.getNodeType()-1)) != 0) {

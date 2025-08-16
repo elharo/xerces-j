@@ -46,11 +46,11 @@ import org.apache.xerces.xni.parser.XMLPullParserConfiguration;
  * configuration with the set of following parser components:
  * Document scanner, DTD scanner, namespace binder, document handler.
  * <p>
- * Xerces parser that uses this configuration is <strong>not</strong> <a href="http://www.w3.org/TR/REC-xml#sec-conformance">conformant</a> 
- * non-validating XML processor, since conformant non-validating processor is required  
- * to process "all the declarations they read in the internal DTD subset ... must use the information in those declarations to normalize attribute values, 
+ * Xerces parser that uses this configuration is <strong>not</strong> <a href="http://www.w3.org/TR/REC-xml#sec-conformance">conformant</a>
+ * non-validating XML processor, since conformant non-validating processor is required
+ * to process "all the declarations they read in the internal DTD subset ... must use the information in those declarations to normalize attribute values,
  * include the replacement text of internal entities, and supply default attribute values".
- * 
+ *
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -64,97 +64,139 @@ public class NonValidatingConfiguration
 
     // feature identifiers
 
-    /** Feature identifier: warn on duplicate attribute definition. */
+    /**
+     * Feature identifier: warn on duplicate attribute definition.
+     */
     protected static final String WARN_ON_DUPLICATE_ATTDEF =
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_DUPLICATE_ATTDEF_FEATURE;
 
-    /** Feature identifier: warn on duplicate entity definition. */
+    /**
+     * Feature identifier: warn on duplicate entity definition.
+     */
     protected static final String WARN_ON_DUPLICATE_ENTITYDEF =
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_DUPLICATE_ENTITYDEF_FEATURE;
     
-    /** Feature identifier: warn on undeclared element definition. */
+    /**
+     * Feature identifier: warn on undeclared element definition.
+     */
     protected static final String WARN_ON_UNDECLARED_ELEMDEF =
         Constants.XERCES_FEATURE_PREFIX + Constants.WARN_ON_UNDECLARED_ELEMDEF_FEATURE;
     
-    /** Feature identifier: allow Java encodings. */
+    /**
+     * Feature identifier: allow Java encodings.
+     */
     protected static final String ALLOW_JAVA_ENCODINGS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.ALLOW_JAVA_ENCODINGS_FEATURE;
     
-    /** Feature identifier: continue after fatal error. */
+    /**
+     * Feature identifier: continue after fatal error.
+     */
     protected static final String CONTINUE_AFTER_FATAL_ERROR = 
         Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE;
 
-    /** Feature identifier: load external DTD. */
+    /**
+     * Feature identifier: load external DTD.
+     */
     protected static final String LOAD_EXTERNAL_DTD =
         Constants.XERCES_FEATURE_PREFIX + Constants.LOAD_EXTERNAL_DTD_FEATURE;
 
-    /** Feature identifier: notify built-in refereces. */
+    /**
+     * Feature identifier: notify built-in refereces.
+     */
     protected static final String NOTIFY_BUILTIN_REFS =
         Constants.XERCES_FEATURE_PREFIX + Constants.NOTIFY_BUILTIN_REFS_FEATURE;
     
-    /** Feature identifier: notify character refereces. */
+    /**
+     * Feature identifier: notify character refereces.
+     */
     protected static final String NOTIFY_CHAR_REFS =
         Constants.XERCES_FEATURE_PREFIX + Constants.NOTIFY_CHAR_REFS_FEATURE;
     
 
-    /** Feature identifier: expose schema normalized value */
+    /**
+     * Feature identifier: expose schema normalized value
+     */
     protected static final String NORMALIZE_DATA =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
 
 
-    /** Feature identifier: send element default value via characters() */
+    /**
+     * Feature identifier: send element default value via characters()
+     */
     protected static final String SCHEMA_ELEMENT_DEFAULT =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_ELEMENT_DEFAULT;
 
     // property identifiers
 
-    /** Property identifier: error reporter. */
+    /**
+     * Property identifier: error reporter.
+     */
     protected static final String ERROR_REPORTER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY;
 
-    /** Property identifier: entity manager. */
+    /**
+     * Property identifier: entity manager.
+     */
     protected static final String ENTITY_MANAGER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
     
-    /** Property identifier document scanner: */
+    /**
+     * Property identifier document scanner:
+     */
     protected static final String DOCUMENT_SCANNER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DOCUMENT_SCANNER_PROPERTY;
 
-    /** Property identifier: DTD scanner. */
+    /**
+     * Property identifier: DTD scanner.
+     */
     protected static final String DTD_SCANNER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DTD_SCANNER_PROPERTY;
 
-    /** Property identifier: grammar pool. */
+    /**
+     * Property identifier: grammar pool.
+     */
     protected static final String XMLGRAMMAR_POOL = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.XMLGRAMMAR_POOL_PROPERTY;
     
-    /** Property identifier: DTD validator. */
+    /**
+     * Property identifier: DTD validator.
+     */
     protected static final String DTD_VALIDATOR = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DTD_VALIDATOR_PROPERTY;
 
-    /** Property identifier: namespace binder. */
+    /**
+     * Property identifier: namespace binder.
+     */
     protected static final String NAMESPACE_BINDER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.NAMESPACE_BINDER_PROPERTY;
 
-    /** Property identifier: datatype validator factory. */
+    /**
+     * Property identifier: datatype validator factory.
+     */
     protected static final String DATATYPE_VALIDATOR_FACTORY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DATATYPE_VALIDATOR_FACTORY_PROPERTY;
 
     protected static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
 
-    /** Property identifier: XML Schema validator. */
+    /**
+     * Property identifier: XML Schema validator.
+     */
     protected static final String SCHEMA_VALIDATOR =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_VALIDATOR_PROPERTY;
     
-    /** Property identifier: locale. */
+    /**
+     * Property identifier: locale.
+     */
     protected static final String LOCALE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.LOCALE_PROPERTY;
 
 
     // debugging
 
-    /** Set to true and recompile to print exception stack trace. */
+    /**
+     * Set to true and recompile to print exception stack trace.
+     */
     private static final boolean PRINT_EXCEPTION_STACK_TRACE = false;
 
     //
@@ -163,27 +205,41 @@ public class NonValidatingConfiguration
 
     // components (non-configurable)
 
-    /** Grammar pool. */
+    /**
+     * Grammar pool.
+     */
     protected XMLGrammarPool fGrammarPool;
 
-    /** Datatype validator factory. */
+    /**
+     * Datatype validator factory.
+     */
     protected DTDDVFactory fDatatypeValidatorFactory;
 
     // components (configurable)
 
-    /** Error reporter. */
+    /**
+     * Error reporter.
+     */
     protected XMLErrorReporter fErrorReporter;
 
-    /** Entity manager. */
+    /**
+     * Entity manager.
+     */
     protected XMLEntityManager fEntityManager;
 
-    /** Document scanner. */
+    /**
+     * Document scanner.
+     */
     protected XMLDocumentScanner fScanner;
 
-    /** Input Source */
+    /**
+     * Input Source
+     */
     protected XMLInputSource fInputSource;
 
-    /** DTD scanner. */
+    /**
+     * DTD scanner.
+     */
     protected XMLDTDScanner fDTDScanner;
 
 
@@ -191,25 +247,32 @@ public class NonValidatingConfiguration
 
     // private data
 
-    /** Document scanner that does namespace binding. */
+    /**
+     * Document scanner that does namespace binding.
+     */
     private XMLNSDocumentScannerImpl fNamespaceScanner;
 
-    /** Default Xerces implementation of scanner*/
+    /**
+     * Default Xerces implementation of scanner
+     */
     private XMLDocumentScannerImpl fNonNSScanner;
     
     
-	/** fConfigUpdated is set to true if there has been any change to the configuration settings, 
-	 * i.e a feature or a property was changed.
-	 */
+    /**
+     * FConfigUpdated is set to true if there has been any change to the configuration settings,
+     * i.e a feature or a property was changed.
+     */
 	protected boolean fConfigUpdated = false;
 
 
     // state
 
-    /** Locator */
+    /**
+     * Locator
+     */
     protected XMLLocator fLocator;
 
-    /** 
+    /**
      * True if a parse is in progress. This state is needed because
      * some features/properties cannot be set while parsing (e.g.
      * validation and namespaces).
@@ -220,15 +283,17 @@ public class NonValidatingConfiguration
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public NonValidatingConfiguration() {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public NonValidatingConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -238,12 +303,12 @@ public class NonValidatingConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public NonValidatingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool) {
@@ -254,13 +319,13 @@ public class NonValidatingConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public NonValidatingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool,
@@ -393,10 +458,9 @@ public class NonValidatingConfiguration
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) throws XNIException {
         super.setLocale(locale);
@@ -421,13 +485,11 @@ public class NonValidatingConfiguration
     /**
      * Sets the input source for the document to parse.
      *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @param inputSource the document's input source
+     * @throws XMLConfigurationException thrown if there is a
      *                        configuration error when initializing the
-     *                        parser.
-     * @exception IOException Thrown on I/O error.
-     *
+     *                        parser
+     * @throws IOException thrown on I/O error
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -445,17 +507,14 @@ public class NonValidatingConfiguration
     /**
      * Parses the document in a pull parsing fashion.
      *
-     * @param complete True if the pull parser should parse the
-     *                 remaining document completely.
-     *
-     * @return True if there is more document to parse.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping 
-     *                         another exception.
-     * @exception IOException  An IO exception from the parser, possibly
+     * @param complete true if the pull parser should parse the
+     *                 remaining document completely
+     * @return true if there is more document to parse
+     * @throws XNIException any XNI exception, possibly wrapping
+     *                         another exception
+     * @throws IOException  an IO exception from the parser, possibly
      *                         from a byte stream or character stream
-     *                         supplied by the parser.
-     *
+     *                         supplied by the parser
      * @see #setInputSource
      */
     public boolean parse(boolean complete) throws XNIException, IOException {
@@ -532,10 +591,9 @@ public class NonValidatingConfiguration
     /**
      * Parses the specified input source.
      *
-     * @param source The input source.
-     *
-     * @exception XNIException Throws exception on XNI error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param source the input source
+     * @throws XNIException throws exception on XNI error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(XMLInputSource source) throws XNIException, IOException {
 
@@ -581,10 +639,10 @@ public class NonValidatingConfiguration
     // Protected methods
     //
     
-    /** 
-     * Reset all components before parsing. 
+    /**
+     * Reset all components before parsing.
      *
-     * @throws XNIException Thrown if an error occurs during initialization.
+     * @throws XNIException thrown if an error occurs during initialization
      */
     protected void reset() throws XNIException {
 
@@ -596,7 +654,9 @@ public class NonValidatingConfiguration
 
     } // reset()
 
-    /** Configures the pipeline. */
+    /**
+     * Configures the pipeline.
+     */
     protected void configurePipeline() {
         // create appropriate scanner
         // and register it as one of the components.
@@ -635,13 +695,12 @@ public class NonValidatingConfiguration
      * Check a feature. If feature is know and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId)
         throws XMLConfigurationException {
@@ -718,14 +777,13 @@ public class NonValidatingConfiguration
      * Check a property. If the property is know and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {
@@ -762,27 +820,37 @@ public class NonValidatingConfiguration
 
     // factory methods
 
-    /** Creates an entity manager. */
+    /**
+     * Creates an entity manager.
+     */
     protected XMLEntityManager createEntityManager() {
         return new XMLEntityManager();
     } // createEntityManager():XMLEntityManager
 
-    /** Creates an error reporter. */
+    /**
+     * Creates an error reporter.
+     */
     protected XMLErrorReporter createErrorReporter() {
         return new XMLErrorReporter();
     } // createErrorReporter():XMLErrorReporter
 
-    /** Create a document scanner. */
+    /**
+     * Create a document scanner.
+     */
     protected XMLDocumentScanner createDocumentScanner() {
         return null;
     } // createDocumentScanner():XMLDocumentScanner
 
-    /** Create a DTD scanner. */
+    /**
+     * Create a DTD scanner.
+     */
     protected XMLDTDScanner createDTDScanner() {
         return new XMLDTDScannerImpl();
     } // createDTDScanner():XMLDTDScanner
 
-    /** Create a datatype validator factory. */
+    /**
+     * Create a datatype validator factory.
+     */
     protected DTDDVFactory createDatatypeValidatorFactory() {
         return DTDDVFactory.getInstance();
     } // createDatatypeValidatorFactory():DatatypeValidatorFactory

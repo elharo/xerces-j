@@ -22,11 +22,9 @@ import org.apache.xerces.xni.parser.XMLDocumentFilter;
 /**
  * Defines a DTD Validator filter to allow
  * components to query the DTD validator.
- * 
- * @xerces.internal
- * 
- * @author Elena Litani, IBM
  *
+ * @xerces.internal
+ * @author Elena Litani, IBM
  * @version $Id$
  */
 public interface XMLDTDValidatorFilter 
@@ -34,14 +32,14 @@ public interface XMLDTDValidatorFilter
 
     /**
      * Returns true if the validator has a DTD grammar
-     * 
+     *
      * @return true if the validator has a DTD grammar
      */
     public boolean hasGrammar();
 
     /**
      * Return true if validator must validate the document
-     * 
+     *
      * @return true if validator must validate the document
      */
     public boolean validate();

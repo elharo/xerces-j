@@ -19,11 +19,10 @@ package org.apache.xerces.dom;
 
 import org.w3c.dom.Node;
 
-/** 
+/**
  * An interface for deferred node object.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
  */
 public interface DeferredNode extends Node {
@@ -35,7 +34,9 @@ public interface DeferredNode extends Node {
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex();
 
 } // interface DeferredNode

@@ -41,13 +41,13 @@ import org.xml.sax.SAXNotSupportedException;
  * parser components from the component manager using the following
  * property ID:
  * <pre>
- *   http://apache.org/xml/properties/internal/error-reporter
+ * http://apache.org/xml/properties/internal/error-reporter
  * </pre>
  * <p>
  * Errors are separated into domains that categorize a class of errors.
  * In a parser configuration, the parser would register a
  * <code>MessageFormatter</code> for each domain that is capable of
- * localizing error messages and formatting them based on information 
+ * localizing error messages and formatting them based on information
  * about the error. Any parser component can invent new error domains
  * and register additional message formatters to localize messages in
  * those domains.
@@ -55,22 +55,19 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://apache.org/xml/properties/internal/error-handler</li>
+ * <li>http://apache.org/xml/properties/internal/error-handler</li>
  * </ul>
  * <p>
  * This component can use the following features and properties but they
  * are not required:
  * <ul>
- *  <li>http://apache.org/xml/features/continue-after-fatal-error</li>
+ * <li>http://apache.org/xml/features/continue-after-fatal-error</li>
  * </ul>
- * 
+ *
  * @xerces.internal
- *
  * @see MessageFormatter
- *
  * @author Eric Ye, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLErrorReporter
@@ -82,9 +79,9 @@ public class XMLErrorReporter
 
     // severity
 
-    /** 
+    /**
      * Severity: warning. Warnings represent informational messages only
-     * that should not be considered serious enough to stop parsing or 
+     * that should not be considered serious enough to stop parsing or
      * indicate an error in the document's validity.
      */
     public static final short SEVERITY_WARNING = 0;
@@ -96,7 +93,7 @@ public class XMLErrorReporter
      */
     public static final short SEVERITY_ERROR = 1;
 
-    /** 
+    /**
      * Severity: fatal error. Fatal errors are errors in the syntax of the
      * XML document or invalid byte sequences for a given encoding. The
      * XML 1.0 Specification mandates that errors of this type are not
@@ -109,34 +106,46 @@ public class XMLErrorReporter
     
     // feature identifiers
 
-    /** Feature identifier: continue after fatal error. */
+    /**
+     * Feature identifier: continue after fatal error.
+     */
     protected static final String CONTINUE_AFTER_FATAL_ERROR =
         Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE;
 
     // property identifiers
 
-    /** Property identifier: error handler. */
+    /**
+     * Property identifier: error handler.
+     */
     protected static final String ERROR_HANDLER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
 
     // recognized features and properties
 
-    /** Recognized features. */
+    /**
+     * Recognized features.
+     */
     private static final String[] RECOGNIZED_FEATURES = {
         CONTINUE_AFTER_FATAL_ERROR,
     };
 
-    /** Feature defaults. */
+    /**
+     * Feature defaults.
+     */
     private static final Boolean[] FEATURE_DEFAULTS = {
         null,
     };
 
-    /** Recognized properties. */
+    /**
+     * Recognized properties.
+     */
     private static final String[] RECOGNIZED_PROPERTIES = {
         ERROR_HANDLER,
     };
 
-    /** Property defaults. */
+    /**
+     * Property defaults.
+     */
     private static final Object[] PROPERTY_DEFAULTS = {
         null,
     };
@@ -145,22 +154,32 @@ public class XMLErrorReporter
     // Data
     //
 
-    /** The locale to be used to format error messages. */
+    /**
+     * The locale to be used to format error messages.
+     */
     protected Locale fLocale;
 
-    /** Mapping of Message formatters for domains. */
+    /**
+     * Mapping of Message formatters for domains.
+     */
     protected Hashtable fMessageFormatters;
 
-    /** Error handler. */
+    /**
+     * Error handler.
+     */
     protected XMLErrorHandler fErrorHandler;
 
-    /** Document locator. */
+    /**
+     * Document locator.
+     */
     protected XMLLocator fLocator;
 
-    /** Continue after fatal error feature. */
+    /**
+     * Continue after fatal error feature.
+     */
     protected boolean fContinueAfterFatalError;
 
-    /** 
+    /**
      * Default error handler. This error handler is only used in the
      * absence of a registered error handler so that errors are not
      * "swallowed" silently. This is one of the most common "problems"
@@ -168,14 +187,18 @@ public class XMLErrorReporter
      */
     protected XMLErrorHandler fDefaultErrorHandler;
     
-    /** A SAX proxy to the error handler contained in this error reporter. */
+    /**
+     * A SAX proxy to the error handler contained in this error reporter.
+     */
     private ErrorHandler fSaxProxy = null;
 
     //
     // Constructors
     //
 
-    /** Constructs an error reporter with a locator. */
+    /**
+     * Constructs an error reporter with a locator.
+     */
     public XMLErrorReporter() {
 
         // REVISIT: [Q] Should the locator be passed to the reportError
@@ -203,8 +226,8 @@ public class XMLErrorReporter
 
     /**
      * Sets the current locale.
-     * 
-     * @param locale The new locale.
+     *
+     * @param locale the new locale
      */
     public void setLocale(Locale locale) {
         fLocale = locale;
@@ -212,7 +235,7 @@ public class XMLErrorReporter
 
     /**
      * Gets the current locale.
-     * 
+     *
      * @return the current Locale
      */
     public Locale getLocale() {
@@ -222,7 +245,7 @@ public class XMLErrorReporter
     /**
      * Sets the document locator.
      *
-     * @param locator The locator.
+     * @param locator the locator
      */
     public void setDocumentLocator(XMLLocator locator) {
         fLocator = locator;
@@ -235,9 +258,9 @@ public class XMLErrorReporter
      * when there is already a formatter registered will cause the previous
      * formatter to be lost. This method replaces any previously registered
      * message formatter for the specified domain.
-     * 
-     * @param domain 
-     * @param messageFormatter 
+     *
+     * @param domain
+     * @param messageFormatter
      */
     public void putMessageFormatter(String domain, 
                                     MessageFormatter messageFormatter) {
@@ -247,8 +270,8 @@ public class XMLErrorReporter
     /**
      * Returns the message formatter associated with the specified domain,
      * or null if no message formatter is registered for that domain.
-     * 
-     * @param domain The domain of the message formatter.
+     *
+     * @param domain the domain of the message formatter
      */
     public MessageFormatter getMessageFormatter(String domain) {
         return (MessageFormatter)fMessageFormatters.get(domain);
@@ -257,8 +280,8 @@ public class XMLErrorReporter
     /**
      * Removes the message formatter for the specified domain and
      * returns the removed message formatter.
-     * 
-     * @param domain The domain of the message formatter.
+     *
+     * @param domain the domain of the message formatter
      */
     public MessageFormatter removeMessageFormatter(String domain) {
         return (MessageFormatter) fMessageFormatters.remove(domain);
@@ -268,14 +291,13 @@ public class XMLErrorReporter
      * Reports an error. The error message passed to the error handler
      * is formatted for the locale by the message formatter installed
      * for the specified error domain.
-     * 
-     * @param domain    The error domain.
-     * @param key       The key of the error message.
-     * @param arguments The replacement arguments for the error message,
-     *                  if needed.
-     * @param severity  The severity of the error.
-     * @return          The formatted error message.
      *
+     * @param domain    the error domain
+     * @param key       the key of the error message
+     * @param arguments the replacement arguments for the error message,
+     *                  if needed
+     * @param severity  the severity of the error
+     * @return The formatted error message
      * @see #SEVERITY_WARNING
      * @see #SEVERITY_ERROR
      * @see #SEVERITY_FATAL_ERROR
@@ -289,15 +311,14 @@ public class XMLErrorReporter
      * Reports an error. The error message passed to the error handler
      * is formatted for the locale by the message formatter installed
      * for the specified error domain.
-     * 
-     * @param domain    The error domain.
-     * @param key       The key of the error message.
-     * @param arguments The replacement arguments for the error message,
-     *                  if needed.
-     * @param severity  The severity of the error.
-     * @param exception The exception to wrap.
-     * @return          The formatted error message.
      *
+     * @param domain    the error domain
+     * @param key       the key of the error message
+     * @param arguments the replacement arguments for the error message,
+     *                  if needed
+     * @param severity  the severity of the error
+     * @param exception the exception to wrap
+     * @return The formatted error message
      * @see #SEVERITY_WARNING
      * @see #SEVERITY_ERROR
      * @see #SEVERITY_FATAL_ERROR
@@ -309,15 +330,14 @@ public class XMLErrorReporter
     
     /**
      * Reports an error at a specific location.
-     * 
-     * @param location  The error location.
-     * @param domain    The error domain.
-     * @param key       The key of the error message.
-     * @param arguments The replacement arguments for the error message,
-     *                  if needed.
-     * @param severity  The severity of the error.
-     * @return          The formatted error message.
      *
+     * @param location  the error location
+     * @param domain    the error domain
+     * @param key       the key of the error message
+     * @param arguments the replacement arguments for the error message,
+     *                  if needed
+     * @param severity  the severity of the error
+     * @return The formatted error message
      * @see #SEVERITY_WARNING
      * @see #SEVERITY_ERROR
      * @see #SEVERITY_FATAL_ERROR
@@ -330,16 +350,15 @@ public class XMLErrorReporter
 
     /**
      * Reports an error at a specific location.
-     * 
-     * @param location  The error location.
-     * @param domain    The error domain.
-     * @param key       The key of the error message.
-     * @param arguments The replacement arguments for the error message,
-     *                  if needed.
-     * @param severity  The severity of the error.
-     * @param exception The exception to wrap.
-     * @return          The formatted error message.
      *
+     * @param location  the error location
+     * @param domain    the error domain
+     * @param key       the key of the error message
+     * @param arguments the replacement arguments for the error message,
+     *                  if needed
+     * @param severity  the severity of the error
+     * @param exception the exception to wrap
+     * @return The formatted error message
      * @see #SEVERITY_WARNING
      * @see #SEVERITY_ERROR
      * @see #SEVERITY_FATAL_ERROR
@@ -417,15 +436,14 @@ public class XMLErrorReporter
      * Resets the component. The component can query the component manager
      * about any features and properties that affect the operation of the
      * component.
-     * 
-     * @param componentManager The component manager.
      *
-     * @throws SAXException Thrown by component on initialization error.
+     * @param componentManager the component manager
+     * @throws SAXException thrown by component on initialization error.
      *                      For example, if a feature or property is
      *                      required for the operation of the component, the
      *                      component manager may throw a 
      *                      SAXNotRecognizedException or a
-     *                      SAXNotSupportedException.
+     *                      SAXNotSupportedException
      */
     public void reset(XMLComponentManager componentManager)
         throws XNIException {
@@ -454,18 +472,17 @@ public class XMLErrorReporter
 
     /**
      * Sets the state of a feature. This method is called by the component
-     * manager any time after reset when a feature changes state. 
+     * manager any time after reset when a feature changes state.
      * <p>
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
-     * 
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -526,18 +543,17 @@ public class XMLErrorReporter
 
     /**
      * Sets the value of a property. This method is called by the component
-     * manager any time after reset when a property changes value. 
+     * manager any time after reset when a property changes value.
      * <p>
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
-     * 
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
      *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
@@ -557,14 +573,13 @@ public class XMLErrorReporter
 
     } // setProperty(String,Object)
     
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -575,14 +590,13 @@ public class XMLErrorReporter
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {

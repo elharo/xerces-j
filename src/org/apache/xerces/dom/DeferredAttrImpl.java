@@ -53,14 +53,13 @@ package org.apache.xerces.dom;
  * <P>
  * DeferredAttrImpl inherits from AttrImpl which does not support
  * Namespaces. DeferredAttrNSImpl, which inherits from AttrNSImpl, does.
+ *
  * @see DeferredAttrNSImpl
- *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public final class DeferredAttrImpl
     extends AttrImpl
@@ -70,14 +69,18 @@ public final class DeferredAttrImpl
     // Constants
     //
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     static final long serialVersionUID = 6903232312469148636L;
 
     //
     // Data
     //
 
-    /** Node index. */
+    /**
+     * Node index.
+     */
     protected transient int fNodeIndex;
 
     //
@@ -101,7 +104,9 @@ public final class DeferredAttrImpl
     // DeferredNode methods
     //
 
-    /** Returns the node index. */
+    /**
+     * Returns the node index.
+     */
     public int getNodeIndex() {
         return fNodeIndex;
     }
@@ -110,7 +115,9 @@ public final class DeferredAttrImpl
     // Protected methods
     //
 
-    /** Synchronizes the data (name and value) for fast nodes. */
+    /**
+     * Synchronizes the data (name and value) for fast nodes.
+     */
     protected void synchronizeData() {
 
         // no need to sync in the future

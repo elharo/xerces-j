@@ -30,7 +30,7 @@ package org.apache.xerces.xni;
  * <p>
  * <strong>Note:</strong> Methods that are passed an XMLString structure
  * are required to copy the information out of the buffer if it is to be
- * saved for use beyond the scope of the method. The contents of the 
+ * saved for use beyond the scope of the method. The contents of the
  * structure are volatile and the contents of the character buffer cannot
  * be assured once the method that is passed this structure returns.
  * Therefore, methods passed this structure should not save any reference
@@ -38,7 +38,6 @@ package org.apache.xerces.xni;
  *
  * @author Eric Ye, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLString {
@@ -47,30 +46,38 @@ public class XMLString {
     // Data
     //
 
-    /** The character array. */
+    /**
+     * The character array.
+     */
     public char[] ch;
 
-    /** The offset into the character array. */
+    /**
+     * The offset into the character array.
+     */
     public int offset;
 
-    /** The length of characters from the offset. */
+    /**
+     * The length of characters from the offset.
+     */
     public int length;
 
     //
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public XMLString() {
     } // <init>()
 
     /**
      * Constructs an XMLString structure preset with the specified
      * values.
-     * 
-     * @param ch     The character array.
-     * @param offset The offset into the character array.
-     * @param length The length of characters from the offset.
+     *
+     * @param ch     the character array
+     * @param offset the offset into the character array
+     * @param length the length of characters from the offset
      */
     public XMLString(char[] ch, int offset, int length) {
         setValues(ch, offset, length);
@@ -83,7 +90,7 @@ public class XMLString {
      * <strong>Note:</strong> This does not copy the character array;
      * only the reference to the array is copied.
      *
-     * @param string The XMLString to copy.
+     * @param string the XMLString to copy
      */
     public XMLString(XMLString string) {
         setValues(string);
@@ -96,10 +103,10 @@ public class XMLString {
     /**
      * Initializes the contents of the XMLString structure with the
      * specified values.
-     * 
-     * @param ch     The character array.
-     * @param offset The offset into the character array.
-     * @param length The length of characters from the offset.
+     *
+     * @param ch     the character array
+     * @param offset the offset into the character array
+     * @param length the length of characters from the offset
      */
     public void setValues(char[] ch, int offset, int length) {
         this.ch = ch;
@@ -113,14 +120,16 @@ public class XMLString {
      * <p>
      * <strong>Note:</strong> This does not copy the character array;
      * only the reference to the array is copied.
-     * 
+     *
      * @param s
      */
     public void setValues(XMLString s) {
         setValues(s.ch, s.offset, s.length);
     } // setValues(XMLString)
 
-    /** Resets all of the values to their defaults. */
+    /**
+     * Resets all of the values to their defaults.
+     */
     public void clear() {
         this.ch = null;
         this.offset = 0;
@@ -130,10 +139,10 @@ public class XMLString {
     /**
      * Returns true if the contents of this XMLString structure and
      * the specified array are equal.
-     * 
-     * @param ch     The character array.
-     * @param offset The offset into the character array.
-     * @param length The length of characters from the offset.
+     *
+     * @param ch     the character array
+     * @param offset the offset into the character array
+     * @param length the length of characters from the offset
      */
     public boolean equals(char[] ch, int offset, int length) {
         if (ch == null) {
@@ -154,8 +163,8 @@ public class XMLString {
     /**
      * Returns true if the contents of this XMLString structure and
      * the specified string are equal.
-     * 
-     * @param s The string to compare.
+     *
+     * @param s the string to compare
      */
     public boolean equals(String s) {
         if (s == null) {
@@ -181,7 +190,9 @@ public class XMLString {
     // Object methods
     //
 
-    /** Returns a string representation of this object. */
+    /**
+     * Returns a string representation of this object.
+     */
     public String toString() {
         return length > 0 ? new String(ch, offset, length) : "";
     } // toString():String
