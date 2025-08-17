@@ -26,18 +26,16 @@ import org.apache.xerces.xni.grammars.XMLSchemaDescription;
 /**
  * All information specific to XML Schema grammars.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Neil Graham, IBM
- * @author Neeraj Bajaj, SUN Microsystems.
- *
+ * @author Neeraj Bajaj, SUN Microsystems
  * @version $Id$
  */
 public class XSDDescription extends XMLResourceIdentifierImpl 
                 implements XMLSchemaDescription {
     // used to indicate what triggered the call
     /**
-     * Indicate that this description was just initialized. 
+     * Indicate that this description was just initialized.
      */
     public final static short CONTEXT_INITIALIZE = -1;
     /**
@@ -99,8 +97,8 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     protected XMLAttributes  fAttributes;
         
     /**
-     * the type of the grammar (e.g., DTD or XSD);
-     *  
+     * The type of the grammar (e.g., DTD or XSD);
+     *
      * @see org.apache.xerces.xni.grammars.Grammar
      */
     public String getGrammarType() {
@@ -110,7 +108,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     /**
      * Get the context. The returned value is one of the pre-defined
      * CONTEXT_xxx constants.
-     * 
+     *
      * @return  the value indicating the context
      */
     public short getContextType() {
@@ -121,7 +119,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
      * If the context is "include" or "redefine", then return the target
      * namespace of the enclosing schema document; otherwise, the expected
      * target namespace of this document.
-     * 
+     *
      * @return  the expected/enclosing target namespace
      */
     public String getTargetNamespace() {
@@ -132,10 +130,10 @@ public class XSDDescription extends XMLResourceIdentifierImpl
      * For import and references from the instance document, it's possible to
      * have multiple hints for one namespace. So this method returns an array,
      * which contains all location hints.
-     * 
+     *
      * @return  an array of all location hints associated to the expected
      *          target namespace
-     */          
+     */
     public String[] getLocationHints() {
         return fLocationHints ;
     }
@@ -144,7 +142,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
      * If a call is triggered by an element/attribute/xsi:type in the instance,
      * this call returns the name of such triggering component: the name of
      * the element/attribute, or the value of the xsi:type.
-     * 
+     *
      * @return  the name of the triggering component
      */
     public QName getTriggeringComponent() {
@@ -154,7 +152,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     /**
      * If a call is triggered by an attribute or xsi:type, then this mehtod
      * returns the enclosing element of such element.
-     * 
+     *
      * @return  the name of the enclosing element
      */
     public QName getEnclosingElementName() {
@@ -164,7 +162,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     /**
      * If a call is triggered by an element/attribute/xsi:type in the instance,
      * this call returns all attribute of such element (or enclosing element).
-     * 
+     *
      * @return  all attributes of the tiggering/enclosing element
      */
     public XMLAttributes getAttributes() {
@@ -179,11 +177,11 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     }
     
     /**
-     * Compares this grammar with the given grammar. Currently, we compare 
+     * Compares this grammar with the given grammar. Currently, we compare
      * the target namespaces.
-     * 
-     * @param descObj The description of the grammar to be compared with
-     * @return        True if they are equal, else false
+     *
+     * @param descObj the description of the grammar to be compared with
+     * @return  True if they are equal, else false
      */
     public boolean equals(Object descObj) {
         if(!(descObj instanceof XMLSchemaDescription)) return false;
@@ -196,8 +194,8 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     
     /**
      * Returns the hash code of this grammar
-     * 
-     * @return The hash code
+     *
+     * @return the hash code
      */
     public int hashCode() {
          return (fNamespace == null) ? 0 : fNamespace.hashCode();
@@ -231,7 +229,7 @@ public class XSDDescription extends XMLResourceIdentifierImpl
     }
     
     /**
-     *  resets all the fields
+     * Resets all the fields
      */
     public void reset(){
         super.clear();

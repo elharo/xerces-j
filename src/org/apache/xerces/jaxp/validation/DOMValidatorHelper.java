@@ -58,7 +58,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>DOMSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -103,49 +103,49 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
     /** Error reporter. */
     private final XMLErrorReporter fErrorReporter;
     
-    /** The namespace context of this document: stores namespaces in scope. **/
+    /** The namespace context of this document: stores namespaces in scope. *. */
     private final NamespaceSupport fNamespaceContext;
     
-    /** The namespace context of the DOMSource, includes context from ancestor nodes. **/
+    /** The namespace context of the DOMSource, includes context from ancestor nodes. *. */
     private final DOMNamespaceContext fDOMNamespaceContext = new DOMNamespaceContext();
     
-    /** Schema validator. **/
+    /** Schema validator. *. */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /** Symbol table *. */
     private final SymbolTable fSymbolTable;
     
-    /** Validation manager. **/
+    /** Validation manager. *. */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /** Component manager. *. */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** Simple Locator. **/
+    /** Simple Locator. *. */
     private final SimpleLocator fXMLLocator = new SimpleLocator(null, null, -1, -1, -1);
     
-    /** DOM document handler. **/
+    /** DOM document handler. *. */
     private DOMDocumentHandler fDOMValidatorHandler;
     
-    /** DOM result augmentor. **/
+    /** DOM result augmentor. *. */
     private final DOMResultAugmentor fDOMResultAugmentor = new DOMResultAugmentor(this);
     
-    /** DOM result builder. **/
+    /** DOM result builder. *. */
     private final DOMResultBuilder fDOMResultBuilder = new DOMResultBuilder();
     
-    /** Map for tracking unparsed entities. **/
+    /** Map for tracking unparsed entities. *. */
     private NamedNodeMap fEntities = null;
     
-    /** Array for holding character data. **/
+    /** Array for holding character data. *. */
     private final char [] fCharBuffer = new char[CHUNK_SIZE];
     
-    /** Root node. **/
+    /** Root node. *. */
     private Node fRoot;
     
-    /** Current element. **/
+    /** Current element. *. */
     private Node fCurrentElement;
     
-    /** Fields for start element, end element and characters. **/
+    /** Fields for start element, end element and characters. *. */
     final QName fElementQName = new QName();
     final QName fAttributeQName = new QName();
     final XMLAttributesImpl fAttributes = new XMLAttributesImpl(); 
@@ -302,7 +302,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.PROCESSING_INSTRUCTION_NODE:
-                /** 
+                /**
                  * The validator does nothing with processing instructions so bypass it.
                  * Send the ProcessingInstruction node directly to the result builder.
                  */
@@ -311,7 +311,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.COMMENT_NODE:
-                /** 
+                /**
                  * The validator does nothing with comments so bypass it.
                  * Send the Comment node directly to the result builder.
                  */
@@ -320,7 +320,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
                 }
                 break;
             case Node.DOCUMENT_TYPE_NODE:
-                /** 
+                /**
                  * Send the DocumentType node directly to the result builder.
                  */
                 if (fDOMValidatorHandler != null) {
@@ -346,7 +346,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
     
     /**
      * Extracts NamedNodeMap of entities. We need this to validate
-     * elements and attributes of type xs:ENTITY, xs:ENTITIES or 
+     * elements and attributes of type xs:ENTITY, xs:ENTITIES or
      * types dervied from them.
      */
     private void setupEntityMap(Document doc) {
@@ -481,7 +481,7 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
         // Data
         //
 
-        /** 
+        /**
          * Namespace binding information. This array is composed of a
          * series of tuples containing the namespace binding information:
          * &lt;prefix, uri&gt;.
@@ -491,8 +491,8 @@ final class DOMValidatorHelper implements ValidatorHelper, EntityState {
         /** The size of the namespace information array. */
         protected int fNamespaceSize = 0;
         
-        /** 
-         * Flag indicating whether the namespace context 
+        /**
+         * Flag indicating whether the namespace context
          * has been from the root node's ancestors.
          */
         protected boolean fDOMContextBuilt = false;

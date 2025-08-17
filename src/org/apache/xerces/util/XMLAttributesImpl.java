@@ -23,8 +23,8 @@ import org.apache.xerces.xni.XMLAttributes;
 
 /**
  * The XMLAttributesImpl class is an implementation of the XMLAttributes
- * interface which defines a collection of attributes for an element. 
- * In the parser, the document source would scan the entire start element 
+ * interface which defines a collection of attributes for an element.
+ * In the parser, the document source would scan the entire start element
  * and collect the attributes. The attributes are communicated to the
  * document handler in the startElement method.
  * <p>
@@ -33,11 +33,9 @@ import org.apache.xerces.xni.XMLAttributes;
  * propogated to the next stage.
  *
  * @see org.apache.xerces.xni.XMLDocumentHandler#startElement
- *
- * @author Andy Clark, IBM 
+ * @author Andy Clark, IBM
  * @author Elena Litani, IBM
  * @author Michael Glavassevich, IBM
- *
  * @version $Id$
  */
 public class XMLAttributesImpl
@@ -56,7 +54,7 @@ public class XMLAttributesImpl
     protected static final int MULTIPLIERS_SIZE = 1 << 5;
     protected static final int MULTIPLIERS_MASK = MULTIPLIERS_SIZE - 1;
     
-    /** 
+    /**
      * Threshold at which an instance is treated
      * as a large attribute list.
      */
@@ -73,8 +71,8 @@ public class XMLAttributesImpl
 
     // data
 
-    /** 
-     * Usage count for the attribute table view. 
+    /**
+     * Usage count for the attribute table view.
      * Incremented each time all attributes are removed
      * when the attribute table view is in use.
      */
@@ -86,9 +84,9 @@ public class XMLAttributesImpl
     /** Attribute information. */
     protected Attribute[] fAttributes = new Attribute[4];
     
-    /** 
-     * Hashtable of attribute information. 
-     * Provides an alternate view of the attribute specification. 
+    /**
+     * Hashtable of attribute information.
+     * Provides an alternate view of the attribute specification.
      */
     protected Attribute[] fAttributeTableView;
     
@@ -126,6 +124,7 @@ public class XMLAttributesImpl
     }
     
     /**
+     *
      * @param tableSize initial size of table view
      */
     public XMLAttributesImpl(int tableSize) {
@@ -139,12 +138,11 @@ public class XMLAttributesImpl
     // Public methods
     //
 
-    /** 
+    /**
      * Sets whether namespace processing is being performed. This state
      * is needed to return the correct value from the getLocalName method.
      *
-     * @param namespaces True if namespace processing is turned on.
-     *
+     * @param namespaces true if namespace processing is turned on
      * @see #getLocalName
      */
     public void setNamespaces(boolean namespaces) {
@@ -166,9 +164,9 @@ public class XMLAttributesImpl
      * <strong>Note:</strong> If an attribute of the same name already
      * exists, the old values for the attribute are replaced by the new
      * values.
-     * 
-     * @param name  The attribute name.
-     * @param type  The attribute type. The type name is determined by
+     *
+     * @param name  the attribute name
+     * @param type  the attribute type. The type name is determined by
      *                  the type specified for this attribute in the DTD.
      *                  For example: "CDATA", "ID", "NMTOKEN", etc. However,
      *                  attributes of type enumeration will have the type
@@ -176,10 +174,8 @@ public class XMLAttributesImpl
      *                  the enumeration values prefixed by an open 
      *                  parenthesis and suffixed by a close parenthesis.
      *                  For example: "(true|false)".
-     * @param value The attribute value.
-     * 
-     * @return Returns the attribute index.
-     *
+     * @param value the attribute value
+     * @return returns the attribute index
      * @see #setNonNormalizedValue
      * @see #setSpecified
      */
@@ -210,7 +206,7 @@ public class XMLAttributesImpl
             /**
              * If attributes were removed from the list after the table
              * becomes in use this isn't reflected in the table view. It's
-             * assumed that once a user starts removing attributes they're 
+             * assumed that once a user starts removing attributes they're
              * not likely to add more. We only make the view consistent if
              * the user of this class adds attributes, removes them, and
              * then adds more.
@@ -301,7 +297,7 @@ public class XMLAttributesImpl
 
     } // addAttribute(QName,String,XMLString)
 
-    /** 
+    /**
      * Removes all of the attributes. This method will also remove all
      * entities associated to the attributes.
      */
@@ -314,8 +310,8 @@ public class XMLAttributesImpl
      * <p>
      * <strong>Note:</strong> This operation changes the indexes of all
      * attributes following the attribute at the specified index.
-     * 
-     * @param attrIndex The attribute index.
+     *
+     * @param attrIndex the attribute index
      */
     public void removeAttributeAt(int attrIndex) {
         fIsTableViewConsistent = false;
@@ -332,9 +328,9 @@ public class XMLAttributesImpl
 
     /**
      * Sets the name of the attribute at the specified index.
-     * 
-     * @param attrIndex The attribute index.
-     * @param attrName  The new attribute name.
+     *
+     * @param attrIndex the attribute index
+     * @param attrName  the new attribute name
      */
     public void setName(int attrIndex, QName attrName) {
         fAttributes[attrIndex].name.setValues(attrName);
@@ -343,9 +339,9 @@ public class XMLAttributesImpl
     /**
      * Sets the fields in the given QName structure with the values
      * of the attribute name at the specified index.
-     * 
-     * @param attrIndex The attribute index.
-     * @param attrName  The attribute name structure to fill in.
+     *
+     * @param attrIndex the attribute index
+     * @param attrName  the attribute name structure to fill in
      */
     public void getName(int attrIndex, QName attrName) {
         attrName.setValues(fAttributes[attrIndex].name);
@@ -353,9 +349,9 @@ public class XMLAttributesImpl
 
     /**
      * Sets the type of the attribute at the specified index.
-     * 
-     * @param attrIndex The attribute index.
-     * @param attrType  The attribute type. The type name is determined by
+     *
+     * @param attrIndex the attribute index
+     * @param attrType  the attribute type. The type name is determined by
      *                  the type specified for this attribute in the DTD.
      *                  For example: "CDATA", "ID", "NMTOKEN", etc. However,
      *                  attributes of type enumeration will have the type
@@ -371,10 +367,9 @@ public class XMLAttributesImpl
     /**
      * Sets the value of the attribute at the specified index. This
      * method will overwrite the non-normalized value of the attribute.
-     * 
-     * @param attrIndex The attribute index.
-     * @param attrValue The new attribute value.
      *
+     * @param attrIndex the attribute index
+     * @param attrValue the new attribute value
      * @see #setNonNormalizedValue
      */
     public void setValue(int attrIndex, String attrValue) {
@@ -387,8 +382,8 @@ public class XMLAttributesImpl
      * Sets the non-normalized value of the attribute at the specified
      * index.
      *
-     * @param attrIndex The attribute index.
-     * @param attrValue The new non-normalized attribute value.
+     * @param attrIndex the attribute index
+     * @param attrValue the new non-normalized attribute value
      */
     public void setNonNormalizedValue(int attrIndex, String attrValue) {
         if (attrValue == null) {
@@ -402,7 +397,7 @@ public class XMLAttributesImpl
      * index. If no non-normalized value is set, this method will return
      * the same value as the <code>getValue(int)</code> method.
      *
-     * @param attrIndex The attribute index.
+     * @param attrIndex the attribute index
      */
     public String getNonNormalizedValue(int attrIndex) {
         String value = fAttributes[attrIndex].nonNormalizedValue;
@@ -413,9 +408,9 @@ public class XMLAttributesImpl
      * Sets whether an attribute is specified in the instance document
      * or not.
      *
-     * @param attrIndex The attribute index.
-     * @param specified True if the attribute is specified in the instance
-     *                  document.
+     * @param attrIndex the attribute index
+     * @param specified true if the attribute is specified in the instance
+     *                  document
      */
     public void setSpecified(int attrIndex, boolean specified) {
         fAttributes[attrIndex].specified = specified;
@@ -424,7 +419,7 @@ public class XMLAttributesImpl
     /**
      * Returns true if the attribute is specified in the instance document.
      *
-     * @param attrIndex The attribute index.
+     * @param attrIndex the attribute index
      */
     public boolean isSpecified(int attrIndex) {
         return fAttributes[attrIndex].specified;
@@ -440,7 +435,7 @@ public class XMLAttributesImpl
      * <p>Once you know the number of attributes, you can iterate
      * through the list.</p>
      *
-     * @return The number of attributes in the list.
+     * @return the number of attributes in the list
      */
     public int getLength() {
         return fLength;
@@ -461,9 +456,9 @@ public class XMLAttributesImpl
      * <p>For an enumerated attribute that is not a notation, the
      * parser will report the type as "NMTOKEN".</p>
      *
-     * @param index The attribute index (zero-based).
-     * @return The attribute's type as a string, or null if the
-     *         index is out of range.
+     * @param index the attribute index (zero-based)
+     * @return the attribute's type as a string, or null if the
+     *         index is out of range
      * @see #getLength
      */
     public String getType(int index) {
@@ -479,10 +474,10 @@ public class XMLAttributesImpl
      * <p>See {@link #getType(int) getType(int)} for a description
      * of the possible types.</p>
      *
-     * @param qname The XML 1.0 qualified name.
-     * @return The attribute type as a string, or null if the
+     * @param qname the XML 1.0 qualified name
+     * @return the attribute type as a string, or null if the
      *         attribute is not in the list or if qualified names
-     *         are not available.
+     *         are not available
      */
     public String getType(String qname) {
         int index = getIndex(qname);
@@ -497,9 +492,9 @@ public class XMLAttributesImpl
      * into a single string with each token separated by a
      * single space.</p>
      *
-     * @param index The attribute index (zero-based).
-     * @return The attribute's value as a string, or null if the
-     *         index is out of range.
+     * @param index the attribute index (zero-based)
+     * @return the attribute's value as a string, or null if the
+     *         index is out of range
      * @see #getLength
      */
     public String getValue(int index) {
@@ -515,10 +510,10 @@ public class XMLAttributesImpl
      * <p>See {@link #getValue(int) getValue(int)} for a description
      * of the possible values.</p>
      *
-     * @param qname The XML 1.0 qualified name.
-     * @return The attribute value as a string, or null if the
+     * @param qname the XML 1.0 qualified name
+     * @return the attribute value as a string, or null if the
      *         attribute is not in the list or if qualified names
-     *         are not available.
+     *         are not available
      */
     public String getValue(String qname) {
         int index = getIndex(qname);
@@ -540,10 +535,10 @@ public class XMLAttributesImpl
      * <p>If the attribute name has a namespace prefix, the prefix
      * will still be attached.</p>
      *
-     * @param index The index of the attribute in the list (starting at 0).
-     * @return The name of the indexed attribute, or null
-     *         if the index is out of range.
-     * @see #getLength 
+     * @param index the index of the attribute in the list (starting at 0)
+     * @return the name of the indexed attribute, or null
+     *         if the index is out of range
+     * @see #getLength
      */
     public String getName(int index) {
         if (index < 0 || index >= fLength) {
@@ -559,9 +554,9 @@ public class XMLAttributesImpl
     /**
      * Look up the index of an attribute by XML 1.0 qualified name.
      *
-     * @param qName The qualified (prefixed) name.
-     * @return The index of the attribute, or -1 if it does not
-     *         appear in the list.
+     * @param qName the qualified (prefixed) name
+     * @return the index of the attribute, or -1 if it does not
+     *         appear in the list
      */
     public int getIndex(String qName) {
         for (int i = 0; i < fLength; i++) {
@@ -577,11 +572,11 @@ public class XMLAttributesImpl
     /**
      * Look up the index of an attribute by Namespace name.
      *
-     * @param uri The Namespace URI, or null if
-     *        the name has no Namespace URI.
-     * @param localPart The attribute's local name.
-     * @return The index of the attribute, or -1 if it does not
-     *         appear in the list.
+     * @param uri the Namespace URI, or null if
+     *        the name has no Namespace URI
+     * @param localPart the attribute's local name
+     * @return the index of the attribute, or -1 if it does not
+     *         appear in the list
      */
     public int getIndex(String uri, String localPart) {
         for (int i = 0; i < fLength; i++) {
@@ -600,10 +595,10 @@ public class XMLAttributesImpl
     /**
      * Look up an attribute's local name by index.
      *
-     * @param index The attribute index (zero-based).
-     * @return The local name, or the empty string if Namespace
+     * @param index the attribute index (zero-based)
+     * @return the local name, or the empty string if Namespace
      *         processing is not being performed, or null
-     *         if the index is out of range.
+     *         if the index is out of range
      * @see #getLength
      */
     public String getLocalName(int index) {
@@ -619,10 +614,10 @@ public class XMLAttributesImpl
     /**
      * Look up an attribute's XML 1.0 qualified name by index.
      *
-     * @param index The attribute index (zero-based).
-     * @return The XML 1.0 qualified name, or the empty string
+     * @param index the attribute index (zero-based)
+     * @return the XML 1.0 qualified name, or the empty string
      *         if none is available, or null if the index
-     *         is out of range.
+     *         is out of range
      * @see #getLength
      */
     public String getQName(int index) {
@@ -639,12 +634,12 @@ public class XMLAttributesImpl
      * <p>See {@link #getType(int) getType(int)} for a description
      * of the possible types.</p>
      *
-     * @param uri The Namespace URI, or null if the
-     *        name has no Namespace URI.
-     * @param localName The local name of the attribute.
-     * @return The attribute type as a string, or null if the
+     * @param uri the Namespace URI, or null if the
+     *        name has no Namespace URI
+     * @param localName the local name of the attribute
+     * @return the attribute type as a string, or null if the
      *         attribute is not in the list or if Namespace
-     *         processing is not being performed.
+     *         processing is not being performed
      */
     public String getType(String uri, String localName) {
         if (!fNamespaces) {
@@ -657,7 +652,7 @@ public class XMLAttributesImpl
     /**
      * Returns the prefix of the attribute at the specified index.
      *
-     * @param index The index of the attribute.
+     * @param index the index of the attribute
      */
     public String getPrefix(int index) {
         if (index < 0 || index >= fLength) {
@@ -671,8 +666,8 @@ public class XMLAttributesImpl
     /**
      * Look up an attribute's Namespace URI by index.
      *
-     * @param index The attribute index (zero-based).
-     * @return The Namespace URI
+     * @param index the attribute index (zero-based)
+     * @return the Namespace URI
      * @see #getLength
      */
     public String getURI(int index) {
@@ -689,10 +684,10 @@ public class XMLAttributesImpl
      * <p>See {@link #getValue(int) getValue(int)} for a description
      * of the possible values.</p>
      *
-     * @param uri The Namespace URI, or null if the
-     * @param localName The local name of the attribute.
-     * @return The attribute value as a string, or null if the
-     *         attribute is not in the list.
+     * @param uri the Namespace URI, or null if the
+     * @param localName the local name of the attribute
+     * @return the attribute value as a string, or null if the
+     *         attribute is not in the list
      */
     public String getValue(String uri, String localName) {
         int index = getIndex(uri, localName);
@@ -703,9 +698,9 @@ public class XMLAttributesImpl
     /**
      * Look up an augmentations by Namespace name.
      *
-     * @param uri The Namespace URI, or null if the
-     * @param localName The local name of the attribute.
-     * @return Augmentations     
+     * @param uri the Namespace URI, or null if the
+     * @param localName the local name of the attribute
+     * @return augmentations
      */
     public Augmentations getAugmentations (String uri, String localName) {
         int index = getIndex(uri, localName);
@@ -716,9 +711,8 @@ public class XMLAttributesImpl
      * Look up an augmentation by XML 1.0 qualified name.
      * <p>
      *
-     * @param qName The XML 1.0 qualified name.
-     *
-     * @return Augmentations
+     * @param qName the XML 1.0 qualified name
+     * @return augmentations
      *
      */
     public Augmentations getAugmentations(String qName){
@@ -728,9 +722,9 @@ public class XMLAttributesImpl
 
     /**
      * Look up an augmentations by attributes index.
-     * 
-     * @param attributeIndex The attribute index.
-     * @return Augmentations
+     *
+     * @param attributeIndex the attribute index
+     * @return augmentations
      */
     public Augmentations getAugmentations (int attributeIndex){
         if (attributeIndex < 0 || attributeIndex >= fLength) {
@@ -741,9 +735,9 @@ public class XMLAttributesImpl
 
     /**
      * Sets the augmentations of the attribute at the specified index.
-     * 
-     * @param attrIndex The attribute index.
-     * @param augs      The augmentations.
+     *
+     * @param attrIndex the attribute index
+     * @param augs      the augmentations
      */
     public void setAugmentations(int attrIndex, Augmentations augs) {
         fAttributes[attrIndex].augs = augs;
@@ -751,9 +745,9 @@ public class XMLAttributesImpl
 
     /**
      * Sets the uri of the attribute at the specified index.
-     * 
-     * @param attrIndex The attribute index.
-     * @param uri       Namespace uri
+     *
+     * @param attrIndex the attribute index
+     * @param uri       namespace uri
      */
     public void setURI(int attrIndex, String uri) {
         fAttributes[attrIndex].name.uri = uri;
@@ -764,14 +758,14 @@ public class XMLAttributesImpl
     /**
      * Look up the index of an attribute by XML 1.0 qualified name.
      * <p>
-     * <strong>Note:</strong> 
+     * <strong>Note:</strong>
      * This method uses reference comparison, and thus should
      * only be used internally. We cannot use this method in any
      * code exposed to users as they may not pass in unique strings.
      *
-     * @param qName The qualified (prefixed) name.
-     * @return The index of the attribute, or -1 if it does not
-     *         appear in the list.
+     * @param qName the qualified (prefixed) name
+     * @return the index of the attribute, or -1 if it does not
+     *         appear in the list
      */
     public int getIndexFast(String qName) {
         for (int i = 0; i < fLength; ++i) {
@@ -801,11 +795,10 @@ public class XMLAttributesImpl
      * <strong>Caution:</strong> If this method is called it should
      * not be mixed with calls to <code>addAttribute</code> unless
      * it has been determined that all the attribute names are unique.
-     * 
+     *
      * @param name the attribute name
      * @param type the attribute type
      * @param value the attribute value
-     * 
      * @see #setNonNormalizedValue
      * @see #setSpecified
      * @see #checkDuplicatesNS
@@ -847,9 +840,9 @@ public class XMLAttributesImpl
      * This should be called once all the in-scope namespaces for the element
      * enclosing these attributes is known, and after all the attributes
      * have gone through namespace binding.
-     * 
+     *
      * @return the name of a duplicate attribute found in the search,
-     * otherwise null.
+     * otherwise null
      */
     public QName checkDuplicatesNS() {
         // If the list is small check for duplicates using pairwise comparison.
@@ -936,16 +929,16 @@ public class XMLAttributesImpl
     /**
      * Look up the index of an attribute by Namespace name.
      * <p>
-     * <strong>Note:</strong> 
+     * <strong>Note:</strong>
      * This method uses reference comparison, and thus should
      * only be used internally. We cannot use this method in any
      * code exposed to users as they may not pass in unique strings.
      *
-     * @param uri The Namespace URI, or null if
-     *        the name has no Namespace URI.
-     * @param localPart The attribute's local name.
-     * @return The index of the attribute, or -1 if it does not
-     *         appear in the list.
+     * @param uri the Namespace URI, or null if
+     *        the name has no Namespace URI
+     * @param localPart the attribute's local name
+     * @return the index of the attribute, or -1 if it does not
+     *         appear in the list
      */
     public int getIndexFast(String uri, String localPart) {
         for (int i = 0; i < fLength; ++i) {
@@ -960,9 +953,9 @@ public class XMLAttributesImpl
 
     /**
      * Returns the value passed in or NMTOKEN if it's an enumerated type.
-     * 
+     *
      * @param type attribute type
-     * @return the value passed in or NMTOKEN if it's an enumerated type.
+     * @return the value passed in or NMTOKEN if it's an enumerated type
      */
     private String getReportableType(String type) {
 
@@ -973,9 +966,9 @@ public class XMLAttributesImpl
     }
 	
     /**
-     * Returns the position in the table view 
+     * Returns the position in the table view
      * where the given attribute name would be hashed.
-     * 
+     *
      * @param qname the attribute name
      * @return the position in the table view where the given attribute
      * would be hashed
@@ -987,7 +980,7 @@ public class XMLAttributesImpl
     /**
      * Returns the position in the table view
      * where the given attribute name would be hashed.
-     * 
+     *
      * @param localpart the local part of the attribute
      * @param uri the namespace name of the attribute
      * @return the position in the table view where the given attribute
@@ -1187,7 +1180,7 @@ public class XMLAttributesImpl
         /** Specified. */
         public boolean specified;
         
-        /** 
+        /**
          * Augmentations information for this attribute.
          * XMLAttributes has no knowledge if any augmentations
          * were attached to Augmentations.
@@ -1196,7 +1189,7 @@ public class XMLAttributesImpl
         
         // Additional data for attribute table view
         
-        /** Pointer to the next attribute in the chain. **/
+        /** Pointer to the next attribute in the chain. *. */
         public Attribute next;
         
     } // class Attribute

@@ -48,7 +48,7 @@ final class ObjectFactory {
     // name of default properties file to look for in JDK's jre/lib directory
     private static final String DEFAULT_PROPERTIES_FILENAME = "xerces.properties";
 
-    /** Set to true for debugging */
+    /** Set to true for debugging. */
     private static final boolean DEBUG = isDebugEnabled();
 
     /**
@@ -56,14 +56,15 @@ final class ObjectFactory {
      */
     private static final int DEFAULT_LINE_LENGTH = 80;
 
-    /** cache the contents of the xerces.properties file.
-     *  Until an attempt has been made to read this file, this will
+    /**
+     * Cache the contents of the xerces.properties file.
+     * Until an attempt has been made to read this file, this will
      * be null; if the file does not exist or we encounter some other error
      * during the read, this will be empty.
      */
     private static Properties fXercesProperties = null;
 
-    /***
+    /**
      * Cache the time stamp of the xerces.properties file so
      * that we know if it's been modified and can invalidate
      * the cache when necessary.
@@ -78,19 +79,17 @@ final class ObjectFactory {
      * Finds the implementation Class object in the specified order.  The
      * specified order is the following:
      * <ol>
-     *  <li>query the system property using <code>System.getProperty</code>
-     *  <li>read <code>META-INF/services/<i>factoryId</i></code> file
-     *  <li>use fallback classname
+     * <li>query the system property using <code>System.getProperty</code>
+     * <li>read <code>META-INF/services/<i>factoryId</i></code> file
+     * <li>use fallback classname
      * </ol>
      *
-     * @return Class object of factory, never null
-     *
-     * @param factoryId             Name of the factory to find, same as
+     * @return class object of factory, never null
+     * @param factoryId             name of the factory to find, same as
      *                              a property name
-     * @param fallbackClassName     Implementation class name, if nothing else
+     * @param fallbackClassName     implementation class name, if nothing else
      *                              is found.  Use null to mean no fallback.
-     *
-     * @exception ObjectFactory.ConfigurationError
+     * @throws ObjectFactory.ConfigurationError
      */
     static Object createObject(String factoryId, String fallbackClassName)
         throws ConfigurationError {
@@ -101,23 +100,21 @@ final class ObjectFactory {
      * Finds the implementation Class object in the specified order.  The
      * specified order is the following:
      * <ol>
-     *  <li>query the system property using <code>System.getProperty</code>
-     *  <li>read <code>$java.home/lib/<i>propertiesFilename</i></code> file
-     *  <li>read <code>META-INF/services/<i>factoryId</i></code> file
-     *  <li>use fallback classname
+     * <li>query the system property using <code>System.getProperty</code>
+     * <li>read <code>$java.home/lib/<i>propertiesFilename</i></code> file
+     * <li>read <code>META-INF/services/<i>factoryId</i></code> file
+     * <li>use fallback classname
      * </ol>
      *
-     * @return Class object of factory, never null
-     *
-     * @param factoryId             Name of the factory to find, same as
+     * @return class object of factory, never null
+     * @param factoryId             name of the factory to find, same as
      *                              a property name
-     * @param propertiesFilename The filename in the $java.home/lib directory
+     * @param propertiesFilename the filename in the $java.home/lib directory
      *                           of the properties file.  If none specified,
      *                           ${java.home}/lib/xerces.properties will be used.
-     * @param fallbackClassName     Implementation class name, if nothing else
+     * @param fallbackClassName     implementation class name, if nothing else
      *                              is found.  Use null to mean no fallback.
-     *
-     * @exception ObjectFactory.ConfigurationError
+     * @throws ObjectFactory.ConfigurationError
      */
     static Object createObject(String factoryId,
                                       String propertiesFilename,

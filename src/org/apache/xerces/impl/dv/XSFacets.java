@@ -26,46 +26,44 @@ import org.apache.xerces.xs.XSObjectList;
 /**
  * The class used to pass all facets to {@link XSSimpleType#applyFacets}.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class XSFacets {
 
     /**
-     * value of length facet.
+     * Value of length facet.
      */
     public int length;
 
     /**
-     * value of minLength facet.
+     * Value of minLength facet.
      */
     public int minLength;
 
     /**
-     * value of maxLength facet.
+     * Value of maxLength facet.
      */
     public int maxLength;
 
     /**
-     * value of whiteSpace facet.
+     * Value of whiteSpace facet.
      */
     public short whiteSpace;
 
     /**
-     * value of totalDigits facet.
+     * Value of totalDigits facet.
      */
     public int totalDigits;
 
     /**
-     * value of fractionDigits facet.
+     * Value of fractionDigits facet.
      */
     public int fractionDigits;
 
     /**
-     * string containing value of pattern facet, for multiple patterns values
+     * String containing value of pattern facet, for multiple patterns values
      * are ORed together.
      */
     public String pattern;
@@ -83,22 +81,22 @@ public class XSFacets {
     public Vector enumNSDecls;
 
     /**
-     * value of maxInclusive facet.
+     * Value of maxInclusive facet.
      */
     public String maxInclusive;
 
     /**
-     * value of maxExclusive facet.
+     * Value of maxExclusive facet.
      */
     public String maxExclusive;
 
     /**
-     * value of minInclusive facet.
+     * Value of minInclusive facet.
      */
     public String minInclusive;
 
     /**
-     * value of minExclusive facet.
+     * Value of minExclusive facet.
      */
     public String minExclusive;
     

@@ -52,7 +52,7 @@ import org.w3c.dom.Text;
 
 /**
  * <p>DOM result augmentor.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -233,7 +233,7 @@ final class DOMResultAugmentor implements DOMDocumentHandler {
         return null;
     }
     
-    /** Returns whether the given attribute is an ID type. **/
+    /** Returns whether the given attribute is an ID type. *. */
     private boolean processAttributePSVI(AttrImpl attr, AttributePSVI attrPSVI) {
         if (fStorePSVI) {
             ((PSVIAttrNSImpl) attr).setPSVI (attrPSVI);

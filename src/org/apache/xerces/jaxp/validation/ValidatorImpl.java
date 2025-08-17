@@ -48,7 +48,6 @@ import org.xml.sax.SAXNotSupportedException;
  *
  * @author <a href="mailto:Kohsuke.Kawaguchi@Sun.com">Kohsuke Kawaguchi</a>
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 final class ValidatorImpl extends Validator implements PSVIProvider {
@@ -68,19 +67,19 @@ final class ValidatorImpl extends Validator implements PSVIProvider {
     // Data
     //
     
-    /** Component manager. **/
+    /** Component manager. *. */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** SAX validator helper. **/
+    /** SAX validator helper. *. */
     private ValidatorHandlerImpl fSAXValidatorHelper;
     
-    /** DOM validator helper. **/
+    /** DOM validator helper. *. */
     private DOMValidatorHelper fDOMValidatorHelper;
     
-    /** StAX validator helper. **/
+    /** StAX validator helper. *. */
     private StAXValidatorHelper fStAXValidatorHelper;
     
-    /** Stream validator helper. **/
+    /** Stream validator helper. *. */
     private StreamValidatorHelper fStreamValidatorHelper;
     
     /** Flag for tracking whether features/properties changed since last reset. */

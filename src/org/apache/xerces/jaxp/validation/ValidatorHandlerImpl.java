@@ -86,7 +86,6 @@ import org.xml.sax.ext.LexicalHandler;
  *
  * @author Kohsuke Kawaguchi (kohsuke.kawaguchi@sun.com)
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 final class ValidatorHandlerImpl extends ValidatorHandler implements
@@ -143,22 +142,22 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     /** Error reporter. */
     private final XMLErrorReporter fErrorReporter;
     
-    /** The namespace context of this document: stores namespaces in scope */
+    /** The namespace context of this document: stores namespaces in scope. */
     private final NamespaceContext fNamespaceContext;
     
-    /** Schema validator. **/
+    /** Schema validator. *. */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /** Symbol table *. */
     private final SymbolTable fSymbolTable;
     
     /** Validation manager. */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /** Component manager. *. */
     private final XMLSchemaValidatorComponentManager fComponentManager;
 
-    /** XML Locator wrapper for SAX. **/
+    /** XML Locator wrapper for SAX. *. */
     private final SAXLocatorWrapper fSAXLocatorWrapper = new SAXLocatorWrapper();
     
     /** Flag used to track whether the namespace context needs to be pushed. */
@@ -410,7 +409,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
 
     public void emptyElement(QName element, XMLAttributes attributes,
             Augmentations augs) throws XNIException {
-        /** Split empty element event. **/
+        /** Split empty element event. *. */
         startElement(element, attributes, augs);
         endElement(element, augs);
     }
@@ -643,10 +642,10 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
 
     public void processingInstruction(String target, String data)
             throws SAXException {
-        /** 
+        /**
          * Processing instructions do not participate in schema validation,
          * so just forward the event to the application's content
-         * handler. 
+         * handler.
          */
         if (fContentHandler != null) {
             fContentHandler.processingInstruction(target, data);
@@ -690,7 +689,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
             if (result != null) {
                 ContentHandler ch = saxResult.getHandler();
                 lh = saxResult.getLexicalHandler();
-                /** If the lexical handler is not set try casting the ContentHandler. **/
+                /** If the lexical handler is not set try casting the ContentHandler. *. */
                 if (lh == null && ch instanceof LexicalHandler) {
                     lh = (LexicalHandler) ch;
                 }
@@ -860,37 +859,37 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
     private final XMLSchemaTypeInfoProvider fTypeInfoProvider = new XMLSchemaTypeInfoProvider();
     private class XMLSchemaTypeInfoProvider extends TypeInfoProvider {
         
-        /** Element augmentations: contains ElementPSVI. **/
+        /** Element augmentations: contains ElementPSVI. *. */
         private Augmentations fElementAugs;
         
-        /** Attributes: augmentations for each attribute contain AttributePSVI. **/
+        /** Attributes: augmentations for each attribute contain AttributePSVI. *. */
         private XMLAttributes fAttributes;
         
-        /** In start element. **/
+        /** In start element. *. */
         private boolean fInStartElement = false;
         private boolean fInEndElement = false;
         
-        /** Initializes the TypeInfoProvider with type information for the current element. **/
+        /** Initializes the TypeInfoProvider with type information for the current element. *. */
         void beginStartElement(Augmentations elementAugs, XMLAttributes attributes) {
             fInStartElement = true;
             fElementAugs = elementAugs;
             fAttributes = attributes;
         }
         
-        /** Cleanup at the end of start element. **/
+        /** Cleanup at the end of start element. *. */
         void finishStartElement() {
             fInStartElement = false;
             fElementAugs = null;
             fAttributes = null;
         }
         
-        /** Initializes the TypeInfoProvider with type information for the current element. **/
+        /** Initializes the TypeInfoProvider with type information for the current element. *. */
         void beginEndElement(Augmentations elementAugs) {
             fInEndElement = true;
             fElementAugs = elementAugs;
         }
         
-        /** Cleanup at the end of end element. **/
+        /** Cleanup at the end of end element. *. */
         void finishEndElement() {
             fInEndElement = false;
             fElementAugs = null;
@@ -899,7 +898,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         /**
          * Throws a {@link IllegalStateException} if we are not in
          * the startElement callback. the JAXP API requires this
-         * for most of the public methods which access attribute 
+         * for most of the public methods which access attribute
          * type information.
          */
         private void checkStateAttribute() {
@@ -911,7 +910,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         
         /**
          * Throws a {@link IllegalStateException} if we are not in
-         * the startElement or endElement callbacks. the JAXP API requires 
+         * the startElement or endElement callbacks. the JAXP API requires
          * this for the public methods which access element type information.
          */
         private void checkStateElement() {
@@ -1033,7 +1032,7 @@ final class ValidatorHandlerImpl extends ValidatorHandler implements
         // Data
         //
 
-        /** XML 1.0 type constant according to DOM L3 LS REC spec "http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/" */
+        /** XML 1.0 type constant according to DOM L3 LS REC spec "http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/". */
         private static final String XML_TYPE = "http://www.w3.org/TR/REC-xml";
 
         /** The DOM entity resolver. */

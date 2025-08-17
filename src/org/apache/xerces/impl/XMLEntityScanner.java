@@ -34,7 +34,6 @@ import org.apache.xerces.xni.XMLString;
  * Implements the entity scanner methods.
  *
  * @xerces.internal
- * 
  * @author Andy Clark, IBM
  * @author Neil Graham, IBM
  * @version $Id$
@@ -103,10 +102,8 @@ public class XMLEntityScanner implements XMLLocator {
      * that is resolved directly to the appropriate java.io.Reader
      * object).
      *
-     * @param encoding The IANA encoding name of the new encoding.
-     *
-     * @throws IOException Thrown if the new encoding is not supported.
-     *
+     * @param encoding the IANA encoding name of the new encoding
+     * @throws IOException thrown if the new encoding is not supported
      * @see org.apache.xerces.util.EncodingMap
      */
     public final void setEncoding(String encoding) throws IOException {
@@ -187,8 +184,8 @@ public class XMLEntityScanner implements XMLLocator {
      * <p>
      * <strong>Note:</strong> The character is <em>not</em> consumed.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int peekChar() throws IOException {
         if (DEBUG_BUFFER) {
@@ -230,8 +227,8 @@ public class XMLEntityScanner implements XMLLocator {
      * <p>
      * <strong>Note:</strong> The character is consumed.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanChar() throws IOException {
         if (DEBUG_BUFFER) {
@@ -286,9 +283,8 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XMLChar#isName
      */
@@ -349,9 +345,8 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XMLChar#isName
      * @see org.apache.xerces.util.XMLChar#isNameStart
@@ -429,9 +424,8 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XMLChar#isNCName
      * @see org.apache.xerces.util.XMLChar#isNCNameStart
@@ -510,14 +504,11 @@ public class XMLEntityScanner implements XMLLocator {
      * QName structure must be symbols. The SymbolTable can be used for
      * this purpose.
      *
-     * @param qname The qualified name structure to fill.
-     *
-     * @return Returns true if a qualified name appeared immediately on
-     *         the input and was scanned, false otherwise.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @param qname the qualified name structure to fill
+     * @return returns true if a qualified name appeared immediately on
+     *         the input and was scanned, false otherwise
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XMLChar#isName
      * @see org.apache.xerces.util.XMLChar#isNameStart
@@ -645,14 +636,12 @@ public class XMLEntityScanner implements XMLLocator {
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param content The content structure to fill.
-     *
-     * @return Returns the next character on the input, if known. This
+     * @param content the content structure to fill
+     * @return returns the next character on the input, if known. This
      *         value may be -1 but this does <em>note</em> designate
      *         end of file.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanContent(XMLString content) throws IOException {
         if (DEBUG_BUFFER) {
@@ -702,7 +691,7 @@ public class XMLEntityScanner implements XMLLocator {
                         fCurrentEntity.position++;
                         offset++;
                     }
-                    /*** NEWLINE NORMALIZATION ***/
+                    /** * NEWLINE NORMALIZATION **. */
                     else {
                         newlines++;
                     }
@@ -796,16 +785,14 @@ public class XMLEntityScanner implements XMLLocator {
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param quote   The quote character that signifies the end of the
-     *                attribute value data.
-     * @param content The content structure to fill.
-     *
-     * @return Returns the next character on the input, if known. This
+     * @param quote   the quote character that signifies the end of the
+     *                attribute value data
+     * @param content the content structure to fill
+     * @return returns the next character on the input, if known. This
      *         value may be -1 but this does <em>note</em> designate
      *         end of file.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanLiteral(int quote, XMLString content)
         throws IOException {
@@ -856,11 +843,11 @@ public class XMLEntityScanner implements XMLLocator {
                         fCurrentEntity.position++;
                         offset++;
                     }
-                    /*** NEWLINE NORMALIZATION ***/
+                    /** * NEWLINE NORMALIZATION **. */
                     else {
                         newlines++;
                     }
-                    /***/
+                    /**  */
                 }
                 else if (c == '\n') {
                     newlines++;
@@ -958,14 +945,12 @@ public class XMLEntityScanner implements XMLLocator {
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param delimiter The string that signifies the end of the character
-     *                  data to be scanned.
-     * @param buffer    The XMLStringBuffer to fill.
-     *
-     * @return Returns true if there is more data to scan, false otherwise.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param delimiter the string that signifies the end of the character
+     *                  data to be scanned
+     * @param buffer    the XMLStringBuffer to fill
+     * @return returns true if there is more data to scan, false otherwise
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean scanData(String delimiter, XMLStringBuffer buffer)
         throws IOException {
@@ -1054,7 +1039,7 @@ public class XMLEntityScanner implements XMLLocator {
                         fCurrentEntity.position++;
                         offset++;
                     }
-                    /*** NEWLINE NORMALIZATION ***/
+                    /** * NEWLINE NORMALIZATION **. */
                     else {
                         newlines++;
                     }
@@ -1156,12 +1141,10 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The character is consumed only if it matches
      * the specified character.
      *
-     * @param c The character to skip.
-     *
-     * @return Returns true if the character was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param c the character to skip
+     * @return returns true if the character was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean skipChar(int c) throws IOException {
         if (DEBUG_BUFFER) {
@@ -1229,11 +1212,9 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The characters are consumed only if they are
      * space characters.
      *
-     * @return Returns true if at least one space character was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @return returns true if at least one space character was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.XMLChar#isSpace
      */
     public boolean skipSpaces() throws IOException {
@@ -1275,14 +1256,16 @@ public class XMLEntityScanner implements XMLLocator {
                             fCurrentEntity.position--;
                         }
                     }
-                    /*** NEWLINE NORMALIZATION ***
-                    else {
-                        if (fCurrentEntity.ch[fCurrentEntity.position + 1] == '\r'
-                            && external) {
-                            fCurrentEntity.position++;
-                        }
-                    }
-                    /***/
+                    /**
+                     * NEWLINE NORMALIZATION ***
+                     * else {
+                     * if (fCurrentEntity.ch[fCurrentEntity.position + 1] == '\r'
+                     * && external) {
+                     * fCurrentEntity.position++;
+                     * }
+                     * }
+                     * /**
+                     */
                 }
                 else {
                     fCurrentEntity.columnNumber++;
@@ -1314,19 +1297,17 @@ public class XMLEntityScanner implements XMLLocator {
 
     /**
      * Skips space characters appearing immediately on the input that would
-     * match non-terminal S (0x09, 0x0A, 0x0D, 0x20) before end of line 
-     * normalization is performed. This is useful when scanning structures 
-     * such as the XMLDecl and TextDecl that can only contain US-ASCII 
+     * match non-terminal S (0x09, 0x0A, 0x0D, 0x20) before end of line
+     * normalization is performed. This is useful when scanning structures
+     * such as the XMLDecl and TextDecl that can only contain US-ASCII
      * characters.
      * <p>
      * <strong>Note:</strong> The characters are consumed only if they would
      * match non-terminal S before end of line normalization is performed.
      *
-     * @return Returns true if at least one space character was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @return returns true if at least one space character was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.XMLChar#isSpace
      */
     public final boolean skipDeclSpaces() throws IOException {
@@ -1368,14 +1349,16 @@ public class XMLEntityScanner implements XMLLocator {
                             fCurrentEntity.position--;
                         }
                     }
-                    /*** NEWLINE NORMALIZATION ***
-                    else {
-                        if (fCurrentEntity.ch[fCurrentEntity.position + 1] == '\r'
-                            && external) {
-                            fCurrentEntity.position++;
-                        }
-                    }
-                    /***/
+                    /**
+                     * NEWLINE NORMALIZATION ***
+                     * else {
+                     * if (fCurrentEntity.ch[fCurrentEntity.position + 1] == '\r'
+                     * && external) {
+                     * fCurrentEntity.position++;
+                     * }
+                     * }
+                     * /**
+                     */
                 }
                 else {
                     fCurrentEntity.columnNumber++;
@@ -1411,12 +1394,10 @@ public class XMLEntityScanner implements XMLLocator {
      * <strong>Note:</strong> The characters are consumed only if they are
      * space characters.
      *
-     * @param s The string to skip.
-     *
-     * @return Returns true if the string was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param s the string to skip
+     * @return returns true if the string was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean skipString(String s) throws IOException {
         if (DEBUG_BUFFER) {
@@ -1480,8 +1461,8 @@ public class XMLEntityScanner implements XMLLocator {
      * entity or of the external parsed entity in which the markup
      * triggering the event appears.
      *
-     * @return A string containing the public identifier, or
-     *         null if none is available.
+     * @return a string containing the public identifier, or
+     *         null if none is available
      */
     public final String getPublicId() {
         return (fCurrentEntity != null && fCurrentEntity.entityLocation != null) ? fCurrentEntity.entityLocation.getPublicId() : null;
@@ -1497,8 +1478,8 @@ public class XMLEntityScanner implements XMLLocator {
      * If the system identifier is a URL, the parser must resolve it
      * fully before passing it to the application.
      *
-     * @return A string containing the expanded system identifier, or null
-     *         if none is available.
+     * @return a string containing the expanded system identifier, or null
+     *         if none is available
      */
     public final String getExpandedSystemId() {
         if (fCurrentEntity != null) {
@@ -1521,8 +1502,9 @@ public class XMLEntityScanner implements XMLLocator {
      * entity or of the external parsed entity in which the markup
      * triggering the event appears.
      * <p>
-     * @return A string containing the literal system identifier, or null
-     *         if none is available.
+     *
+     * @return a string containing the literal system identifier, or null
+     *         if none is available
      */
     public final String getLiteralSystemId() {
         if (fCurrentEntity != null) {
@@ -1550,11 +1532,11 @@ public class XMLEntityScanner implements XMLLocator {
      * in the document entity or external parsed entity where the
      * markup triggering the event appears.
      * <p>
-     * If possible, the line position of the first character after the 
+     * If possible, the line position of the first character after the
      * text associated with the document event should be provided.
      * The first line in the document is line 1.
      *
-     * @return The line number, or -1 if none is available.
+     * @return the line number, or -1 if none is available
      */
     public final int getLineNumber() {
         if (fCurrentEntity != null) {
@@ -1583,11 +1565,11 @@ public class XMLEntityScanner implements XMLLocator {
      * in the document entity or external parsed entity where the
      * markup triggering the event appears.
      * <p>
-     * If possible, the line position of the first character after the 
+     * If possible, the line position of the first character after the
      * text associated with the document event should be provided.
      * The first column in each line is column 1.
      *
-     * @return The column number, or -1 if none is available.
+     * @return the column number, or -1 if none is available
      */
     public final int getColumnNumber() {
         if (fCurrentEntity != null) {
@@ -1615,10 +1597,10 @@ public class XMLEntityScanner implements XMLLocator {
      * in the document entity or external parsed entity where the
      * markup triggering the event appears.
      * <p>
-     * If possible, the character offset of the first character after the 
+     * If possible, the character offset of the first character after the
      * text associated with the document event should be provided.
      *
-     * @return The character offset, or -1 if none is available.
+     * @return the character offset, or -1 if none is available
      */
     public final int getCharacterOffset() {
         if (fCurrentEntity != null) {
@@ -1634,13 +1616,13 @@ public class XMLEntityScanner implements XMLLocator {
         return -1;
     } // getCharacterOffset():int
     
-    /** 
-     * Returns the encoding of the current entity.  
+    /**
+     * Returns the encoding of the current entity.
      * Note that, for a given entity, this value can only be
      * considered final once the encoding declaration has been read (or once it
      * has been determined that there is no such declaration) since, no encoding
      * having been specified on the XMLInputSource, the parser
-     * will make an initial "guess" which could be in error. 
+     * will make an initial "guess" which could be in error.
      */
     public final String getEncoding() {
         if (fCurrentEntity != null) {
@@ -1658,9 +1640,9 @@ public class XMLEntityScanner implements XMLLocator {
     /**
      * Returns the XML version of the current entity. This will normally be the
      * value from the XML or text declaration or defaulted by the parser. Note that
-     * that this value may be different than the version of the processing rules 
+     * that this value may be different than the version of the processing rules
      * applied to the current entity. For instance, an XML 1.1 document may refer to
-     * XML 1.0 entities. In such a case the rules of XML 1.1 are applied to the entire 
+     * XML 1.0 entities. In such a case the rules of XML 1.1 are applied to the entire
      * document. Also note that, for a given entity, this value can only be considered
      * final once the XML or text declaration has been read or once it has been
      * determined that there is no such declaration.
@@ -1714,16 +1696,15 @@ public class XMLEntityScanner implements XMLLocator {
     /**
      * Loads a chunk of text.
      *
-     * @param offset       The offset into the character buffer to
-     *                     read the next batch of characters.
-     * @param changeEntity True if the load should change entities
+     * @param offset       the offset into the character buffer to
+     *                     read the next batch of characters
+     * @param changeEntity true if the load should change entities
      *                     at the end of the entity, otherwise leave
      *                     the current entity in place and the entity
      *                     boundary will be signaled by the return
-     *                     value.
-     *
+     *                     value
      * @returns Returns true if the entity changed as a result of this
-     *          load operation.
+     *          load operation
      */
     final boolean load(int offset, boolean changeEntity)
         throws IOException {
@@ -1783,7 +1764,7 @@ public class XMLEntityScanner implements XMLLocator {
     /**
      * This method is invoked to increase the size of the current entity's
      * buffer if an XML name being scanned is too large to fit within
-     * the buffer at its current size. 
+     * the buffer at its current size.
      */
     final void resizeBuffer(int offset, int length) {
         char[] tmp = new char[fCurrentEntity.ch.length << 1];

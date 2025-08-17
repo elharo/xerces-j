@@ -20,12 +20,11 @@ package org.apache.xerces.util;
 import org.apache.xerces.xni.XMLResourceIdentifier;
 
 /**
- * The XMLResourceIdentifierImpl class is an implementation of the 
+ * The XMLResourceIdentifierImpl class is an implementation of the
  * XMLResourceIdentifier interface which defines the location identity
  * of a resource.
  *
- * @author Andy Clark 
- *
+ * @author Andy Clark
  * @version $Id$
  */
 public class XMLResourceIdentifierImpl
@@ -60,10 +59,10 @@ public class XMLResourceIdentifierImpl
     /**
      * Constructs a resource identifier.
      *
-     * @param publicId The public identifier.
-     * @param literalSystemId The literal system identifier.
-     * @param baseSystemId The base system identifier.
-     * @param expandedSystemId The expanded system identifier.
+     * @param publicId the public identifier
+     * @param literalSystemId the literal system identifier
+     * @param baseSystemId the base system identifier
+     * @param expandedSystemId the expanded system identifier
      */
     public XMLResourceIdentifierImpl(String publicId,
                                      String literalSystemId, String baseSystemId,
@@ -75,11 +74,11 @@ public class XMLResourceIdentifierImpl
     /**
      * Constructs a resource identifier.
      *
-     * @param publicId The public identifier.
-     * @param literalSystemId The literal system identifier.
-     * @param baseSystemId The base system identifier.
-     * @param expandedSystemId The expanded system identifier.
-     * @param namespace The namespace.
+     * @param publicId the public identifier
+     * @param literalSystemId the literal system identifier
+     * @param baseSystemId the base system identifier
+     * @param expandedSystemId the expanded system identifier
+     * @param namespace the namespace
      */
     public XMLResourceIdentifierImpl(String publicId, String literalSystemId,
                                      String baseSystemId, String expandedSystemId,
@@ -158,7 +157,7 @@ public class XMLResourceIdentifierImpl
         return fLiteralSystemId;
     } // getLiteralSystemId():String
 
-    /** 
+    /**
      * Returns the base URI against which the literal SystemId is to be resolved.
      */
     public String getBaseSystemId() {

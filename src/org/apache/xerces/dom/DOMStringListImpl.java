@@ -24,11 +24,10 @@ import org.w3c.dom.DOMStringList;
 
 /**
  * DOM Level 3
- * 
+ *
  * This class implements the DOM Level 3 Core interface DOMStringList.
- * 
+ *
  * @xerces.internal
- * 
  * @author Neil Delima, IBM
  */
 public class DOMStringListImpl implements DOMStringList {
@@ -36,30 +35,31 @@ public class DOMStringListImpl implements DOMStringList {
 	// A collection of DOMString values
     private final ArrayList fStrings;
 
-    /** 
+    /**
      * Construct an empty list of DOMStringListImpl
-     */ 
+     */
     public DOMStringListImpl() {
         fStrings = new ArrayList();    
     }
 
-    /** 
+    /**
      * Construct a DOMStringListImpl from an ArrayList
-     */ 
+     */
     public DOMStringListImpl(ArrayList params) {
         fStrings = params;    
     }
     
-    /** 
+    /**
      * Construct a DOMStringListImpl from a Vector
-     */ 
+     */
     public DOMStringListImpl(Vector params) {
         fStrings = new ArrayList(params);
     }
         
-	/**
-	 * @see org.w3c.dom.DOMStringList#item(int)
-	 */
+    /**
+     *
+     * @see org.w3c.dom.DOMStringList#item(int)
+     */
 	public String item(int index) {
 	    final int length = getLength();
 	    if (index >= 0 && index < length) {
@@ -68,16 +68,18 @@ public class DOMStringListImpl implements DOMStringList {
 	    return null;
 	}
 
-	/**
-	 * @see org.w3c.dom.DOMStringList#getLength()
-	 */
+    /**
+     *
+     * @see org.w3c.dom.DOMStringList#getLength()
+     */
 	public int getLength() {
 		return fStrings.size();
 	}
 
-	/**
-	 * @see org.w3c.dom.DOMStringList#contains(String)
-	 */
+    /**
+     *
+     * @see org.w3c.dom.DOMStringList#contains(String)
+     */
 	public boolean contains(String param) {
 		return fStrings.contains(param);
 	}
@@ -85,8 +87,8 @@ public class DOMStringListImpl implements DOMStringList {
     /**
      * DOM Internal:
      * Add a <code>DOMString</code> to the list.
-     * 
-     * @param param A string to add to the list
+     *
+     * @param param a string to add to the list
      */
     public void add(String param) {
         fStrings.add(param);

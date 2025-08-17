@@ -26,12 +26,11 @@ package org.apache.xerces.dom;
 
 /**
  * DeferredAttrNSImpl is to AttrNSImpl, what DeferredAttrImpl is to
- * AttrImpl. 
- * 
+ * AttrImpl.
+ *
  * @xerces.internal
- * 
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @version $Id$
  * @see DeferredAttrImpl
  */

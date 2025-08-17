@@ -28,7 +28,7 @@ import org.apache.xerces.xni.parser.XMLConfigurationException;
 
 /**
  * <p>Parser configuration for Xerces' XMLSchemaValidator.</p>
- * 
+ *
  * @version $Id$
  */
 final class SchemaValidatorConfiguration implements XMLComponentManager {
@@ -69,14 +69,14 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
     // Data
     //
     
-    /** Parent component manager. **/
+    /** Parent component manager. *. */
     private final XMLComponentManager fParentComponentManager;
     
-    /** The Schema's grammar pool. **/
+    /** The Schema's grammar pool. *. */
     private final XMLGrammarPool fGrammarPool;
 
-    /** 
-     * Tracks whether the validator should use components from 
+    /**
+     * Tracks whether the validator should use components from
      * the grammar pool to the exclusion of all others.
      */
     private final boolean fUseGrammarPoolOnly;
@@ -103,15 +103,14 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
     
     /**
      * Returns the state of a feature.
-     * 
-     * @param featureId The feature identifier.
+     *
+     * @param featureId the feature identifier
      * @return true if the feature is supported
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public boolean getFeature(String featureId)
             throws XMLConfigurationException {
@@ -129,15 +128,14 @@ final class SchemaValidatorConfiguration implements XMLComponentManager {
 
     /**
      * Returns the value of a property.
-     * 
-     * @param propertyId The property identifier.
+     *
+     * @param propertyId the property identifier
      * @return the value of the property
-     * 
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     public Object getProperty(String propertyId)
             throws XMLConfigurationException {

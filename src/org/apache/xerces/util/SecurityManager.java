@@ -18,13 +18,13 @@
 package org.apache.xerces.util;
 
 /**
- * This class is a container for parser settings that relate to 
- * security, or more specifically, it is intended to be used to prevent denial-of-service 
- * attacks from being launched against a system running Xerces.  
+ * This class is a container for parser settings that relate to
+ * security, or more specifically, it is intended to be used to prevent denial-of-service
+ * attacks from being launched against a system running Xerces.
  * Any component that is aware of a denial-of-service attack that can arise
  * from its processing of a certain kind of document may query its Component Manager
- * for the property (http://apache.org/xml/properties/security-manager) 
- * whose value will be an instance of this class.  
+ * for the property (http://apache.org/xml/properties/security-manager)
+ * whose value will be an instance of this class.
  * If no value has been set for the property, the component should proceed in the "usual" (spec-compliant)
  * manner.  If a value has been set, then it must be the case that the component in
  * question needs to know what method of this class to query.  This class
@@ -32,7 +32,6 @@ package org.apache.xerces.util;
  * setters so that those values can be tailored by applications that care.
  *
  * @author  Neil Graham, IBM
- *
  * @version $Id$
  */
 public final class SecurityManager {
@@ -41,26 +40,26 @@ public final class SecurityManager {
     // Constants
     //
 
-    /** Default value for entity expansion limit. **/
+    /** Default value for entity expansion limit. *. */
     private final static int DEFAULT_ENTITY_EXPANSION_LIMIT = 100000;
     
-    /** Default value of number of nodes created. **/
+    /** Default value of number of nodes created. *. */
     private final static int DEFAULT_MAX_OCCUR_NODE_LIMIT = 3000;
 
     //
     // Data
     //
 
-    /** Entity expansion limit. **/
+    /** Entity expansion limit. *. */
     private int entityExpansionLimit;
     
-    /** W3C XML Schema maxOccurs limit. **/
+    /** W3C XML Schema maxOccurs limit. *. */
     private int maxOccurLimit;
 
     /**
-     * Default constructor.  Establishes default values 
+     * Default constructor.  Establishes default values
      * for known security vulnerabilities.
-     */  
+     */
     public SecurityManager() {
         entityExpansionLimit = DEFAULT_ENTITY_EXPANSION_LIMIT;
         maxOccurLimit = DEFAULT_MAX_OCCUR_NODE_LIMIT ;
@@ -78,7 +77,7 @@ public final class SecurityManager {
     }
 
     /**
-     * <p>Returns the number of entity expansions 
+     * <p>Returns the number of entity expansions
      * that the parser permits in a document.</p>
      *
      * @return the number of entity expansions
@@ -89,8 +88,8 @@ public final class SecurityManager {
     }
     
     /**
-     * <p>Sets the limit of the number of content model nodes 
-     * that may be created when building a grammar for a W3C 
+     * <p>Sets the limit of the number of content model nodes
+     * that may be created when building a grammar for a W3C
      * XML Schema that contains maxOccurs attributes with values
      * other than "unbounded".</p>
      *
@@ -102,14 +101,14 @@ public final class SecurityManager {
     }
     
     /**
-     * <p>Returns the limit of the number of content model nodes 
-     * that may be created when building a grammar for a W3C 
+     * <p>Returns the limit of the number of content model nodes
+     * that may be created when building a grammar for a W3C
      * XML Schema that contains maxOccurs attributes with values
      * other than "unbounded".</p>
      *
      * @return the maximum value for maxOccurs other
      * than "unbounded"
-     */ 
+     */
     public int getMaxOccurNodeLimit(){
         return maxOccurLimit;    
     }

@@ -32,15 +32,14 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
  * properties:
  * <ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/internal/error-handler</li>
- *   <li>http://apache.org/xml/properties/internal/entity-resolver</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/internal/error-handler</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * </ul>
  * </ul>
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public abstract class XMLParser {
@@ -94,12 +93,11 @@ public abstract class XMLParser {
     //
 
     /**
-     * parse
+     * Parse
      *
      * @param inputSource
-     *
-     * @exception XNIException
-     * @exception java.io.IOException
+     * @throws XNIException
+     * @throws java.io.IOException
      */
     public void parse(XMLInputSource inputSource) 
         throws XNIException, IOException {
@@ -114,7 +112,7 @@ public abstract class XMLParser {
     //
 
     /**
-     * reset all components before parsing
+     * Reset all components before parsing
      */
     protected void reset() throws XNIException {
     } // reset()

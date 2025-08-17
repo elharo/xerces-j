@@ -24,9 +24,8 @@ import org.apache.xerces.xni.XNIException;
  * A parsing exception. This exception is different from the standard
  * XNI exception in that it stores the location in the document (or
  * its entities) where the exception occurred.
- * 
- * @author Andy Clark, IBM
  *
+ * @author Andy Clark, IBM
  * @version $Id$
  */
 public class XMLParseException
@@ -42,10 +41,10 @@ public class XMLParseException
     /** Public identifier. */
     protected String fPublicId;
 
-    /** literal System identifier. */
+    /** Literal System identifier. */
     protected String fLiteralSystemId;
 
-    /** expanded System identifier. */
+    /** Expanded System identifier. */
     protected String fExpandedSystemId;
 
     /** Base system identifier. */

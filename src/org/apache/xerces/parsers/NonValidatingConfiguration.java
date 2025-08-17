@@ -46,11 +46,11 @@ import org.apache.xerces.xni.parser.XMLPullParserConfiguration;
  * configuration with the set of following parser components:
  * Document scanner, DTD scanner, namespace binder, document handler.
  * <p>
- * Xerces parser that uses this configuration is <strong>not</strong> <a href="http://www.w3.org/TR/REC-xml#sec-conformance">conformant</a> 
- * non-validating XML processor, since conformant non-validating processor is required  
- * to process "all the declarations they read in the internal DTD subset ... must use the information in those declarations to normalize attribute values, 
+ * Xerces parser that uses this configuration is <strong>not</strong> <a href="http://www.w3.org/TR/REC-xml#sec-conformance">conformant</a>
+ * non-validating XML processor, since conformant non-validating processor is required
+ * to process "all the declarations they read in the internal DTD subset ... must use the information in those declarations to normalize attribute values,
  * include the replacement text of internal entities, and supply default attribute values".
- * 
+ *
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -97,12 +97,12 @@ public class NonValidatingConfiguration
         Constants.XERCES_FEATURE_PREFIX + Constants.NOTIFY_CHAR_REFS_FEATURE;
     
 
-    /** Feature identifier: expose schema normalized value */
+    /** Feature identifier: expose schema normalized value. */
     protected static final String NORMALIZE_DATA =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_NORMALIZED_VALUE;
 
 
-    /** Feature identifier: send element default value via characters() */
+    /** Feature identifier: send element default value via characters(). */
     protected static final String SCHEMA_ELEMENT_DEFAULT =
     Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_ELEMENT_DEFAULT;
 
@@ -116,7 +116,7 @@ public class NonValidatingConfiguration
     protected static final String ENTITY_MANAGER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
     
-    /** Property identifier document scanner: */
+    /** Property identifier document scanner:. */
     protected static final String DOCUMENT_SCANNER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DOCUMENT_SCANNER_PROPERTY;
 
@@ -180,7 +180,7 @@ public class NonValidatingConfiguration
     /** Document scanner. */
     protected XMLDocumentScanner fScanner;
 
-    /** Input Source */
+    /** Input Source. */
     protected XMLInputSource fInputSource;
 
     /** DTD scanner. */
@@ -194,22 +194,23 @@ public class NonValidatingConfiguration
     /** Document scanner that does namespace binding. */
     private XMLNSDocumentScannerImpl fNamespaceScanner;
 
-    /** Default Xerces implementation of scanner*/
+    /** Default Xerces implementation of scanner. */
     private XMLDocumentScannerImpl fNonNSScanner;
     
     
-	/** fConfigUpdated is set to true if there has been any change to the configuration settings, 
-	 * i.e a feature or a property was changed.
-	 */
+    /**
+     * FConfigUpdated is set to true if there has been any change to the configuration settings,
+     * i.e a feature or a property was changed.
+     */
 	protected boolean fConfigUpdated = false;
 
 
     // state
 
-    /** Locator */
+    /** Locator. */
     protected XMLLocator fLocator;
 
-    /** 
+    /**
      * True if a parse is in progress. This state is needed because
      * some features/properties cannot be set while parsing (e.g.
      * validation and namespaces).
@@ -225,10 +226,10 @@ public class NonValidatingConfiguration
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public NonValidatingConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -238,12 +239,12 @@ public class NonValidatingConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public NonValidatingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool) {
@@ -254,13 +255,13 @@ public class NonValidatingConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public NonValidatingConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool,
@@ -393,10 +394,9 @@ public class NonValidatingConfiguration
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) throws XNIException {
         super.setLocale(locale);
@@ -421,13 +421,11 @@ public class NonValidatingConfiguration
     /**
      * Sets the input source for the document to parse.
      *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @param inputSource the document's input source
+     * @throws XMLConfigurationException thrown if there is a
      *                        configuration error when initializing the
-     *                        parser.
-     * @exception IOException Thrown on I/O error.
-     *
+     *                        parser
+     * @throws IOException thrown on I/O error
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -445,17 +443,14 @@ public class NonValidatingConfiguration
     /**
      * Parses the document in a pull parsing fashion.
      *
-     * @param complete True if the pull parser should parse the
-     *                 remaining document completely.
-     *
-     * @return True if there is more document to parse.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping 
-     *                         another exception.
-     * @exception IOException  An IO exception from the parser, possibly
+     * @param complete true if the pull parser should parse the
+     *                 remaining document completely
+     * @return true if there is more document to parse
+     * @throws XNIException any XNI exception, possibly wrapping
+     *                         another exception
+     * @throws IOException  an IO exception from the parser, possibly
      *                         from a byte stream or character stream
-     *                         supplied by the parser.
-     *
+     *                         supplied by the parser
      * @see #setInputSource
      */
     public boolean parse(boolean complete) throws XNIException, IOException {
@@ -532,10 +527,9 @@ public class NonValidatingConfiguration
     /**
      * Parses the specified input source.
      *
-     * @param source The input source.
-     *
-     * @exception XNIException Throws exception on XNI error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param source the input source
+     * @throws XNIException throws exception on XNI error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(XMLInputSource source) throws XNIException, IOException {
 
@@ -581,10 +575,10 @@ public class NonValidatingConfiguration
     // Protected methods
     //
     
-    /** 
-     * Reset all components before parsing. 
+    /**
+     * Reset all components before parsing.
      *
-     * @throws XNIException Thrown if an error occurs during initialization.
+     * @throws XNIException thrown if an error occurs during initialization
      */
     protected void reset() throws XNIException {
 
@@ -635,13 +629,12 @@ public class NonValidatingConfiguration
      * Check a feature. If feature is know and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId)
         throws XMLConfigurationException {
@@ -718,14 +711,13 @@ public class NonValidatingConfiguration
      * Check a property. If the property is know and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {

@@ -32,7 +32,7 @@ import org.apache.xerces.xni.grammars.XMLSchemaDescription;
  * the garbage collector in response to memory demand. Equality
  * of <code>XMLSchemaDescription</code>s is determined using both
  * the target namespace for the schema and schema location.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -55,13 +55,13 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
     /** Grammars. */
     protected Entry [] fGrammars = null;
     
-    /** Flag indicating whether this pool is locked */
+    /** Flag indicating whether this pool is locked. */
     protected boolean fPoolIsLocked;
     
-    /** The number of grammars in the pool */
+    /** The number of grammars in the pool. */
     protected int fGrammarCount = 0;
     
-    /** Reference queue for cleared grammar references */
+    /** Reference queue for cleared grammar references. */
     protected final ReferenceQueue fReferenceQueue = new ReferenceQueue();
     
     //
@@ -150,7 +150,7 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
      * Puts the specified grammar into the grammar pool and associates it to
      * its root element name or its target namespace.
      *
-     * @param grammar The Grammar.
+     * @param grammar the Grammar
      */
     public void putGrammar(Grammar grammar) {
         if (!fPoolIsLocked) {
@@ -180,7 +180,7 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
      * Currently, the root element name is used as the key for DTD grammars
      * and the target namespace  is used as the key for Schema grammars.
      *
-     * @param desc The Grammar Description.
+     * @param desc the Grammar Description
      */
     public Grammar getGrammar(XMLGrammarDescription desc) {
         synchronized (fGrammars) {
@@ -207,8 +207,8 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
      * is used as the key for DTD grammars and the target namespace  is used
      * as the key for Schema grammars.
      *
-     * @param desc The Grammar Description.
-     * @return     The removed grammar.
+     * @param desc the Grammar Description
+     * @return The removed grammar
      */
     public Grammar removeGrammar(XMLGrammarDescription desc) {
         synchronized (fGrammars) {
@@ -230,7 +230,7 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
      * is used as the key for DTD grammars and the target namespace  is used
      * as the key for Schema grammars.
      *
-     * @param desc The Grammar Description.
+     * @param desc the Grammar Description
      */
     public boolean containsGrammar(XMLGrammarDescription desc) {
         synchronized (fGrammars) {
@@ -285,9 +285,9 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
      * the root element names for DTD grammars and the target namespaces for Schema grammars.
      * The application can override this behaviour and add its own logic.
      *
-     * @param desc1 The grammar description
-     * @param desc2 The grammar description of the grammar to be compared to
-     * @return      True if the grammars are equal, otherwise false
+     * @param desc1 the grammar description
+     * @param desc2 the grammar description of the grammar to be compared to
+     * @return  True if the grammars are equal, otherwise false
      */
     public boolean equals(XMLGrammarDescription desc1, XMLGrammarDescription desc2) {
         if (desc1 instanceof XMLSchemaDescription) {
@@ -327,8 +327,8 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
     /**
      * Returns the hash code value for the given grammar description.
      *
-     * @param desc The grammar description
-     * @return     The hash code value
+     * @param desc the grammar description
+     * @return  The hash code value
      */
     public int hashCode(XMLGrammarDescription desc) {
         if (desc instanceof XMLSchemaDescription) {
@@ -344,9 +344,9 @@ final class SoftReferenceGrammarPool implements XMLGrammarPool {
     
     /**
      * Removes the given entry from the pool
-     * 
+     *
      * @param entry the entry to remove
-     * @return The grammar attached to this entry
+     * @return the grammar attached to this entry
      */
     private Grammar removeEntry(Entry entry) {
         if (entry.prev != null) {

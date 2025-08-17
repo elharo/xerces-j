@@ -29,10 +29,8 @@ import org.apache.xerces.xs.XSTypeDefinition;
 /**
  * To store and validate information about substitutionGroup
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class SubstitutionGroupHandler {
@@ -183,7 +181,7 @@ public class SubstitutionGroupHandler {
     Hashtable fSubGroups = new Hashtable();
 
     /**
-     * clear the internal registry of substitutionGroup information
+     * Clear the internal registry of substitutionGroup information
      */
     public void reset() {
         fSubGroupsB.clear();
@@ -191,7 +189,7 @@ public class SubstitutionGroupHandler {
     }
 
     /**
-     * add a list of substitution group information.
+     * Add a list of substitution group information.
      */
     public void addSubstitutionGroup(XSElementDecl[] elements) {
         XSElementDecl subHead, element;
@@ -213,7 +211,7 @@ public class SubstitutionGroupHandler {
     }
 
     /**
-     * get all elements that can substitute the given element,
+     * Get all elements that can substitute the given element,
      * according to the spec, we shouldn't consider the {block} constraints.
      *
      * from the spec, substitution group of a given element decl also contains

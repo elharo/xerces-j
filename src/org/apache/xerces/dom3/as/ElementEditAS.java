@@ -17,8 +17,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
+ *
  * @deprecated
- * This interface extends the <code>Element</code> interface with additional 
+ * this interface extends the <code>Element</code> interface with additional 
  * methods for guided document editing. An object implementing this 
  * interface must also implement NodeEditAS interface.
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
@@ -26,50 +27,54 @@ and Save Specification</a>.
  */
 public interface ElementEditAS extends NodeEditAS {
     /**
-     * The list of qualified element names defined in the abstract schema. 
+     * The list of qualified element names defined in the abstract schema.
      */
     public NodeList getDefinedElementTypes();
 
     /**
      * Determines element content type.
-     * @return Constant for one of EMPTY_CONTENTTYPE, ANY_CONTENTTYPE, 
-     *   MIXED_CONTENTTYPE, ELEMENTS_CONTENTTYPE.
+     *
+     * @return constant for one of EMPTY_CONTENTTYPE, ANY_CONTENTTYPE,
+     *   MIXED_CONTENTTYPE, ELEMENTS_CONTENTTYPE
      */
     public short contentType();
 
     /**
      * Determines if the value for specified attribute can be set.
-     * @param attrname Name of attribute.
-     * @param attrval Value to be assigned to the attribute.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param attrname name of attribute
+     * @param attrval value to be assigned to the attribute
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canSetAttribute(String attrname, 
                                    String attrval);
 
     /**
-     * Determines if an attribute node can be added with respect to the 
-     * validity check level.This is an attribute node, there is no need for 
+     * Determines if an attribute node can be added with respect to the
+     * validity check level.This is an attribute node, there is no need for
      * canSetAttributreNodeNS!
-     * @param attrNode <code>Node</code> in which the attribute can possibly 
-     *   be set.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param attrNode <code>Node</code> in which the attribute can possibly
+     *   be set
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canSetAttributeNode(Attr attrNode);
 
     /**
-     * Determines if the attribute with given namespace and qualified name can 
-     * be created if not already present in the attribute list of the 
-     * element. If the attribute with same qualified name and namespaceURI 
-     * is already present in the elements attribute list it tests for the 
-     * value of the attribute and its prefix to the new value. See DOM core 
+     * Determines if the attribute with given namespace and qualified name can
+     * be created if not already present in the attribute list of the
+     * element. If the attribute with same qualified name and namespaceURI
+     * is already present in the elements attribute list it tests for the
+     * value of the attribute and its prefix to the new value. See DOM core
      * <code>setAttributeNS</code>.
-     * @param name Qualified name of attribute.
-     * @param attrval Value to be assigned to the attribute.
-     * @param namespaceURI <code>namespaceURI</code> of namespace.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param name qualified name of attribute
+     * @param attrval value to be assigned to the attribute
+     * @param namespaceURI <code>namespaceURI</code> of namespace
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canSetAttributeNS(String name, 
                                      String attrval, 
@@ -77,71 +82,79 @@ public interface ElementEditAS extends NodeEditAS {
 
     /**
      * Verifies if an attribute by the given name can be removed.
-     * @param attrname Name of attribute.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param attrname name of attribute
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canRemoveAttribute(String attrname);
 
     /**
-     * Verifies if an attribute by the given local name and namespace can be 
+     * Verifies if an attribute by the given local name and namespace can be
      * removed.
-     * @param attrname Local name of the attribute to be removed.
-     * @param namespaceURI The namespace URI of the attribute to remove.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param attrname local name of the attribute to be removed
+     * @param namespaceURI the namespace URI of the attribute to remove
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canRemoveAttributeNS(String attrname, 
                                         String namespaceURI);
 
     /**
      * Determines if an attribute node can be removed.
-     * @param attrNode The <code>Attr</code> node to remove from the 
-     *   attribute list.
-     * @return <code>true</code> if no reason it can't be done; 
-     *   <code>false</code> if it can't be done.
+     *
+     * @param attrNode the <code>Attr</code> node to remove from the
+     *   attribute list
+     * @return <code>true</code> if no reason it can't be done;
+     *   <code>false</code> if it can't be done
      */
     public boolean canRemoveAttributeNode(Node attrNode);
 
     /**
-     * Returns an <code>NodeList</code> containing the possible 
-     * <code>Element</code> names that can appear as children of this type 
+     * Returns an <code>NodeList</code> containing the possible
+     * <code>Element</code> names that can appear as children of this type
      * of element.
-     * @return List of possible children element types of this element.
+     *
+     * @return list of possible children element types of this element
      */
     public NodeList getChildElements();
 
     /**
-     * Returns an <code>NodeList</code> containing the possible 
-     * <code>Element</code> names that can appear as a parent of this type 
+     * Returns an <code>NodeList</code> containing the possible
+     * <code>Element</code> names that can appear as a parent of this type
      * of element.
-     * @return List of possible parent element types of this element.
+     *
+     * @return list of possible parent element types of this element
      */
     public NodeList getParentElements();
 
     /**
-     * Returns an <code>NodeList</code> containing all the possible 
+     * Returns an <code>NodeList</code> containing all the possible
      * <code>Attr</code>s that can appear with this type of element.
-     * @return List of possible attributes of this element.
+     *
+     * @return list of possible attributes of this element
      */
     public NodeList getAttributeList();
 
     /**
      * Determines if this element is defined in the currently active AS.
-     * @param elemTypeName Name of element.
-     * @return A boolean that is <code>true</code> if the element is defined, 
-     *   <code>false</code> otherwise.
+     *
+     * @param elemTypeName name of element
+     * @return a boolean that is <code>true</code> if the element is defined,
+     *   <code>false</code> otherwise
      */
     public boolean isElementDefined(String elemTypeName);
 
     /**
-     * Determines if this element in this namespace is defined in the 
+     * Determines if this element in this namespace is defined in the
      * currently active AS.
-     * @param elemTypeName Name of element.
-     * @param namespaceURI <code>namespaceURI</code> of namespace.
-     * @param name Qualified name of namespace. This is for sub-elements.
-     * @return A boolean that is <code>true</code> if the element is defined, 
-     *   <code>false</code> otherwise.
+     *
+     * @param elemTypeName name of element
+     * @param namespaceURI <code>namespaceURI</code> of namespace
+     * @param name qualified name of namespace. This is for sub-elements.
+     * @return a boolean that is <code>true</code> if the element is defined,
+     *   <code>false</code> otherwise
      */
     public boolean isElementDefinedNS(String elemTypeName, 
                                       String namespaceURI, 

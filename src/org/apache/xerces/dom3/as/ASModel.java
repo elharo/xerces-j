@@ -15,8 +15,9 @@ package org.apache.xerces.dom3.as;
 import org.w3c.dom.DOMException;
 
 /**
+ *
  * @deprecated
- *  To begin with, an abstract schema is a generic structure that could 
+ *  to begin with, an abstract schema is a generic structure that could 
  * contain both internal and external subsets. An <code>ASModel</code> is an 
  * abstract object that could map to a DTD , an XML Schema , a database 
  * schema, etc. An <code>ASModel</code> could represent either an internal 
@@ -38,126 +39,131 @@ and Save Specification</a>.
  */
 public interface ASModel extends ASObject {
     /**
-     * <code>true</code> if this <code>ASModel</code> defines the document 
-     * structure in terms of namespaces and local names ; <code>false</code> 
-     * if the document structure is defined only in terms of 
+     * <code>true</code> if this <code>ASModel</code> defines the document
+     * structure in terms of namespaces and local names ; <code>false</code>
+     * if the document structure is defined only in terms of
      * <code>QNames</code>.
      */
     public boolean getIsNamespaceAware();
 
     /**
-     *  0 if used internally, 1 if used externally, 2 if not all. An exception 
-     * will be raised if it is incompatibly shared or in use as an internal 
-     * subset. 
+     * 0 if used internally, 1 if used externally, 2 if not all. An exception
+     * will be raised if it is incompatibly shared or in use as an internal
+     * subset.
      */
     public short getUsageLocation();
 
     /**
-     *  The URI reference. 
+     * The URI reference.
      */
     public String getAsLocation();
     /**
-     *  The URI reference. 
+     * The URI reference.
      */
     public void setAsLocation(String asLocation);
 
     /**
-     *  The hint to locating an ASModel. 
+     * The hint to locating an ASModel.
      */
     public String getAsHint();
     /**
-     *  The hint to locating an ASModel. 
+     * The hint to locating an ASModel.
      */
     public void setAsHint(String asHint);
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * element declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * element declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getElementDeclarations();
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * attribute declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * attribute declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getAttributeDeclarations();
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * notation declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * notation declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getNotationDeclarations();
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * entity declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * entity declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getEntityDeclarations();
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global 
-     * content model declarations. If one attempts to add, set, or remove a 
-     * node type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global
+     * content model declarations. If one attempts to add, set, or remove a
+     * node type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getContentModelDeclarations();
 
     /**
-     * This method will allow the nesting or "importation" of ASModels. 
-     * @param abstractSchema ASModel to be set. Subsequent calls will nest 
-     *   the ASModels within the specified <code>ownerASModel</code>. 
+     * This method will allow the nesting or "importation" of ASModels.
+     *
+     * @param abstractSchema ASModel to be set. Subsequent calls will nest
+     *   the ASModels within the specified <code>ownerASModel</code>.
      */
     public void addASModel(ASModel abstractSchema);
 
     /**
-     * To retrieve a list of nested ASModels without reference to names. 
-     * @return A list of ASModels. 
+     * To retrieve a list of nested ASModels without reference to names.
+     *
+     * @return a list of ASModels
      */
     public ASObjectList getASModels();
 
     /**
-     * Removes only the specified <code>ASModel</code> from the list of 
+     * Removes only the specified <code>ASModel</code> from the list of
      * <code>ASModel</code>s.
-     * @param as AS to be removed.
+     *
+     * @param as AS to be removed
      */
     public void removeAS(ASModel as);
 
     /**
-     * Determines if an <code>ASModel</code> itself is valid, i.e., confirming 
-     * that it's well-formed and valid per its own formal grammar. 
-     * @return <code>true</code> if the <code>ASModel</code> is valid, 
-     *   <code>false</code> otherwise.
+     * Determines if an <code>ASModel</code> itself is valid, i.e., confirming
+     * that it's well-formed and valid per its own formal grammar.
+     *
+     * @return <code>true</code> if the <code>ASModel</code> is valid,
+     *   <code>false</code> otherwise
      */
     public boolean validate();
 
     /**
      * Creates an element declaration for the element type specified.
-     * @param namespaceURI The <code>namespace URI</code> of the element type 
-     *   being declared. 
-     * @param name The name of the element. The format of the name could be 
+     *
+     * @param namespaceURI the <code>namespace URI</code> of the element type
+     *   being declared
+     * @param name the name of the element. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @return A new <code>ASElementDeclaration</code> object with 
+     *   1.0; it's ASModel-dependent.
+     * @return a new <code>ASElementDeclaration</code> object with
      *   <code>name</code> attribute set to <code>tagname</code> and 
      *   <code>namespaceURI</code> set to <code>systemId</code>. Other 
      *   attributes of the element declaration are set through 
      *   <code>ASElementDeclaration</code> interface methods.
-     * @exception DOMException
+     * @throws DOMException
      *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     *   illegal character
      */
     public ASElementDeclaration createASElementDeclaration(String namespaceURI, 
                                                            String name)
@@ -165,35 +171,37 @@ public interface ASModel extends ASObject {
 
     /**
      * Creates an attribute declaration.
-     * @param namespaceURI The namespace URI of the attribute being declared.
-     * @param name The name of the attribute. The format of the name could be 
+     *
+     * @param namespaceURI the namespace URI of the attribute being declared
+     * @param name the name of the attribute. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @return A new <code>ASAttributeDeclaration</code> object with 
-     *   appropriate attributes set by input parameters.
-     * @exception DOMException
+     *   1.0; it's ASModel-dependent.
+     * @return a new <code>ASAttributeDeclaration</code> object with
+     *   appropriate attributes set by input parameters
+     * @throws DOMException
      *   INVALID_CHARACTER_ERR: Raised if the input <code>name</code> 
-     *   parameter contains an illegal character.
+     *   parameter contains an illegal character
      */
     public ASAttributeDeclaration createASAttributeDeclaration(String namespaceURI, 
                                                                String name)
                                                                throws DOMException;
 
     /**
-     * Creates a new notation declaration. 
-     * @param namespaceURI The namespace URI of the notation being declared.
-     * @param name The name of the notation. The format of the name could be 
+     * Creates a new notation declaration.
+     *
+     * @param namespaceURI the namespace URI of the notation being declared
+     * @param name the name of the notation. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @param systemId The system identifier for the notation declaration.
-     * @param publicId The public identifier for the notation declaration.
-     * @return A new <code>ASNotationDeclaration</code> object with 
+     *   1.0; it's ASModel-dependent.
+     * @param systemId the system identifier for the notation declaration
+     * @param publicId the public identifier for the notation declaration
+     * @return a new <code>ASNotationDeclaration</code> object with
      *   <code>notationName</code> attribute set to <code>name</code> and 
      *   <code>publicId</code> and <code>systemId</code> set to the 
-     *   corresponding fields.
-     * @exception DOMException
+     *   corresponding fields
+     * @throws DOMException
      *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     *   illegal character
      */
     public ASNotationDeclaration createASNotationDeclaration(String namespaceURI, 
                                                              String name, 
@@ -202,30 +210,32 @@ public interface ASModel extends ASObject {
                                                              throws DOMException;
 
     /**
-     * Creates an ASEntityDeclaration. 
-     * @param name The name of the entity being declared.
-     * @return A new <code>ASEntityDeclaration</code> object with 
-     *   <code>entityName</code> attribute set to name.
-     * @exception DOMException
+     * Creates an ASEntityDeclaration.
+     *
+     * @param name the name of the entity being declared
+     * @return a new <code>ASEntityDeclaration</code> object with
+     *   <code>entityName</code> attribute set to name
+     * @throws DOMException
      *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     *   illegal character
      */
     public ASEntityDeclaration createASEntityDeclaration(String name)
                                                          throws DOMException;
 
     /**
-     * Creates an object which describes part of an 
-     * <code>ASElementDeclaration</code>'s content model. 
-     * @param minOccurs The minimum occurrence for the subModels of this 
-     *   <code>ASContentModel</code>.
-     * @param maxOccurs The maximum occurrence for the subModels of this 
-     *   <code>ASContentModel</code>.
-     * @param operator operator of type <code>AS_CHOICE</code>, 
+     * Creates an object which describes part of an
+     * <code>ASElementDeclaration</code>'s content model.
+     *
+     * @param minOccurs the minimum occurrence for the subModels of this
+     *   <code>ASContentModel</code>
+     * @param maxOccurs the maximum occurrence for the subModels of this
+     *   <code>ASContentModel</code>
+     * @param operator operator of type <code>AS_CHOICE</code>,
      *   <code>AS_SEQUENCE</code>, <code>AS_ALL</code> or 
-     *   <code>AS_NONE</code>.
-     * @return A new <code>ASContentModel</code> object.
-     * @exception DOMASException
-     *   A DOMASException, e.g., <code>minOccurs &gt; maxOccurs</code>.
+     *   <code>AS_NONE</code>
+     * @return a new <code>ASContentModel</code> object
+     * @throws DOMASException
+     *   A DOMASException, e.g., <code>minOccurs &gt; maxOccurs</code>
      */
     public ASContentModel createASContentModel(int minOccurs, 
                                                int maxOccurs, 

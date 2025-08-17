@@ -26,10 +26,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 
 /**
+ *
  * @xerces.internal
- * 
  * @author Lucian Holland
- * 
  * @version $Id$
  */
 public class AttributeImpl extends XMLEventImpl implements Attribute {
@@ -55,6 +54,7 @@ public class AttributeImpl extends XMLEventImpl implements Attribute {
     }
     
     /**
+     *
      * @see javax.xml.stream.events.Attribute#getName()
      */
     public final QName getName() {
@@ -62,6 +62,7 @@ public class AttributeImpl extends XMLEventImpl implements Attribute {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Attribute#getValue()
      */
     public final String getValue() {
@@ -69,6 +70,7 @@ public class AttributeImpl extends XMLEventImpl implements Attribute {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Attribute#getDTDType()
      */
     public final String getDTDType() {
@@ -76,6 +78,7 @@ public class AttributeImpl extends XMLEventImpl implements Attribute {
     }
 
     /**
+     *
      * @see javax.xml.stream.events.Attribute#isSpecified()
      */
     public final boolean isSpecified() {

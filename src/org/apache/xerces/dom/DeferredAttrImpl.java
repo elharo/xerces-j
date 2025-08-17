@@ -53,14 +53,13 @@ package org.apache.xerces.dom;
  * <P>
  * DeferredAttrImpl inherits from AttrImpl which does not support
  * Namespaces. DeferredAttrNSImpl, which inherits from AttrNSImpl, does.
+ *
  * @see DeferredAttrNSImpl
- *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public final class DeferredAttrImpl
     extends AttrImpl

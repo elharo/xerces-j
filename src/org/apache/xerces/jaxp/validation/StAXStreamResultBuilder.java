@@ -42,7 +42,7 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
  * <p>StAX stream result builder.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

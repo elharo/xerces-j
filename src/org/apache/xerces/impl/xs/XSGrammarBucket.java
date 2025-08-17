@@ -23,9 +23,8 @@ import java.util.Vector;
 
 /**
  * A class used to hold the internal schema grammar set for the current instance
- * 
- * @xerces.internal  
- * 
+ *
+ * @xerces.internal
  * @author Sandy Gao, IBM
  * @version $Id$
  */
@@ -66,14 +65,14 @@ public class XSGrammarBucket {
     }
 
     /**
-     * put a schema grammar and any grammars imported by it (directly or
+     * Put a schema grammar and any grammars imported by it (directly or
      * inderectly) into the registry. when a grammar with the same target
      * namespace is already in the bucket, and different from the one being
      * added, it's an error, and no grammar will be added into the bucket.
      *
      * @param grammar   the grammar to put in the registry
      * @param deep      whether to add imported grammars
-     * @return          whether the process succeeded
+     * @return  whether the process succeeded
      */
     public boolean putGrammar(SchemaGrammar grammar, boolean deep) {
         // whether there is one with the same tns
@@ -134,7 +133,7 @@ public class XSGrammarBucket {
     }
 
     /**
-     * put a schema grammar and any grammars imported by it (directly or
+     * Put a schema grammar and any grammars imported by it (directly or
      * inderectly) into the registry. when a grammar with the same target
      * namespace is already in the bucket, and different from the one being
      * added, no grammar will be added into the bucket.
@@ -142,8 +141,8 @@ public class XSGrammarBucket {
      * @param grammar        the grammar to put in the registry
      * @param deep           whether to add imported grammars
      * @param ignoreConflict whether to ignore grammars that already exist in the grammar
-     *                       bucket or not - including 'grammar' parameter. 
-     * @return               whether the process succeeded
+     *                       bucket or not - including 'grammar' parameter
+     * @return  whether the process succeeded
      */
     public boolean putGrammar(SchemaGrammar grammar, boolean deep, boolean ignoreConflict) {
         if (!ignoreConflict) {
@@ -205,9 +204,9 @@ public class XSGrammarBucket {
     }
 
     /**
-     * get all grammars in the registry
+     * Get all grammars in the registry
      *
-     * @return an array of SchemaGrammars.
+     * @return an array of SchemaGrammars
      */
     public SchemaGrammar[] getGrammars() {
         // get the number of grammars

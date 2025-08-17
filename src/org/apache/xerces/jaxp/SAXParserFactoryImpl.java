@@ -34,10 +34,9 @@ import org.xml.sax.SAXNotSupportedException;
  * This is the implementation specific class for the
  * <code>javax.xml.parsers.SAXParserFactory</code>. This is the platform
  * default implementation for the platform.
- * 
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
- * 
  * @version $Id$
  */
 public class SAXParserFactoryImpl extends SAXParserFactory {
@@ -50,7 +49,7 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     private static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /** Feature identifier: XInclude processing. */
     private static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
@@ -66,6 +65,7 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     /**
      * Creates a new instance of <code>SAXParser</code> using the currently
      * configured factory parameters.
+     *
      * @return javax.xml.parsers.SAXParser
      */
     public SAXParser newSAXParser()
@@ -103,7 +103,7 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     }
 
     /**
-     * Sets the particular feature in the underlying implementation of 
+     * Sets the particular feature in the underlying implementation of
      * org.xml.sax.XMLReader.
      */
     public void setFeature(String name, boolean value)
@@ -153,7 +153,7 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     }
 
     /**
-     * returns the particular property requested for in the underlying 
+     * Returns the particular property requested for in the underlying
      * implementation of org.xml.sax.XMLReader.
      */
     public boolean getFeature(String name)

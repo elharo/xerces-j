@@ -48,20 +48,18 @@ import org.apache.xerces.xni.parser.XMLInputSource;
  * when the parse attribute of the &lt;include&gt; element is "text".  Using this
  * class will open the location, detect the encoding, and discard the byte order
  * mark, if applicable.
- * 
+ *
  * REVISIT:
  * Much of the code in this class is taken from XMLEntityManager.  It would be nice
  * if this code could be shared in some way.  However, since XMLEntityManager is used
  * for reading files as XML, and this needs to read files as text, there would need
  * to be some refactoring done.
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @author Peter McCracken, IBM
  * @author Ankit Pasricha, IBM
- * @author Arun Yadav, Sun Microsystems Inc.
- *
+ * @author Arun Yadav, Sun Microsystems Inc
  * @version $Id$
- *
  * @see XIncludeHandler
  */
 public class XIncludeTextReader {
@@ -75,9 +73,9 @@ public class XIncludeTextReader {
     /**
      * Construct the XIncludeReader using the XMLInputSource and XIncludeHandler.
      *
-     * @param source The XMLInputSource to use.
-     * @param handler The XIncludeHandler to use.
-     * @param bufferSize The size of this text reader's buffer.
+     * @param source the XMLInputSource to use
+     * @param handler the XIncludeHandler to use
+     * @param bufferSize the size of this text reader's buffer
      */
     public XIncludeTextReader(XMLInputSource source, XIncludeHandler handler, int bufferSize)
         throws IOException {
@@ -91,7 +89,7 @@ public class XIncludeTextReader {
      * reading the text include.
      *
      * @param errorReporter the XMLErrorReporter to be used for
-     * reporting errors.
+     * reporting errors
      */
     public void setErrorReporter(XMLErrorReporter errorReporter) {
         fErrorReporter = errorReporter;
@@ -100,7 +98,7 @@ public class XIncludeTextReader {
     /**
      * Return the Reader for given XMLInputSource.
      *
-     * @param source The XMLInputSource to use.
+     * @param source the XMLInputSource to use
      */
     protected Reader getReader(XMLInputSource source) throws IOException {
         if (source.getCharacterStream() != null) {
@@ -185,13 +183,14 @@ public class XIncludeTextReader {
                 }
 
                 String detectedEncoding = null;
-                /**  The encoding of such a resource is determined by:
-                    1 external encoding information, if available, otherwise
-                         -- the most common type of external information is the "charset" parameter of a MIME package
-                    2 if the media type of the resource is text/xml, application/xml, or matches the conventions text/*+xml or application/*+xml as described in XML Media Types [IETF RFC 3023], the encoding is recognized as specified in XML 1.0, otherwise
-                    3 the value of the encoding attribute if one exists, otherwise
-                    4 UTF-8.
-                 **/
+                /**
+                 * The encoding of such a resource is determined by:
+                 * 1 external encoding information, if available, otherwise
+                 * -- the most common type of external information is the "charset" parameter of a MIME package
+                 * 2 if the media type of the resource is text/xml, application/xml, or matches the conventions text/*+xml or application/*+xml as described in XML Media Types [IETF RFC 3023], the encoding is recognized as specified in XML 1.0, otherwise
+                 * 3 the value of the encoding attribute if one exists, otherwise
+                 * 4 UTF-8.
+                 */
                 if (contentType.equals("text/xml")) {
                     if (charset != null) {
                         detectedEncoding = charset;
@@ -262,7 +261,7 @@ public class XIncludeTextReader {
         }
     }
     
-    /** Create a new UTF-8 reader from the InputStream. **/
+    /** Create a new UTF-8 reader from the InputStream. *. */
     private Reader createUTF8Reader(InputStream stream) {
         return new UTF8Reader(stream, 
                 fTempString.ch.length, 
@@ -270,7 +269,7 @@ public class XIncludeTextReader {
                 fErrorReporter.getLocale());
     }
 
-    /** Create a new UTF-16 reader from the InputStream. **/
+    /** Create a new UTF-16 reader from the InputStream. *. */
     private Reader createUTF16Reader(InputStream stream, boolean isBigEndian) {
         return new UTF16Reader(stream,
                 (fTempString.ch.length << 1),
@@ -279,7 +278,7 @@ public class XIncludeTextReader {
                 fErrorReporter.getLocale());
     }
     
-    /** Create a new ASCII reader from the InputStream. **/
+    /** Create a new ASCII reader from the InputStream. *. */
     private Reader createASCIIReader(InputStream stream) {
         return new ASCIIReader(stream,
                 fTempString.ch.length,
@@ -287,12 +286,12 @@ public class XIncludeTextReader {
                 fErrorReporter.getLocale());
     }
     
-    /** Create a new ISO-8859-1 reader from the InputStream. **/
+    /** Create a new ISO-8859-1 reader from the InputStream. *. */
     private Reader createLatin1Reader(InputStream stream) {
         return new Latin1Reader(stream, fTempString.ch.length);
     }
 
-    /** 
+    /**
      * XMLEntityManager cares about endian-ness, since it creates its own optimized
      * readers. Since we're just using generic Java readers for now, we're not caring
      * about endian-ness.  If this changes, even more code needs to be copied from
@@ -317,7 +316,7 @@ public class XIncludeTextReader {
     /**
      * Removes the byte order mark from the stream, if
      * it exists and returns the encoding name.
-     * 
+     *
      * @param stream
      * @param encoding
      * @throws IOException
@@ -367,13 +366,13 @@ public class XIncludeTextReader {
 
     /**
      * REVISIT: This code is taken from org.apache.xerces.impl.XMLEntityManager.
-     *          Is there any way we can share the code, without having it implemented twice?
-     *          I think we should make it public and static in XMLEntityManager. --PJM
+     * Is there any way we can share the code, without having it implemented twice?
+     * I think we should make it public and static in XMLEntityManager. --PJM
      *
      * Returns the IANA encoding name that is auto-detected from
      * the bytes specified, with the endian-ness of that encoding where appropriate.
      *
-     * @param b4    The first four bytes of the input.
+     * @param b4    the first four bytes of the input
      * @return the encoding name, or null if no encoding could be detected
      */
     protected String getEncodingName(byte[] b4) {
@@ -439,7 +438,7 @@ public class XIncludeTextReader {
      * Read the input stream as text, and pass the text on to the XIncludeHandler
      * using calls to characters().  This will read all of the text it can from the
      * resource.
-     * 
+     *
      * @throws IOException
      */
     public void parse() throws IOException {
@@ -503,8 +502,8 @@ public class XIncludeTextReader {
     
     /**
      * Sets the input source on this text reader.
-     * 
-     * @param source The XMLInputSource to use.
+     *
+     * @param source the XMLInputSource to use
      */
     public void setInputSource(XMLInputSource source) {
         fSource = source;
@@ -513,7 +512,7 @@ public class XIncludeTextReader {
     /**
      * Closes the stream.  Call this after parse(), or when there is no longer any need
      * for this object.
-     * 
+     *
      * @throws IOException
      */
     public void close() throws IOException {
@@ -527,7 +526,7 @@ public class XIncludeTextReader {
      * Returns true if the specified character is a valid XML character
      * as per the rules of XML 1.0.
      *
-     * @param ch The character to check.
+     * @param ch the character to check
      */
     protected boolean isValid(int ch) {
         return XMLChar.isValid(ch);
@@ -536,8 +535,8 @@ public class XIncludeTextReader {
     /**
      * Sets the buffer size property for the reader which decides the chunk sizes that are parsed
      * by the reader at a time and passed to the handler
-     * 
-     * @param bufferSize The size of the buffer desired
+     *
+     * @param bufferSize the size of the buffer desired
      */
     protected void setBufferSize(int bufferSize) {
         if (fTempString.ch.length != ++bufferSize) {

@@ -34,9 +34,8 @@ import org.apache.xerces.xs.XSValue;
 /**
  * The XML representation for an attribute declaration
  * schema component is an &lt;attribute&gt; element information item
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @author Sandy Gao, IBM
  * @version $Id$
@@ -182,6 +181,7 @@ public class XSAttributeDecl implements XSAttributeDeclaration {
     }
     
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

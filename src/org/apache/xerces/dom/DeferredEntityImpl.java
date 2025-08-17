@@ -49,9 +49,8 @@ package org.apache.xerces.dom;
  * simplest solution.
  *
  * @xerces.internal
- *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DeferredEntityImpl
     extends EntityImpl

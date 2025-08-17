@@ -33,7 +33,7 @@ import org.apache.xerces.xpointer.XPointerHandler;
  * no schema validator.  Using this pipeline will enable processing according to the
  * XML Inclusions specification with XPointers, to the conformance level described in
  * <code>XPointerHandler.</code>.
- * 
+ *
  * @see org.apache.xerces.xpointer.XPointerHandler
  */
 public class XPointerParserConfiguration extends XML11Configuration {
@@ -71,10 +71,10 @@ public class XPointerParserConfiguration extends XML11Configuration {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XPointerParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -85,8 +85,8 @@ public class XPointerParserConfiguration extends XML11Configuration {
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XPointerParserConfiguration(
         SymbolTable symbolTable,
@@ -99,9 +99,9 @@ public class XPointerParserConfiguration extends XML11Configuration {
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XPointerParserConfiguration(
         SymbolTable symbolTable,
@@ -139,7 +139,7 @@ public class XPointerParserConfiguration extends XML11Configuration {
     } // <init>(SymbolTable,XMLGrammarPool)}
     
     
-	/** Configures the pipeline. */
+    /** Configures the pipeline. */
     protected void configurePipeline() {
         super.configurePipeline();
 

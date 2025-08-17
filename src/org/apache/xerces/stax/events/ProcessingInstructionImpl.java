@@ -25,10 +25,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.ProcessingInstruction;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class ProcessingInstructionImpl extends XMLEventImpl implements
@@ -38,6 +37,7 @@ public final class ProcessingInstructionImpl extends XMLEventImpl implements
     private final String fData;
 
     /**
+     *
      * @param location
      */
     public ProcessingInstructionImpl(final String target, final String data, final Location location) {
@@ -47,6 +47,7 @@ public final class ProcessingInstructionImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.ProcessingInstruction#getTarget()
      */
     public String getTarget() {
@@ -54,6 +55,7 @@ public final class ProcessingInstructionImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.ProcessingInstruction#getData()
      */
     public String getData() {

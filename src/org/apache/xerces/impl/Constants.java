@@ -22,11 +22,9 @@ import java.util.NoSuchElementException;
 
 /**
  * Commonly used constants.
- * 
+ *
  * @xerces.internal
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public final class Constants {
@@ -85,13 +83,13 @@ public final class Constants {
     /** Unicode normalization checking feature ("unicode-normalization-checking"). */
     public static final String UNICODE_NORMALIZATION_CHECKING_FEATURE = "unicode-normalization-checking";
     
-    /** xmlns URIs feature ("xmlns-uris"). */
+    /** Xmlns URIs feature ("xmlns-uris"). */
     public static final String XMLNS_URIS_FEATURE = "xmlns-uris";
     
     /** XML 1.1 feature ("xml-1.1"). */
     public static final String XML_11_FEATURE = "xml-1.1";
     
-    /** Allow unparsed entity and notation declaration events to be sent after the end DTD event ("allow-dtd-events-after-endDTD") */
+    /** Allow unparsed entity and notation declaration events to be sent after the end DTD event ("allow-dtd-events-after-endDTD"). */
     public static final String ALLOW_DTD_EVENTS_AFTER_ENDDTD_FEATURE = "allow-dtd-events-after-endDTD";
     
     // sax properties
@@ -123,10 +121,10 @@ public final class Constants {
     public static final String JAXP_PROPERTY_PREFIX =
         "http://java.sun.com/xml/jaxp/properties/";
     
-    /** JAXP schemaSource property: when used internally may include DTD sources (DOM) */
+    /** JAXP schemaSource property: when used internally may include DTD sources (DOM). */
     public static final String SCHEMA_SOURCE = "schemaSource";
     
-    /** JAXP schemaSource language: when used internally may include DTD namespace (DOM) */
+    /** JAXP schemaSource language: when used internally may include DTD namespace (DOM). */
     public static final String SCHEMA_LANGUAGE = "schemaLanguage";
     
     
@@ -202,16 +200,16 @@ public final class Constants {
     /** Schema validation feature ("validation/schema"). */
     public static final String SCHEMA_VALIDATION_FEATURE = "validation/schema";
     
-    /** Expose schema normalized values */
+    /** Expose schema normalized values. */
     public static final String SCHEMA_NORMALIZED_VALUE = "validation/schema/normalized-value";
     
-    /** Send schema default value via characters() */
+    /** Send schema default value via characters(). */
     public static final String SCHEMA_ELEMENT_DEFAULT = "validation/schema/element-default";
     
     /** Schema full constraint checking ("validation/schema-full-checking"). */
     public static final String SCHEMA_FULL_CHECKING = "validation/schema-full-checking";
     
-    /** Augment Post-Schema-Validation-Infoset */
+    /** Augment Post-Schema-Validation-Infoset. */
     public static final String SCHEMA_AUGMENT_PSVI = "validation/schema/augment-psvi";
     
     /** Dynamic validation feature ("validation/dynamic"). */
@@ -306,30 +304,30 @@ public final class Constants {
      * found for an element.  Once a global element declaration has been found, xsi:type
      * attributes will start being processed for the sub-tree beginning at the element for
      * which the declaration was found.
-     * 
+     *
      * Suppose an element A has two element children, B and C.
-     * 
+     *
      * If a global element declaration is found for A, xsi:type attributes on A, B and C,
      * and all of B and C's descendents, will be processed.
-     * 
+     *
      * If no global element declaration is found for A or B, but one is found for C,
      * then xsi:type attributes will be ignored on A and B (and any descendents of B,
      * until a global element declaration is found), but xsi:type attributes will be
      * processed for C and all of C's descendents.
-     * 
+     *
      * Once xsi:type attributes stop being ignored for a subtree, they do not start
      * being ignored again, even if more elements are encountered for which no global
      * element declaration can be found.
      */
     public static final String IGNORE_XSI_TYPE_FEATURE = "validation/schema/ignore-xsi-type-until-elemdecl";
     
-    /** Perform checking of ID/IDREFs ("validation/id-idref-checking") */
+    /** Perform checking of ID/IDREFs ("validation/id-idref-checking"). */
     public static final String ID_IDREF_CHECKING_FEATURE = "validation/id-idref-checking";
     
-    /** Feature to ignore errors caused by identity constraints ("validation/identity-constraint-checking") */
+    /** Feature to ignore errors caused by identity constraints ("validation/identity-constraint-checking"). */
     public static final String IDC_CHECKING_FEATURE = "validation/identity-constraint-checking";
     
-    /** Feature to ignore errors caused by unparsed entities ("validation/unparsed-entity-checking") */
+    /** Feature to ignore errors caused by unparsed entities ("validation/unparsed-entity-checking"). */
     public static final String UNPARSED_ENTITY_CHECKING_FEATURE = "validation/unparsed-entity-checking";
     
     /**
@@ -338,9 +336,10 @@ public final class Constants {
      */
     public static final String USE_GRAMMAR_POOL_ONLY_FEATURE = "internal/validation/schema/use-grammar-pool-only";
     
-    /** Internal performance related feature: 
+    /**
+     * Internal performance related feature:
      * false - the parser settings (features/properties) have not changed between 2 parses
-     * true - the parser settings have changed between 2 parses  
+     * true - the parser settings have changed between 2 parses
      * NOTE: this feature should only be set by the parser configuration.
      */
     public static final String PARSER_SETTINGS = "internal/parser-settings";
@@ -436,32 +435,32 @@ public final class Constants {
     
     // general constants
     
-    /** Element PSVI is stored in augmentations using string "ELEMENT_PSVI" */
+    /** Element PSVI is stored in augmentations using string "ELEMENT_PSVI". */
     public final static String ELEMENT_PSVI = "ELEMENT_PSVI";
     
-    /** Attribute PSVI is stored in augmentations using string "ATTRIBUTE_PSVI" */
+    /** Attribute PSVI is stored in augmentations using string "ATTRIBUTE_PSVI". */
     public final static String ATTRIBUTE_PSVI = "ATTRIBUTE_PSVI";
     
-    /** 
-     * Boolean indicating whether an attribute is declared in the DTD is stored 
+    /**
+     * Boolean indicating whether an attribute is declared in the DTD is stored
      * in augmentations using the string "ATTRIBUTE_DECLARED". The absence of this
      * augmentation indicates that the attribute was not declared in the DTD.
      */
     public final static String ATTRIBUTE_DECLARED = "ATTRIBUTE_DECLARED";
     
-    /** 
+    /**
      * Boolean indicating whether an entity referenced in the document has
-     * not been read is stored in augmentations using the string "ENTITY_SKIPPED". 
-     * The absence of this augmentation indicates that the entity had a 
+     * not been read is stored in augmentations using the string "ENTITY_SKIPPED".
+     * The absence of this augmentation indicates that the entity had a
      * declaration and was expanded.
      */
     public final static String ENTITY_SKIPPED = "ENTITY_SKIPPED";
     
     /**
      * Boolean indicating whether a character is a probable white space
-     * character (ch <= 0x20) that was the replacement text of a character 
-     * reference is stored in augmentations using the string "CHAR_REF_PROBABLE_WS". 
-     * The absence of this augmentation indicates that the character is not 
+     * character (ch <= 0x20) that was the replacement text of a character
+     * reference is stored in augmentations using the string "CHAR_REF_PROBABLE_WS".
+     * The absence of this augmentation indicates that the character is not
      * probable white space and/or was not included from a character reference.
      */
     public final static String CHAR_REF_PROBABLE_WS = "CHAR_REF_PROBABLE_WS";
@@ -639,9 +638,9 @@ public final class Constants {
         /**
          * Tests if this enumeration contains more elements.
          *
-         * @return  <code>true</code> if this enumeration contains more elements;
-         *          <code>false</code> otherwise.
-         * @since   JDK1.0
+         * @return <code>true</code> if this enumeration contains more elements;
+         *          <code>false</code> otherwise
+         * @since  JDK1.0
          */
         public boolean hasMoreElements() {
             return index < array.length;
@@ -650,9 +649,9 @@ public final class Constants {
         /**
          * Returns the next element of this enumeration.
          *
-         * @return     the next element of this enumeration.
-         * @exception  NoSuchElementException  if no more elements exist.
-         * @since      JDK1.0
+         * @return the next element of this enumeration
+         * @throws  NoSuchElementException  if no more elements exist
+         * @since  JDK1.0
          */
         public Object nextElement() {
             if (index < array.length) {

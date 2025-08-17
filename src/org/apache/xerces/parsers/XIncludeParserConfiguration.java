@@ -32,7 +32,7 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
  * no schema validator.  Using this pipeline will enable processing according to the
  * XML Inclusions specification, to the conformance level described in
  * <code>XIncludeHandler</code>.
- * 
+ *
  * @author Peter McCracken, IBM
  * @see org.apache.xerces.xinclude.XIncludeHandler
  */
@@ -65,10 +65,10 @@ public class XIncludeParserConfiguration extends XML11Configuration {
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XIncludeParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -79,8 +79,8 @@ public class XIncludeParserConfiguration extends XML11Configuration {
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XIncludeParserConfiguration(
         SymbolTable symbolTable,
@@ -93,9 +93,9 @@ public class XIncludeParserConfiguration extends XML11Configuration {
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XIncludeParserConfiguration(
         SymbolTable symbolTable,
@@ -127,7 +127,7 @@ public class XIncludeParserConfiguration extends XML11Configuration {
     } // <init>(SymbolTable,XMLGrammarPool)}
     
     
-	/** Configures the pipeline. */
+    /** Configures the pipeline. */
     protected void configurePipeline() {
         super.configurePipeline();
 

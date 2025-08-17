@@ -21,11 +21,9 @@ import javax.xml.stream.Location;
 
 /**
  * <p>An immutable StAX <code>Location</code>.</p>
- * 
- * @xerces.internal
- * 
- * @author Michael Glavassevich, IBM
  *
+ * @xerces.internal
+ * @author Michael Glavassevich, IBM
  * @version $Id$
  */
 public class ImmutableLocation implements Location {

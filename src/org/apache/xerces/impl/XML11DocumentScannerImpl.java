@@ -34,24 +34,22 @@ import org.apache.xerces.xni.XNIException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
- *  <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
- *  <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *  <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
+ * <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
+ * <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
  * </ul>
  *
  * @xerces.internal
- *
  * @author Glenn Marcy, IBM
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Eric Ye, IBM
- *
  * @version $Id$
  */
 public class XML11DocumentScannerImpl
@@ -81,7 +79,7 @@ public class XML11DocumentScannerImpl
     /**
      * Scans element content.
      *
-     * @return Returns the next character on the stream.
+     * @return returns the next character on the stream
      */
     protected int scanContent() throws IOException, XNIException {
 
@@ -135,22 +133,21 @@ public class XML11DocumentScannerImpl
     /**
      * Scans an attribute value and normalizes whitespace converting all
      * whitespace characters to space characters.
-     * 
+     *
      * [10] AttValue ::= '"' ([^<&"] | Reference)* '"' | "'" ([^<&'] | Reference)* "'"
      *
-     * @param value The XMLString to fill in with the value.
-     * @param nonNormalizedValue The XMLString to fill in with the 
-     *                           non-normalized value.
-     * @param atName The name of the attribute being parsed (for error msgs).
-     * @param checkEntities true if undeclared entities should be reported as VC violation,  
-     *                      false if undeclared entities should be reported as WFC violation.
-     * @param eleName The name of element to which this attribute belongs.
-     *
+     * @param value the XMLString to fill in with the value
+     * @param nonNormalizedValue the XMLString to fill in with the
+     *                           non-normalized value
+     * @param atName the name of the attribute being parsed (for error msgs)
+     * @param checkEntities true if undeclared entities should be reported as VC violation,
+     *                      false if undeclared entities should be reported as WFC violation
+     * @param eleName the name of element to which this attribute belongs
      * @return true if the non-normalized and normalized value are the same
-     * 
      * <strong>Note:</strong> This method uses fStringBuffer2, anything in it
-     * at the time of calling is lost.
-     **/
+     * at the time of calling is lost
+     *
+     */
     protected boolean scanAttributeValue(XMLString value, 
                                       XMLString nonNormalizedValue,
                                       String atName,
@@ -174,7 +171,7 @@ public class XML11DocumentScannerImpl
         
         int fromIndex = 0;
         if (c == quote && (fromIndex = isUnchangedByNormalization(value)) == -1) {
-            /** Both the non-normalized and normalized attribute values are equal. **/
+            /** Both the non-normalized and normalized attribute values are equal. *. */
             nonNormalizedValue.setValues(value);
             int cquote = fEntityScanner.scanChar();
             if (cquote != quote) {
@@ -381,7 +378,7 @@ public class XML11DocumentScannerImpl
     /**
      * Scans public ID literal.
      *
-     * [12] PubidLiteral ::= '"' PubidChar* '"' | "'" (PubidChar - "'")* "'" 
+     * [12] PubidLiteral ::= '"' PubidChar* '"' | "'" (PubidChar - "'")* "'"
      * [13] PubidChar::= #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
      *
      * The returned string is normalized according to the following rule,
@@ -391,11 +388,11 @@ public class XML11DocumentScannerImpl
      * identifier must be normalized to single space characters (#x20), and
      * leading and trailing white space must be removed.
      *
-     * @param literal The string to fill in with the public ID literal.
-     * @return True on success.
-     *
+     * @param literal the string to fill in with the public ID literal
+     * @return true on success.
      * <strong>Note:</strong> This method uses fStringBuffer, anything in it at
-     * the time of calling is lost.
+     * the time of calling is lost
+     *
      */
     protected boolean scanPubidLiteral(XMLString literal)
         throws IOException, XNIException
@@ -475,10 +472,10 @@ public class XML11DocumentScannerImpl
     
     /**
      * Checks whether this string would be unchanged by normalization.
-     * 
+     *
      * @return -1 if the value would be unchanged by normalization,
      * otherwise the index of the first whitespace character which
-     * would be transformed.
+     * would be transformed
      */
     protected int isUnchangedByNormalization(XMLString value) {
         int end = value.offset + value.length;

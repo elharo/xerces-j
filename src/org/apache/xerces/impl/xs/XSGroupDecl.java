@@ -29,8 +29,7 @@ import org.apache.xerces.xs.XSObjectList;
  * The XML representation for a group declaration
  * schema component is a global &lt;group&gt; element information item
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
  * @version $Id$
  */
@@ -94,6 +93,7 @@ public class XSGroupDecl implements XSModelGroupDefinition {
     }
     
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

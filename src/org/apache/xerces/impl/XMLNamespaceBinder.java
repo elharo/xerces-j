@@ -47,15 +47,13 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
  * </ul>
- * 
+ *
  * @xerces.internal
- *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLNamespaceBinder
@@ -163,9 +161,9 @@ public class XMLNamespaceBinder
      * events to the registered document handler or passes all document
      * events.
      *
-     * @param onlyPassPrefixMappingEvents True to pass only the prefix
+     * @param onlyPassPrefixMappingEvents true to pass only the prefix
      *                                    mapping events; false to pass
-     *                                    all events.
+     *                                    all events
      */
     public void setOnlyPassPrefixMappingEvents(boolean onlyPassPrefixMappingEvents) {
         fOnlyPassPrefixMappingEvents = onlyPassPrefixMappingEvents;
@@ -189,14 +187,13 @@ public class XMLNamespaceBinder
      * about any features and properties that affect the operation of the
      * component.
      *
-     * @param componentManager The component manager.
-     *
-     * @throws SAXException Thrown by component on initialization error.
+     * @param componentManager the component manager
+     * @throws SAXException thrown by component on initialization error.
      *                      For example, if a feature or property is
      *                      required for the operation of the component, the
      *                      component manager may throw a
      *                      SAXNotRecognizedException or a
-     *                      SAXNotSupportedException.
+     *                      SAXNotSupportedException
      */
     public void reset(XMLComponentManager componentManager)
         throws XNIException {
@@ -231,13 +228,12 @@ public class XMLNamespaceBinder
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -278,14 +274,13 @@ public class XMLNamespaceBinder
 
     } // setProperty(String,Object)
 
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -296,14 +291,13 @@ public class XMLNamespaceBinder
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -323,7 +317,7 @@ public class XMLNamespaceBinder
         fDocumentHandler = documentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
 
-    /** Returns the document handler */
+    /** Returns the document handler. */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // setDocumentHandler(XMLDocumentHandler)
@@ -333,12 +327,12 @@ public class XMLNamespaceBinder
     // XMLDocumentHandler methods
     //
 
-    /** Sets the document source */
+    /** Sets the document source. */
     public void setDocumentSource(XMLDocumentSource source){
         fDocumentSource = source;
     } // setDocumentSource
 
-    /** Returns the document source */
+    /** Returns the document source. */
     public XMLDocumentSource getDocumentSource (){
         return fDocumentSource;
     } // getDocumentSource
@@ -349,17 +343,16 @@ public class XMLNamespaceBinder
      * <p>
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
-     * 
-     * @param name     The name of the general entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     *
+     * @param name     the name of the general entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
      *                 parsed from a java.io.Reader).
-     * @param augs     Additional information that may include infoset augmentations
-     *                 
-     * @exception XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startGeneralEntity(String name,
                                    XMLResourceIdentifier identifier,
@@ -381,11 +374,10 @@ public class XMLNamespaceBinder
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
      *
-     * @param version  The XML version, or null if not specified.
-     * @param encoding The IANA encoding name of the entity.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version  the XML version, or null if not specified
+     * @param encoding the IANA encoding name of the entity
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void textDecl(String version, String encoding, Augmentations augs)
         throws XNIException {
@@ -397,9 +389,9 @@ public class XMLNamespaceBinder
     /**
      * The start of the document.
      *
-     * @param locator  The system identifier of the entity if the entity
-     *                 is external, null otherwise.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param locator  the system identifier of the entity if the entity
+     *                 is external, null otherwise
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal entities or a document entity that is
@@ -411,10 +403,9 @@ public class XMLNamespaceBinder
      *                 Implementors of this class are responsible
      *                 for copying the namespace bindings from the
      *                 the current context (and its parent contexts)
-     *                 if that information is important.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     *                 if that information is important
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
 	public void startDocument(XMLLocator locator, String encoding,
                                 NamespaceContext namespaceContext, Augmentations augs)
@@ -431,13 +422,12 @@ public class XMLNamespaceBinder
      * present, this method will be called immediately following the
      * startDocument call.
      *
-     * @param version    The XML version.
-     * @param encoding   The IANA encoding name of the document, or null if
-     *                   not specified.
-     * @param standalone The standalone value, or null if not specified.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version    the XML version
+     * @param encoding   the IANA encoding name of the document, or null if
+     *                   not specified
+     * @param standalone the standalone value, or null if not specified
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void xmlDecl(String version, String encoding, String standalone, Augmentations augs)
         throws XNIException {
@@ -449,14 +439,13 @@ public class XMLNamespaceBinder
     /**
      * Notifies of the presence of the DOCTYPE line in the document.
      *
-     * @param rootElement The name of the root element.
-     * @param publicId    The public identifier if an external DTD or null
-     *                    if the external DTD is specified using SYSTEM.
-     * @param systemId    The system identifier if an external DTD, null
-     *                    otherwise.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param rootElement the name of the root element
+     * @param publicId    the public identifier if an external DTD or null
+     *                    if the external DTD is specified using SYSTEM
+     * @param systemId    the system identifier if an external DTD, null
+     *                    otherwise
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void doctypeDecl(String rootElement,
                             String publicId, String systemId, Augmentations augs)
@@ -469,10 +458,9 @@ public class XMLNamespaceBinder
     /**
      * A comment.
      *
-     * @param text The text in the comment.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -491,11 +479,10 @@ public class XMLNamespaceBinder
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
      *
-     * @param target The target.
-     * @param data   The data or null if none specified.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
         throws XNIException {
@@ -514,11 +501,10 @@ public class XMLNamespaceBinder
      * be destroyed. Caller should copy the values out of this
      * temporary variable before calling this method.
      *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
@@ -536,11 +522,10 @@ public class XMLNamespaceBinder
     /**
      * An empty element.
      *
-     * @param element    The name of the element.
-     * @param attributes The element attributes.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element    the name of the element
+     * @param attributes the element attributes
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
@@ -558,10 +543,9 @@ public class XMLNamespaceBinder
     /**
      * Character content.
      *
-     * @param text The content.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the content
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void characters(XMLString text, Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -577,10 +561,9 @@ public class XMLNamespaceBinder
      * characters in the document are ignorable based on the element
      * content model.
      *
-     * @param text The ignorable whitespace.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param text the ignorable whitespace
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void ignorableWhitespace(XMLString text, Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -591,10 +574,9 @@ public class XMLNamespaceBinder
     /**
      * The end of an element.
      *
-     * @param element The name of the element.
-     * @param augs     Additional information that may include infoset augmentations
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param element the name of the element
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endElement(QName element, Augmentations augs) throws XNIException {
 
@@ -609,9 +591,9 @@ public class XMLNamespaceBinder
 
     /**
      * The start of a CDATA section.
-     * @param augs     Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startCDATA(Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -621,9 +603,9 @@ public class XMLNamespaceBinder
 
     /**
      * The end of a CDATA section.
-     * @param augs     Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endCDATA(Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -633,9 +615,9 @@ public class XMLNamespaceBinder
 
     /**
      * The end of the document.
-     * @param augs     Additional information that may include infoset augmentations
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs     additional information that may include infoset augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDocument(Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {
@@ -648,12 +630,11 @@ public class XMLNamespaceBinder
      * <p>
      * <strong>Note:</strong> This method is not called for entity references
      * appearing as part of attribute values.
-     * 
-     * @param name   The name of the entity.
-     * @param augs   Additional information that may include infoset augmentations
-     *               
-     * @exception XNIException
-     *                   Thrown by handler to signal an error.
+     *
+     * @param name   the name of the entity
+     * @param augs   additional information that may include infoset augmentations
+     * @throws XNIException
+     *                   Thrown by handler to signal an error
      */
     public void endGeneralEntity(String name, Augmentations augs) throws XNIException {
         if (fDocumentHandler != null && !fOnlyPassPrefixMappingEvents) {

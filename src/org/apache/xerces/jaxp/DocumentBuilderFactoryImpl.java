@@ -33,6 +33,7 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
 /**
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
  * @version $Id$
@@ -43,11 +44,11 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     private static final String NAMESPACES_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.NAMESPACES_FEATURE;
     
-    /** Feature identifier: validation */
+    /** Feature identifier: validation. */
     private static final String VALIDATION_FEATURE =
         Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /** Feature identifier: XInclude processing. */
     private static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
@@ -67,7 +68,7 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     private static final String CREATE_CDATA_NODES_FEATURE =
         Constants.XERCES_FEATURE_PREFIX + Constants.CREATE_CDATA_NODES_FEATURE;
     
-    /** These are DocumentBuilderFactory attributes not DOM attributes */
+    /** These are DocumentBuilderFactory attributes not DOM attributes. */
     private Hashtable attributes;
     private Hashtable features;
     private Schema grammar;
@@ -108,8 +109,9 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     }
 
     /**
-     * Allows the user to set specific attributes on the underlying 
+     * Allows the user to set specific attributes on the underlying
      * implementation.
+     *
      * @param name    name of attribute
      * @param value   null means to remove attribute
      */
@@ -145,7 +147,7 @@ public class DocumentBuilderFactoryImpl extends DocumentBuilderFactory {
     }
 
     /**
-     * Allows the user to retrieve specific attributes on the underlying 
+     * Allows the user to retrieve specific attributes on the underlying
      * implementation.
      */
     public Object getAttribute(String name)

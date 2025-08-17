@@ -22,7 +22,7 @@ package org.apache.xerces.xs;
  */
 public interface XSModelGroupDefinition extends XSObject {
     /**
-     * A model group. 
+     * A model group.
      */
     public XSModelGroup getModelGroup();
 

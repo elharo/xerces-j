@@ -24,13 +24,13 @@ import org.apache.xerces.xs.datatypes.ObjectList;
  */
 public interface XSMultiValueFacet extends XSObject {
     /**
-     * The name of the facet, i.e. <code>FACET_ENUMERATION</code> and 
-     * <code>FACET_PATTERN</code> (see <code>XSSimpleTypeDefinition</code>). 
+     * The name of the facet, i.e. <code>FACET_ENUMERATION</code> and
+     * <code>FACET_PATTERN</code> (see <code>XSSimpleTypeDefinition</code>).
      */
     public short getFacetKind();
 
     /**
-     * Values of this facet. 
+     * Values of this facet.
      */
     public StringList getLexicalFacetValues();
 

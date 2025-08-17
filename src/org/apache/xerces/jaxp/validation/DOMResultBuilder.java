@@ -61,7 +61,7 @@ import org.w3c.dom.Text;
 
 /**
  * <p>DOM result builder.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

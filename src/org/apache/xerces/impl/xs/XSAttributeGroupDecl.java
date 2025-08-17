@@ -30,12 +30,10 @@ import org.apache.xerces.xs.XSWildcard;
 /**
  * The XML representation for an attribute group declaration
  * schema component is a global &lt;attributeGroup&gt; element information item
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- * @author Rahul Srivastava, Sun Microsystems Inc.
- *
+ * @author Rahul Srivastava, Sun Microsystems Inc
  * @version $Id$
  */
 public class XSAttributeGroupDecl implements XSAttributeGroupDefinition {
@@ -160,9 +158,9 @@ public class XSAttributeGroupDecl implements XSAttributeGroupDefinition {
      * If an error is found, an Object[] is returned. This contains the arguments for the error message
      * describing the error. The last element in the array (at index arr.length - 1) is the the error code.
      * Returns null if there is no error.
-     * 
+     *
      * REVISIT: is there a better way of returning the appropriate information for the error?
-     * 
+     *
      * @param typeName the name of the type containing this attribute group, used for error reporting purposes
      * @param baseGroup the XSAttributeGroupDecl that is the base we are checking against
      */
@@ -391,6 +389,7 @@ public class XSAttributeGroupDecl implements XSAttributeGroupDefinition {
     }
     
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

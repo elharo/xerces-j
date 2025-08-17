@@ -31,40 +31,41 @@ import org.apache.xerces.xs.XSValue;
 /**
  * Attribute PSV infoset augmentations implementation.
  * The PSVI information for attributes will be available at the startElement call.
- * 
- * @xerces.internal 
  *
+ * @xerces.internal
  * @author Elena Litani IBM
  * @version $Id$
  */
 public class AttributePSVImpl implements AttributePSVI {
 
-    /** attribute declaration */
+    /** Attribute declaration. */
     protected XSAttributeDeclaration fDeclaration = null;
 
-    /** type of attribute, simpleType */
+    /** Type of attribute, simpleType. */
     protected XSTypeDefinition fTypeDecl = null;
 
-    /** If this attribute was explicitly given a 
-     * value in the original document, this is false; otherwise, it is true */
+    /**
+     * If this attribute was explicitly given a
+     * value in the original document, this is false; otherwise, it is true
+     */
     protected boolean fSpecified = false;
 
-    /** Schema value */
+    /** Schema value. */
     protected ValidatedInfo fValue = new ValidatedInfo();
 
-    /** validation attempted: none, partial, full */
+    /** Validation attempted: none, partial, full. */
     protected short fValidationAttempted = AttributePSVI.VALIDATION_NONE;
 
-    /** validity: valid, invalid, unknown */
+    /** Validity: valid, invalid, unknown. */
     protected short fValidity = AttributePSVI.VALIDITY_NOTKNOWN;
 
-    /** error codes and error messages */
+    /** Error codes and error messages. */
     protected String[] fErrors = null;
 
-    /** validation context: could be QName or XPath expression*/
+    /** Validation context: could be QName or XPath expression. */
     protected String fValidationContext = null;
     
-    /** true if this object is immutable **/
+    /** True if this object is immutable *. */
     protected boolean fIsConstant;
     
     public AttributePSVImpl() {}
@@ -122,7 +123,7 @@ public class AttributePSVImpl implements AttributePSVI {
     /**
      * [schema default]
      *
-     * @return The canonical lexical representation of the declaration's {value constraint} value.
+     * @return the canonical lexical representation of the declaration's {value constraint} value
      * @see <a href="http://www.w3.org/TR/xmlschema-1/#e-schema_default>XML Schema Part 1: Structures [schema default]</a>
      */
     public String getSchemaDefault() {
@@ -132,7 +133,6 @@ public class AttributePSVImpl implements AttributePSVI {
     /**
      * [schema normalized value]
      *
-     *
      * @see <a href="http://www.w3.org/TR/xmlschema-1/#e-schema_normalized_value>XML Schema Part 1: Structures [schema normalized value]</a>
      * @return the normalized value of this item after validation
      */
@@ -141,7 +141,8 @@ public class AttributePSVImpl implements AttributePSVI {
     }
 
     /**
-     * [schema specified] 
+     * [schema specified]
+     *
      * @see <a href="http://www.w3.org/TR/xmlschema-1/#e-schema_specified">XML Schema Part 1: Structures [schema specified]</a>
      * @return true - value was specified in schema, false - value comes from the infoset
      */
@@ -186,8 +187,8 @@ public class AttributePSVImpl implements AttributePSVI {
     
     /**
      * A list of error messages generated from the validation attempt or
-     * an empty <code>StringList</code> if no errors occurred during the 
-     * validation attempt. The indices of error messages in this list are 
+     * an empty <code>StringList</code> if no errors occurred during the
+     * validation attempt. The indices of error messages in this list are
      * aligned with those in the <code>[schema error code]</code> list.
      */
     public StringList getErrorMessages() {
@@ -204,7 +205,7 @@ public class AttributePSVImpl implements AttributePSVI {
 
     /**
      * An item isomorphic to the type definition used to validate this element.
-     * 
+     *
      * @return  a type declaration
      */
     public XSTypeDefinition getTypeDefinition() {
@@ -217,7 +218,7 @@ public class AttributePSVImpl implements AttributePSVI {
      * is a simple thype definition with {variety} union, then an item isomorphic
      * to that member of the union's {member type definitions} which actually
      * validated the element item's normalized value.
-     * 
+     *
      * @return  a simple type declaration
      */
     public XSSimpleTypeDefinition getMemberTypeDefinition() {
@@ -227,7 +228,7 @@ public class AttributePSVImpl implements AttributePSVI {
     /**
      * An item isomorphic to the attribute declaration used to validate
      * this attribute.
-     * 
+     *
      * @return  an attribute declaration
      */
     public XSAttributeDeclaration getAttributeDeclaration() {
@@ -263,7 +264,7 @@ public class AttributePSVImpl implements AttributePSVI {
     }
     
     /**
-     * Reset() 
+     * Reset()
      */
     public void reset() {
         fValue.reset();

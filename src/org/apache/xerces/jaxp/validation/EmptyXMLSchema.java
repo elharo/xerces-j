@@ -24,7 +24,7 @@ import org.apache.xerces.xni.grammars.XMLGrammarPool;
 /**
  * <p>Implementation of Schema for W3C XML Schemas
  * which contains no schema components.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

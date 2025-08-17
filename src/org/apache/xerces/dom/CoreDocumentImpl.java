@@ -73,27 +73,27 @@ import org.w3c.dom.ls.LSSerializer;
  * <p>
  * <b>Note:</b> When any node in the document is serialized, the
  * entire document is serialized along with it.
- * 
- * @xerces.internal 
  *
- * @author Arnaud  Le Hors, IBM
+ * @xerces.internal
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @author Andy Clark, IBM
  * @author Ralf Pfeiffer, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 
 
 public class CoreDocumentImpl
 extends ParentNode implements Document  {
 
-	/**TODO::
-	 * 1. Change XML11Char method names similar to XMLChar. That will prevent lot
-	 * of dirty version checking code.
-	 *
-	 * 2. IMO during cloneNode qname/isXMLName check should not be made.
-	 */
+    /**
+     * TODO::
+     * 1. Change XML11Char method names similar to XMLChar. That will prevent lot
+     * of dirty version checking code.
+     *
+     * 2. IMO during cloneNode qname/isXMLName check should not be made.
+     */
     //
     // Constants
     //
@@ -113,22 +113,22 @@ extends ParentNode implements Document  {
     /** Document element. */
     protected ElementImpl docElement;
 
-    /** NodeListCache free list */
+    /** NodeListCache free list. */
     transient NodeListCache fFreeNLCache;
 
-    /**Experimental DOM Level 3 feature: Document encoding */
+    /** Experimental DOM Level 3 feature: Document encoding. */
     protected String encoding;
 
-    /**Experimental DOM Level 3 feature: Document actualEncoding */
+    /** Experimental DOM Level 3 feature: Document actualEncoding. */
     protected String actualEncoding;
 
-    /**Experimental DOM Level 3 feature: Document version */
+    /** Experimental DOM Level 3 feature: Document version. */
     protected String version;
 
-    /**Experimental DOM Level 3 feature: Document standalone */
+    /** Experimental DOM Level 3 feature: Document standalone. */
     protected boolean standalone;
 
-    /**Experimental DOM Level 3 feature: documentURI */
+    /** Experimental DOM Level 3 feature: documentURI. */
     protected String fDocumentURI;
 
     /** Table for user data attached to this document nodes. */
@@ -195,7 +195,8 @@ extends ParentNode implements Document  {
     //this field helps us to optimize when normalizingDocument.
     protected boolean xmlVersionChanged = false ;
 
-    /** The following are required for compareDocumentPosition
+    /**
+     * The following are required for compareDocumentPosition
      */
     // Document number.   Documents are ordered across the implementation using
     // positive integer values.  Documents are assigned numbers on demand.
@@ -324,8 +325,8 @@ extends ParentNode implements Document  {
 
 
     /**
-     * internal method to share code with subclass
-     **/
+     * Internal method to share code with subclass
+     */
     protected void cloneNode(CoreDocumentImpl newdoc, boolean deep) {
 
         // clone the children by importing them
@@ -490,6 +491,7 @@ extends ParentNode implements Document  {
     }
 
     /**
+     *
      * @since DOM Level 3
      */
     public Object getFeature(String feature, String version) {
@@ -544,12 +546,11 @@ extends ParentNode implements Document  {
     /**
      * Factory method; creates an Attribute having this Document as its
      * OwnerDoc.
-     * 
-     * @param name The name of the attribute. Note that the attribute's value is
+     *
+     * @param name the name of the attribute. Note that the attribute's value is
      * _not_ established at the factory; remember to set it!
-     * 
      * @throws DOMException(INVALID_NAME_ERR)
-     * if the attribute name is not acceptable.
+     * if the attribute name is not acceptable
      */
     public Attr createAttribute(String name)
         throws DOMException {
@@ -570,8 +571,7 @@ extends ParentNode implements Document  {
      * Factory method; creates a CDATASection having this Document as
      * its OwnerDoc.
      *
-     * @param data The initial contents of the CDATA
-     *
+     * @param data the initial contents of the CDATA
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents. (HTML
      * not yet implemented.)
      */
@@ -584,7 +584,8 @@ extends ParentNode implements Document  {
      * Factory method; creates a Comment having this Document as its
      * OwnerDoc.
      *
-     * @param data The initial contents of the Comment. */
+     * @param data the initial contents of the Comment
+     */
     public Comment createComment(String data) {
         return new CommentImpl(this, data);
     }
@@ -601,13 +602,12 @@ extends ParentNode implements Document  {
      * Factory method; creates an Element having this Document
      * as its OwnerDoc.
      *
-     * @param tagName The name of the element type to instantiate. For
+     * @param tagName the name of the element type to instantiate. For
      * XML, this is case-sensitive. For HTML, the tagName parameter may
      * be provided in any case, but it must be mapped to the canonical
      * uppercase form by the DOM implementation.
-     *
      * @throws DOMException(INVALID_NAME_ERR) if the tag name is not
-     * acceptable.
+     * acceptable
      */
     public Element createElement(String tagName)
     throws DOMException {
@@ -624,8 +624,7 @@ extends ParentNode implements Document  {
      * Factory method; creates an EntityReference having this Document
      * as its OwnerDoc.
      *
-     * @param name The name of the Entity we wish to refer to
-     *
+     * @param name the name of the Entity we wish to refer to
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents, where
      * nonstandard entities are not permitted. (HTML not yet
      * implemented.)
@@ -645,12 +644,10 @@ extends ParentNode implements Document  {
      * Factory method; creates a ProcessingInstruction having this Document
      * as its OwnerDoc.
      *
-     * @param target The target "processor channel"
-     * @param data Parameter string to be passed to the target.
-     *
+     * @param target the target "processor channel"
+     * @param data parameter string to be passed to the target
      * @throws DOMException(INVALID_NAME_ERR) if the target name is not
-     * acceptable.
-     *
+     * acceptable
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents. (HTML
      * not yet implemented.)
      */
@@ -670,7 +667,7 @@ extends ParentNode implements Document  {
      * Factory method; creates a Text node having this Document as its
      * OwnerDoc.
      *
-     * @param data The initial contents of the Text.
+     * @param data the initial contents of the Text
      */
     public Text createTextNode(String data) {
         return new TextImpl(this, data);
@@ -711,9 +708,8 @@ extends ParentNode implements Document  {
      * Return a <em>live</em> collection of all descendent Elements (not just
      * immediate children) having the specified tag name.
      *
-     * @param tagname The type of Element we want to gather. "*" will be
+     * @param tagname the type of Element we want to gather. "*" will be
      * taken as a wildcard, meaning "all elements in the document."
-     *
      * @see DeepNodeListImpl
      */
     public NodeList getElementsByTagName(String tagname) {
@@ -744,9 +740,9 @@ extends ParentNode implements Document  {
      * the following DOM checks:
      * <ul>
      * <li>Checking strings to make sure that all characters are
-     *     legal XML characters
+     * legal XML characters
      * <li>Hierarchy checking such as allowed children, checks for
-     *     cycles, etc.
+     * cycles, etc.
      * </ul>
      * <p>
      * Turning off error checking does <em>not</em> turn off the
@@ -790,6 +786,7 @@ extends ParentNode implements Document  {
      * at the time of the parsing. This is <code>null</code> when
      * it is not known, such as when the <code>Document</code> was
      * created in memory.
+     *
      * @since DOM Level 3
      */
     public String getInputEncoding() {
@@ -821,7 +818,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -838,7 +836,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -879,7 +878,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -896,7 +896,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -909,9 +910,10 @@ extends ParentNode implements Document  {
      *
      * Xmlstandalone - An attribute specifying, as part of the XML declaration,
      * whether this document is standalone
-     * @exception DOMException
+     *
+     * @throws DOMException
      *    NOT_SUPPORTED_ERR: Raised if this document does not support the
-     *   "XML" feature.
+     *   "XML" feature
      * @since DOM Level 3
      */
     public void setXmlStandalone(boolean value)
@@ -920,7 +922,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -938,7 +941,8 @@ extends ParentNode implements Document  {
     }
     
     /**
-     * @deprecated This method is internal and only exists for
+     *
+     * @deprecated this method is internal and only exists for
      * compatibility with older applications. New applications
      * should never call this method.
      */
@@ -952,6 +956,7 @@ extends ParentNode implements Document  {
      * <br>Beware that when the <code>Document</code> supports the feature
      * "HTML" , the href attribute of the HTML BASE element takes precedence
      * over this attribute.
+     *
      * @since DOM Level 3
      */
     public String getDocumentURI(){
@@ -1127,8 +1132,8 @@ extends ParentNode implements Document  {
 
 
     /**
-     *  DOM Level 3 WD - Experimental
-     *  Normalize document.
+     * DOM Level 3 WD - Experimental
+     * Normalize document.
      */
     public void normalizeDocument(){
         // No need to normalize if already normalized.
@@ -1161,8 +1166,9 @@ extends ParentNode implements Document  {
     /**
      * DOM Level 3 CR - Experimental
      *
-     *  The configuration used when <code>Document.normalizeDocument</code> is
+     * The configuration used when <code>Document.normalizeDocument</code> is
      * invoked.
+     *
      * @since DOM Level 3
      */
     public DOMConfiguration getDomConfig(){
@@ -1177,8 +1183,8 @@ extends ParentNode implements Document  {
      * Returns the absolute base URI of this node or null if the implementation
      * wasn't able to obtain an absolute URI. Note: If the URI is malformed, a
      * null is returned.
-     * 
-     * @return The absolute base URI of this node or null.
+     *
+     * @return the absolute base URI of this node or null
      * @since DOM Level 3
      */
     public String getBaseURI() {
@@ -1277,10 +1283,11 @@ extends ParentNode implements Document  {
      * call to <code>DOMParser.parseWithContext</code> with an input stream
      * referencing the URI that was passed to this call, the document as the
      * context node, and the action <code>ACTION_REPLACE_CHILDREN</code>.
-     * @param uri The URI reference for the XML file to be loaded. If this is
+     *
+     * @param uri the URI reference for the XML file to be loaded. If this is
      *  a relative URI, the base URI used by the implementation is
      *  implementation dependent.
-     * @return If async is set to <code>true</code> <code>load</code> returns
+     * @return if async is set to <code>true</code> <code>load</code> returns
      *   <code>true</code> if the document load was successfully initiated.
      *   If an error occurred when initiating the document load,
      *   <code>load</code> returns <code>false</code>.If async is set to
@@ -1297,9 +1304,10 @@ extends ParentNode implements Document  {
      * DOM Level 3 WD - Experimental.
      * Replace the content of the document with the result of parsing the
      * input string, this method is always synchronous.
-     * @param source A string containing an XML document.
+     *
+     * @param source a string containing an XML document
      * @return <code>true</code> if parsing the input string succeeded
-     *   without errors, otherwise <code>false</code>.
+     *   without errors, otherwise <code>false</code>
      */
     public boolean loadXML(String source) {
         return false;
@@ -1314,14 +1322,15 @@ extends ParentNode implements Document  {
      * <br> The result of a call to this method is the same the result of a
      * call to <code>LSSerializer.writeToString</code> with the document as
      * the node to write.
-     * @param node Specifies what to serialize, if this parameter is
+     *
+     * @param node specifies what to serialize, if this parameter is
      *   <code>null</code> the whole document is serialized, if it's
-     *   non-null the given node is serialized.
-     * @return The serialized document or <code>null</code> in case an error
-     *   occurred.
-     * @exception DOMException
+     *   non-null the given node is serialized
+     * @return the serialized document or <code>null</code> in case an error
+     *   occurred
+     * @throws DOMException
      *   WRONG_DOCUMENT_ERR: Raised if the node passed in as the node
-     *   parameter is from an other document.
+     *   parameter is from an other document
      */
     public String saveXML(Node node)
     throws DOMException {
@@ -1367,7 +1376,6 @@ extends ParentNode implements Document  {
      * @param qualifiedName
      * @param publicID
      * @param systemID
-     *
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents, where
      * DTDs are not permitted. (HTML not yet implemented.)
      */
@@ -1386,8 +1394,7 @@ extends ParentNode implements Document  {
      * as its OwnerDoc. (REC-DOM-Level-1-19981001 left the process of building
      * DTD information unspecified.)
      *
-     * @param name The name of the Entity we wish to provide a value for.
-     *
+     * @param name the name of the Entity we wish to provide a value for
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents, where
      * nonstandard entities are not permitted. (HTML not yet
      * implemented.)
@@ -1410,8 +1417,7 @@ extends ParentNode implements Document  {
      * as its OwnerDoc. (REC-DOM-Level-1-19981001 left the process of building
      * DTD information unspecified.)
      *
-     * @param name The name of the Notation we wish to describe
-     *
+     * @param name the name of the Notation we wish to describe
      * @throws DOMException(NOT_SUPPORTED_ERR) for HTML documents, where
      * notations are not permitted. (HTML not yet
      * implemented.)
@@ -1444,7 +1450,8 @@ extends ParentNode implements Document  {
 
     // other non-DOM methods
 
-    /** NON-DOM:  Get the number associated with this document.   Used to
+    /**
+     * NON-DOM:  Get the number associated with this document.   Used to
      * order documents in the implementation.
      */
     protected int getNodeNumber() {
@@ -1457,7 +1464,8 @@ extends ParentNode implements Document  {
     }
 
 
-    /** NON-DOM:  Get a number associated with a node created with respect
+    /**
+     * NON-DOM:  Get a number associated with a node created with respect
      * to this document.   Needed for compareDocumentPosition when nodes
      * are disconnected.  This is only used on demand.
      */
@@ -1756,9 +1764,10 @@ extends ParentNode implements Document  {
      * DOM Level 3 WD - Experimental
      * Change the node's ownerDocument, and its subtree, to this Document
      *
-     * @param source The node to adopt.
+     * @param source the node to adopt
      * @see #importNode
-     **/
+     *
+     */
     public Node adoptNode(Node source) {
         NodeImpl node;
 		Hashtable userData = null;
@@ -1908,7 +1917,6 @@ extends ParentNode implements Document  {
     /**
      * Traverses the DOM Tree and expands deferred nodes and their
      * children.
-     * 
      */
     protected void undeferChildren(Node node) {
         
@@ -1963,6 +1971,7 @@ extends ParentNode implements Document  {
      * attributes are of type ID. Attributes with the name "ID" are not of type
      * ID unless so defined. Implementations that do not know whether
      * attributes are of type ID or not are expected to return null.
+     *
      * @see #getIdentifier
      */
     public Element getElementById(String elementId) {
@@ -2083,20 +2092,21 @@ extends ParentNode implements Document  {
      * qualifiedName has a prefix that is "xml", the created element
      * is bound to the predefined namespace
      * "http://www.w3.org/XML/1998/namespace" [Namespaces].
-     * @param namespaceURI The namespace URI of the element to
-     *                     create.
-     * @param qualifiedName The qualified name of the element type to
-     *                      instantiate.
-     * @return Element A new Element object with the following attributes:
+     *
+     * @param namespaceURI the namespace URI of the element to
+     *                     create
+     * @param qualifiedName the qualified name of the element type to
+     *                      instantiate
+     * @return element A new Element object with the following attributes:
      * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified
-     * name contains an invalid character.
+     * name contains an invalid character
      * @throws DOMException NAMESPACE_ERR: Raised if the qualifiedName has a
      *                      prefix that is "xml" and the namespaceURI is
      *                      neither null nor an empty string nor
      *                      "http://www.w3.org/XML/1998/namespace", or
      *                      if the qualifiedName has a prefix different
      *                      from "xml" and the namespaceURI is null or an
-     *                      empty string.
+     *                      empty string
      * @since WD-DOM-Level-2-19990923
      */
     public Element createElementNS(String namespaceURI, String qualifiedName)
@@ -2108,15 +2118,14 @@ extends ParentNode implements Document  {
      * NON-DOM: a factory method used by the Xerces DOM parser
      * to create an element.
      *
-     * @param namespaceURI The namespace URI of the element to
-     *                     create.
-     * @param qualifiedName The qualified name of the element type to
-     *                      instantiate.
-     * @param localpart  The local name of the attribute to instantiate.
-     *
-     * @return Element A new Element object with the following attributes:
-     * @exception DOMException INVALID_CHARACTER_ERR: Raised if the specified
-     *                   name contains an invalid character.
+     * @param namespaceURI the namespace URI of the element to
+     *                     create
+     * @param qualifiedName the qualified name of the element type to
+     *                      instantiate
+     * @param localpart  the local name of the attribute to instantiate
+     * @return element A new Element object with the following attributes:
+     * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified
+     *                   name contains an invalid character
      */
     public Element createElementNS(String namespaceURI, String qualifiedName,
     String localpart)
@@ -2132,14 +2141,14 @@ extends ParentNode implements Document  {
      * is bound to the predefined namespace
      * "http://www.w3.org/XML/1998/namespace" [Namespaces].
      *
-     * @param namespaceURI  The namespace URI of the attribute to
+     * @param namespaceURI  the namespace URI of the attribute to
      *                      create. When it is null or an empty string,
      *                      this method behaves like createAttribute.
-     * @param qualifiedName The qualified name of the attribute to
-     *                      instantiate.
-     * @return Attr         A new Attr object.
+     * @param qualifiedName the qualified name of the attribute to
+     *                      instantiate
+     * @return attr A new Attr object
      * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified
-     * name contains an invalid character.
+     * name contains an invalid character
      * @since WD-DOM-Level-2-19990923
      */
     public Attr createAttributeNS(String namespaceURI, String qualifiedName)
@@ -2151,16 +2160,15 @@ extends ParentNode implements Document  {
      * NON-DOM: a factory method used by the Xerces DOM parser
      * to create an element.
      *
-     * @param namespaceURI  The namespace URI of the attribute to
+     * @param namespaceURI  the namespace URI of the attribute to
      *                      create. When it is null or an empty string,
      *                      this method behaves like createAttribute.
-     * @param qualifiedName The qualified name of the attribute to
-     *                      instantiate.
-     * @param localpart     The local name of the attribute to instantiate.
-     *
-     * @return Attr         A new Attr object.
+     * @param qualifiedName the qualified name of the attribute to
+     *                      instantiate
+     * @param localpart     the local name of the attribute to instantiate
+     * @return attr A new Attr object
      * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified
-     * name contains an invalid character.
+     * name contains an invalid character
      */
     public Attr createAttributeNS(String namespaceURI, String qualifiedName,
     String localpart)
@@ -2173,15 +2181,16 @@ extends ParentNode implements Document  {
      * Returns a NodeList of all the Elements with a given local name and
      * namespace URI in the order in which they would be encountered in a
      * preorder traversal of the Document tree.
-     * @param namespaceURI  The namespace URI of the elements to match
+     *
+     * @param namespaceURI  the namespace URI of the elements to match
      *                      on. The special value "*" matches all
      *                      namespaces. When it is null or an empty
      *                      string, this method behaves like
      *                      getElementsByTagName.
-     * @param localName     The local name of the elements to match on.
-     *                      The special value "*" matches all local names.
-     * @return NodeList     A new NodeList object containing all the matched
-     *                      Elements.
+     * @param localName     the local name of the elements to match on.
+     *                      The special value "*" matches all local names
+     * @return NodeList A new NodeList object containing all the matched
+     *                      Elements
      * @since WD-DOM-Level-2-19990923
      */
     public NodeList getElementsByTagNameNS(String namespaceURI,
@@ -2315,17 +2324,18 @@ extends ParentNode implements Document  {
      * Associate an object to a key on this node. The object can later be
      * retrieved from this node by calling <code>getUserData</code> with the
      * same key.
-     * @param n The node to associate the object to.
-     * @param key The key to associate the object to.
-     * @param data The object to associate to the given key, or
-     *   <code>null</code> to remove any existing association to that key.
-     * @param handler The handler to associate to that key, or
-     *   <code>null</code>.
-     * @return Returns the <code>DOMObject</code> previously associated to
-     *   the given key on this node, or <code>null</code> if there was none.
-     * @since DOM Level 3
      *
+     * @param n the node to associate the object to
+     * @param key the key to associate the object to
+     * @param data the object to associate to the given key, or
+     *   <code>null</code> to remove any existing association to that key
+     * @param handler the handler to associate to that key, or
+     *   <code>null</code>
+     * @return returns the <code>DOMObject</code> previously associated to
+     *   the given key on this node, or <code>null</code> if there was none
+     * @since DOM Level 3
      * REVISIT: we could use a free list of UserDataRecord here
+     *
      */
     public Object setUserData(Node n, String key,
     Object data, UserDataHandler handler) {
@@ -2370,10 +2380,11 @@ extends ParentNode implements Document  {
      * Retrieves the object associated to a key on a this node. The object
      * must first have been set to this node by calling
      * <code>setUserData</code> with the same key.
-     * @param n The node the object is associated to.
-     * @param key The key the object is associated to.
-     * @return Returns the <code>DOMObject</code> associated to the given key
-     *   on this node, or <code>null</code> if there was none.
+     *
+     * @param n the node the object is associated to
+     * @param key the key the object is associated to
+     * @return returns the <code>DOMObject</code> associated to the given key
+     *   on this node, or <code>null</code> if there was none
      * @since DOM Level 3
      */
     public Object getUserData(Node n, String key) {
@@ -2403,10 +2414,11 @@ extends ParentNode implements Document  {
 		return t;
 	}
     
-	/**
+    /**
      * Remove user data table for the given node.
-     * @param n The node this operation applies to.
-     * @return The removed table.
+     *
+     * @param n the node this operation applies to
+     * @return the removed table
      */
     Hashtable removeUserDataTable(Node n) {
         if (userData == null) {
@@ -2417,8 +2429,9 @@ extends ParentNode implements Document  {
 
     /**
      * Set user data table for the given node.
-     * @param n The node this operation applies to.
-     * @param data The user data table.
+     *
+     * @param n the node this operation applies to
+     * @param data the user data table
      */
     void setUserDataTable(Node n, Hashtable data) {
         if (userData == null) {
@@ -2431,9 +2444,10 @@ extends ParentNode implements Document  {
 
     /**
      * Call user data handlers when a node is deleted (finalized)
-     * @param n The node this operation applies to.
-     * @param c The copy node or null.
-     * @param operation The operation - import, clone, or delete.
+     *
+     * @param n the node this operation applies to
+     * @param c the copy node or null
+     * @param operation the operation - import, clone, or delete
      */
     protected void callUserDataHandlers(Node n, Node c, short operation) {
         if (userData == null) {
@@ -2449,13 +2463,14 @@ extends ParentNode implements Document  {
 		}
     }
 
-	/**
+    /**
      * Call user data handlers when a node is deleted (finalized)
-     * @param n The node this operation applies to.
-     * @param c The copy node or null.
-     * @param operation The operation - import, clone, or delete.
-	 * @param handlers Data associated with n.
-	*/
+     *
+     * @param n the node this operation applies to
+     * @param c the copy node or null
+     * @param operation the operation - import, clone, or delete
+     * @param handlers data associated with n
+     */
 	void callUserDataHandlers(Node n, Node c, short operation, Hashtable userData) {
         if (userData == null || userData.isEmpty()) {
             return;
@@ -2471,7 +2486,7 @@ extends ParentNode implements Document  {
         }
     }
     
-	/**
+    /**
      * Call user data handlers to let them know the nodes they are related to
      * are being deleted. The alternative would be to do that on Node but
      * because the nodes are used as the keys we have a reference to them that
@@ -2734,7 +2749,7 @@ extends ParentNode implements Document  {
     }
 
     /**
-     *  method to be called when a character data node has been replaced.
+     * Method to be called when a character data node has been replaced.
      */
     void replacedCharacterData(NodeImpl node, String oldvalue, String value) {
     }
@@ -2772,7 +2787,7 @@ extends ParentNode implements Document  {
     
     /**
      * The serialized forms of the user data and node table
-     * maps are Hashtables. Convert them into WeakHashMaps 
+     * maps are Hashtables. Convert them into WeakHashMaps
      * on load.
      */
     private void readObject(ObjectInputStream in)

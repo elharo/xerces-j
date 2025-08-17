@@ -41,14 +41,13 @@ import org.w3c.dom.UserDataHandler;
  * Most notably, absolutely no provision was made for storing
  * and using Element and Attribute information. Nor was the linkage
  * between Entities and Entity References nailed down solidly.
- * 
- * @xerces.internal
  *
- * @author Arnaud  Le Hors, IBM
+ * @xerces.internal
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @author Andy Clark, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DocumentTypeImpl 
     extends ParentNode
@@ -88,8 +87,9 @@ public class DocumentTypeImpl
     // DOM2: support internal subset.
     protected String internalSubset;
 
-    /** The following are required for compareDocumentPosition 
-    */
+    /**
+     * The following are required for compareDocumentPosition
+     */
     // Doctype number.   Doc types which have no owner may be assigned 
     // a number, on demand, for ordering purposes for compareDocumentPosition
     private int doctypeNumber=0;
@@ -128,8 +128,9 @@ public class DocumentTypeImpl
     
     /**
      * Introduced in DOM Level 2. <p>
-     * 
+     *
      * Return the public identifier of this Document type.
+     *
      * @since WD-DOM-Level-2-19990923
      */
     public String getPublicId() {
@@ -140,8 +141,9 @@ public class DocumentTypeImpl
     }
     /**
      * Introduced in DOM Level 2. <p>
-     * 
+     *
      * Return the system identifier of this Document type.
+     *
      * @since WD-DOM-Level-2-19990923
      */
     public String getSystemId() {
@@ -165,8 +167,9 @@ public class DocumentTypeImpl
 
     /**
      * Introduced in DOM Level 2. <p>
-     * 
+     *
      * Return the internalSubset given as a string.
+     *
      * @since WD-DOM-Level-2-19990923
      */
     public String getInternalSubset() {
@@ -180,7 +183,7 @@ public class DocumentTypeImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */
@@ -228,10 +231,10 @@ public class DocumentTypeImpl
         // no-op
     }
     
-	/**
-	  * DOM Level 3 WD- Experimental.
-	  * Override inherited behavior from ParentNodeImpl to support deep equal.
-	  */
+    /**
+     * DOM Level 3 WD- Experimental.
+     * Override inherited behavior from ParentNodeImpl to support deep equal.
+     */
     public boolean isEqualNode(Node arg) {
         
         if (!super.isEqualNode(arg)) {
@@ -330,9 +333,10 @@ public class DocumentTypeImpl
         elements.setOwnerDocument(doc);
     }
 
-    /** NON-DOM  
-        Get the number associated with this doctype.    
-    */
+    /**
+     * NON-DOM
+     * Get the number associated with this doctype.
+     */
     protected int getNodeNumber() {
          // If the doctype has a document owner, get the node number 
          // relative to the owner doc
@@ -371,11 +375,11 @@ public class DocumentTypeImpl
      * internal, defined in the DTD. For example, in:
      * <p>
      * <pre>
-     *   &lt;!doctype example SYSTEM "ex.dtd" [
-     *     &lt;!ENTITY foo "foo"&gt;
-     *     &lt;!ENTITY bar "bar"&gt;
-     *     &lt;!ENTITY % baz "baz"&gt;
-     *     ]&gt;
+     * &lt;!doctype example SYSTEM "ex.dtd" [
+     * &lt;!ENTITY foo "foo"&gt;
+     * &lt;!ENTITY bar "bar"&gt;
+     * &lt;!ENTITY % baz "baz"&gt;
+     * ]&gt;
      * </pre>
      * <p>
      * The Entities map includes foo and bar, but not baz. It is promised that
@@ -414,6 +418,7 @@ public class DocumentTypeImpl
     /**
      * NON-DOM: Subclassed to flip the entities' and notations' readonly switch
      * as well.
+     *
      * @see NodeImpl#setReadOnly
      */
     public void setReadOnly(boolean readOnly, boolean deep) {
@@ -432,6 +437,7 @@ public class DocumentTypeImpl
     
     /**
      * NON-DOM: Access the collection of ElementDefinitions.
+     *
      * @see ElementDefinitionImpl
      */
     public NamedNodeMap getElements() {

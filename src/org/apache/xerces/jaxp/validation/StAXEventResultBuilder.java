@@ -47,7 +47,7 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
  * <p>StAX event result builder.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -278,7 +278,7 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
     }
     
     /**
-     * An iterator over XMLAttributes which returns Attribute event objects. 
+     * An iterator over XMLAttributes which returns Attribute event objects.
      */
     final class AttributeIterator implements Iterator {
 
@@ -316,7 +316,7 @@ final class StAXEventResultBuilder implements StAXDocumentHandler {
     }
     
     /**
-     * An iterator over the current context of a NamespaceContext 
+     * An iterator over the current context of a NamespaceContext
      * which returns Namespace event objects.
      */
     final class NamespaceIterator implements Iterator {

@@ -91,28 +91,28 @@ public final class XMLSchemaFactory extends SchemaFactory {
     // Data
     //
     
-    /** The XMLSchemaLoader */
+    /** The XMLSchemaLoader. */
     private final XMLSchemaLoader fXMLSchemaLoader = new XMLSchemaLoader();
     
     /** User-specified ErrorHandler; can be null. */
     private ErrorHandler fErrorHandler;
     
-    /** The LSResrouceResolver */
+    /** The LSResrouceResolver. */
     private LSResourceResolver fLSResourceResolver;
     
-    /** The DOMEntityResolverWrapper */
+    /** The DOMEntityResolverWrapper. */
     private final DOMEntityResolverWrapper fDOMEntityResolverWrapper;
     
-    /** The ErrorHandlerWrapper */
+    /** The ErrorHandlerWrapper. */
     private final ErrorHandlerWrapper fErrorHandlerWrapper;
     
     /** The SecurityManager. */
     private SecurityManager fSecurityManager;
     
-    /** The container for the real grammar pool. */ 
+    /** The container for the real grammar pool. */
     private final XMLGrammarPoolWrapper fXMLGrammarPoolWrapper;
     
-    /** Whether or not to allow new schemas to be added to the grammar pool */
+    /** Whether or not to allow new schemas to be added to the grammar pool. */
     private boolean fUseGrammarPoolOnly;
     
     public XMLSchemaFactory() {
@@ -129,14 +129,12 @@ public final class XMLSchemaFactory extends SchemaFactory {
     /**
      * <p>Is specified schema supported by this <code>SchemaFactory</code>?</p>
      *
-     * @param schemaLanguage Specifies the schema language which the returned <code>SchemaFactory</code> will understand.
-     *    <code>schemaLanguage</code> must specify a <a href="#schemaLanguage">valid</a> schema language.
-     *
-     * @return <code>true</code> if <code>SchemaFactory</code> supports <code>schemaLanguage</code>, else <code>false</code>.
-     *
-     * @throws NullPointerException If <code>schemaLanguage</code> is <code>null</code>.
-     * @throws IllegalArgumentException If <code>schemaLanguage.length() == 0</code>
-     *   or <code>schemaLanguage</code> does not specify a <a href="#schemaLanguage">valid</a> schema language.
+     * @param schemaLanguage specifies the schema language which the returned <code>SchemaFactory</code> will understand.
+     *    <code>schemaLanguage</code> must specify a <a href="#schemaLanguage">valid</a> schema language
+     * @return <code>true</code> if <code>SchemaFactory</code> supports <code>schemaLanguage</code>, else <code>false</code>
+     * @throws NullPointerException if <code>schemaLanguage</code> is <code>null</code>
+     * @throws IllegalArgumentException if <code>schemaLanguage.length() == 0</code>
+     *   or <code>schemaLanguage</code> does not specify a <a href="#schemaLanguage">valid</a> schema language
      */
     public boolean isSchemaLanguageSupported(String schemaLanguage) {
         if (schemaLanguage == null) {
@@ -454,7 +452,7 @@ public final class XMLSchemaFactory extends SchemaFactory {
         }
     }
     
-    /** 
+    /**
      * Extension of XMLGrammarPoolImpl which exposes the number of
      * grammars stored in the grammar pool.
      */

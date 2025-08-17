@@ -20,11 +20,10 @@ package org.apache.xerces.stax;
 import javax.xml.stream.Location;
 
 /**
- * <p>Location which always returns <code>-1</code> 
+ * <p>Location which always returns <code>-1</code>
  * and <code>null</code> from its methods.</p>
- * 
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public final class EmptyLocation implements Location {
@@ -45,6 +44,7 @@ public final class EmptyLocation implements Location {
     /**
      * Return the line number where the current event ends,
      * returns -1 if none is available.
+     *
      * @return the current line number
      */
     public int getLineNumber() {
@@ -54,6 +54,7 @@ public final class EmptyLocation implements Location {
     /**
      * Return the column number where the current event ends,
      * returns -1 if none is available.
+     *
      * @return the current column number
      */
     public int getColumnNumber() {
@@ -62,10 +63,11 @@ public final class EmptyLocation implements Location {
     
     /**
      * Return the byte or character offset into the input source this location
-     * is pointing to. If the input source is a file or a byte stream then 
-     * this is the byte offset into that stream, but if the input source is 
-     * a character media then the offset is the character offset. 
+     * is pointing to. If the input source is a file or a byte stream then
+     * this is the byte offset into that stream, but if the input source is
+     * a character media then the offset is the character offset.
      * Returns -1 if there is no offset available.
+     *
      * @return the current offset
      */
     public int getCharacterOffset() {
@@ -74,6 +76,7 @@ public final class EmptyLocation implements Location {
     
     /**
      * Returns the public ID of the XML
+     *
      * @return the public ID, or null if not available
      */
     public String getPublicId() {
@@ -82,6 +85,7 @@ public final class EmptyLocation implements Location {
     
     /**
      * Returns the system ID of the XML
+     *
      * @return the system ID, or null if not available
      */
     public String getSystemId() {

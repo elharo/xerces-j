@@ -22,9 +22,9 @@ import org.apache.xerces.xni.grammars.XMLGrammarDescription;
 import org.apache.xerces.xni.grammars.XMLGrammarPool;
 
 /**
- * <p>Implementation of Schema for W3C XML Schemas which 
+ * <p>Implementation of Schema for W3C XML Schemas which
  * contains schema components from one target namespace.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

@@ -30,12 +30,11 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.ls.LSInput;
 
 /**
- * Implements XSImplementation interface that allows one to retrieve an instance of <code>XSLoader</code>. 
- * This interface should be implemented on the same object that implements 
+ * Implements XSImplementation interface that allows one to retrieve an instance of <code>XSLoader</code>.
+ * This interface should be implemented on the same object that implements
  * DOMImplementation.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -55,7 +54,7 @@ public class XSImplementationImpl extends PSVIDOMImplementationImpl
     // Public methods
     //
 
-    /** NON-DOM: Obtain and return the single shared object */
+    /** NON-DOM: Obtain and return the single shared object. */
     public static DOMImplementation getDOMImplementation() {
         return singleton;
     }  
@@ -64,20 +63,18 @@ public class XSImplementationImpl extends PSVIDOMImplementationImpl
     // DOMImplementation methods
     //
 
-    /** 
+    /**
      * Test if the DOM implementation supports a specific "feature" --
      * currently meaning language and level thereof.
-     * 
-     * @param feature      The package name of the feature to test.
-     * In Level 1, supported values are "HTML" and "XML" (case-insensitive).
-     * At this writing, org.apache.xerces.dom supports only XML.
      *
-     * @param version      The version number of the feature being tested.
+     * @param feature      the package name of the feature to test.
+     * In Level 1, supported values are "HTML" and "XML" (case-insensitive).
+     * At this writing, org.apache.xerces.dom supports only XML
+     * @param version      the version number of the feature being tested.
      * This is interpreted as "Version of the DOM API supported for the
      * specified Feature", and in Level 1 should be "1.0"
-     *
-     * @return    true iff this implementation is compatable with the specified
-     * feature and version.
+     * @return true iff this implementation is compatable with the specified
+     * feature and version
      */
     public boolean hasFeature(String feature, String version) {
     	

@@ -26,10 +26,9 @@ import javax.xml.stream.events.EntityDeclaration;
 import javax.xml.stream.events.EntityReference;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class EntityReferenceImpl extends XMLEventImpl implements
@@ -47,6 +46,7 @@ public final class EntityReferenceImpl extends XMLEventImpl implements
     
     /**
      * Constructor.
+     *
      * @param decl
      * @param location
      */
@@ -56,6 +56,7 @@ public final class EntityReferenceImpl extends XMLEventImpl implements
     
     /**
      * Constructor.
+     *
      * @param name
      * @param decl
      * @param location
@@ -67,6 +68,7 @@ public final class EntityReferenceImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityReference#getDeclaration()
      */
     public EntityDeclaration getDeclaration() {
@@ -74,6 +76,7 @@ public final class EntityReferenceImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.EntityReference#getName()
      */
     public String getName() {

@@ -24,18 +24,16 @@ import org.w3c.dom.DOMLocator;
 
 /**
  * <code>DOMErrorImpl</code> is an implementation that describes an error.
- * <strong>Note:</strong> The error object that describes the error 
- * might be reused by Xerces implementation, across multiple calls to the 
+ * <strong>Note:</strong> The error object that describes the error
+ * might be reused by Xerces implementation, across multiple calls to the
  * handleEvent method on DOMErrorHandler interface.
- * 
- * 
- * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-Core-20010913'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * 
- * @xerces.internal
- * 
- * @author Gopal Sharma, SUN Microsystems Inc.
- * @author Elena Litani, IBM
  *
+ *
+ * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-Core-20010913'>Document Object Model (DOM) Level 3 Core Specification</a>.
+ *
+ * @xerces.internal
+ * @author Gopal Sharma, SUN Microsystems Inc
+ * @author Elena Litani, IBM
  * @version $Id$
  */
 
@@ -62,11 +60,11 @@ public class DOMErrorImpl implements DOMError {
     // Constructors
     //
 
-    /** Default constructor. */    
+    /** Default constructor. */
     public DOMErrorImpl () {
     }
 
-    /** Exctracts information from XMLParserException) */
+    /** Exctracts information from XMLParserException). */
     public DOMErrorImpl (short severity, XMLParseException exception) {
         fSeverity = severity;
         fException = exception;
@@ -74,7 +72,7 @@ public class DOMErrorImpl implements DOMError {
     }
 
     /**
-     * The severity of the error, either <code>SEVERITY_WARNING</code>, 
+     * The severity of the error, either <code>SEVERITY_WARNING</code>,
      * <code>SEVERITY_ERROR</code>, or <code>SEVERITY_FATAL_ERROR</code>.
      */
 
@@ -109,8 +107,8 @@ public class DOMErrorImpl implements DOMError {
 
 
     /**
-     * The related platform dependent exception if any.exception is a reserved 
-     * word, we need to rename it.Change to "relatedException". (F2F 26 Sep 
+     * The related platform dependent exception if any.exception is a reserved
+     * word, we need to rename it.Change to "relatedException". (F2F 26 Sep
      * 2001)
      */
     public Object getRelatedException(){

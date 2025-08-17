@@ -26,18 +26,17 @@ import org.apache.xerces.xni.XMLString;
  * expecting an XMLString object. This is a safe operation because
  * it is assumed that any callee will <strong>not</strong> modify
  * the contents of the XMLString structure.
- * <p> 
+ * <p>
  * The contents of the string are managed by the string buffer. As
  * characters are appended, the string buffer will grow as needed.
  * <p>
- * <strong>Note:</strong> Never set the <code>ch</code>, 
+ * <strong>Note:</strong> Never set the <code>ch</code>,
  * <code>offset</code>, and <code>length</code> fields directly.
  * These fields are managed by the string buffer. In order to reset
  * the buffer, call <code>clear()</code>.
- * 
+ *
  * @author Andy Clark, IBM
  * @author Eric Ye, IBM
- *
  * @version $Id$
  */
 public class XMLStringBuffer
@@ -55,16 +54,14 @@ public class XMLStringBuffer
     //
 
     /**
-     * 
      */
     public XMLStringBuffer() {
         this(DEFAULT_SIZE);
     } // <init>()
 
     /**
-     * 
-     * 
-     * @param size 
+     *
+     * @param size
      */
     public XMLStringBuffer(int size) {
         ch = new char[size];
@@ -105,9 +102,9 @@ public class XMLStringBuffer
     }
 
     /**
-     * append
-     * 
-     * @param c 
+     * Append
+     *
+     * @param c
      */
     public void append(char c) {
         if (this.length + 1 > this.ch.length) {
@@ -124,9 +121,9 @@ public class XMLStringBuffer
     } // append(char)
 
     /**
-     * append
-     * 
-     * @param s 
+     * Append
+     *
+     * @param s
      */
     public void append(String s) {
         int length = s.length();
@@ -144,11 +141,11 @@ public class XMLStringBuffer
     } // append(String)
 
     /**
-     * append
-     * 
-     * @param ch 
-     * @param offset 
-     * @param length 
+     * Append
+     *
+     * @param ch
+     * @param offset
+     * @param length
      */
     public void append(char[] ch, int offset, int length) {
         if (this.length + length > this.ch.length) {
@@ -165,9 +162,9 @@ public class XMLStringBuffer
     } // append(char[],int,int)
 
     /**
-     * append
-     * 
-     * @param s 
+     * Append
+     *
+     * @param s
      */
     public void append(XMLString s) {
         append(s.ch, s.offset, s.length);

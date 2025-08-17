@@ -34,11 +34,9 @@ import org.w3c.dom.UserDataHandler;
 /**
  * Our own document implementation, which knows how to create an element
  * with PSVI information.
- * 
+ *
  * @xerces.internal
- * 
  * @author Sandy Gao, IBM
- * 
  * @version $Id$
  */
 public class PSVIDocumentImpl extends DocumentImpl {
@@ -128,9 +126,9 @@ public class PSVIDocumentImpl extends DocumentImpl {
     } 
     
     /**
-     * 
-     * The configuration used when <code>Document.normalizeDocument</code> is 
-     * invoked. 
+     * The configuration used when <code>Document.normalizeDocument</code> is
+     * invoked.
+     *
      * @since DOM Level 3
      */
     public DOMConfiguration getDomConfig(){

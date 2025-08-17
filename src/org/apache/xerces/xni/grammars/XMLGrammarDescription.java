@@ -49,7 +49,7 @@ public interface XMLGrammarDescription extends XMLResourceIdentifier {
 
     /**
      * Return the type of this grammar.
-     * 
+     *
      * @return  the type of this grammar
      */
     public String getGrammarType();

@@ -25,9 +25,8 @@ import org.apache.xerces.xs.XSModel;
  * XML Schema, it can be casted to this interface. Objects of this interface
  * can be converted to XSModel, from which further information about components
  * in this grammar can be obtained.
- * 
- * @author Sandy Gao, IBM
  *
+ * @author Sandy Gao, IBM
  * @version $Id$
  */
 public interface XSGrammar extends Grammar {
@@ -36,7 +35,7 @@ public interface XSGrammar extends Grammar {
      * Return an <code>XSModel</code> that represents components in this schema
      * grammar and any schema grammars that are imported by this grammar
      * directly or indirectly.
-     * 
+     *
      * @return  an <code>XSModel</code> representing this schema grammar
      */
     public XSModel toXSModel();
@@ -45,7 +44,7 @@ public interface XSGrammar extends Grammar {
      * Return an <code>XSModel</code> that represents components in this schema
      * grammar and the grammars in the <code>grammars</code>parameter,
      * any schema grammars that are imported by them directly or indirectly.
-     * 
+     *
      * @return  an <code>XSModel</code> representing these schema grammars
      */
     public XSModel toXSModel(XSGrammar[] grammars);

@@ -80,17 +80,16 @@ import org.xml.sax.InputSource;
 /**
  * This class implements xni.grammars.XMLGrammarLoader.
  * It also serves as implementation of xs.XSLoader interface and DOMConfiguration interface.
- * 
- * This class is designed to interact either with a proxy for a user application 
- * which wants to preparse schemas, or with our own Schema validator.  
+ *
+ * This class is designed to interact either with a proxy for a user application
+ * which wants to preparse schemas, or with our own Schema validator.
  * It is hoped that none of these "external" classes will therefore need to communicate directly
  * with XSDHandler in future.
  * <p>This class only knows how to make XSDHandler do its thing.
  * The caller must ensure that all its properties (schemaLocation, JAXPSchemaSource
  * etc.) have been properly set.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Neil Graham, IBM
  * @version $Id$
  */
@@ -100,7 +99,7 @@ XSLoader, DOMConfiguration {
     
     // Feature identifiers:
     
-    /** Feature identifier: schema full checking*/
+    /** Feature identifier: schema full checking. */
     protected static final String SCHEMA_FULL_CHECKING =
         Constants.XERCES_FEATURE_PREFIX + Constants.SCHEMA_FULL_CHECKING;
     
@@ -120,15 +119,15 @@ XSLoader, DOMConfiguration {
     protected static final String VALIDATE_ANNOTATIONS =
         Constants.XERCES_FEATURE_PREFIX + Constants.VALIDATE_ANNOTATIONS_FEATURE;
         
-    /** Feature: disallow doctype*/
+    /** Feature: disallow doctype. */
     protected static final String DISALLOW_DOCTYPE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.DISALLOW_DOCTYPE_DECL_FEATURE;
     
-    /** Feature: generate synthetic annotations */
+    /** Feature: generate synthetic annotations. */
     protected static final String GENERATE_SYNTHETIC_ANNOTATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.GENERATE_SYNTHETIC_ANNOTATIONS_FEATURE;
     
-    /** Feature identifier: honour all schemaLocations */
+    /** Feature identifier: honour all schemaLocations. */
     protected static final String HONOUR_ALL_SCHEMALOCATIONS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.HONOUR_ALL_SCHEMALOCATIONS_FEATURE;
     
@@ -138,15 +137,15 @@ XSLoader, DOMConfiguration {
     protected static final String PARSER_SETTINGS = 
         Constants.XERCES_FEATURE_PREFIX + Constants.PARSER_SETTINGS;
     
-    /** Feature identifier: namespace growth */
+    /** Feature identifier: namespace growth. */
     protected static final String NAMESPACE_GROWTH = 
         Constants.XERCES_FEATURE_PREFIX + Constants.NAMESPACE_GROWTH_FEATURE;
     
-    /** Feature identifier: tolerate duplicates */
+    /** Feature identifier: tolerate duplicates. */
     protected static final String TOLERATE_DUPLICATES = 
         Constants.XERCES_FEATURE_PREFIX + Constants.TOLERATE_DUPLICATES_FEATURE;
     
-    /** Property identifier: Schema DV Factory */
+    /** Property identifier: Schema DV Factory. */
     protected static final String SCHEMA_DV_FACTORY = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.SCHEMA_DV_FACTORY_PROPERTY;
     
@@ -259,10 +258,10 @@ XSLoader, DOMConfiguration {
     // XSLoader attributes
     private DOMStringList fRecognizedParameters = null;
     
-    /** DOM L3 error handler */
+    /** DOM L3 error handler. */
     private DOMErrorHandlerWrapper fErrorHandler = null;
     
-    /** DOM L3 resource resolver */
+    /** DOM L3 resource resolver. */
     private DOMEntityResolverWrapper fResourceResolver = null;
     
     // default constructor.  Create objects we absolutely need:
@@ -275,8 +274,9 @@ XSLoader, DOMConfiguration {
     }
     
     /**
-     * This constractor is used by the XMLSchemaValidator. Additional properties, i.e. XMLEntityManager, 
+     * This constractor is used by the XMLSchemaValidator. Additional properties, i.e. XMLEntityManager,
      * will be passed during reset(XMLComponentManager).
+     *
      * @param errorReporter
      * @param grammarBucket
      * @param sHandler
@@ -357,9 +357,8 @@ XSLoader, DOMConfiguration {
     /**
      * Returns the state of a feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @throws XMLConfigurationException Thrown on configuration error.
+     * @param featureId the feature identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public boolean getFeature(String featureId)
     throws XMLConfigurationException {                
@@ -369,11 +368,10 @@ XSLoader, DOMConfiguration {
     /**
      * Sets the state of a feature.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws XMLConfigurationException Thrown when a feature is not
-     *                  recognized or cannot be set.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws XMLConfigurationException thrown when a feature is not
+     *                  recognized or cannot be set
      */
     public void setFeature(String featureId,
             boolean state) throws XMLConfigurationException {
@@ -399,9 +397,8 @@ XSLoader, DOMConfiguration {
     /**
      * Returns the state of a property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @throws XMLConfigurationException Thrown on configuration error.
+     * @param propertyId the property identifier
+     * @throws XMLConfigurationException thrown on configuration error
      */
     public Object getProperty(String propertyId)
     throws XMLConfigurationException {
@@ -411,11 +408,10 @@ XSLoader, DOMConfiguration {
     /**
      * Sets the state of a property.
      *
-     * @param propertyId The property identifier.
-     * @param state     The state of the property.
-     *
-     * @throws XMLConfigurationException Thrown when a property is not
-     *                  recognized or cannot be set.
+     * @param propertyId the property identifier
+     * @param state     the state of the property
+     * @throws XMLConfigurationException thrown when a property is not
+     *                  recognized or cannot be set
      */
     public void setProperty(String propertyId,
             Object state) throws XMLConfigurationException {                   
@@ -451,10 +447,9 @@ XSLoader, DOMConfiguration {
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) {
         fLocale = locale;
@@ -469,13 +464,13 @@ XSLoader, DOMConfiguration {
     /**
      * Sets the error handler.
      *
-     * @param errorHandler The error handler.
+     * @param errorHandler the error handler
      */
     public void setErrorHandler(XMLErrorHandler errorHandler) {
         fErrorReporter.setProperty(ERROR_HANDLER, errorHandler);
     } // setErrorHandler(XMLErrorHandler)
     
-    /** Returns the registered error handler.  */
+    /** Returns the registered error handler. */
     public XMLErrorHandler getErrorHandler() {
         return fErrorReporter.getErrorHandler();
     } // getErrorHandler():  XMLErrorHandler
@@ -483,7 +478,7 @@ XSLoader, DOMConfiguration {
     /**
      * Sets the entity resolver.
      *
-     * @param entityResolver The new entity resolver.
+     * @param entityResolver the new entity resolver
      */
     public void setEntityResolver(XMLEntityResolver entityResolver) {
         fUserEntityResolver = entityResolver;
@@ -491,7 +486,7 @@ XSLoader, DOMConfiguration {
         fEntityManager.setProperty(ENTITY_RESOLVER, entityResolver);
     } // setEntityResolver(XMLEntityResolver)
     
-    /** Returns the registered entity resolver.  */
+    /** Returns the registered entity resolver. */
     public XMLEntityResolver getEntityResolver() {
         return fUserEntityResolver;
     } // getEntityResolver():  XMLEntityResolver
@@ -499,8 +494,8 @@ XSLoader, DOMConfiguration {
     /**
      * Returns a Grammar object by parsing the contents of the
      * entities pointed to by sources.
-     * 
-     * @param source the locations of the entity which forms 
+     *
+     * @param source the locations of the entity which forms
      *                      the staring point of the grammars to be constructed
      * @throws IOException  when a problem is encounted reading the entity
      * @throws XNIException when a condition arises (such as a FatalError) that requires parsing
@@ -519,10 +514,10 @@ XSLoader, DOMConfiguration {
      * entity pointed to by source.
      *
      * @param source        the location of the entity which forms
-     *                          the starting point of the grammar to be constructed.
-     * @throws IOException      When a problem is encountered reading the entity
+     *                          the starting point of the grammar to be constructed
+     * @throws IOException      when a problem is encountered reading the entity
      *          XNIException    When a condition arises (such as a FatalError) that requires parsing
-     *                              of the entity be terminated.
+     *                              of the entity be terminated
      */
     public Grammar loadGrammar(XMLInputSource source)
     throws IOException, XNIException {
@@ -560,11 +555,12 @@ XSLoader, DOMConfiguration {
     /**
      * This method is called either from XMLGrammarLoader.loadGrammar or from XMLSchemaValidator.
      * Note: in either case, the EntityManager (or EntityResolvers) are not going to be invoked
-     * to resolve the location of the schema in XSDDescription 
+     * to resolve the location of the schema in XSDDescription
+     *
      * @param desc
      * @param source
      * @param locationPairs
-     * @return An XML Schema grammar
+     * @return an XML Schema grammar
      * @throws IOException
      * @throws XNIException
      */
@@ -582,7 +578,7 @@ XSLoader, DOMConfiguration {
         return grammar;
     } // loadSchema(XSDDescription, XMLInputSource):  SchemaGrammar
     
-    /** 
+    /**
      * This method tries to resolve location of the given schema.
      * The loader stores the namespace/location pairs in a hashtable (use "" as the
      * namespace of absent namespace). When resolving an entity, loader first tries
@@ -714,7 +710,6 @@ XSLoader, DOMConfiguration {
      * should be available to imported schemas.  I have assumed
      * that it should.  - NG
      * Note: all JAXP schema files will be checked for full-schema validity if the feature was set up
-     * 
      */
     private void processJAXPSchemaSource(Hashtable locationPairs) throws IOException {
         fJAXPProcessed = true;

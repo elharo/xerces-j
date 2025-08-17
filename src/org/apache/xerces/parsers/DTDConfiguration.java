@@ -49,37 +49,36 @@ import org.apache.xerces.xni.parser.XMLPullParserConfiguration;
  * to DTD-centric validation. Since
  * the Xerces2 reference implementation document and DTD scanner
  * implementations are capable of acting as pull parsers, this
- * configuration implements the 
+ * configuration implements the
  * <code>XMLPullParserConfiguration</code> interface.
  * <p>
  * In addition to the features and properties recognized by the base
- * parser configuration, this class recognizes these additional 
+ * parser configuration, this class recognizes these additional
  * features and properties:
  * <ul>
  * <li>Features
- *  <ul>
- *   <li>http://apache.org/xml/features/validation/warn-on-duplicate-attdef</li>
- *   <li>http://apache.org/xml/features/validation/warn-on-undeclared-elemdef</li>
- *   <li>http://apache.org/xml/features/allow-java-encodings</li>
- *   <li>http://apache.org/xml/features/continue-after-fatal-error</li>
- *   <li>http://apache.org/xml/features/load-external-dtd</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/features/validation/warn-on-duplicate-attdef</li>
+ * <li>http://apache.org/xml/features/validation/warn-on-undeclared-elemdef</li>
+ * <li>http://apache.org/xml/features/allow-java-encodings</li>
+ * <li>http://apache.org/xml/features/continue-after-fatal-error</li>
+ * <li>http://apache.org/xml/features/load-external-dtd</li>
+ * </ul>
  * <li>Properties
- *  <ul>
- *   <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *   <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *   <li>http://apache.org/xml/properties/internal/document-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *   <li>http://apache.org/xml/properties/internal/validator/dtd</li>
- *   <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
- *  </ul>
+ * <ul>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/document-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/validator/dtd</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * </ul>
  * </ul>
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class DTDConfiguration
@@ -135,7 +134,7 @@ public class DTDConfiguration
     protected static final String ENTITY_MANAGER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
     
-    /** Property identifier document scanner: */
+    /** Property identifier document scanner:. */
     protected static final String DOCUMENT_SCANNER = 
         Constants.XERCES_PROPERTY_PREFIX + Constants.DOCUMENT_SCANNER_PROPERTY;
 
@@ -206,7 +205,7 @@ public class DTDConfiguration
     /** Document scanner. */
     protected XMLDocumentScanner fScanner;
 
-    /** Input Source */
+    /** Input Source. */
     protected XMLInputSource fInputSource;
 
     /** DTD scanner. */
@@ -224,10 +223,10 @@ public class DTDConfiguration
     protected ValidationManager fValidationManager;
     // state
 
-    /** Locator */
+    /** Locator. */
     protected XMLLocator fLocator;
 
-    /** 
+    /**
      * True if a parse is in progress. This state is needed because
      * some features/properties cannot be set while parsing (e.g.
      * validation and namespaces).
@@ -243,10 +242,10 @@ public class DTDConfiguration
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public DTDConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -256,12 +255,12 @@ public class DTDConfiguration
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public DTDConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool) {
@@ -272,13 +271,13 @@ public class DTDConfiguration
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public DTDConfiguration(SymbolTable symbolTable,
                                        XMLGrammarPool grammarPool,
@@ -423,10 +422,9 @@ public class DTDConfiguration
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) throws XNIException {
         super.setLocale(locale);
@@ -442,13 +440,11 @@ public class DTDConfiguration
     /**
      * Sets the input source for the document to parse.
      *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @param inputSource the document's input source
+     * @throws XMLConfigurationException thrown if there is a
      *                        configuration error when initializing the
-     *                        parser.
-     * @exception IOException Thrown on I/O error.
-     *
+     *                        parser
+     * @throws IOException thrown on I/O error
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -466,17 +462,14 @@ public class DTDConfiguration
     /**
      * Parses the document in a pull parsing fashion.
      *
-     * @param complete True if the pull parser should parse the
-     *                 remaining document completely.
-     *
-     * @return True if there is more document to parse.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping 
-     *                         another exception.
-     * @exception IOException  An IO exception from the parser, possibly
+     * @param complete true if the pull parser should parse the
+     *                 remaining document completely
+     * @return true if there is more document to parse
+     * @throws XNIException any XNI exception, possibly wrapping
+     *                         another exception
+     * @throws IOException  an IO exception from the parser, possibly
      *                         from a byte stream or character stream
-     *                         supplied by the parser.
-     *
+     *                         supplied by the parser
      * @see #setInputSource
      */
     public boolean parse(boolean complete) throws XNIException, IOException {
@@ -553,10 +546,9 @@ public class DTDConfiguration
     /**
      * Parses the specified input source.
      *
-     * @param source The input source.
-     *
-     * @exception XNIException Throws exception on XNI error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param source the input source
+     * @throws XNIException throws exception on XNI error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(XMLInputSource source) throws XNIException, IOException {
 
@@ -602,10 +594,10 @@ public class DTDConfiguration
     // Protected methods
     //
     
-    /** 
-     * Reset all components before parsing. 
+    /**
+     * Reset all components before parsing.
      *
-     * @throws XNIException Thrown if an error occurs during initialization.
+     * @throws XNIException thrown if an error occurs during initialization
      */
     protected void reset() throws XNIException {
 
@@ -702,13 +694,12 @@ public class DTDConfiguration
      * Check a feature. If feature is know and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId)
         throws XMLConfigurationException {
@@ -786,14 +777,13 @@ public class DTDConfiguration
      * Check a property. If the property is know and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId)
         throws XMLConfigurationException {

@@ -34,9 +34,8 @@ import org.xml.sax.SAXException;
 
 /**
  * This is an implementation of the XSAnnotation schema component.
- * 
- * @xerces.internal 
- * 
+ *
+ * @xerces.internal
  * @version $Id$
  */
 public class XSAnnotationImpl implements XSAnnotation {
@@ -58,18 +57,19 @@ public class XSAnnotationImpl implements XSAnnotation {
     }
 
     /**
-     *  Write contents of the annotation to the specified DOM object. If the 
-     * specified <code>target</code> object is a DOM in-scope namespace 
-     * declarations for <code>annotation</code> element are added as 
-     * attributes nodes of the serialized <code>annotation</code>, otherwise 
-     * the corresponding events for all in-scope namespace declaration are 
-     * sent via specified document handler. 
-     * @param target  A target pointer to the annotation target object, i.e. 
+     * Write contents of the annotation to the specified DOM object. If the
+     * specified <code>target</code> object is a DOM in-scope namespace
+     * declarations for <code>annotation</code> element are added as
+     * attributes nodes of the serialized <code>annotation</code>, otherwise
+     * the corresponding events for all in-scope namespace declaration are
+     * sent via specified document handler.
+     *
+     * @param target  a target pointer to the annotation target object, i.e.
      *   <code>org.w3c.dom.Document</code>, 
-     *   <code>org.xml.sax.ContentHandler</code>. 
-     * @param targetType  A target type. 
-     * @return If the <code>target</code> is recognized type and supported by 
-     *   this implementation return true, otherwise return false. 
+     *   <code>org.xml.sax.ContentHandler</code>
+     * @param targetType  a target type
+     * @return if the <code>target</code> is recognized type and supported by
+     *   this implementation return true, otherwise return false
      */
     public boolean writeAnnotation(Object target, 
                                    short targetType) {
@@ -93,15 +93,15 @@ public class XSAnnotationImpl implements XSAnnotation {
     // XSObject methods
 
     /**
-     *  The <code>type</code> of this object, i.e. 
-     * <code>ELEMENT_DECLARATION</code>. 
+     * The <code>type</code> of this object, i.e.
+     * <code>ELEMENT_DECLARATION</code>.
      */
     public short getType() {
         return XSConstants.ANNOTATION;
     }
 
     /**
-     * The name of type <code>NCName</code> of this declaration as defined in 
+     * The name of type <code>NCName</code> of this declaration as defined in
      * XML Namespaces.
      */
     public String getName() {
@@ -109,16 +109,16 @@ public class XSAnnotationImpl implements XSAnnotation {
     }
 
     /**
-     *  The [target namespace] of this object, or <code>null</code> if it is 
-     * unspecified. 
+     * The [target namespace] of this object, or <code>null</code> if it is
+     * unspecified.
      */
     public String getNamespace() {
         return null;
     }
 
     /**
-     * A namespace schema information item corresponding to the target 
-     * namespace of the component, if it's globally declared; or null 
+     * A namespace schema information item corresponding to the target
+     * namespace of the component, if it's globally declared; or null
      * otherwise.
      */
     public XSNamespaceItem getNamespaceItem() {

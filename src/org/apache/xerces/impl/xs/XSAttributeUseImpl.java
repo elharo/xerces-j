@@ -31,8 +31,7 @@ import org.apache.xerces.xs.XSValue;
  * The XML representation for an attribute use
  * schema component is a local &lt;attribute&gt; element information item
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
  * @version $Id$
  */
@@ -117,6 +116,7 @@ public class XSAttributeUseImpl implements XSAttributeUse {
     }
 
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

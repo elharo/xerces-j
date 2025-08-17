@@ -44,7 +44,6 @@ import org.apache.xerces.xni.parser.XMLInputSource;
  * user applications to do so.
  *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class XMLGrammarPreparser {
@@ -122,7 +121,7 @@ public class XMLGrammarPreparser {
     /**
      * Constructs a preparser using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XMLGrammarPreparser (SymbolTable symbolTable) {
         fSymbolTable = symbolTable;
@@ -175,15 +174,15 @@ public class XMLGrammarPreparser {
      * XMLInputSource.
      * This method also adds this grammar to the XMLGrammarPool
      *
-     * @param type The type of the grammar to be constructed
-     * @param is The XMLInputSource containing this grammar's
+     * @param type the type of the grammar to be constructed
+     * @param is the XMLInputSource containing this grammar's
      * information
      * <strong>If a URI is included in the systemId field, the parser will not expand this URI or make it
      * available to the EntityResolver</strong>
-     * @return The newly created <code>Grammar</code>.
-     * @exception XNIException thrown on an error in grammar
+     * @return the newly created <code>Grammar</code>
+     * @throws XNIException thrown on an error in grammar
      * construction
-     * @exception IOException thrown if an error is encountered
+     * @throws IOException thrown if an error is encountered
      * in reading the file
      */
     public Grammar preparseGrammar(String type, XMLInputSource
@@ -214,10 +213,9 @@ public class XMLGrammarPreparser {
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) {
         fLocale = locale;
@@ -233,13 +231,13 @@ public class XMLGrammarPreparser {
     /**
      * Sets the error handler.
      *
-     * @param errorHandler The error handler.
+     * @param errorHandler the error handler
      */
     public void setErrorHandler(XMLErrorHandler errorHandler) {
         fErrorReporter.setProperty(ERROR_HANDLER, errorHandler);
     } // setErrorHandler(XMLErrorHandler)
 
-    /** Returns the registered error handler.  */
+    /** Returns the registered error handler. */
     public XMLErrorHandler getErrorHandler() {
         return fErrorReporter.getErrorHandler();
     } // getErrorHandler():  XMLErrorHandler
@@ -247,7 +245,7 @@ public class XMLGrammarPreparser {
     /**
      * Sets the entity resolver.
      *
-     * @param entityResolver The new entity resolver.
+     * @param entityResolver the new entity resolver
      */
     public void setEntityResolver(XMLEntityResolver entityResolver) {
         if (fEntityResolver != entityResolver) {
@@ -260,7 +258,7 @@ public class XMLGrammarPreparser {
         }
     } // setEntityResolver(XMLEntityResolver)
 
-    /** Returns the registered entity resolver.  */
+    /** Returns the registered entity resolver. */
     public XMLEntityResolver getEntityResolver() {
         return fEntityResolver;
     } // getEntityResolver():  XMLEntityResolver
@@ -268,7 +266,7 @@ public class XMLGrammarPreparser {
     /**
      * Sets the grammar pool.
      *
-     * @param grammarPool The new grammar pool.
+     * @param grammarPool the new grammar pool
      */
     public void setGrammarPool(XMLGrammarPool grammarPool) {
         if (fGrammarPool != grammarPool) {
@@ -281,7 +279,7 @@ public class XMLGrammarPreparser {
         }
     } // setGrammarPool(XMLGrammarPool)
 
-    /** Returns the registered grammar pool.  */
+    /** Returns the registered grammar pool. */
     public XMLGrammarPool getGrammarPool() {
         return fGrammarPool;
     } // getGrammarPool():  XMLGrammarPool
@@ -358,8 +356,8 @@ public class XMLGrammarPreparser {
         return gl.getProperty(propertyId);
     } // getProperty(String, String):  Object
     
-    /** 
-     * Container for an XMLGrammarLoader. Also holds the modCount 
+    /**
+     * Container for an XMLGrammarLoader. Also holds the modCount
      * that the XMLGrammarPreparser had the last time it was used.
      */
     static class XMLGrammarLoaderContainer {

@@ -45,7 +45,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>StreamSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -91,13 +91,13 @@ final class StreamValidatorHelper implements ValidatorHelper {
     // Data
     //
     
-    /** SoftReference to parser configuration. **/
+    /** SoftReference to parser configuration. *. */
     private SoftReference fConfiguration = new SoftReference(null);
     
-    /** Schema validator. **/
+    /** Schema validator. *. */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Component manager. **/
+    /** Component manager. *. */
     private final XMLSchemaValidatorComponentManager fComponentManager;
 
     /**
@@ -105,7 +105,7 @@ final class StreamValidatorHelper implements ValidatorHelper {
      */
     private SoftReference fParser = new SoftReference(null);
     
-    /** Serializer factory. **/
+    /** Serializer factory. *. */
     private SerializerFactory fSerializerFactory;
     
     public StreamValidatorHelper(XMLSchemaValidatorComponentManager componentManager) {

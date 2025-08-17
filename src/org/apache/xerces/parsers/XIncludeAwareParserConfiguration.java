@@ -32,9 +32,8 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 /**
  * This class is the configuration used to parse XML 1.0 and XML 1.1 documents
  * and provides support for XInclude. This is the default Xerces configuration.
- * 
+ *
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public class XIncludeAwareParserConfiguration extends XML11Configuration {
@@ -51,7 +50,7 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
     protected static final String XINCLUDE_FIXUP_LANGUAGE =
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FIXUP_LANGUAGE_FEATURE;
     
-    /** Feature identifier: XInclude processing */
+    /** Feature identifier: XInclude processing. */
     protected static final String XINCLUDE_FEATURE = 
         Constants.XERCES_FEATURE_PREFIX + Constants.XINCLUDE_FEATURE;
     
@@ -87,10 +86,10 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
         this(null, null, null);
     } // <init>()
     
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XIncludeAwareParserConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -101,8 +100,8 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
      * grammar pool.
      * <p>
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XIncludeAwareParserConfiguration(
             SymbolTable symbolTable,
@@ -115,9 +114,9 @@ public class XIncludeAwareParserConfiguration extends XML11Configuration {
      * grammar pool, and parent settings.
      * <p>
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XIncludeAwareParserConfiguration(
             SymbolTable symbolTable,

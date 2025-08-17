@@ -24,13 +24,11 @@ import org.apache.xerces.util.MessageFormatter;
 
 /**
  * <p>Signals that a malformed byte sequence was detected
- * by a <code>java.io.Reader</code> that decodes bytes 
+ * by a <code>java.io.Reader</code> that decodes bytes
  * of a given encoding into characters.</p>
- * 
+ *
  * @xerces.internal
- *
  * @author Michael Glavassevich, IBM
- *
  * @version $Id$
  */
 public final class MalformedByteSequenceException extends CharConversionException {
@@ -42,22 +40,22 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
     // Data
     //
     
-    /** message formatter **/
+    /** Message formatter *. */
     private MessageFormatter fFormatter;
     
-    /** locale for error message **/
+    /** Locale for error message *. */
     private Locale fLocale;
     
-    /** error domain **/
+    /** Error domain *. */
     private String fDomain;
     
-    /** key for the error message **/
+    /** Key for the error message *. */
     private String fKey;
     
-    /** replacement arguements for the error message **/
+    /** Replacement arguements for the error message *. */
     private Object[] fArguments;
     
-    /** message text for this message, initially null **/
+    /** Message text for this message, initially null *. */
     private String fMessage;
     
     //
@@ -66,16 +64,16 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
 
     /**
      * Constructs a MalformedByteSequenceException with the given
-     * parameters which may be passed to an error reporter to 
+     * parameters which may be passed to an error reporter to
      * generate a localized string for this exception.
-     * 
-     * @param formatter The MessageFormatter used for building the 
-     *                  message text for this exception.
-     * @param locale    The Locale for which messages are to be reported.
-     * @param domain    The error domain.
-     * @param key       The key of the error message.
-     * @param arguments The replacement arguments for the error message,
-     *                  if needed.
+     *
+     * @param formatter the MessageFormatter used for building the
+     *                  message text for this exception
+     * @param locale    the Locale for which messages are to be reported
+     * @param domain    the error domain
+     * @param key       the key of the error message
+     * @param arguments the replacement arguments for the error message,
+     *                  if needed
      */
     public MalformedByteSequenceException(MessageFormatter formatter,
         Locale locale, String domain, String key, Object[] arguments) {
@@ -92,7 +90,7 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
     
     /**
      * <p>Returns the error domain of the error message.</p>
-     * 
+     *
      * @return the error domain
      */
     public String getDomain () {
@@ -101,7 +99,7 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
     
     /**
      * <p>Returns the key of the error message.</p>
-     * 
+     *
      * @return the error key of the error message
      */
     public String getKey () {
@@ -111,7 +109,7 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
     /**
      * <p>Returns the replacement arguments for the error
      * message or <code>null</code> if none exist.</p>
-     * 
+     *
      * @return the replacement arguments for the error message
      * or <code>null</code> if none exist
      */
@@ -121,8 +119,8 @@ public final class MalformedByteSequenceException extends CharConversionExceptio
     
     /**
      * <p>Returns the localized message for this exception.</p>
-     * 
-     * @return the localized message for this exception.
+     *
+     * @return the localized message for this exception
      */
     public synchronized String getMessage() {
         if (fMessage == null) {

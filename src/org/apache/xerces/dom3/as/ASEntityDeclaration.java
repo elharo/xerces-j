@@ -13,8 +13,9 @@
 package org.apache.xerces.dom3.as;
 
 /**
+ *
  * @deprecated
- * Models a general entity declaration in an abstract schema. The abstract 
+ * models a general entity declaration in an abstract schema. The abstract 
  * schema does not handle any parameter entity. It is assumed that the 
  * parameter entities are expanded by the implementation as the abstract 
  * schema is built.
@@ -24,11 +25,11 @@ and Save Specification</a>.
 public interface ASEntityDeclaration extends ASObject {
     // EntityType
     /**
-     * constant defining an internal entity.
+     * Constant defining an internal entity.
      */
     public static final short INTERNAL_ENTITY           = 1;
     /**
-     * constant defining an external entity.
+     * Constant defining an external entity.
      */
     public static final short EXTERNAL_ENTITY           = 2;
 
@@ -42,36 +43,36 @@ public interface ASEntityDeclaration extends ASObject {
     public void setEntityType(short entityType);
 
     /**
-     * The replacement text for the internal entity. The entity references 
-     * within the replacement text are kept intact. For an entity of type 
+     * The replacement text for the internal entity. The entity references
+     * within the replacement text are kept intact. For an entity of type
      * <code>EXTERNAL_ENTITY</code>, this is <code>null</code>.
      */
     public String getEntityValue();
     /**
-     * The replacement text for the internal entity. The entity references 
-     * within the replacement text are kept intact. For an entity of type 
+     * The replacement text for the internal entity. The entity references
+     * within the replacement text are kept intact. For an entity of type
      * <code>EXTERNAL_ENTITY</code>, this is <code>null</code>.
      */
     public void setEntityValue(String entityValue);
 
     /**
-     * the URI reference representing the system identifier for the notation 
+     * The URI reference representing the system identifier for the notation
      * declaration, if present, <code>null</code> otherwise.
      */
     public String getSystemId();
     /**
-     * the URI reference representing the system identifier for the notation 
+     * The URI reference representing the system identifier for the notation
      * declaration, if present, <code>null</code> otherwise.
      */
     public void setSystemId(String systemId);
 
     /**
-     * The string representing the public identifier for this notation 
+     * The string representing the public identifier for this notation
      * declaration, if present; <code>null</code> otherwise.
      */
     public String getPublicId();
     /**
-     * The string representing the public identifier for this notation 
+     * The string representing the public identifier for this notation
      * declaration, if present; <code>null</code> otherwise.
      */
     public void setPublicId(String publicId);

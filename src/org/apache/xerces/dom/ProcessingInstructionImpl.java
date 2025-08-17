@@ -26,11 +26,10 @@ import org.w3c.dom.ProcessingInstruction;
  * are most common in XML, but they are supported in HTML as well.
  *
  * This class inherits from CharacterDataImpl to reuse its setNodeValue method.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class ProcessingInstructionImpl
     extends CharacterDataImpl
@@ -106,13 +105,13 @@ public class ProcessingInstructionImpl
     } // getTarget():String
 
    /**
-     * Returns the absolute base URI of this node or null if the implementation
-     * wasn't able to obtain an absolute URI. Note: If the URI is malformed, a
-     * null is returned.
-     * 
-     * @return The absolute base URI of this node or null.
-     * @since DOM Level 3
-     */
+    * Returns the absolute base URI of this node or null if the implementation
+    * wasn't able to obtain an absolute URI. Note: If the URI is malformed, a
+    * null is returned.
+    *
+    * @return the absolute base URI of this node or null
+    * @since DOM Level 3
+    */
     public String getBaseURI() {
 
         if (needsSyncData()) {

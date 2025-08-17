@@ -27,9 +27,8 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
  * parser with a document scanner, a dtd scanner, and a validator, as
  * well as a grammar pool.
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class SAXParser

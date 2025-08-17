@@ -66,9 +66,8 @@ package org.apache.xerces.impl.dtd;
  * one" and "one or more" nodes.  The leaf nodes would always have a valid
  * string pool index, as the "#PCDATA" leaf is not used in the declarations
  * for element content models.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @version $Id$
  */
 public class XMLContentSpec {
@@ -77,7 +76,7 @@ public class XMLContentSpec {
     // Constants
     //
 
-    /** 
+    /**
      * Name or #PCDATA. Leaf nodes that represent parsed character
      * data (#PCDATA) have values of -1.
      */
@@ -98,9 +97,9 @@ public class XMLContentSpec {
     /** Represents sequence, ','. */
     public static final short CONTENTSPECNODE_SEQ = 5;
 
-    /** 
+    /**
      * Represents any namespace specified namespace. When the element
-     * found in the document must belong to a specific namespace, 
+     * found in the document must belong to a specific namespace,
      * <code>otherValue</code> will contain the name of the namespace.
      * If <code>otherValue</code> is <code>-1</code> then the element
      * can be from any namespace.
@@ -110,10 +109,10 @@ public class XMLContentSpec {
      */
     public static final short CONTENTSPECNODE_ANY = 6;
 
-    /** 
-     * Represents any other namespace (XML Schema: ##other). 
+    /**
+     * Represents any other namespace (XML Schema: ##other).
      * <p>
-     * When the content spec node type is set to CONTENTSPECNODE_ANY_OTHER, 
+     * When the content spec node type is set to CONTENTSPECNODE_ANY_OTHER,
      * <code>value</code> will contain the namespace that <em>cannot</em>
      * occur.
      */
@@ -122,14 +121,14 @@ public class XMLContentSpec {
     /** Represents any local element (XML Schema: ##local). */
     public static final short CONTENTSPECNODE_ANY_LOCAL = 8;
 
-    /** prcessContent is 'lax' **/
+    /** PrcessContent is 'lax' *. */
     public static final short CONTENTSPECNODE_ANY_LAX = 22;
 
     public static final short CONTENTSPECNODE_ANY_OTHER_LAX = 23;
 
     public static final short CONTENTSPECNODE_ANY_LOCAL_LAX = 24;
 
-    /** processContent is 'skip' **/
+    /** ProcessContent is 'skip' *. */
     
     public static final short CONTENTSPECNODE_ANY_SKIP = 38;
 
@@ -140,8 +139,8 @@ public class XMLContentSpec {
     // Data
     //
 
-    /** 
-     * The content spec node type. 
+    /**
+     * The content spec node type.
      *
      * @see #CONTENTSPECNODE_LEAF
      * @see #CONTENTSPECNODE_ZERO_OR_ONE
@@ -160,7 +159,7 @@ public class XMLContentSpec {
 
     /**
      * The "right hand" value of the content spec node.
-     *  leaf name.uri, right child for binary ops
+     * leaf name.uri, right child for binary ops
      */
     public Object otherValue;
 
@@ -178,7 +177,7 @@ public class XMLContentSpec {
         setValues(type, value, otherValue);
     }
 
-    /** 
+    /**
      * Constructs a content spec from the values in the specified content spec.
      */
     public XMLContentSpec(XMLContentSpec contentSpec) {
@@ -260,13 +259,13 @@ public class XMLContentSpec {
     //
 
     /**
-     * Provides a means for walking the structure built out of 
+     * Provides a means for walking the structure built out of
      * content spec "nodes". The user of this provider interface is
      * responsible for knowing what the content spec node values
      * "mean". If those values refer to content spec identifiers,
      * then the user can call back into the provider to get the
      * next content spec node in the structure.
-     * 
+     *
      * @xerces.internal
      */
     public interface Provider {
@@ -279,12 +278,11 @@ public class XMLContentSpec {
          * Fills in the provided content spec structure with content spec
          * information for a unique identifier.
          *
-         * @param contentSpecIndex The content spec identifier. All content
+         * @param contentSpecIndex the content spec identifier. All content
          *                         spec "nodes" have a unique identifier.
-         * @param contentSpec      The content spec struct to fill in with
-         *                         the information.
-         *
-         * @return Returns true if the contentSpecIndex was found.
+         * @param contentSpec      the content spec struct to fill in with
+         *                         the information
+         * @return returns true if the contentSpecIndex was found
          */
         public boolean getContentSpec(int contentSpecIndex, XMLContentSpec contentSpec);
 

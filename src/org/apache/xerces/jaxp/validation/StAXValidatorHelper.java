@@ -66,7 +66,7 @@ import org.xml.sax.SAXException;
 
 /**
  * <p>A validator helper for <code>StAXSource</code>s.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -100,25 +100,25 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
     /** Error reporter. */
     private final XMLErrorReporter fErrorReporter;
     
-    /** Schema validator. **/
+    /** Schema validator. *. */
     private final XMLSchemaValidator fSchemaValidator;
     
-    /** Symbol table **/
+    /** Symbol table *. */
     private final SymbolTable fSymbolTable;
     
-    /** Validation manager. **/
+    /** Validation manager. *. */
     private final ValidationManager fValidationManager;
     
-    /** Component manager. **/
+    /** Component manager. *. */
     private final XMLSchemaValidatorComponentManager fComponentManager;
     
-    /** The namespace context of this document: stores namespaces in scope. **/
+    /** The namespace context of this document: stores namespaces in scope. *. */
     private final JAXPNamespaceContextWrapper fNamespaceContext;
     
-    /** XML Locator wrapper for StAX. **/
+    /** XML Locator wrapper for StAX. *. */
     private final StAXLocationWrapper fStAXLocationWrapper = new StAXLocationWrapper();
     
-    /** On demand reader of the Location from an XMLStreamReader. **/
+    /** On demand reader of the Location from an XMLStreamReader. *. */
     private final XMLStreamReaderLocation fXMLStreamReaderLocation = new XMLStreamReaderLocation();
     
     /** Map for tracking entity declarations. */
@@ -127,28 +127,28 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
     /** Flag used to track whether XML names and Namespace URIs have been internalized. */
     private boolean fStringsInternalized = false;
     
-    /** Validator helper for XMLStreamReaders. **/
+    /** Validator helper for XMLStreamReaders. *. */
     private StreamHelper fStreamHelper;
     
-    /** Validator helper for XMLEventReaders. **/
+    /** Validator helper for XMLEventReaders. *. */
     private EventHelper fEventHelper;
     
-    /** StAX document handler. **/
+    /** StAX document handler. *. */
     private StAXDocumentHandler fStAXValidatorHandler;
     
-    /** StAX stream result builder. **/
+    /** StAX stream result builder. *. */
     private StAXStreamResultBuilder fStAXStreamResultBuilder;
     
-    /** StAX event result builder. **/
+    /** StAX event result builder. *. */
     private StAXEventResultBuilder fStAXEventResultBuilder;
     
-    /** Document depth. **/
+    /** Document depth. *. */
     private int fDepth = 0;
     
-    /** Current event. **/
+    /** Current event. *. */
     private XMLEvent fCurrentEvent = null;
     
-    /** Fields for start element, end element and characters. **/
+    /** Fields for start element, end element and characters. *. */
     final QName fElementQName = new QName();
     final QName fAttributeQName = new QName();
     final XMLAttributesImpl fAttributes = new XMLAttributesImpl();
@@ -280,7 +280,7 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         toFill.setValues(prefix, localpart, raw, uri);
     }
     
-    /** Setup for validation. **/
+    /** Setup for validation. *. */
     final void setup(Location location, StAXResult result, boolean stringsInternalized) {
         fDepth = 0;
         fComponentManager.reset();
@@ -472,7 +472,7 @@ final class StAXValidatorHelper implements ValidatorHelper, EntityState {
         // Data
         //
         
-        /** Array for holding character data. **/
+        /** Array for holding character data. *. */
         private final char [] fCharBuffer = new char[CHUNK_SIZE];
         
         EventHelper() {}

@@ -21,8 +21,8 @@ import org.apache.xerces.impl.dtd.models.ContentModelValidator;
 import org.apache.xerces.xni.QName;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class XMLElementDecl {
@@ -31,38 +31,38 @@ public class XMLElementDecl {
     // Constants  
     //
 
-    /** TYPE_ANY */
+    /** TYPE_ANY. */
     public static final short TYPE_ANY = 0;
 
-    /** TYPE_EMPTY */
+    /** TYPE_EMPTY. */
     public static final short TYPE_EMPTY = 1;
 
-    /** TYPE_MIXED */
+    /** TYPE_MIXED. */
     public static final short TYPE_MIXED = 2;
 
-    /** TYPE_CHILDREN */
+    /** TYPE_CHILDREN. */
     public static final short TYPE_CHILDREN = 3;
 
-    /** TYPE_SIMPLE */
+    /** TYPE_SIMPLE. */
     public static final short TYPE_SIMPLE = 4;
 
     //
     // Data
     //
 
-    /** name */
+    /** Name. */
     public final QName name = new QName();
 
-    /** scope */
+    /** Scope. */
     public int scope = -1;
 
-    /** type */
+    /** Type. */
     public short type = -1;
 
-    /** contentModelValidator */
+    /** ContentModelValidator. */
     public ContentModelValidator contentModelValidator;
 
-    /** simpleType */
+    /** SimpleType. */
     public final XMLSimpleType simpleType = new XMLSimpleType();
 
     //
@@ -70,13 +70,13 @@ public class XMLElementDecl {
     //
 
     /**
-     * setValues
-     * 
-     * @param name 
-     * @param scope 
-     * @param type 
-     * @param contentModelValidator 
-     * @param simpleType 
+     * SetValues
+     *
+     * @param name
+     * @param scope
+     * @param type
+     * @param contentModelValidator
+     * @param simpleType
      */
     public void setValues(QName name, int scope, short type, ContentModelValidator contentModelValidator, XMLSimpleType simpleType) {
         this.name.setValues(name);
@@ -87,7 +87,7 @@ public class XMLElementDecl {
     } // setValues
 
     /**
-     * clear
+     * Clear
      */
     public void clear() {
         this.name.clear();

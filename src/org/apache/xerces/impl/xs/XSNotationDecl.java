@@ -28,9 +28,8 @@ import org.apache.xerces.xs.XSObjectList;
  * The XML representation for a NOTATION declaration
  * schema component is a global &lt;notation&gt; element information item
  *
- * @xerces.internal 
- *
- * @author Rahul Srivastava, Sun Microsystems Inc.
+ * @xerces.internal
+ * @author Rahul Srivastava, Sun Microsystems Inc
  * @version $Id$
  */
 public class XSNotationDecl implements XSNotationDeclaration {
@@ -84,7 +83,7 @@ public class XSNotationDecl implements XSNotationDeclaration {
 
     /**
      * Optional if {system identifier} is present. A public identifier,
-     * as defined in [XML 1.0 (Second Edition)]. 
+     * as defined in [XML 1.0 (Second Edition)].
      */
     public String getPublicId() {
         return fPublicId;
@@ -105,6 +104,7 @@ public class XSNotationDecl implements XSNotationDeclaration {
     }
 
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

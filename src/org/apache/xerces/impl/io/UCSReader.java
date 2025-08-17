@@ -21,14 +21,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
-/** 
+/**
  * Reader for UCS-2 and UCS-4 encodings.
  * (i.e., encodings from ISO-10646-UCS-(2|4)).
- * 
+ *
  * @xerces.internal
- *
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public final class UCSReader extends Reader {
@@ -37,10 +35,10 @@ public final class UCSReader extends Reader {
     // Constants
     //
 
-    /** 
+    /**
      * Default byte buffer size (8192, larger than that of ASCIIReader
      * since it's reasonable to surmise that the average UCS-4-encoded
-     * file should be 4 times as large as the average ASCII-encoded file). 
+     * file should be 4 times as large as the average ASCII-encoded file).
      */
     public static final int DEFAULT_BUFFER_SIZE = 8192;
 
@@ -66,39 +64,39 @@ public final class UCSReader extends Reader {
     // Constructors
     //
 
-    /** 
-     * Constructs a UCS reader from the specified input stream 
+    /**
+     * Constructs a UCS reader from the specified input stream
      * using the default buffer size.  The Endian-ness and whether this is
      * UCS-2 or UCS-4 needs also to be known in advance.
      *
-     * @param inputStream The input stream.
-     * @param encoding One of UCS2LE, UCS2BE, UCS4LE or UCS4BE.
+     * @param inputStream the input stream
+     * @param encoding one of UCS2LE, UCS2BE, UCS4LE or UCS4BE
      */
     public UCSReader(InputStream inputStream, short encoding) {
         this(inputStream, DEFAULT_BUFFER_SIZE, encoding);
     } // <init>(InputStream, short)
 
-    /** 
-     * Constructs a UCS reader from the specified input stream 
+    /**
+     * Constructs a UCS reader from the specified input stream
      * and buffer size.  The Endian-ness and whether this is
      * UCS-2 or UCS-4 needs also to be known in advance.
      *
-     * @param inputStream The input stream.
-     * @param size        The initial buffer size.
-     * @param encoding One of UCS2LE, UCS2BE, UCS4LE or UCS4BE.
+     * @param inputStream the input stream
+     * @param size        the initial buffer size
+     * @param encoding one of UCS2LE, UCS2BE, UCS4LE or UCS4BE
      */
     public UCSReader(InputStream inputStream, int size, short encoding) {
         this(inputStream, new byte[size], encoding);
     } // <init>(InputStream,int,short)
     
-    /** 
-     * Constructs a UCS reader from the specified input stream 
+    /**
+     * Constructs a UCS reader from the specified input stream
      * and buffer.  The Endian-ness and whether this is
      * UCS-2 or UCS-4 needs also to be known in advance.
      *
-     * @param inputStream The input stream.
-     * @param buffer      The byte buffer.
-     * @param encoding One of UCS2LE, UCS2BE, UCS4LE or UCS4BE.
+     * @param inputStream the input stream
+     * @param buffer      the byte buffer
+     * @param encoding one of UCS2LE, UCS2BE, UCS4LE or UCS4BE
      */
     public UCSReader(InputStream inputStream, byte [] buffer, short encoding) {
         fInputStream = inputStream;
@@ -117,11 +115,10 @@ public final class UCSReader extends Reader {
      * <p> Subclasses that intend to support efficient single-character input
      * should override this method.
      *
-     * @return     The character read, as an integer in the range 0 to 127
+     * @return  The character read, as an integer in the range 0 to 127
      *             (<tt>0x00-0x7f</tt>), or -1 if the end of the stream has
      *             been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read() throws IOException { 
         int b0 = fInputStream.read() & 0xff;
@@ -162,11 +159,9 @@ public final class UCSReader extends Reader {
      * @param      ch     Destination buffer
      * @param      offset Offset at which to start storing characters
      * @param      length Maximum number of characters to read
-     *
-     * @return     The number of characters read, or -1 if the end of the
+     * @return  The number of characters read, or -1 if the end of the
      *             stream has been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read(char ch[], int offset, int length) throws IOException {
         int byteLength = length << ((fEncoding >= 4)?2:1);
@@ -239,10 +234,8 @@ public final class UCSReader extends Reader {
      * available, an I/O error occurs, or the end of the stream is reached.
      *
      * @param  n  The number of characters to skip
-     *
-     * @return    The number of characters actually skipped
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @return  The number of characters actually skipped
+     * @throws  IOException  If an I/O error occurs
      */
     public long skip(long n) throws IOException {
         // charWidth will represent the number of bits to move
@@ -260,11 +253,10 @@ public final class UCSReader extends Reader {
     /**
      * Tell whether this stream is ready to be read.
      *
-     * @return True if the next read() is guaranteed not to block for input,
+     * @return true if the next read() is guaranteed not to block for input,
      * false otherwise.  Note that returning false does not guarantee that the
      * next read will block.
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public boolean ready() throws IOException {
 	    return false;
@@ -286,8 +278,7 @@ public final class UCSReader extends Reader {
      *                         read while still preserving the mark.  After
      *                         reading this many characters, attempting to
      *                         reset the stream may fail.
-     *
-     * @exception  IOException  If the stream does not support mark(),
+     * @throws  IOException  If the stream does not support mark(),
      *                          or if some other I/O error occurs
      */
     public void mark(int readAheadLimit) throws IOException {
@@ -302,7 +293,7 @@ public final class UCSReader extends Reader {
      * character-input streams support the reset() operation, and some support
      * reset() without supporting mark().
      *
-     * @exception  IOException  If the stream has not been marked,
+     * @throws  IOException  If the stream has not been marked,
      *                          or if the mark has been invalidated,
      *                          or if the stream does not support reset(),
      *                          or if some other I/O error occurs
@@ -316,7 +307,7 @@ public final class UCSReader extends Reader {
      * ready(), mark(), or reset() invocations will throw an IOException.
      * Closing a previously-closed stream, however, has no effect.
      *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
      public void close() throws IOException {
          fInputStream.close();

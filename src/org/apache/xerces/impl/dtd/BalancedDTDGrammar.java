@@ -24,9 +24,8 @@ import org.apache.xerces.xni.XNIException;
 
 /**
  * <p>A DTD grammar that produces balanced syntax trees.</p>
- * 
+ *
  * @xerces.internal
- * 
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */
@@ -39,7 +38,7 @@ final class BalancedDTDGrammar extends DTDGrammar {
     /** Mixed. */
     private boolean fMixed;
     
-    /** Stack depth */
+    /** Stack depth. */
     private int fDepth = 0;
     
     /** Children content model operation stack. */
@@ -69,10 +68,10 @@ final class BalancedDTDGrammar extends DTDGrammar {
      * model, specific methods may be called between the call to the
      * startContentModel method and the call to the endContentModel method.
      *
-     * @param elementName The name of the element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public final void startContentModel(String elementName, Augmentations augs)
         throws XNIException {
@@ -87,10 +86,9 @@ final class BalancedDTDGrammar extends DTDGrammar {
      * <code>pcdata()</code> method. A children content model will
      * contain additional groups and/or elements.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #empty
      */
@@ -105,11 +103,9 @@ final class BalancedDTDGrammar extends DTDGrammar {
      * mixed content model. This method will be the first called
      * following the content model's <code>startGroup()</code>.
      *
-     *@param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #startGroup
      */
     public final void pcdata(Augmentations augs) throws XNIException {
@@ -119,11 +115,10 @@ final class BalancedDTDGrammar extends DTDGrammar {
     /**
      * A referenced element in a mixed or children content model.
      *
-     * @param elementName The name of the referenced element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the referenced element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public final void element(String elementName, Augmentations augs) throws XNIException {
         addToCurrentGroup(addUniqueLeafNode(elementName));
@@ -133,11 +128,10 @@ final class BalancedDTDGrammar extends DTDGrammar {
      * The separator between choices or sequences of a mixed or children
      * content model.
      *
-     * @param separator The type of children separator.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param separator the type of children separator
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#SEPARATOR_CHOICE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#SEPARATOR_SEQUENCE
      */
@@ -154,12 +148,11 @@ final class BalancedDTDGrammar extends DTDGrammar {
      * The occurrence count for a child in a children content model or
      * for the mixed content model group.
      *
-     * @param occurrence The occurrence count for the last element
-     *                   or group.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param occurrence the occurrence count for the last element
+     *                   or group
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ZERO_OR_ONE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ZERO_OR_MORE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ONE_OR_MORE
@@ -182,9 +175,9 @@ final class BalancedDTDGrammar extends DTDGrammar {
     /**
      * The end of a group for mixed or children content models.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public final void endGroup(Augmentations augs) throws XNIException {
         final int length = fGroupIndexStackSizes[fDepth];
@@ -196,9 +189,9 @@ final class BalancedDTDGrammar extends DTDGrammar {
     /**
      * The end of the DTD.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public final void endDTD(Augmentations augs) throws XNIException {
         super.endDTD(augs);
@@ -262,7 +255,7 @@ final class BalancedDTDGrammar extends DTDGrammar {
     
     /**
      * Add XMLContentSpec to the current group.
-     * 
+     *
      * @param contentSpec handle to the XMLContentSpec to add to the current group
      */
     private void addToCurrentGroup(int contentSpec) {

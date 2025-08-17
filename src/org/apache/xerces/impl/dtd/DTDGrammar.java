@@ -50,14 +50,12 @@ import org.apache.xerces.xni.parser.XMLDTDSource;
  * A DTD grammar. This class implements the XNI handler interfaces
  * for DTD information so that it can build the appropriate validation
  * structures automatically from the callbacks.
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Eric Ye, IBM
  * @author Jeffrey Rodriguez, IBM
  * @author Andy Clark, IBM
  * @author Neil Graham, IBM
- *
  * @version $Id$
  */
 public class DTDGrammar 
@@ -108,7 +106,7 @@ public class DTDGrammar
     /** Current attribute index. */
     protected int fCurrentAttributeIndex;
 
-    /** fReadingExternalDTD */
+    /** FReadingExternalDTD. */
     protected boolean fReadingExternalDTD = false;
 
     /** Symbol table. */
@@ -125,19 +123,20 @@ public class DTDGrammar
     /** Element declaration name. */
     private QName fElementDeclName[][] = new QName[INITIAL_CHUNK_COUNT][];
 
-    /** 
-     * Element declaration type. 
+    /**
+     * Element declaration type.
+     *
      * @see XMLElementDecl
      */
     private short fElementDeclType[][] = new short[INITIAL_CHUNK_COUNT][];
 
-    /** 
+    /**
      * Element declaration content spec index. This index value is used
      * to refer to the content spec information tables.
      */
     private int fElementDeclContentSpecIndex[][] = new int[INITIAL_CHUNK_COUNT][];
 
-    /** 
+    /**
      * Element declaration content model validator. This validator is
      * constructed from the content spec nodes.
      */
@@ -160,8 +159,9 @@ public class DTDGrammar
     // is this grammar immutable?  (fully constructed and not changeable)
     private boolean fIsImmutable = false;
 
-    /** 
+    /**
      * Attribute declaration type.
+     *
      * @see XMLAttributeDecl
      */
     private short fAttributeDeclType[][] = new short[INITIAL_CHUNK_COUNT][];
@@ -247,7 +247,7 @@ public class DTDGrammar
     /** Content spec node. */
     private XMLContentSpec fContentSpec = new XMLContentSpec();
 
-    /** table of XMLElementDecl   */
+    /** Table of XMLElementDecl. */
     Hashtable   fElementDeclTab     = new Hashtable();
 
     /** Children content model operation stack. */
@@ -259,7 +259,7 @@ public class DTDGrammar
     /** Children content model previous node index stack. */
     private int[] fPrevNodeIndexStack = null;
 
-    /** Stack depth   */
+    /** Stack depth. */
     private int fDepth = 0;
 
     /** Entity stack. */
@@ -268,13 +268,13 @@ public class DTDGrammar
 
     // additional fields(columns) for the element Decl pool in the Grammar
 
-    /** flag if the elementDecl is External. */
+    /** Flag if the elementDecl is External. */
     private int fElementDeclIsExternal[][] = new int[INITIAL_CHUNK_COUNT][];
 
 
     // additional fields(columns) for the attribute Decl pool in the Grammar
 
-    /** flag if the AttributeDecl is External. */
+    /** Flag if the AttributeDecl is External. */
     private int fAttributeDeclIsExternal[][] = new int[INITIAL_CHUNK_COUNT][];
 
     // for mixedElement method
@@ -307,7 +307,7 @@ public class DTDGrammar
     /**
      * Returns true if the specified element declaration is external.
      *
-     * @param elementDeclIndex The element declaration index.
+     * @param elementDeclIndex the element declaration index
      */
     public boolean getElementDeclIsExternal(int elementDeclIndex) {
 
@@ -324,7 +324,7 @@ public class DTDGrammar
     /**
      * Returns true if the specified attribute declaration is external.
      *
-     * @param attributeDeclIndex Attribute declaration index.
+     * @param attributeDeclIndex attribute declaration index
      */
     public boolean getAttributeDeclIsExternal(int attributeDeclIndex) {
 
@@ -361,16 +361,15 @@ public class DTDGrammar
     /**
      * The start of the DTD.
      *
-     * @param locator  The document locator, or null if the document
+     * @param locator  the document locator, or null if the document
      *                 location cannot be reported during the parsing of
      *                 the document DTD. However, it is <em>strongly</em>
      *                 recommended that a locator be supplied that can
      *                 at least report the base system identifier of the
      *                 DTD.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startDTD(XMLLocator locator, Augmentations augs) throws XNIException {
         //Initialize stack
@@ -388,16 +387,15 @@ public class DTDGrammar
      * startParameterEntity method with the entity name "[dtd]" <em>before</em> calling
      * the startDTD method.
      *
-     * @param name     The name of the parameter entity.
-     * @param identifier The resource identifier.
-     * @param encoding The auto-detected IANA encoding name of the entity
+     * @param name     the name of the parameter entity
+     * @param identifier the resource identifier
+     * @param encoding the auto-detected IANA encoding name of the entity
      *                 stream. This value will be null in those situations
      *                 where the entity encoding is not auto-detected (e.g.
      *                 internal parameter entities).
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startParameterEntity(String name,
                                      XMLResourceIdentifier identifier,
@@ -418,10 +416,9 @@ public class DTDGrammar
     /**
      * The start of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startExternalSubset(XMLResourceIdentifier identifier,
                                     Augmentations augs) throws XNIException {
@@ -437,10 +434,10 @@ public class DTDGrammar
      * endEntity method with the entity name "[dtd]" <em>after</em> calling
      * the endDTD method.
      *
-     * @param name The name of the entity.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name the name of the entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endParameterEntity(String name, Augmentations augs) throws XNIException {
 
@@ -452,10 +449,9 @@ public class DTDGrammar
     /**
      * The end of the DTD external subset.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endExternalSubset(Augmentations augs) throws XNIException {
         fReadingExternalDTD = false;
@@ -464,11 +460,11 @@ public class DTDGrammar
     /**
      * An element declaration.
      *
-     * @param name         The name of the element.
-     * @param contentModel The element content model.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name         the name of the element
+     * @param contentModel the element content model
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void elementDecl(String name, String contentModel, Augmentations augs)
         throws XNIException {
@@ -536,27 +532,26 @@ public class DTDGrammar
     /**
      * An attribute declaration.
      *
-     * @param elementName   The name of the element that this attribute
-     *                      is associated with.
-     * @param attributeName The name of the attribute.
-     * @param type          The attribute type. This value will be one of
+     * @param elementName   the name of the element that this attribute
+     *                      is associated with
+     * @param attributeName the name of the attribute
+     * @param type          the attribute type. This value will be one of
      *                      the following: "CDATA", "ENTITY", "ENTITIES",
      *                      "ENUMERATION", "ID", "IDREF", "IDREFS",
      *                      "NMTOKEN", "NMTOKENS", or "NOTATION".
-     * @param enumeration   If the type has the value "ENUMERATION", this
+     * @param enumeration   if the type has the value "ENUMERATION", this
      *                      array holds the allowed attribute values;
-     *                      otherwise, this array is null.
-     * @param defaultType   The attribute default type. This value will be
+     *                      otherwise, this array is null
+     * @param defaultType   the attribute default type. This value will be
      *                      one of the following: "#FIXED", "#IMPLIED",
      *                      "#REQUIRED", or null.
-     * @param defaultValue  The attribute default value, or null if no
-     *                      default value is specified.
-     * @param nonNormalizedDefaultValue  The attribute default value with no normalization
-     *                      performed, or null if no default value is specified.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param defaultValue  the attribute default value, or null if no
+     *                      default value is specified
+     * @param nonNormalizedDefaultValue  the attribute default value with no normalization
+     *                      performed, or null if no default value is specified
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void attributeDecl(String elementName, String attributeName,
                               String type, String[] enumeration,
@@ -666,17 +661,17 @@ public class DTDGrammar
     /**
      * An internal entity declaration.
      *
-     * @param name The name of the entity. Parameter entity names start with
+     * @param name the name of the entity. Parameter entity names start with
      *             '%', whereas the name of a general entity is just the
      *             entity name.
-     * @param text The value of the entity.
-     * @param nonNormalizedText The non-normalized value of the entity. This
+     * @param text the value of the entity
+     * @param nonNormalizedText the non-normalized value of the entity. This
      *             value contains the same sequence of characters that was in
      *             the internal entity declaration, without any entity
      *             references expanded.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void internalEntityDecl(String name, XMLString text,
                                    XMLString nonNormalizedText,
@@ -699,14 +694,14 @@ public class DTDGrammar
     /**
      * An external entity declaration.
      *
-     * @param name     The name of the entity. Parameter entity names start
+     * @param name     the name of the entity. Parameter entity names start
      *                 with '%', whereas the name of a general entity is just
      *                 the entity name.
-     * @param identifier    An object containing all location information
-     *                      pertinent to this external entity declaration.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param identifier    an object containing all location information
+     *                      pertinent to this external entity declaration
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void externalEntityDecl(String name,
                                    XMLResourceIdentifier identifier,
@@ -730,13 +725,13 @@ public class DTDGrammar
     /**
      * An unparsed entity declaration.
      *
-     * @param name     The name of the entity.
-     * @param identifier    An object containing all location information
-     *                      pertinent to this entity.
-     * @param notation The name of the notation.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the entity
+     * @param identifier    an object containing all location information
+     *                      pertinent to this entity
+     * @param notation the name of the notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void unparsedEntityDecl(String name, XMLResourceIdentifier identifier,
                                    String notation,
@@ -760,12 +755,12 @@ public class DTDGrammar
     /**
      * A notation declaration
      *
-     * @param name     The name of the notation.
-     * @param identifier    An object containing all location information
-     *                      pertinent to this notation.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param name     the name of the notation
+     * @param identifier    an object containing all location information
+     *                      pertinent to this notation
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void notationDecl(String name, XMLResourceIdentifier identifier,
                              Augmentations augs) throws XNIException {
@@ -784,9 +779,9 @@ public class DTDGrammar
     /**
      * The end of the DTD.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endDTD(Augmentations augs) throws XNIException {
         fIsImmutable = true;
@@ -826,12 +821,11 @@ public class DTDGrammar
      * <strong>Note:</strong> This method is only called for external
      * parameter entities referenced in the DTD.
      *
-     * @param version  The XML version, or null if not specified.
-     * @param encoding The IANA encoding name of the entity.
-     *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param version  the XML version, or null if not specified
+     * @param encoding the IANA encoding name of the entity
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void textDecl(String version, String encoding, Augmentations augs)
         throws XNIException {}
@@ -839,10 +833,10 @@ public class DTDGrammar
     /**
      * A comment.
      *
-     * @param text The text in the comment.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by application to signal an error.
+     * @param text the text in the comment
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by application to signal an error
      */
     public void comment(XMLString text, Augmentations augs) throws XNIException {}
 
@@ -857,11 +851,11 @@ public class DTDGrammar
      * to the application as anything other than text. The application is
      * responsible for parsing the data.
      *
-     * @param target The target.
-     * @param data   The data or null if none specified.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param target the target
+     * @param data   the data or null if none specified
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void processingInstruction(String target, XMLString data,
                                       Augmentations augs) throws XNIException {}
@@ -869,32 +863,32 @@ public class DTDGrammar
     /**
      * The start of an attribute list.
      *
-     * @param elementName The name of the element that this attribute
-     *                    list is associated with.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element that this attribute
+     *                    list is associated with
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startAttlist(String elementName, Augmentations augs)
         throws XNIException {}
 
     /**
      * The end of an attribute list.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endAttlist(Augmentations augs) throws XNIException {}
 
     /**
      * The start of a conditional section.
      *
-     * @param type The type of the conditional section. This value will
+     * @param type the type of the conditional section. This value will
      *             either be CONDITIONAL_INCLUDE or CONDITIONAL_IGNORE.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see XMLDTDHandler#CONDITIONAL_INCLUDE
      * @see XMLDTDHandler#CONDITIONAL_IGNORE
      */
@@ -904,18 +898,19 @@ public class DTDGrammar
     /**
      * Characters within an IGNORE conditional section.
      *
-     * @param text The ignored text.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
+     * @param text the ignored text
+     * @param augs additional information that may include infoset
+     *                      augmentations
      */
     public void ignoredCharacters(XMLString text, Augmentations augs)
         throws XNIException {}
 
     /**
      * The end of a conditional section.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endConditional(Augmentations augs) throws XNIException {}
 
@@ -938,10 +933,10 @@ public class DTDGrammar
      * model, specific methods may be called between the call to the
      * startContentModel method and the call to the endContentModel method.
      *
-     * @param elementName The name of the element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void startContentModel(String elementName, Augmentations augs)
         throws XNIException {
@@ -961,10 +956,9 @@ public class DTDGrammar
      * <code>pcdata()</code> method. A children content model will
      * contain additional groups and/or elements.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #empty
      */
@@ -979,11 +973,9 @@ public class DTDGrammar
      * mixed content model. This method will be the first called
      * following the content model's <code>startGroup()</code>.
      *
-     *@param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #startGroup
      */
     public void pcdata(Augmentations augs) throws XNIException {
@@ -993,11 +985,10 @@ public class DTDGrammar
     /**
      * A referenced element in a mixed or children content model.
      *
-     * @param elementName The name of the referenced element.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param elementName the name of the referenced element
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void element(String elementName, Augmentations augs) throws XNIException {
         if (fMixed) {
@@ -1019,11 +1010,10 @@ public class DTDGrammar
      * The separator between choices or sequences of a mixed or children
      * content model.
      *
-     * @param separator The type of children separator.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param separator the type of children separator
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#SEPARATOR_CHOICE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#SEPARATOR_SEQUENCE
      */
@@ -1051,12 +1041,11 @@ public class DTDGrammar
      * The occurrence count for a child in a children content model or
      * for the mixed content model group.
      *
-     * @param occurrence The occurrence count for the last element
-     *                   or group.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param occurrence the occurrence count for the last element
+     *                   or group
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ZERO_OR_ONE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ZERO_OR_MORE
      * @see org.apache.xerces.xni.XMLDTDContentModelHandler#OCCURS_ONE_OR_MORE
@@ -1078,9 +1067,9 @@ public class DTDGrammar
     /**
      * The end of a group for mixed or children content models.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endGroup(Augmentations augs) throws XNIException {
 
@@ -1099,10 +1088,9 @@ public class DTDGrammar
     /**
      * A content model of ANY.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #empty
      * @see #startGroup
      */
@@ -1111,10 +1099,9 @@ public class DTDGrammar
     /**
      * A content model of EMPTY.
      *
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
-     * @throws XNIException Thrown by handler to signal an error.
-     *
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      * @see #any
      * @see #startGroup
      */
@@ -1122,10 +1109,10 @@ public class DTDGrammar
 
     /**
      * The end of a content model.
-     * @param augs Additional information that may include infoset
-     *                      augmentations.
      *
-     * @throws XNIException Thrown by handler to signal an error.
+     * @param augs additional information that may include infoset
+     *                      augmentations
+     * @throws XNIException thrown by handler to signal an error
      */
     public void endContentModel(Augmentations augs) throws XNIException {}
 
@@ -1157,8 +1144,8 @@ public class DTDGrammar
     /**
      * Returns the next index of the element declaration following the
      * specified element declaration.
-     * 
-     * @param elementDeclIndex The element declaration index.
+     *
+     * @param elementDeclIndex the element declaration index
      */
     public int getNextElementDeclIndex(int elementDeclIndex) {
         return elementDeclIndex < fElementDeclCount - 1 
@@ -1166,10 +1153,9 @@ public class DTDGrammar
     } // getNextElementDeclIndex(int):int
 
     /**
-     * getElementDeclIndex
-     * 
-     * @param elementDeclName 
-     * 
+     * GetElementDeclIndex
+     *
+     * @param elementDeclName
      * @return index of the elementDeclName in scope
      */
     public int getElementDeclIndex(String elementDeclName) {
@@ -1178,16 +1164,19 @@ public class DTDGrammar
         return mapping;
     } // getElementDeclIndex(String):int
    
-    /** Returns the element decl index.
+    /**
+     * Returns the element decl index.
+     *
      * @param elementDeclQName qualilfied name of the element
      */
     public int getElementDeclIndex(QName elementDeclQName) {
         return getElementDeclIndex(elementDeclQName.rawname);
     } // getElementDeclIndex(QName):int
    
-		/** make separate function for getting contentSpecType of element.
-      * we can avoid setting of the element values.
-		*/
+        /**
+         * Make separate function for getting contentSpecType of element.
+         * we can avoid setting of the element values.
+         */
 
 		public short getContentSpecType(int elementIndex){
         if (elementIndex < 0 || elementIndex >= fElementDeclCount) {
@@ -1207,12 +1196,11 @@ public class DTDGrammar
 		}//getContentSpecType
 
     /**
-     * getElementDecl
-     * 
-     * @param elementDeclIndex 
-     * @param elementDecl The values of this structure are set by this call.
-     * 
-     * @return True if find the element, False otherwise. 
+     * GetElementDecl
+     *
+     * @param elementDeclIndex
+     * @param elementDecl the values of this structure are set by this call
+     * @return true if find the element, False otherwise
      */
     public boolean getElementDecl(int elementDeclIndex, 
                                   XMLElementDecl elementDecl) {
@@ -1259,10 +1247,9 @@ public class DTDGrammar
     // REVISIT: Make this getAttributeDeclCount/getAttributeDeclAt. -Ac
 
     /**
-     * getFirstAttributeDeclIndex
-     * 
-     * @param elementDeclIndex 
-     * 
+     * GetFirstAttributeDeclIndex
+     *
+     * @param elementDeclIndex
      * @return index of the first attribute for element declaration elementDeclIndex
      */
     public int getFirstAttributeDeclIndex(int elementDeclIndex) {
@@ -1273,10 +1260,9 @@ public class DTDGrammar
     } // getFirstAttributeDeclIndex
 
     /**
-     * getNextAttributeDeclIndex
-     * 
-     * @param attributeDeclIndex 
-     * 
+     * GetNextAttributeDeclIndex
+     *
+     * @param attributeDeclIndex
      * @return index of the next attribute of the attribute at attributeDeclIndex
      */
     public int getNextAttributeDeclIndex(int attributeDeclIndex) {
@@ -1287,11 +1273,10 @@ public class DTDGrammar
     } // getNextAttributeDeclIndex
 
     /**
-     * getAttributeDecl
-     * 
-     * @param attributeDeclIndex 
-     * @param attributeDecl The values of this structure are set by this call.
-     * 
+     * GetAttributeDecl
+     *
+     * @param attributeDeclIndex
+     * @param attributeDecl the values of this structure are set by this call
      * @return true if getAttributeDecl was able to fill in the value of attributeDecl
      */
     public boolean getAttributeDecl(int attributeDeclIndex, XMLAttributeDecl attributeDecl) {
@@ -1328,9 +1313,8 @@ public class DTDGrammar
     /**
      * Returns whether the given attribute is of type CDATA or not
      *
-     * @param elName The element name.
-     * @param atName The attribute name.
-     *
+     * @param elName the element name
+     * @param atName the attribute name
      * @return true if the attribute is of type CDATA
      */
     public boolean isCDATAAttribute(QName elName, QName atName) {
@@ -1343,10 +1327,9 @@ public class DTDGrammar
     }
 
     /**
-     * getEntityDeclIndex
-     * 
-     * @param entityDeclName 
-     * 
+     * GetEntityDeclIndex
+     *
+     * @param entityDeclName
      * @return the index of the EntityDecl
      */
     public int getEntityDeclIndex(String entityDeclName) {
@@ -1358,11 +1341,10 @@ public class DTDGrammar
     } // getEntityDeclIndex
 
     /**
-     * getEntityDecl
-     * 
-     * @param entityDeclIndex 
-     * @param entityDecl 
-     * 
+     * GetEntityDecl
+     *
+     * @param entityDeclIndex
+     * @param entityDecl
      * @return true if getEntityDecl was able to fill entityDecl with the contents of the entity
      * with index entityDeclIndex
      */
@@ -1386,11 +1368,10 @@ public class DTDGrammar
     } // getEntityDecl
 
     /**
-     * getNotationDeclIndex
-     * 
-     * @param notationDeclName 
-     * 
-     * @return the index if found a notation with the name, otherwise -1.
+     * GetNotationDeclIndex
+     *
+     * @param notationDeclName
+     * @return the index if found a notation with the name, otherwise -1
      */
     public int getNotationDeclIndex(String notationDeclName) {
         if (notationDeclName == null) {
@@ -1401,13 +1382,12 @@ public class DTDGrammar
     } // getNotationDeclIndex
 
     /**
-     * getNotationDecl
-     * 
-     * @param notationDeclIndex 
-     * @param notationDecl 
-     * 
-     * @return return true of getNotationDecl can fill notationDecl with information about 
-     * the notation at notationDeclIndex.
+     * GetNotationDecl
+     *
+     * @param notationDeclIndex
+     * @param notationDecl
+     * @return return true of getNotationDecl can fill notationDecl with information about
+     * the notation at notationDeclIndex
      */
     public boolean getNotationDecl(int notationDeclIndex, XMLNotationDecl notationDecl) {
         if (notationDeclIndex < 0 || notationDeclIndex >= fNotationCount) {
@@ -1426,11 +1406,10 @@ public class DTDGrammar
     } // getNotationDecl
 
     /**
-     * getContentSpec
-     * 
-     * @param contentSpecIndex 
+     * GetContentSpec
+     *
+     * @param contentSpecIndex
      * @param contentSpec
-     * 
      * @return true if find the requested contentSpec node, false otherwise
      */
     public boolean getContentSpec(int contentSpecIndex, XMLContentSpec contentSpec) {
@@ -1447,7 +1426,7 @@ public class DTDGrammar
     }
     
     /**
-     * Returns the index to the content spec for the given element 
+     * Returns the index to the content spec for the given element
      * declaration, or <code>-1</code> if the element declaration
      * index was invalid.
      */
@@ -1461,11 +1440,10 @@ public class DTDGrammar
     }
 
     /**
-     * getContentSpecAsString
+     * GetContentSpecAsString
      *
      * @param elementDeclIndex
-     *
-     * @return String
+     * @return string
      */
     public String getContentSpecAsString(int elementDeclIndex){
 
@@ -1681,11 +1659,10 @@ public class DTDGrammar
     }
 
     /**
-     * getElementContentModelValidator
-     * 
-     * @param elementDeclIndex 
-     * 
-     * @return its ContentModelValidator if any.
+     * GetElementContentModelValidator
+     *
+     * @param elementDeclIndex
+     * @return its ContentModelValidator if any
      */
     protected ContentModelValidator getElementContentModelValidator(int elementDeclIndex) {
 
@@ -1707,10 +1684,11 @@ public class DTDGrammar
         // Get the type of content this element has
         int contentSpecIndex = fElementDeclContentSpecIndex[chunk][index]; 
 
-        /***
-        if ( contentSpecIndex == -1 )
-            return null;
-        /***/
+        /**
+         * If ( contentSpecIndex == -1 )
+         * return null;
+         * /**
+         */
 
         XMLContentSpec  contentSpec = new XMLContentSpec();
         getContentSpec( contentSpecIndex, contentSpec );
@@ -1957,7 +1935,7 @@ public class DTDGrammar
     } // addContentSpecNode(short,String):int
 
     /**
-     * create an XMLContentSpec for a leaf
+     * Create an XMLContentSpec for a leaf
      *
      * @param   elementName  the name (Element) for the node
      * @return handle to the newly create XMLContentSpec
@@ -2342,12 +2320,12 @@ public class DTDGrammar
     /**
      * Build a vector of valid QNames from Content Spec
      * table.
-     * 
+     *
      * @param contentSpecIndex
      *               Content Spec index
      * @param vectorQName
      *               Array of QName
-     * @exception RuntimeException
+     * @throws RuntimeException
      */
     private void contentSpecTree(int contentSpecIndex, 
                                  XMLContentSpec contentSpec,
@@ -2594,9 +2572,8 @@ public class DTDGrammar
     
     /**
      * Children list for <code>contentSpecTree</code> method.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Eric Ye, IBM
      */
     private static class ChildrenList {
@@ -2633,9 +2610,8 @@ public class DTDGrammar
     /**
      * A simple Hashtable implementation that takes a tuple (String, String)
      * as the key and a int as value.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Eric Ye, IBM
      * @author Andy Clark, IBM
      */
@@ -2643,7 +2619,7 @@ public class DTDGrammar
         
         /**
          * Fills an array with a random sequence of prime numbers.
-         * 
+         *
          * @xerces.internal
          */
         private static final class PrimeNumberSequenceGenerator {
@@ -2689,7 +2665,7 @@ public class DTDGrammar
         //
         private Object[][] fHashTable = new Object[HASHTABLE_SIZE][];
         
-        /** actual table size **/
+        /** Actual table size *. */
         private int fTableSize = HASHTABLE_SIZE;
 
         /** The total number of entries in the hash table. */

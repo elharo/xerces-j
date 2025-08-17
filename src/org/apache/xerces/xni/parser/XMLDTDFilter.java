@@ -24,7 +24,6 @@ import org.apache.xerces.xni.XMLDTDHandler;
  * of DTD events.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLDTDFilter 

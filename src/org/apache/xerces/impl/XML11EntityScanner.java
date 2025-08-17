@@ -32,7 +32,6 @@ import org.apache.xerces.xni.XMLString;
  * the context of XML 1.1.
  *
  * @xerces.internal
- *
  * @author Michael Glavassevich, IBM
  * @author Neil Graham, IBM
  * @version $Id$
@@ -58,8 +57,8 @@ public class XML11EntityScanner
      * <p>
      * <strong>Note:</strong> The character is <em>not</em> consumed.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int peekChar() throws IOException {
 
@@ -86,8 +85,8 @@ public class XML11EntityScanner
      * <p>
      * <strong>Note:</strong> The character is consumed.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanChar() throws IOException {
 
@@ -133,9 +132,8 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XML11Char#isXML11Name
      */
@@ -234,9 +232,8 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XML11Char#isXML11Name
      * @see org.apache.xerces.util.XML11Char#isXML11NameStart
@@ -379,9 +376,8 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The string returned must be a symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XML11Char#isXML11NCName
      * @see org.apache.xerces.util.XML11Char#isXML11NCNameStart
@@ -526,14 +522,11 @@ public class XML11EntityScanner
      * QName structure must be symbols. The SymbolTable can be used for
      * this purpose.
      *
-     * @param qname The qualified name structure to fill.
-     *
-     * @return Returns true if a qualified name appeared immediately on
-     *         the input and was scanned, false otherwise.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @param qname the qualified name structure to fill
+     * @return returns true if a qualified name appeared immediately on
+     *         the input and was scanned, false otherwise
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.SymbolTable
      * @see org.apache.xerces.util.XML11Char#isXML11Name
      * @see org.apache.xerces.util.XML11Char#isXML11NameStart
@@ -730,14 +723,12 @@ public class XML11EntityScanner
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param content The content structure to fill.
-     *
-     * @return Returns the next character on the input, if known. This
+     * @param content the content structure to fill
+     * @return returns the next character on the input, if known. This
      *         value may be -1 but this does <em>note</em> designate
      *         end of file.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanContent(XMLString content) throws IOException {
 
@@ -778,7 +769,7 @@ public class XML11EntityScanner
                         fCurrentEntity.position++;
                         offset++;
                     }
-                    /*** NEWLINE NORMALIZATION ***/
+                    /** * NEWLINE NORMALIZATION **. */
                     else {
                         newlines++;
                     }
@@ -869,16 +860,14 @@ public class XML11EntityScanner
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param quote   The quote character that signifies the end of the
-     *                attribute value data.
-     * @param content The content structure to fill.
-     *
-     * @return Returns the next character on the input, if known. This
+     * @param quote   the quote character that signifies the end of the
+     *                attribute value data
+     * @param content the content structure to fill
+     * @return returns the next character on the input, if known. This
      *         value may be -1 but this does <em>note</em> designate
      *         end of file.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public int scanLiteral(int quote, XMLString content)
         throws IOException {
@@ -920,7 +909,7 @@ public class XML11EntityScanner
                         fCurrentEntity.position++;
                         offset++;
                     }
-                    /*** NEWLINE NORMALIZATION ***/
+                    /** * NEWLINE NORMALIZATION **. */
                     else {
                         newlines++;
                     }
@@ -1018,14 +1007,12 @@ public class XML11EntityScanner
      * immediately using the returned character data or making a copy of
      * the character data.
      *
-     * @param delimiter The string that signifies the end of the character
-     *                  data to be scanned.
-     * @param buffer    The XMLStringBuffer to fill.
-     *
-     * @return Returns true if there is more data to scan, false otherwise.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param delimiter the string that signifies the end of the character
+     *                  data to be scanned
+     * @param buffer    the XMLStringBuffer to fill
+     * @return returns true if there is more data to scan, false otherwise
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean scanData(String delimiter, XMLStringBuffer buffer)
         throws IOException {
@@ -1093,7 +1080,7 @@ public class XML11EntityScanner
                             fCurrentEntity.position++;
                             offset++;
                         }
-                        /*** NEWLINE NORMALIZATION ***/
+                        /** * NEWLINE NORMALIZATION **. */
                         else {
                             newlines++;
                         }
@@ -1222,12 +1209,10 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The character is consumed only if it matches
      * the specified character.
      *
-     * @param c The character to skip.
-     *
-     * @return Returns true if the character was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param c the character to skip
+     * @return returns true if the character was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean skipChar(int c) throws IOException {
 
@@ -1281,11 +1266,9 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The characters are consumed only if they are
      * space characters.
      *
-     * @return Returns true if at least one space character was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
-     *
+     * @return returns true if at least one space character was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      * @see org.apache.xerces.util.XMLChar#isSpace
      * @see org.apache.xerces.util.XML11Char#isXML11Space
      */
@@ -1383,12 +1366,10 @@ public class XML11EntityScanner
      * <strong>Note:</strong> The characters are consumed only if they are
      * space characters.
      *
-     * @param s The string to skip.
-     *
-     * @return Returns true if the string was skipped.
-     *
-     * @throws IOException  Thrown if i/o error occurs.
-     * @throws EOFException Thrown on end of file.
+     * @param s the string to skip
+     * @return returns true if the string was skipped
+     * @throws IOException  thrown if i/o error occurs
+     * @throws EOFException thrown on end of file
      */
     public boolean skipString(String s) throws IOException {
 

@@ -23,11 +23,9 @@ import java.io.Reader;
 
 /**
  * <p>Reader for the ISO-8859-1 encoding.</p>
- * 
+ *
  * @xerces.internal
- * 
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public final class Latin1Reader 
@@ -54,32 +52,32 @@ public final class Latin1Reader
     // Constructors
     //
 
-    /** 
-     * Constructs an ISO-8859-1 reader from the specified input stream 
+    /**
+     * Constructs an ISO-8859-1 reader from the specified input stream
      * using the default buffer size.
      *
-     * @param inputStream The input stream.
+     * @param inputStream the input stream
      */
     public Latin1Reader(InputStream inputStream) {
         this(inputStream, DEFAULT_BUFFER_SIZE);
     } // <init>(InputStream)
     
-    /** 
-     * Constructs an ISO-8859-1 reader from the specified input stream 
+    /**
+     * Constructs an ISO-8859-1 reader from the specified input stream
      * and buffer size.
      *
-     * @param inputStream The input stream.
-     * @param size        The initial buffer size.
+     * @param inputStream the input stream
+     * @param size        the initial buffer size
      */
     public Latin1Reader(InputStream inputStream, int size) {
         this(inputStream, new byte[size]);
     } // <init>(InputStream, int)
     
-    /** 
+    /**
      * Constructs an ISO-8859-1 reader from the specified input stream and buffer.
      *
-     * @param inputStream The input stream.
-     * @param buffer      The byte buffer.
+     * @param inputStream the input stream
+     * @param buffer      the byte buffer
      */
     public Latin1Reader(InputStream inputStream, byte [] buffer) {
         fInputStream = inputStream;
@@ -97,11 +95,10 @@ public final class Latin1Reader
      * <p> Subclasses that intend to support efficient single-character input
      * should override this method.
      *
-     * @return     The character read, as an integer in the range 0 to 255
+     * @return  The character read, as an integer in the range 0 to 255
      *             (<tt>0x00-0xff</tt>), or -1 if the end of the stream has
      *             been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read() throws IOException {
         return fInputStream.read();
@@ -115,11 +112,9 @@ public final class Latin1Reader
      * @param      ch     Destination buffer
      * @param      offset Offset at which to start storing characters
      * @param      length Maximum number of characters to read
-     *
-     * @return     The number of characters read, or -1 if the end of the
+     * @return  The number of characters read, or -1 if the end of the
      *             stream has been reached
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public int read(char ch[], int offset, int length) throws IOException {
         if (length > fBuffer.length) {
@@ -137,10 +132,8 @@ public final class Latin1Reader
      * available, an I/O error occurs, or the end of the stream is reached.
      *
      * @param  n  The number of characters to skip
-     *
-     * @return    The number of characters actually skipped
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @return  The number of characters actually skipped
+     * @throws  IOException  If an I/O error occurs
      */
     public long skip(long n) throws IOException {
         return fInputStream.skip(n);
@@ -149,11 +142,10 @@ public final class Latin1Reader
     /**
      * Tell whether this stream is ready to be read.
      *
-     * @return True if the next read() is guaranteed not to block for input,
+     * @return true if the next read() is guaranteed not to block for input,
      * false otherwise.  Note that returning false does not guarantee that the
      * next read will block.
-     *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
     public boolean ready() throws IOException {
         return false;
@@ -175,8 +167,7 @@ public final class Latin1Reader
      *                         read while still preserving the mark.  After
      *                         reading this many characters, attempting to
      *                         reset the stream may fail.
-     *
-     * @exception  IOException  If the stream does not support mark(),
+     * @throws  IOException  If the stream does not support mark(),
      *                          or if some other I/O error occurs
      */
     public void mark(int readAheadLimit) throws IOException {
@@ -191,7 +182,7 @@ public final class Latin1Reader
      * character-input streams support the reset() operation, and some support
      * reset() without supporting mark().
      *
-     * @exception  IOException  If the stream has not been marked,
+     * @throws  IOException  If the stream has not been marked,
      *                          or if the mark has been invalidated,
      *                          or if the stream does not support reset(),
      *                          or if some other I/O error occurs
@@ -205,7 +196,7 @@ public final class Latin1Reader
      * ready(), mark(), or reset() invocations will throw an IOException.
      * Closing a previously-closed stream, however, has no effect.
      *
-     * @exception  IOException  If an I/O error occurs
+     * @throws  IOException  If an I/O error occurs
      */
      public void close() throws IOException {
          fInputStream.close();

@@ -15,8 +15,9 @@ package org.apache.xerces.dom3.as;
 import org.w3c.dom.ls.LSSerializer;
 
 /**
+ *
  * @deprecated
- *  A Abstract Schema serialization interface. 
+ *  a Abstract Schema serialization interface. 
  * <p> DOMASWriters provides an API for serializing Abstract Schemas out in 
  * the form of a source Abstract Schema. The Abstract Schema is written to 
  * an output stream, the type of which depends on the specific language 
@@ -32,12 +33,13 @@ and Save Specification</a>.
  */
 public interface DOMASWriter extends LSSerializer {
     /**
-     *  Write out the specified Abstract Schema to the specified destination. 
-     * Does it write a DTD or an XML Schema (or something else)? Is it 
+     * Write out the specified Abstract Schema to the specified destination.
+     * Does it write a DTD or an XML Schema (or something else)? Is it
      * possible to use this method to convert a DTD to an XML Schema?
-     * @param destination The destination for the data to be written.
-     * @param model  The Abstract Schema to serialize. 
-     * @exception DOMSystemException
+     *
+     * @param destination the destination for the data to be written
+     * @param model  the Abstract Schema to serialize
+     * @throws DOMSystemException
      *   This exception will be raised in response to any sort of IO or system 
      *   error that occurs while writing to the destination. It may wrap an 
      *   underlying system exception.

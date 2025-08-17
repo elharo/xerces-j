@@ -75,20 +75,18 @@ import org.xml.sax.SAXNotSupportedException;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://xml.org/sax/features/external-general-entities</li>
- *  <li>http://xml.org/sax/features/external-parameter-entities</li>
- *  <li>http://apache.org/xml/features/allow-java-encodings</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://xml.org/sax/features/external-general-entities</li>
+ * <li>http://xml.org/sax/features/external-parameter-entities</li>
+ * <li>http://apache.org/xml/features/allow-java-encodings</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
  * </ul>
  *
  * @xerces.internal
- * 
  * @author Andy Clark, IBM
- * @author Arnaud  Le Hors, IBM
- *
+ * @author Arnaud Le Hors, IBM
  * @version $Id$
  */
 public class XMLEntityManager
@@ -101,7 +99,7 @@ public class XMLEntityManager
     /** Default buffer size (2048). */
     public static final int DEFAULT_BUFFER_SIZE = 2048; 
 
-    /** Default buffer size before we've finished with the XMLDecl:  */
+    /** Default buffer size before we've finished with the XMLDecl:. */
     public static final int DEFAULT_XMLDECL_BUFFER_SIZE = 64;
 
     /** Default internal entity buffer size (512). */
@@ -125,11 +123,11 @@ public class XMLEntityManager
     protected static final String ALLOW_JAVA_ENCODINGS =
         Constants.XERCES_FEATURE_PREFIX + Constants.ALLOW_JAVA_ENCODINGS_FEATURE;
 
-    /** Feature identifier: warn on duplicate EntityDef */
+    /** Feature identifier: warn on duplicate EntityDef. */
     protected static final String WARN_ON_DUPLICATE_ENTITYDEF =
     Constants.XERCES_FEATURE_PREFIX +Constants.WARN_ON_DUPLICATE_ENTITYDEF_FEATURE;
 
-    /** Feature identifier: standard uri conformant */
+    /** Feature identifier: standard uri conformant. */
     protected static final String STANDARD_URI_CONFORMANT =
     Constants.XERCES_FEATURE_PREFIX +Constants.STANDARD_URI_CONFORMANT_FEATURE;
     
@@ -154,11 +152,11 @@ public class XMLEntityManager
     protected static final String VALIDATION_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.VALIDATION_MANAGER_PROPERTY;
 
-    /** property identifier: buffer size. */
+    /** Property identifier: buffer size. */
     protected static final String BUFFER_SIZE =
         Constants.XERCES_PROPERTY_PREFIX + Constants.BUFFER_SIZE_PROPERTY;
 
-    /** property identifier: security manager. */
+    /** Property identifier: security manager. */
     protected static final String SECURITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.SECURITY_MANAGER_PROPERTY;
 
@@ -255,13 +253,14 @@ public class XMLEntityManager
      */
     protected boolean fAllowJavaEncodings;
 
-    /** warn on duplicate Entity declaration.
-     *  http://apache.org/xml/features/warn-on-duplicate-entitydef
+    /**
+     * Warn on duplicate Entity declaration.
+     * http://apache.org/xml/features/warn-on-duplicate-entitydef
      */
     protected boolean fWarnDuplicateEntityDef;
 
     /**
-     * standard uri conformant (strict uri).
+     * Standard uri conformant (strict uri).
      * http://apache.org/xml/features/standard-uri-conformant
      */
     protected boolean fStrictURI;
@@ -369,7 +368,7 @@ public class XMLEntityManager
     /** Pool of byte buffers for single byte and variable width encodings, such as US-ASCII and UTF-8. */
     private final ByteBufferPool fSmallByteBufferPool = new ByteBufferPool(fBufferSize);
     
-    /** Pool of byte buffers for 2-byte encodings, such as UTF-16. **/
+    /** Pool of byte buffers for 2-byte encodings, such as UTF-16. *. */
     private final ByteBufferPool fLargeByteBufferPool = new ByteBufferPool(fBufferSize << 1);
     
     /** Temporary storage for the current entity's byte buffer. */
@@ -411,7 +410,7 @@ public class XMLEntityManager
     /**
      * Sets whether the document entity is standalone.
      *
-     * @param standalone True if document entity is standalone.
+     * @param standalone true if document entity is standalone
      */
     public void setStandalone(boolean standalone) {
         fStandalone = standalone;
@@ -422,15 +421,15 @@ public class XMLEntityManager
         return fStandalone;
     } // isStandalone():boolean
     
-    /** 
-     * Notifies the entity manager that the current document 
+    /**
+     * Notifies the entity manager that the current document
      * being processed contains parameter entity references.
      */
     final void notifyHasPEReferences() {
         fHasPEReferences = true;
     } // notifyHasPEReferences
     
-    /** 
+    /**
      * Returns true if the document contains parameter entity references.
      */
     final boolean hasPEReferences() {
@@ -441,7 +440,7 @@ public class XMLEntityManager
      * Sets the entity handler. When an entity starts and ends, the
      * entity handler is notified of the change.
      *
-     * @param entityHandler The new entity handler.
+     * @param entityHandler the new entity handler
      */
     public void setEntityHandler(XMLEntityHandler entityHandler) {
         fEntityHandler = entityHandler;
@@ -474,10 +473,9 @@ public class XMLEntityManager
      * <strong>Note:</strong> The name should be a unique symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @param name The name of the entity.
-     * @param text The text of the entity.
-     * @param paramEntityRefs Count of direct and indirect references to parameter entities in the value of the entity.
-     *
+     * @param name the name of the entity
+     * @param text the text of the entity
+     * @param paramEntityRefs count of direct and indirect references to parameter entities in the value of the entity
      * @see SymbolTable
      */
     public void addInternalEntity(String name, String text, int paramEntityRefs) {
@@ -505,9 +503,8 @@ public class XMLEntityManager
      * <strong>Note:</strong> The name should be a unique symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @param name The name of the entity.
-     * @param text The text of the entity.
-     *
+     * @param name the name of the entity
+     * @param text the text of the entity
      * @see SymbolTable
      */
     public void addInternalEntity(String name, String text) {
@@ -515,12 +512,12 @@ public class XMLEntityManager
     } // addInternalEntity(String,String)
     
     /**
-     * Returns the number of direct and indirect references to parameter 
+     * Returns the number of direct and indirect references to parameter
      * entities in the value of the entity. This value will only be
      * non-zero for an internal parameter entity.
-     * 
-     * @param entityName The name of the entity to check.
-     * @return Count of direct and indirect references to parameter entities in the value of the entity
+     *
+     * @param entityName the name of the entity to check
+     * @return count of direct and indirect references to parameter entities in the value of the entity
      */
     public int getParamEntityRefCount(String entityName) {
         if (entityName != null && 
@@ -543,17 +540,16 @@ public class XMLEntityManager
      * <strong>Note:</strong> The name should be a unique symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @param name         The name of the entity.
-     * @param publicId     The public identifier of the entity.
-     * @param literalSystemId     The system identifier of the entity.
-     * @param baseSystemId The base system identifier of the entity.
+     * @param name         the name of the entity
+     * @param publicId     the public identifier of the entity
+     * @param literalSystemId     the system identifier of the entity
+     * @param baseSystemId the base system identifier of the entity.
      *                     This is the system identifier of the entity
      *                     where <em>the entity being added</em> and
      *                     is used to expand the system identifier when
      *                     the system identifier is a relative URI.
      *                     When null the system identifier of the first
-     *                     external entity on the stack is used instead.
-     *
+     *                     external entity on the stack is used instead
      * @see SymbolTable
      */
     public void addExternalEntity(String name,
@@ -594,9 +590,9 @@ public class XMLEntityManager
     /**
      * Checks whether an entity given by name is external.
      *
-     * @param entityName The name of the entity to check.
-     * @return True if the entity is external, false otherwise
-     * (including when the entity is not declared).
+     * @param entityName the name of the entity to check
+     * @return true if the entity is external, false otherwise
+     * (including when the entity is not declared)
      */
     public boolean isExternalEntity(String entityName) {
 
@@ -608,12 +604,12 @@ public class XMLEntityManager
     }
 
     /**
-     * Checks whether the declaration of an entity given by name is 
-     // in the external subset. 
+     * Checks whether the declaration of an entity given by name is
+     * // in the external subset.
      *
-     * @param entityName The name of the entity to check.
-     * @return True if the entity was declared in the external subset, false otherwise
-     *           (including when the entity is not declared).
+     * @param entityName the name of the entity to check
+     * @return true if the entity was declared in the external subset, false otherwise
+     *           (including when the entity is not declared)
      */
     public boolean isEntityDeclInExternalSubset(String entityName) {
 
@@ -633,11 +629,10 @@ public class XMLEntityManager
      * <strong>Note:</strong> The name should be a unique symbol. The
      * SymbolTable can be used for this purpose.
      *
-     * @param name     The name of the entity.
-     * @param publicId The public identifier of the entity.
-     * @param systemId The system identifier of the entity.
-     * @param notation The name of the notation.
-     *
+     * @param name     the name of the entity
+     * @param publicId the public identifier of the entity
+     * @param systemId the system identifier of the entity
+     * @param notation the name of the notation
      * @see SymbolTable
      */
     public void addUnparsedEntity(String name,
@@ -662,9 +657,9 @@ public class XMLEntityManager
     /**
      * Checks whether an entity given by name is unparsed.
      *
-     * @param entityName The name of the entity to check.
-     * @return True if the entity is unparsed, false otherwise
-     *          (including when the entity is not declared).
+     * @param entityName the name of the entity to check
+     * @return true if the entity is unparsed, false otherwise
+     *          (including when the entity is not declared)
      */
     public boolean isUnparsedEntity(String entityName) {
 
@@ -678,8 +673,8 @@ public class XMLEntityManager
     /**
      * Checks whether an entity given by name is declared.
      *
-     * @param entityName The name of the entity to check.
-     * @return True if the entity is declared, false otherwise.
+     * @param entityName the name of the entity to check
+     * @return true if the entity is declared, false otherwise
      */
     public boolean isDeclaredEntity(String entityName) {
 
@@ -695,13 +690,11 @@ public class XMLEntityManager
      * is unable to resolve the entity, then default entity
      * resolution will occur.
      *
-     * @param resourceIdentifier The XMLResourceIdentifier for the resource to resolve.
-     *
-     * @return Returns an input source that wraps the resolved entity.
-     *         This method will never return null.
-     *
-     * @throws IOException  Thrown on i/o error.
-     * @throws XNIException Thrown by entity resolver to signal an error.
+     * @param resourceIdentifier the XMLResourceIdentifier for the resource to resolve
+     * @return returns an input source that wraps the resolved entity.
+     *         This method will never return null
+     * @throws IOException  thrown on i/o error
+     * @throws XNIException thrown by entity resolver to signal an error
      */
     public XMLInputSource resolveEntity(XMLResourceIdentifier resourceIdentifier)
             throws IOException, XNIException {
@@ -761,12 +754,11 @@ public class XMLEntityManager
     /**
      * Starts a named entity.
      *
-     * @param entityName The name of the entity to start.
-     * @param literal    True if this entity is started within a literal
-     *                   value.
-     *
-     * @throws IOException  Thrown on i/o error.
-     * @throws XNIException Thrown by entity handler to signal an error.
+     * @param entityName the name of the entity to start
+     * @param literal    true if this entity is started within a literal
+     *                   value
+     * @throws IOException  thrown on i/o error
+     * @throws XNIException thrown by entity handler to signal an error
      */
     public void startEntity(String entityName, boolean literal)
         throws IOException, XNIException {
@@ -887,10 +879,9 @@ public class XMLEntityManager
      * Starts the document entity. The document entity has the "[xml]"
      * pseudo-name.
      *
-     * @param xmlInputSource The input source of the document entity.
-     *
-     * @throws IOException  Thrown on i/o error.
-     * @throws XNIException Thrown by entity handler to signal an error.
+     * @param xmlInputSource the input source of the document entity
+     * @throws IOException  thrown on i/o error
+     * @throws XNIException thrown by entity handler to signal an error
      */
     public void startDocumentEntity(XMLInputSource xmlInputSource)
         throws IOException, XNIException {
@@ -901,10 +892,9 @@ public class XMLEntityManager
      * Starts the DTD entity. The DTD entity has the "[dtd]"
      * pseudo-name.
      *
-     * @param xmlInputSource The input source of the DTD entity.
-     *
-     * @throws IOException  Thrown on i/o error.
-     * @throws XNIException Thrown by entity handler to signal an error.
+     * @param xmlInputSource the input source of the DTD entity
+     * @throws IOException  thrown on i/o error
+     * @throws XNIException thrown by entity handler to signal an error
      */
     public void startDTDEntity(XMLInputSource xmlInputSource)
         throws IOException, XNIException {
@@ -927,14 +917,13 @@ public class XMLEntityManager
      * This method can be used to insert an application defined XML
      * entity stream into the parsing stream.
      *
-     * @param name           The name of the entity.
-     * @param xmlInputSource The input source of the entity.
-     * @param literal        True if this entity is started within a
-     *                       literal value.
-     * @param isExternal    whether this entity should be treated as an internal or external entity.
-     *
-     * @throws IOException  Thrown on i/o error.
-     * @throws XNIException Thrown by entity handler to signal an error.
+     * @param name           the name of the entity
+     * @param xmlInputSource the input source of the entity
+     * @param literal        true if this entity is started within a
+     *                       literal value
+     * @param isExternal    whether this entity should be treated as an internal or external entity
+     * @throws IOException  thrown on i/o error
+     * @throws XNIException thrown by entity handler to signal an error
      */
     public void startEntity(String name,
                             XMLInputSource xmlInputSource,
@@ -970,16 +959,17 @@ public class XMLEntityManager
     } // startEntity(String,XMLInputSource)
 
     /**
-     * This method uses the passed-in XMLInputSource to make 
+     * This method uses the passed-in XMLInputSource to make
      * fCurrentEntity usable for reading.
+     *
      * @param name  name of the entity (XML is it's the document entity)
      * @param xmlInputSource    the input source, with sufficient information
-     *      to begin scanning characters.
-     * @param literal        True if this entity is started within a
-     *                       literal value.
-     * @param isExternal    whether this entity should be treated as an internal or external entity.
+     *      to begin scanning characters
+     * @param literal        true if this entity is started within a
+     *                       literal value
+     * @param isExternal    whether this entity should be treated as an internal or external entity
      * @throws IOException  if anything can't be read
-     *  XNIException    If any parser-specific goes wrong.
+     *  XNIException    If any parser-specific goes wrong
      * @return the encoding of the new entity or null if a character stream was employed
      */
     public String setupCurrentEntity(String name, XMLInputSource xmlInputSource,
@@ -1293,14 +1283,13 @@ public class XMLEntityManager
      * about any features and properties that affect the operation of the
      * component.
      *
-     * @param componentManager The component manager.
-     *
-     * @throws SAXException Thrown by component on initialization error.
+     * @param componentManager the component manager
+     * @throws SAXException thrown by component on initialization error.
      *                      For example, if a feature or property is
      *                      required for the operation of the component, the
      *                      component manager may throw a
      *                      SAXNotRecognizedException or a
-     *                      SAXNotSupportedException.
+     *                      SAXNotSupportedException
      */
     public void reset(XMLComponentManager componentManager)
         throws XMLConfigurationException {
@@ -1461,13 +1450,12 @@ public class XMLEntityManager
      * <strong>Note:</strong> Components should silently ignore features
      * that do not affect the operation of the component.
      *
-     * @param featureId The feature identifier.
-     * @param state     The state of the feature.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param featureId the feature identifier
+     * @param state     the state of the feature
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
@@ -1499,13 +1487,12 @@ public class XMLEntityManager
      * <strong>Note:</strong> Components should silently ignore properties
      * that do not affect the operation of the component.
      *
-     * @param propertyId The property identifier.
-     * @param value      The value of the property.
-     *
-     * @throws SAXNotRecognizedException The component should not throw
-     *                                   this exception.
-     * @throws SAXNotSupportedException The component should not throw
-     *                                  this exception.
+     * @param propertyId the property identifier
+     * @param value      the value of the property
+     * @throws SAXNotRecognizedException the component should not throw
+     *                                   this exception
+     * @throws SAXNotSupportedException the component should not throw
+     *                                  this exception
      */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
@@ -1550,14 +1537,13 @@ public class XMLEntityManager
 
     } // setProperty(String,Object)
 
-    /** 
+    /**
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      *
-     * @param featureId The feature identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param featureId the feature identifier
+     * @since xerces 2.2.0
      */
     public Boolean getFeatureDefault(String featureId) {
         for (int i = 0; i < RECOGNIZED_FEATURES.length; i++) {
@@ -1568,14 +1554,13 @@ public class XMLEntityManager
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** 
+    /**
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      *
-     * @param propertyId The property identifier.
-     *
-     * @since Xerces 2.2.0
+     * @param propertyId the property identifier
+     * @since xerces 2.2.0
      */
     public Object getPropertyDefault(String propertyId) {
         for (int i = 0; i < RECOGNIZED_PROPERTIES.length; i++) {
@@ -1739,7 +1724,7 @@ public class XMLEntityManager
      * Absolutizes a URI using the current value
      * of the "user.dir" property as the base URI. If
      * the URI is already absolute, this is a no-op.
-     * 
+     *
      * @param uri the URI to absolutize
      */
     public static void absolutizeAgainstUserDir(URI uri) 
@@ -1753,9 +1738,8 @@ public class XMLEntityManager
      * identifier is already expanded. An exception thrown
      * indicates a failure to expand the id.
      *
-     * @param systemId The systemId to be expanded.
-     *
-     * @return Returns the URI string representing the expanded system
+     * @param systemId the systemId to be expanded
+     * @return returns the URI string representing the expanded system
      *         identifier. A null value indicates that the given
      *         system identifier is already expanded.
      *
@@ -1876,7 +1860,7 @@ public class XMLEntityManager
             if (systemURI.getScheme().length() > 1) {
                 return systemId;
             }
-            /** 
+            /**
              * If the scheme's length is only one character,
              * it's likely that this was intended as a file
              * path. Fixing this up in expandSystemId to
@@ -1970,7 +1954,7 @@ public class XMLEntityManager
     /**
      * Ends an entity.
      *
-     * @throws XNIException Thrown by entity handler to signal an error.
+     * @throws XNIException thrown by entity handler to signal an error
      */
     void endEntity() throws XNIException {
 
@@ -2030,9 +2014,9 @@ public class XMLEntityManager
      * Returns the IANA encoding name that is auto-detected from
      * the bytes specified, with the endian-ness of that encoding where appropriate.
      *
-     * @param b4    The first four bytes of the input.
-     * @param count The number of bytes actually read.
-     * @return an instance of EncodingInfo which represents the auto-detected encoding.
+     * @param b4    the first four bytes of the input
+     * @param count the number of bytes actually read
+     * @return an instance of EncodingInfo which represents the auto-detected encoding
      */
     protected EncodingInfo getEncodingInfo(byte[] b4, int count) {
 
@@ -2116,17 +2100,16 @@ public class XMLEntityManager
      * Creates a reader capable of reading the given input stream in
      * the specified encoding.
      *
-     * @param inputStream  The input stream.
-     * @param encoding     The encoding name that the input stream is
+     * @param inputStream  the input stream
+     * @param encoding     the encoding name that the input stream is
      *                     encoded using. If the user has specified that
      *                     Java encoding names are allowed, then the
      *                     encoding name may be a Java encoding name;
      *                     otherwise, it is an ianaEncoding name.
-     * @param isBigEndian   For encodings (like uCS-4), whose names cannot
+     * @param isBigEndian   for encodings (like uCS-4), whose names cannot
      *                      specify a byte order, this tells whether the order is bigEndian. Null means
      *                      unknown or not relevant.
-     *
-     * @return Returns a reader.
+     * @return returns a reader
      */
     protected Reader createReader(InputStream inputStream, String encoding, Boolean isBigEndian)
         throws IOException {
@@ -2234,7 +2217,7 @@ public class XMLEntityManager
 
     } // createReader(InputStream,String, Boolean): Reader
     
-    /** Create a new UTF-8 reader from the InputStream. **/
+    /** Create a new UTF-8 reader from the InputStream. *. */
     private Reader createUTF8Reader(InputStream stream) {
         if (DEBUG_ENCODINGS) {
             System.out.println("$$$ creating UTF8Reader");
@@ -2248,7 +2231,7 @@ public class XMLEntityManager
                 fErrorReporter.getLocale());
     } // createUTF8Reader(InputStream):Reader
     
-    /** Create a new UTF-16 reader from the InputStream. **/
+    /** Create a new UTF-16 reader from the InputStream. *. */
     private Reader createUTF16Reader(InputStream stream, boolean isBigEndian) {
         if (DEBUG_ENCODINGS) {
             System.out.println("$$$ creating UTF16Reader");
@@ -2268,7 +2251,7 @@ public class XMLEntityManager
                 fErrorReporter.getLocale());
     } // createUTF16Reader(InputStream):Reader
     
-    /** Create a new ASCII reader from the InputStream. **/
+    /** Create a new ASCII reader from the InputStream. *. */
     private Reader createASCIIReader(InputStream stream) {
         if (DEBUG_ENCODINGS) {
             System.out.println("$$$ creating ASCIIReader");
@@ -2282,7 +2265,7 @@ public class XMLEntityManager
                 fErrorReporter.getLocale());
     } // createASCIIReader(InputStream):Reader
     
-    /** Create a new ISO-8859-1 reader from the InputStream. **/
+    /** Create a new ISO-8859-1 reader from the InputStream. *. */
     private Reader createLatin1Reader(InputStream stream) {
         if (DEBUG_ENCODINGS) {
             System.out.println("$$$ creating Latin1Reader");
@@ -2300,9 +2283,8 @@ public class XMLEntityManager
     /**
      * Fixes a platform dependent filename to standard URI form.
      *
-     * @param str The string to fix.
-     *
-     * @return Returns the fixed URI string.
+     * @param str the string to fix
+     * @return returns the fixed URI string
      */
     protected static String fixURI(String str) {
 
@@ -2440,9 +2422,8 @@ public class XMLEntityManager
 
     /**
      * Entity information.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public static abstract class Entity {
@@ -2504,9 +2485,8 @@ public class XMLEntityManager
 
     /**
      * Internal entity.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     protected static class InternalEntity
@@ -2579,9 +2559,8 @@ public class XMLEntityManager
 
     /**
      * External entity.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     protected static class ExternalEntity
@@ -2591,7 +2570,7 @@ public class XMLEntityManager
         // Data
         //
 
-        /** container for all relevant entity location information. */
+        /** Container for all relevant entity location information. */
         public XMLResourceIdentifier entityLocation;
 
         /** Notation name for unparsed entity. */
@@ -2653,9 +2632,8 @@ public class XMLEntityManager
 
     /**
      * Entity state.
-     * 
-     * @xerces.internal
      *
+     * @xerces.internal
      * @author Andy Clark, IBM
      */
     public class ScannedEntity
@@ -2675,7 +2653,7 @@ public class XMLEntityManager
 
         // locator information
 
-        /** entity location information */
+        /** Entity location information. */
         public XMLResourceIdentifier entityLocation;
 
         /** Line number. */
@@ -2689,7 +2667,7 @@ public class XMLEntityManager
         /** Auto-detected encoding. */
         public String encoding;
         
-        /** 
+        /**
          * Encoding has been set externally, for example
          * using a SAX InputSource or a DOM LSInput.
          */
@@ -2697,12 +2675,12 @@ public class XMLEntityManager
         
         // version
         
-        /** XML version. **/
+        /** XML version. *. */
         public String xmlVersion = "1.0";
         
 		// status
 
-        /** True if in a literal.  */
+        /** True if in a literal. */
         public boolean literal;
 
         // whether this is an external or internal scanned entity
@@ -2880,12 +2858,12 @@ public class XMLEntityManager
             return null;
         }
         
-        /** Returns whether the encoding of this entity was externally specified. **/
+        /** Returns whether the encoding of this entity was externally specified. *. */
         public boolean isEncodingExternallySpecified() {
             return externallySpecifiedEncoding;
         }
         
-        /** Sets whether the encoding of this entity was externally specified. **/
+        /** Sets whether the encoding of this entity was externally specified. *. */
         public void setEncodingExternallySpecified(boolean value) {
             externallySpecifiedEncoding = value;
         }
@@ -2913,41 +2891,40 @@ public class XMLEntityManager
     
     /**
      * Information about auto-detectable encodings.
-     * 
+     *
      * @xerces.internal
-     * 
      * @author Michael Glavassevich, IBM
      */
     private static class EncodingInfo {
         
-        /** UTF-8 **/
+        /** UTF-8 *. */
         public static final EncodingInfo UTF_8 = new EncodingInfo("UTF-8", null, false);
         
-        /** UTF-8, with BOM **/
+        /** UTF-8, with BOM *. */
         public static final EncodingInfo UTF_8_WITH_BOM = new EncodingInfo("UTF-8", null, true);
         
-        /** UTF-16, big-endian **/
+        /** UTF-16, big-endian *. */
         public static final EncodingInfo UTF_16_BIG_ENDIAN = new EncodingInfo("UTF-16BE", "UTF-16", Boolean.TRUE, false);
         
-        /** UTF-16, big-endian with BOM **/
+        /** UTF-16, big-endian with BOM *. */
         public static final EncodingInfo UTF_16_BIG_ENDIAN_WITH_BOM = new EncodingInfo("UTF-16BE", "UTF-16", Boolean.TRUE, true);
         
-        /** UTF-16, little-endian **/
+        /** UTF-16, little-endian *. */
         public static final EncodingInfo UTF_16_LITTLE_ENDIAN = new EncodingInfo("UTF-16LE", "UTF-16", Boolean.FALSE, false);
         
-        /** UTF-16, little-endian with BOM **/
+        /** UTF-16, little-endian with BOM *. */
         public static final EncodingInfo UTF_16_LITTLE_ENDIAN_WITH_BOM = new EncodingInfo("UTF-16LE", "UTF-16", Boolean.FALSE, true);
         
-        /** UCS-4, big-endian **/
+        /** UCS-4, big-endian *. */
         public static final EncodingInfo UCS_4_BIG_ENDIAN = new EncodingInfo("ISO-10646-UCS-4", Boolean.TRUE, false);
         
-        /** UCS-4, little-endian **/
+        /** UCS-4, little-endian *. */
         public static final EncodingInfo UCS_4_LITTLE_ENDIAN = new EncodingInfo("ISO-10646-UCS-4", Boolean.FALSE, false);
         
-        /** UCS-4, unusual byte-order (2143) or (3412) **/
+        /** UCS-4, unusual byte-order (2143) or (3412) *. */
         public static final EncodingInfo UCS_4_UNUSUAL_BYTE_ORDER = new EncodingInfo("ISO-10646-UCS-4", null, false);
         
-        /** EBCDIC **/
+        /** EBCDIC *. */
         public static final EncodingInfo EBCDIC = new EncodingInfo("CP037", null, false);
         
         public final String autoDetectedEncoding;
@@ -2970,9 +2947,8 @@ public class XMLEntityManager
     
     /**
      * Pool of byte buffers for the java.io.Readers.
-     * 
+     *
      * @xerces.internal
-     * 
      * @author Michael Glavassevich, IBM
      */
     private static final class ByteBufferPool {
@@ -2995,19 +2971,19 @@ public class XMLEntityManager
             fDepth = 0;
         }
         
-        /** Retrieves a byte buffer from the pool. **/
+        /** Retrieves a byte buffer from the pool. *. */
         public byte[] getBuffer() {
             return (fDepth > 0) ? fByteBufferPool[--fDepth] : new byte[fBufferSize];
         }
         
-        /** Returns byte buffer to pool. **/
+        /** Returns byte buffer to pool. *. */
         public void returnBuffer(byte[] buffer) {
             if (fDepth < fByteBufferPool.length) {
                 fByteBufferPool[fDepth++] = buffer;
             }
         }
 
-        /** Sets the size of the buffers and dumps the old pool. **/
+        /** Sets the size of the buffers and dumps the old pool. *. */
         public void setBufferSize(int bufferSize) {
             fBufferSize = bufferSize;
             fByteBufferPool = new byte[fPoolSize][];
@@ -3018,17 +2994,16 @@ public class XMLEntityManager
     /**
      * Buffer used in entity manager to reuse character arrays instead
      * of creating new ones every time.
-     * 
+     *
      * @xerces.internal
-     * 
      * @author Ankit Pasricha, IBM
      */
     private static final class CharacterBuffer {
 
-        /** character buffer */
+        /** Character buffer. */
         private final char[] ch;
         
-        /** whether the buffer is for an external or internal scanned entity */
+        /** Whether the buffer is for an external or internal scanned entity. */
         private final boolean isExternal;
         
         public CharacterBuffer(boolean isExternal, int size) {
@@ -3040,9 +3015,8 @@ public class XMLEntityManager
     /**
      * Stores a number of character buffers and provides it to the entity
      * manager to use when an entity is seen.
-     * 
-     * @xerces.internal 
-     * 
+     *
+     * @xerces.internal
      * @author Ankit Pasricha, IBM
      */
     private static final class CharacterBufferPool {
@@ -3070,7 +3044,7 @@ public class XMLEntityManager
             init();
         }
         
-        /** Initializes buffer pool. **/
+        /** Initializes buffer pool. *. */
         private void init() {
             fInternalBufferPool = new CharacterBuffer[fPoolSize];
             fExternalBufferPool = new CharacterBuffer[fPoolSize];
@@ -3078,7 +3052,7 @@ public class XMLEntityManager
             fExternalTop = -1;
         }
 
-        /** Retrieves buffer from pool. **/
+        /** Retrieves buffer from pool. *. */
         public CharacterBuffer getBuffer(boolean external) {
             if (external) {
                 if (fExternalTop > -1) {
@@ -3098,7 +3072,7 @@ public class XMLEntityManager
             }
         }
         
-        /** Returns buffer to pool. **/
+        /** Returns buffer to pool. *. */
         public void returnBuffer(CharacterBuffer buffer) {
             if (buffer.isExternal) {
                 if (fExternalTop < fExternalBufferPool.length - 1) {
@@ -3110,7 +3084,7 @@ public class XMLEntityManager
             }
         }
 
-        /** Sets the size of external buffers and dumps the old pool. **/
+        /** Sets the size of external buffers and dumps the old pool. *. */
         public void setExternalBufferSize(int bufferSize) {
             fExternalBufferSize = bufferSize;
             fExternalBufferPool = new CharacterBuffer[fPoolSize];
@@ -3136,7 +3110,6 @@ public class XMLEntityManager
      * won't buffer data read this way!</strong>
      *
      * @xerces.internal
-     *  
      * @author Neil Graham, IBM
      * @author Glenn Marcy, IBM
      */

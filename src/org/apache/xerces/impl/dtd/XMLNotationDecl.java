@@ -18,8 +18,8 @@
 package org.apache.xerces.impl.dtd;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class XMLNotationDecl {
@@ -28,16 +28,16 @@ public class XMLNotationDecl {
     // Data
     //
 
-    /** name */
+    /** Name. */
     public String name;
 
-    /** publicId */
+    /** PublicId. */
     public String publicId;
 
-    /** systemId */
+    /** SystemId. */
     public String systemId;
 
-    /** base systemId */
+    /** Base systemId. */
     public String baseSystemId;
 
     //
@@ -45,11 +45,11 @@ public class XMLNotationDecl {
     //
 
     /**
-     * setValues
-     * 
-     * @param name 
-     * @param publicId 
-     * @param systemId 
+     * SetValues
+     *
+     * @param name
+     * @param publicId
+     * @param systemId
      */
     public void setValues(String name, String publicId, String systemId, String baseSystemId) {
         this.name     =   name;
@@ -59,7 +59,7 @@ public class XMLNotationDecl {
     } // setValues
 
     /**
-     * clear
+     * Clear
      */
     public void clear() {
         this.name     = null;

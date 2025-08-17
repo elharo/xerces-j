@@ -32,11 +32,10 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 /**
  * This class scans the version of the document to determine
  * which scanner to use: XML 1.1 or XML 1.0.
- * The version is scanned using XML 1.1. scanner.  
- * 
+ * The version is scanned using XML 1.1. scanner.
+ *
  * @xerces.internal
- * 
- * @author Neil Graham, IBM 
+ * @author Neil Graham, IBM
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -87,12 +86,10 @@ public class XMLVersionDetector {
                     'i', 'o', 'n', '=', ' ', ' ', ' ', ' ', ' '};
 
     /**
-     * 
-     * 
-     * @param componentManager The component manager.
      *
-     * @throws XNIException Throws exception if required features and
-     *                      properties cannot be found.
+     * @param componentManager the component manager
+     * @throws XNIException throws exception if required features and
+     *                      properties cannot be found
      */
     public void reset(XMLComponentManager componentManager)
         throws XMLConfigurationException {
@@ -108,8 +105,9 @@ public class XMLVersionDetector {
     /**
      * Reset the reference to the appropriate scanner given the version of the
      * document and start document scanning.
-     * @param scanner - the scanner to use
-     * @param version - the version of the document (XML 1.1 or XML 1.0).
+     *
+     * @param scanner the scanner to use
+     * @param version the version of the document (XML 1.1 or XML 1.0)
      */
     public void startDocumentParsing(XMLEntityHandler scanner, short version){
 
@@ -132,12 +130,13 @@ public class XMLVersionDetector {
 
 
     /**
-     * This methods scans the XML declaration to find out the version 
+     * This methods scans the XML declaration to find out the version
      * (and provisional encoding)  of the document.
      * The scanning is doing using XML 1.1 scanner.
+     *
      * @param inputSource
-     * @return short - Constants.XML_VERSION_1_1 if document version 1.1, 
-     *                  otherwise Constants.XML_VERSION_1_0 
+     * @return short - Constants.XML_VERSION_1_1 if document version 1.1,
+     *                  otherwise Constants.XML_VERSION_1_0
      * @throws IOException
      */
     public short determineDocVersion(XMLInputSource inputSource) throws IOException {

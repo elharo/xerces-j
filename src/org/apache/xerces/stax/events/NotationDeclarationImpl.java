@@ -25,10 +25,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.NotationDeclaration;
 
 /**
- * @xerces.internal
- * 
- * @author Lucian Holland
  *
+ * @xerces.internal
+ * @author Lucian Holland
  * @version $Id$
  */
 public final class NotationDeclarationImpl extends XMLEventImpl implements
@@ -39,6 +38,7 @@ public final class NotationDeclarationImpl extends XMLEventImpl implements
     private final String fName;
 
     /**
+     *
      * @param eventType
      * @param location
      * @param schemaType
@@ -51,6 +51,7 @@ public final class NotationDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.NotationDeclaration#getName()
      */
     public String getName() {
@@ -58,6 +59,7 @@ public final class NotationDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.NotationDeclaration#getPublicId()
      */
     public String getPublicId() {
@@ -65,6 +67,7 @@ public final class NotationDeclarationImpl extends XMLEventImpl implements
     }
 
     /**
+     *
      * @see javax.xml.stream.events.NotationDeclaration#getSystemId()
      */
     public String getSystemId() {

@@ -62,41 +62,41 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 import org.apache.xerces.xni.parser.XMLPullParserConfiguration;
 
 /**
- * This class is the DTD-only parser configuration 
+ * This class is the DTD-only parser configuration
  * used to parse XML 1.0 and XML 1.1 documents.
  *
  * <p>
  * This class recognizes the following features and properties:
  * <ul>
  * <li>Features
- *  <ul>
- *   <li>http://xml.org/sax/features/validation</li>
- *   <li>http://xml.org/sax/features/namespaces</li>
- *   <li>http://xml.org/sax/features/external-general-entities</li>
- *   <li>http://xml.org/sax/features/external-parameter-entities</li>
- *   <li>http://apache.org/xml/features/continue-after-fatal-error</li>
- *   <li>http://apache.org/xml/features/load-external-dtd</li>
- *  </ul>
- * <li>Properties
- *  <ul>
- *   <li>http://xml.org/sax/properties/xml-string</li>
- *   <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *   <li>http://apache.org/xml/properties/internal/error-handler</li>
- *   <li>http://apache.org/xml/properties/internal/entity-resolver</li>
- *   <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *   <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *   <li>http://apache.org/xml/properties/internal/document-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
- *   <li>http://apache.org/xml/properties/internal/grammar-pool</li>
- *   <li>http://apache.org/xml/properties/internal/validator/dtd</li>
- *   <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
- *  </ul>
+ * <ul>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://xml.org/sax/features/namespaces</li>
+ * <li>http://xml.org/sax/features/external-general-entities</li>
+ * <li>http://xml.org/sax/features/external-parameter-entities</li>
+ * <li>http://apache.org/xml/features/continue-after-fatal-error</li>
+ * <li>http://apache.org/xml/features/load-external-dtd</li>
  * </ul>
+ * <li>Properties
+ * <ul>
+ * <li>http://xml.org/sax/properties/xml-string</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-handler</li>
+ * <li>http://apache.org/xml/properties/internal/entity-resolver</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/document-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://apache.org/xml/properties/internal/grammar-pool</li>
+ * <li>http://apache.org/xml/properties/internal/validator/dtd</li>
+ * <li>http://apache.org/xml/properties/internal/datatype-validator-factory</li>
+ * </ul>
+ * </ul>
+ *
  * @author Elena Litani, IBM
  * @author Neil Graham, IBM
  * @author Michael Glavassevich, IBM
  * @author John Kim, IBM
- *
  * @version $Id$
  */
 public class XML11DTDConfiguration extends ParserConfigurationSettings
@@ -136,19 +136,19 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     
     // property identifiers
 
-	/** Property identifier: xml string. */
+    /** Property identifier: xml string. */
 	protected static final String XML_STRING = 
 		Constants.SAX_PROPERTY_PREFIX + Constants.XML_STRING_PROPERTY;
 
-	/** Property identifier: symbol table. */
+    /** Property identifier: symbol table. */
 	protected static final String SYMBOL_TABLE = 
 		Constants.XERCES_PROPERTY_PREFIX + Constants.SYMBOL_TABLE_PROPERTY;
 
-	/** Property identifier: error handler. */
+    /** Property identifier: error handler. */
 	protected static final String ERROR_HANDLER = 
 		Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_HANDLER_PROPERTY;
 
-	/** Property identifier: entity resolver. */
+    /** Property identifier: entity resolver. */
 	protected static final String ENTITY_RESOLVER = 
 		Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_RESOLVER_PROPERTY;
 
@@ -160,7 +160,7 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     protected static final String ENTITY_MANAGER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.ENTITY_MANAGER_PROPERTY;
 
-    /** Property identifier document scanner: */
+    /** Property identifier document scanner:. */
     protected static final String DOCUMENT_SCANNER =
         Constants.XERCES_PROPERTY_PREFIX + Constants.DOCUMENT_SCANNER_PROPERTY;
 
@@ -220,7 +220,7 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /** XML 1.1. Components. */
     protected ArrayList fXML11Components = null;
     
-    /** Common components: XMLEntityManager, XMLErrorReporter */
+    /** Common components: XMLEntityManager, XMLErrorReporter. */
     protected ArrayList fCommonComponents = null;
     
     /** The document handler. */
@@ -232,18 +232,18 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /** The DTD content model handler. */
     protected XMLDTDContentModelHandler fDTDContentModelHandler;
     
-    /** Last component in the document pipeline */     
+    /** Last component in the document pipeline. */
     protected XMLDocumentSource fLastComponent;
     
-    /** 
+    /**
      * True if a parse is in progress. This state is needed because
      * some features/properties cannot be set while parsing (e.g.
      * validation and namespaces).
      */
     protected boolean fParseInProgress = false;
     
-    /** 
-     * fConfigUpdated is set to true if there has been any change to the configuration settings, 
+    /**
+     * FConfigUpdated is set to true if there has been any change to the configuration settings,
      * i.e a feature or a property was changed.
      */
     protected boolean fConfigUpdated = false;
@@ -258,13 +258,13 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /** The XML 1.0 Document scanner that does namespace binding. */
     protected XMLNSDocumentScannerImpl fNamespaceScanner;
     
-    /** The XML 1.0 Non-namespace implementation of scanner */
+    /** The XML 1.0 Non-namespace implementation of scanner. */
     protected XMLDocumentScannerImpl fNonNSScanner;
     
-    /** The XML 1.0 DTD Validator: binds namespaces */
+    /** The XML 1.0 DTD Validator: binds namespaces. */
     protected XMLDTDValidator fDTDValidator;
     
-    /** The XML 1.0 DTD Validator that does not bind namespaces */
+    /** The XML 1.0 DTD Validator that does not bind namespaces. */
     protected XMLDTDValidator fNonNSDTDValidator;
     
     /** The XML 1.0 DTD scanner. */
@@ -277,25 +277,25 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     // XML 1.1 components
     //
     
-    /** The XML 1.1 datatype factory. **/
+    /** The XML 1.1 datatype factory. *. */
     protected DTDDVFactory fXML11DatatypeFactory = null;
     
-    /** The XML 1.1 document scanner that does namespace binding. **/
+    /** The XML 1.1 document scanner that does namespace binding. *. */
     protected XML11NSDocumentScannerImpl fXML11NSDocScanner = null;
     
-    /** The XML 1.1 document scanner that does not do namespace binding. **/
+    /** The XML 1.1 document scanner that does not do namespace binding. *. */
     protected XML11DocumentScannerImpl fXML11DocScanner = null;
     
-    /** The XML 1.1 DTD validator that does namespace binding. **/
+    /** The XML 1.1 DTD validator that does namespace binding. *. */
     protected XML11NSDTDValidator fXML11NSDTDValidator = null;
     
-    /** The XML 1.1 DTD validator that does not do namespace binding. **/
+    /** The XML 1.1 DTD validator that does not do namespace binding. *. */
     protected XML11DTDValidator fXML11DTDValidator = null;
     
-    /** The XML 1.1 DTD scanner. **/
+    /** The XML 1.1 DTD scanner. *. */
     protected XML11DTDScannerImpl fXML11DTDScanner = null;
     
-    /** The XML 1.1 DTD processor. **/
+    /** The XML 1.1 DTD processor. *. */
     protected XML11DTDProcessor fXML11DTDProcessor = null;
 
     //
@@ -311,7 +311,7 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /** Entity manager. */
     protected XMLEntityManager fEntityManager;
 
-    /** Current scanner */
+    /** Current scanner. */
     protected XMLDocumentScanner fCurrentScanner;
     
     /** Current Datatype validator factory. */
@@ -332,10 +332,10 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
         this(null, null, null);
     } // <init>()
 
-    /** 
-     * Constructs a parser configuration using the specified symbol table. 
+    /**
+     * Constructs a parser configuration using the specified symbol table.
      *
-     * @param symbolTable The symbol table to use.
+     * @param symbolTable the symbol table to use
      */
     public XML11DTDConfiguration(SymbolTable symbolTable) {
         this(symbolTable, null, null);
@@ -345,12 +345,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
      * Constructs a parser configuration using the specified symbol table and
      * grammar pool.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable The symbol table to use.
-     * @param grammarPool The grammar pool to use.
+     * @param symbolTable the symbol table to use
+     * @param grammarPool the grammar pool to use
      */
     public XML11DTDConfiguration(SymbolTable symbolTable, XMLGrammarPool grammarPool) {
         this(symbolTable, grammarPool, null);
@@ -360,13 +360,13 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
      * Constructs a parser configuration using the specified symbol table,
      * grammar pool, and parent settings.
      * <p>
-     * <strong>REVISIT:</strong> 
+     * <strong>REVISIT:</strong>
      * Grammar pool will be updated when the new validation engine is
      * implemented.
      *
-     * @param symbolTable    The symbol table to use.
-     * @param grammarPool    The grammar pool to use.
-     * @param parentSettings The parent settings.
+     * @param symbolTable    the symbol table to use
+     * @param grammarPool    the grammar pool to use
+     * @param parentSettings the parent settings
      */
     public XML11DTDConfiguration(
         SymbolTable symbolTable,
@@ -500,13 +500,11 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /**
      * Sets the input source for the document to parse.
      *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @param inputSource the document's input source
+     * @throws XMLConfigurationException thrown if there is a
      *                        configuration error when initializing the
-     *                        parser.
-     * @exception IOException Thrown on I/O error.
-     *
+     *                        parser
+     * @throws IOException thrown on I/O error
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -524,22 +522,21 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /**
      * Set the locale to use for messages.
      *
-     * @param locale The locale object to use for localization of messages.
-     *
-     * @exception XNIException Thrown if the parser does not support the
-     *                         specified locale.
+     * @param locale the locale object to use for localization of messages
+     * @throws XNIException thrown if the parser does not support the
+     *                         specified locale
      */
     public void setLocale(Locale locale) throws XNIException {
         fLocale = locale;
         fErrorReporter.setLocale(locale);
     } // setLocale(Locale)
     
-	/**
-	 * Sets the document handler on the last component in the pipeline
-	 * to receive information about the document.
-	 * 
-	 * @param documentHandler   The document handler.
-	 */
+    /**
+     * Sets the document handler on the last component in the pipeline
+     * to receive information about the document.
+     *
+     * @param documentHandler   the document handler
+     */
 	public void setDocumentHandler(XMLDocumentHandler documentHandler) {
 		fDocumentHandler = documentHandler;
 		if (fLastComponent != null) {
@@ -550,90 +547,90 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 		}
 	} // setDocumentHandler(XMLDocumentHandler)
 
-	/** Returns the registered document handler. */
+    /** Returns the registered document handler. */
 	public XMLDocumentHandler getDocumentHandler() {
 		return fDocumentHandler;
 	} // getDocumentHandler():XMLDocumentHandler
 
-	/**
-	 * Sets the DTD handler.
-	 * 
-	 * @param dtdHandler The DTD handler.
-	 */
+    /**
+     * Sets the DTD handler.
+     *
+     * @param dtdHandler the DTD handler
+     */
 	public void setDTDHandler(XMLDTDHandler dtdHandler) {
 		fDTDHandler = dtdHandler;
 	} // setDTDHandler(XMLDTDHandler)
 
-	/** Returns the registered DTD handler. */
+    /** Returns the registered DTD handler. */
 	public XMLDTDHandler getDTDHandler() {
 		return fDTDHandler;
 	} // getDTDHandler():XMLDTDHandler
 
-	/**
-	 * Sets the DTD content model handler.
-	 * 
-	 * @param handler The DTD content model handler.
-	 */
+    /**
+     * Sets the DTD content model handler.
+     *
+     * @param handler the DTD content model handler
+     */
 	public void setDTDContentModelHandler(XMLDTDContentModelHandler handler) {
 		fDTDContentModelHandler = handler;
 	} // setDTDContentModelHandler(XMLDTDContentModelHandler)
 
-	/** Returns the registered DTD content model handler. */
+    /** Returns the registered DTD content model handler. */
 	public XMLDTDContentModelHandler getDTDContentModelHandler() {
 		return fDTDContentModelHandler;
 	} // getDTDContentModelHandler():XMLDTDContentModelHandler
 
-	/**
-	 * Sets the resolver used to resolve external entities. The EntityResolver
-	 * interface supports resolution of public and system identifiers.
-	 *
-	 * @param resolver The new entity resolver. Passing a null value will
+    /**
+     * Sets the resolver used to resolve external entities. The EntityResolver
+     * interface supports resolution of public and system identifiers.
+     *
+     * @param resolver the new entity resolver. Passing a null value will
 	 *                 uninstall the currently installed resolver.
-	 */
+     */
 	public void setEntityResolver(XMLEntityResolver resolver) {
 		fProperties.put(ENTITY_RESOLVER, resolver);
 	} // setEntityResolver(XMLEntityResolver)
 
-	/**
-	 * Return the current entity resolver.
-	 *
-	 * @return The current entity resolver, or null if none
-	 *         has been registered.
-	 * @see #setEntityResolver
-	 */
+    /**
+     * Return the current entity resolver.
+     *
+     * @return the current entity resolver, or null if none
+	 *         has been registered
+     * @see #setEntityResolver
+     */
 	public XMLEntityResolver getEntityResolver() {
 		return (XMLEntityResolver)fProperties.get(ENTITY_RESOLVER);
 	} // getEntityResolver():XMLEntityResolver
 	
-	/**
-	 * Allow an application to register an error event handler.
-	 *
-	 * <p>If the application does not register an error handler, all
-	 * error events reported by the SAX parser will be silently
-	 * ignored; however, normal processing may not continue.  It is
-	 * highly recommended that all SAX applications implement an
-	 * error handler to avoid unexpected bugs.</p>
-	 *
-	 * <p>Applications may register a new or different handler in the
-	 * middle of a parse, and the SAX parser must begin using the new
-	 * handler immediately.</p>
-	 *
-	 * @param errorHandler The error handler.
-	 * @exception java.lang.NullPointerException If the handler 
-	 *            argument is null.
-	 * @see #getErrorHandler
-	 */
+    /**
+     * Allow an application to register an error event handler.
+     *
+     * <p>If the application does not register an error handler, all
+     * error events reported by the SAX parser will be silently
+     * ignored; however, normal processing may not continue.  It is
+     * highly recommended that all SAX applications implement an
+     * error handler to avoid unexpected bugs.</p>
+     *
+     * <p>Applications may register a new or different handler in the
+     * middle of a parse, and the SAX parser must begin using the new
+     * handler immediately.</p>
+     *
+     * @param errorHandler the error handler
+     * @throws java.lang.NullPointerException if the handler
+	 *            argument is null
+     * @see #getErrorHandler
+     */
 	public void setErrorHandler(XMLErrorHandler errorHandler) {
 		fProperties.put(ERROR_HANDLER, errorHandler);
 	} // setErrorHandler(XMLErrorHandler)
 
-	/**
-	 * Return the current error handler.
-	 *
-	 * @return The current error handler, or null if none
-	 *         has been registered.
-	 * @see #setErrorHandler
-	 */
+    /**
+     * Return the current error handler.
+     *
+     * @return the current error handler, or null if none
+	 *         has been registered
+     * @see #setErrorHandler
+     */
 	public XMLErrorHandler getErrorHandler() {
 		// REVISIT: Should this be a property?
 		return (XMLErrorHandler)fProperties.get(ERROR_HANDLER);
@@ -652,10 +649,9 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     /**
      * Parses the specified input source.
      *
-     * @param source The input source.
-     *
-     * @exception XNIException Throws exception on XNI error.
-     * @exception java.io.IOException Throws exception on i/o error.
+     * @param source the input source
+     * @throws XNIException throws exception on XNI error
+     * @throws java.io.IOException throws exception on i/o error
      */
     public void parse(XMLInputSource source) throws XNIException, IOException {
 
@@ -765,18 +761,17 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
     } // parse(boolean):boolean
     
-	/**
-	 * Returns the state of a feature.
-	 * 
-	 * @param featureId The feature identifier.
-		 * @return true if the feature is supported
-	 * 
-	 * @throws XMLConfigurationException Thrown for configuration error.
+    /**
+     * Returns the state of a feature.
+     *
+     * @param featureId the feature identifier
+     * @return true if the feature is supported
+     * @throws XMLConfigurationException thrown for configuration error.
 	 *                                   In general, components should
 	 *                                   only throw this exception if
 	 *                                   it is <strong>really</strong>
-	 *                                   a critical error.
-	 */
+	 *                                   a critical error
+     */
 	public boolean getFeature(String featureId)
 		throws XMLConfigurationException {
 			// make this feature special
@@ -787,19 +782,18 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
 	} // getFeature(String):boolean
     
-	/**
-	 * Set the state of a feature.
-	 *
-	 * Set the state of any feature in a SAX2 parser.  The parser
-	 * might not recognize the feature, and if it does recognize
-	 * it, it might not be able to fulfill the request.
-	 *
-	 * @param featureId The unique identifier (URI) of the feature.
-	 * @param state The requested state of the feature (true or false).
-	 *
-	 * @exception org.apache.xerces.xni.parser.XMLConfigurationException If the
-	 *            requested feature is not known.
-	 */
+    /**
+     * Set the state of a feature.
+     *
+     * Set the state of any feature in a SAX2 parser.  The parser
+     * might not recognize the feature, and if it does recognize
+     * it, it might not be able to fulfill the request.
+     *
+     * @param featureId the unique identifier (URI) of the feature
+     * @param state the requested state of the feature (true or false)
+     * @throws org.apache.xerces.xni.parser.XMLConfigurationException if the
+	 *            requested feature is not known
+     */
 	public void setFeature(String featureId, boolean state)
 		throws XMLConfigurationException {
 		fConfigUpdated = true;
@@ -832,12 +826,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
 	} // setFeature(String,boolean)
 	
-	/**
-	 * setProperty
-	 * 
-	 * @param propertyId 
-	 * @param value 
-	 */
+    /**
+     * SetProperty
+     *
+     * @param propertyId
+     * @param value
+     */
 	public void setProperty(String propertyId, Object value)
 		throws XMLConfigurationException {
 		fConfigUpdated = true;
@@ -871,14 +865,14 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 	} // setProperty(String,Object)
     
 
-	/** Returns the locale. */
+    /** Returns the locale. */
 	public Locale getLocale() {
 		return fLocale;
 	} // getLocale():Locale
 	
-	/**
-	 * reset all XML 1.0 components before parsing and namespace context
-	 */
+    /**
+     * Reset all XML 1.0 components before parsing and namespace context
+     */
 	protected void reset() throws XNIException {
 		int count = fComponents.size();
 		for (int i = 0; i < count; i++) {
@@ -888,9 +882,9 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
 	} // reset()
     
-	/**
-	 * reset all common components before parsing
-	 */
+    /**
+     * Reset all common components before parsing
+     */
 	protected void resetCommon() throws XNIException {
 		// reset common components
 		int count = fCommonComponents.size();
@@ -901,9 +895,9 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
 	} // resetCommon()
     
-	/**
-	 * reset all components before parsing and namespace context
-	 */
+    /**
+     * Reset all components before parsing and namespace context
+     */
 	protected void resetXML11() throws XNIException {
 		// reset every component
 		int count = fXML11Components.size();
@@ -915,8 +909,8 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 	} // resetXML11()
 
     /**
-     *  Configures the XML 1.1 pipeline. 
-     *  Note: this method also resets the new XML11 components.
+     * Configures the XML 1.1 pipeline.
+     * Note: this method also resets the new XML11 components.
      */
     protected void configureXML11Pipeline() {
         if (fCurrentDVFactory != fXML11DatatypeFactory) {
@@ -1063,13 +1057,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
      * Check a feature. If feature is know and supported, this method simply
      * returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param featureId The unique identifier (URI) of the feature.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param featureId the unique identifier (URI) of the feature
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkFeature(String featureId) throws XMLConfigurationException {
 
@@ -1153,14 +1146,13 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
      * Check a property. If the property is know and supported, this method
      * simply returns. Otherwise, the appropriate exception is thrown.
      *
-     * @param propertyId The unique identifier (URI) of the property
-     *                   being set.
-     *
-     * @throws XMLConfigurationException Thrown for configuration error.
+     * @param propertyId the unique identifier (URI) of the property
+     *                   being set
+     * @throws XMLConfigurationException thrown for configuration error.
      *                                   In general, components should
      *                                   only throw this exception if
      *                                   it is <strong>really</strong>
-     *                                   a critical error.
+     *                                   a critical error
      */
     protected void checkProperty(String propertyId) throws XMLConfigurationException {
 
@@ -1210,12 +1202,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
     } // checkProperty(String)
 
 
-    /** 
+    /**
      * Adds a component to the parser configuration. This method will
      * also add all of the component's recognized features and properties
      * to the list of default recognized features and properties.
      *
-     * @param component The component to add.
+     * @param component the component to add
      */
     protected void addComponent(XMLComponent component) {
 
@@ -1228,12 +1220,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 	
     } // addComponent(XMLComponent)
     
-    /** 
+    /**
      * Adds common component to the parser configuration. This method will
      * also add all of the component's recognized features and properties
      * to the list of default recognized features and properties.
      *
-     * @param component The component to add.
+     * @param component the component to add
      */
     protected void addCommonComponent(XMLComponent component) {
 
@@ -1246,12 +1238,12 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
 
     } // addCommonComponent(XMLComponent)
 	
-    /** 
+    /**
      * Adds an XML 1.1 component to the parser configuration. This method will
      * also add all of the component's recognized features and properties
      * to the list of default recognized features and properties.
      *
-     * @param component The component to add.
+     * @param component the component to add
      */
     protected void addXML11Component(XMLComponent component) {
 
@@ -1270,7 +1262,7 @@ public class XML11DTDConfiguration extends ParserConfigurationSettings
      * sets default values on the configuration for features and
      * properties which were previously absent from the configuration.
      *
-     * @param component The component whose recognized features
+     * @param component the component whose recognized features
      * and properties will be added to the configuration
      */
     protected void addRecognizedParamsAndSetDefaults(XMLComponent component) {

@@ -25,7 +25,7 @@ import org.apache.xerces.xni.parser.XMLParseException;
 
 /**
  * The Default XPointer error handler used by the XInclude implementation.
- * XPointer error's are thrown so that they may be caught by the XInclude 
+ * XPointer error's are thrown so that they may be caught by the XInclude
  * implementation and reported as resource errors.
  *
  * @version $Id$
@@ -43,17 +43,17 @@ final class XPointerErrorHandler implements XMLErrorHandler {
     // Constructors
     //
 
-    /** 
-     * Constructs an error handler that prints error messages to 
-     * <code>System.err</code>. 
+    /**
+     * Constructs an error handler that prints error messages to
+     * <code>System.err</code>.
      */
     public XPointerErrorHandler() {
         this(new PrintWriter(System.err));
     } // <init>()
 
-    /** 
+    /**
      * Constructs an error handler that prints error messages to the
-     * specified <code>PrintWriter</code. 
+     * specified <code>PrintWriter</code.
      */
     public XPointerErrorHandler(PrintWriter out) {
         fOut = out;

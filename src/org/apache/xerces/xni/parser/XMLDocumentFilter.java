@@ -24,7 +24,6 @@ import org.apache.xerces.xni.XMLDocumentHandler;
  * of document events.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public interface XMLDocumentFilter 

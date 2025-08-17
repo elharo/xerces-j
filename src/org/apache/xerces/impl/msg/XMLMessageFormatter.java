@@ -24,11 +24,10 @@ import java.util.ResourceBundle;
 import org.apache.xerces.util.MessageFormatter;
 
 /**
- * XMLMessageFormatter provides error messages for the XML 1.0 Recommendation and for 
+ * XMLMessageFormatter provides error messages for the XML 1.0 Recommendation and for
  * the Namespaces Recommendation
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Eric Ye, IBM
  * @version $Id$
  *
@@ -51,17 +50,15 @@ public class XMLMessageFormatter implements MessageFormatter {
     /**
      * Formats a message with the specified arguments using the given
      * locale information.
-     * 
-     * @param locale    The locale of the message.
-     * @param key       The message key.
-     * @param arguments The message replacement text arguments. The order
+     *
+     * @param locale    the locale of the message
+     * @param key       the message key
+     * @param arguments the message replacement text arguments. The order
      *                  of the arguments must match that of the placeholders
      *                  in the actual message.
-     * 
-     * @return Returns the formatted message.
-     *
-     * @throws MissingResourceException Thrown if the message with the
-     *                                  specified key cannot be found.
+     * @return returns the formatted message
+     * @throws MissingResourceException thrown if the message with the
+     *                                  specified key cannot be found
      */
     public String formatMessage(Locale locale, String key, Object[] arguments) 
         throws MissingResourceException {

@@ -27,10 +27,8 @@ import org.apache.xerces.xs.XSObjectList;
 /**
  * Store schema model group declaration.
  *
- * @xerces.internal 
- *
+ * @xerces.internal
  * @author Sandy Gao, IBM
- *
  * @version $Id$
  */
 public class XSModelGroupImpl implements XSModelGroup {
@@ -64,7 +62,7 @@ public class XSModelGroupImpl implements XSModelGroup {
 
     /**
      * 3.8.6 Effective Total Range (all and sequence) and
-     *       Effective Total Range (choice)
+     * Effective Total Range (choice)
      * The following methods are used to return min/max range for a particle.
      * They are not exactly the same as it's described in the spec, but all the
      * values from the spec are retrievable by these methods.
@@ -140,7 +138,7 @@ public class XSModelGroupImpl implements XSModelGroup {
     }
 
     /**
-     * get the string description of this particle
+     * Get the string description of this particle
      */
     private String fDescription = null;
     public String toString() {
@@ -234,6 +232,7 @@ public class XSModelGroupImpl implements XSModelGroup {
     }
 
     /**
+     *
      * @see org.apache.xerces.xs.XSObject#getNamespaceItem()
      */
     public XSNamespaceItem getNamespaceItem() {

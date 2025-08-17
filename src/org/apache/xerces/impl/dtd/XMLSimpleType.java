@@ -20,8 +20,8 @@ package org.apache.xerces.impl.dtd;
 import org.apache.xerces.impl.dv.DatatypeValidator;
 
 /**
+ *
  * @xerces.internal
- * 
  * @version $Id$
  */
 public class XMLSimpleType {
@@ -30,68 +30,68 @@ public class XMLSimpleType {
     // Constants
     //
 
-    /** TYPE_CDATA */
+    /** TYPE_CDATA. */
     public static final short TYPE_CDATA = 0;
 
-    /** TYPE_ENTITY */
+    /** TYPE_ENTITY. */
     public static final short TYPE_ENTITY = 1;
 
-    /** TYPE_ENUMERATION */
+    /** TYPE_ENUMERATION. */
     public static final short TYPE_ENUMERATION = 2;
 
-    /** TYPE_ID */
+    /** TYPE_ID. */
     public static final short TYPE_ID = 3;
 
-    /** TYPE_IDREF */
+    /** TYPE_IDREF. */
     public static final short TYPE_IDREF = 4;
 
-    /** TYPE_NMTOKEN */
+    /** TYPE_NMTOKEN. */
     public static final short TYPE_NMTOKEN = 5;
 
-    /** TYPE_NOTATION */
+    /** TYPE_NOTATION. */
     public static final short TYPE_NOTATION = 6;
 
-    /** TYPE_NAMED */
+    /** TYPE_NAMED. */
     public static final short TYPE_NAMED = 7;
 
-    /** DEFAULT_TYPE_DEFAULT */
+    /** DEFAULT_TYPE_DEFAULT. */
     public static final short DEFAULT_TYPE_DEFAULT = 3;
 
-    /** DEFAULT_TYPE_FIXED */
+    /** DEFAULT_TYPE_FIXED. */
     public static final short DEFAULT_TYPE_FIXED = 1;
 
-    /** DEFAULT_TYPE_IMPLIED */
+    /** DEFAULT_TYPE_IMPLIED. */
     public static final short DEFAULT_TYPE_IMPLIED = 0;
 
-    /** DEFAULT_TYPE_REQUIRED */
+    /** DEFAULT_TYPE_REQUIRED. */
     public static final short DEFAULT_TYPE_REQUIRED = 2;
 
     //
     // Data
     //
 
-    /** type */
+    /** Type. */
     public short type;
 
-    /** name */
+    /** Name. */
     public String name;
 
-    /** enumeration */
+    /** Enumeration. */
     public String[] enumeration;
 
-    /** list */
+    /** List. */
     public boolean list;
 
-    /** defaultType */
+    /** DefaultType. */
     public short defaultType;
 
-    /** defaultValue */
+    /** DefaultValue. */
     public String defaultValue;
 
-    /** non-normalized defaultValue */
+    /** Non-normalized defaultValue. */
     public String nonNormalizedDefaultValue;
 
-    /** datatypeValidator */
+    /** DatatypeValidator. */
     public DatatypeValidator datatypeValidator;
 
     //
@@ -99,16 +99,16 @@ public class XMLSimpleType {
     //
 
     /**
-     * setValues
-     * 
-     * @param type 
-     * @param name 
-     * @param enumeration 
-     * @param list 
-     * @param defaultType 
-     * @param defaultValue 
+     * SetValues
+     *
+     * @param type
+     * @param name
+     * @param enumeration
+     * @param list
+     * @param defaultType
+     * @param defaultValue
      * @param nonNormalizedDefaultValue
-     * @param datatypeValidator 
+     * @param datatypeValidator
      */
     public void setValues(short type, String name, String[] enumeration, 
                           boolean list, short defaultType, 
@@ -155,7 +155,7 @@ public class XMLSimpleType {
     } // setValues(XMLSimpleType)
 
     /**
-     * clear
+     * Clear
      */
     public void clear() {
         this.type              = -1;

@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 /**
  * <p>Instances of ValidatorHelper are able to validate
  * specific source and result types.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

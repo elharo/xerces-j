@@ -45,18 +45,16 @@ import org.w3c.dom.TypeInfo;
  * <P>
  * ElementImpl does not support Namespaces. ElementNSImpl, which inherits from
  * it, does.
- * 
- * @xerces.internal
- * 
- * @see ElementNSImpl
  *
- * @author Arnaud  Le Hors, IBM
+ * @xerces.internal
+ * @see ElementNSImpl
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @author Andy Clark, IBM
  * @author Ralf Pfeiffer, IBM
  * @author Michael Glavassevich, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class ElementImpl
     extends ParentNode
@@ -312,10 +310,9 @@ public class ElementImpl
      * change as the DOM changes, and alterations made to the NodeList
      * will be reflected in the DOM.
      *
-     * @param tagname The type of element to gather. To obtain a list of
+     * @param tagname the type of element to gather. To obtain a list of
      * all elements no matter what their names, use the wild-card tag
      * name "*".
-     *
      * @see DeepNodeListImpl
      */
     public NodeList getElementsByTagName(String tagname) {
@@ -420,7 +417,7 @@ public class ElementImpl
      * exception in that case.
      *
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if the node is
-     * readonly.
+     * readonly
      */
     public void removeAttribute(String name) {
 
@@ -452,11 +449,11 @@ public class ElementImpl
      * DOMException.  If you really want to remove an attribute by name,
      * use removeAttribute().
      *
-     * @return the Attribute object that was removed.
+     * @return the Attribute object that was removed
      * @throws DOMException(NOT_FOUND_ERR) if oldattr is not an attribute of
-     * this Element.
+     * this Element
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if the node is
-     * readonly.
+     * readonly
      */
     public Attr removeAttributeNode(Attr oldAttr)
         throws DOMException {
@@ -494,9 +491,8 @@ public class ElementImpl
      *
      * @throws DOMException(INVALID_NAME_ERR) if the name is not acceptable.
      * (Attribute factory will do that test for us.)
-     *
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if the node is
-     * readonly.
+     * readonly
      */
 	public void setAttribute(String name, String value) {
 
@@ -541,7 +537,7 @@ public class ElementImpl
      * had entity references mixed into their text.
      *
      * @throws DOMException(INUSE_ATTRIBUTE_ERR) if the Attribute object
-     * has already been assigned to another Element.
+     * has already been assigned to another Element
      */
     public Attr setAttributeNode(Attr newAttr)
         throws DOMException
@@ -584,11 +580,11 @@ public class ElementImpl
      *
      * @param namespaceURI
      *                      The namespace URI of the attribute to
-     *                      retrieve.
-     * @param localName     The local name of the attribute to retrieve.
-     * @return String       The Attr value as a string, or empty string
+     *                      retrieve
+     * @param localName     the local name of the attribute to retrieve
+     * @return string The Attr value as a string, or empty string
      *                      if that attribute
-     *                      does not have a specified or default value.
+     *                      does not have a specified or default value
      * @since WD-DOM-Level-2-19990923
      */
     public String getAttributeNS(String namespaceURI, String localName) {
@@ -609,33 +605,31 @@ public class ElementImpl
     /**
      * Introduced in DOM Level 2. <p>
      *
-     *  Adds a new attribute.
-     *  If the given namespaceURI is null or an empty string and the
-     *  qualifiedName has a prefix that is "xml", the new attribute is bound to
-     *  the predefined namespace "http://www.w3.org/XML/1998/namespace"
-     *  [Namespaces].  If an attribute with the same local name and namespace
-     *  URI is already present on the element, its prefix is changed to be the
-     *  prefix part of the qualifiedName, and its value is changed to be the
-     *  value parameter. This value is a simple string, it is not parsed as it
-     *  is being set. So any markup (such as syntax to be recognized as an
-     *  entity reference) is treated as literal text, and needs to be
-     *  appropriately escaped by the implementation when it is written out. In
-     *  order to assign an attribute value that contains entity references, the
-     *  user must create an Attr node plus any Text and EntityReference nodes,
-     *  build the appropriate subtree, and use setAttributeNodeNS or
-     *  setAttributeNode to assign it as the value of an attribute.
+     * Adds a new attribute.
+     * If the given namespaceURI is null or an empty string and the
+     * qualifiedName has a prefix that is "xml", the new attribute is bound to
+     * the predefined namespace "http://www.w3.org/XML/1998/namespace"
+     * [Namespaces].  If an attribute with the same local name and namespace
+     * URI is already present on the element, its prefix is changed to be the
+     * prefix part of the qualifiedName, and its value is changed to be the
+     * value parameter. This value is a simple string, it is not parsed as it
+     * is being set. So any markup (such as syntax to be recognized as an
+     * entity reference) is treated as literal text, and needs to be
+     * appropriately escaped by the implementation when it is written out. In
+     * order to assign an attribute value that contains entity references, the
+     * user must create an Attr node plus any Text and EntityReference nodes,
+     * build the appropriate subtree, and use setAttributeNodeNS or
+     * setAttributeNode to assign it as the value of an attribute.
      *
-     * @param namespaceURI      The namespace URI of the attribute to create
-     *                          or alter.
-     * @param qualifiedName     The qualified name of the attribute to create or
-     *                          alter.
-     * @param value             The value to set in string form.
+     * @param namespaceURI      the namespace URI of the attribute to create
+     *                          or alter
+     * @param qualifiedName     the qualified name of the attribute to create or
+     *                          alter
+     * @param value             the value to set in string form
      * @throws                  INVALID_CHARACTER_ERR: Raised if the specified
-     *                          name contains an invalid character.
-     *
+     *                          name contains an invalid character
      * @throws                  NO_MODIFICATION_ALLOWED_ERR: Raised if this
-     *                          node is readonly.
-     *
+     *                          node is readonly
      * @throws                  NAMESPACE_ERR: Raised if the qualifiedName
      *                          has a prefix that is "xml" and the namespaceURI
      *                          is neither null nor an empty string nor
@@ -644,7 +638,7 @@ public class ElementImpl
      *                          but the namespaceURI is neither null nor an
      *                          empty string, or if if the qualifiedName has a
      *                          prefix different from "xml" and "xmlns" and the
-     *                          namespaceURI is null or an empty string.
+     *                          namespaceURI is null or an empty string
      * @since WD-DOM-Level-2-19990923
      */
      public void setAttributeNS(String namespaceURI,String qualifiedName,
@@ -715,11 +709,10 @@ public class ElementImpl
      * The replacing attribute has the same namespace URI and local name,
      * as well as the original prefix.<p>
      *
-     * @param namespaceURI  The namespace URI of the attribute to remove.
-     *
-     * @param localName     The local name of the attribute to remove.
+     * @param namespaceURI  the namespace URI of the attribute to remove
+     * @param localName     the local name of the attribute to remove
      * @throws                  NO_MODIFICATION_ALLOWED_ERR: Raised if this
-     *                          node is readonly.
+     *                          node is readonly
      * @since WD-DOM-Level-2-19990923
      */
     public void removeAttributeNS(String namespaceURI, String localName) {
@@ -744,12 +737,12 @@ public class ElementImpl
     /**
      * Retrieves an Attr node by local name and namespace URI.
      *
-     * @param namespaceURI  The namespace URI of the attribute to
-     *                      retrieve.
-     * @param localName     The local name of the attribute to retrieve.
-     * @return Attr         The Attr node with the specified attribute
+     * @param namespaceURI  the namespace URI of the attribute to
+     *                      retrieve
+     * @param localName     the local name of the attribute to retrieve
+     * @return attr The Attr node with the specified attribute
      *                      local name and namespace
-     *                      URI or null if there is no such attribute.
+     *                      URI or null if there is no such attribute
      * @since WD-DOM-Level-2-19990923
      */
     public Attr getAttributeNodeNS(String namespaceURI, String localName){
@@ -771,20 +764,17 @@ public class ElementImpl
      * namespace URI is already present in the element, it is replaced
      * by the new one.
      *
-     * @param newAttr   The Attr node to add to the attribute list. When
+     * @param newAttr   the Attr node to add to the attribute list. When
      *                  the Node has no namespaceURI, this method behaves
      *                  like setAttributeNode.
-     * @return Attr     If the newAttr attribute replaces an existing attribute
-     *                  with the same local name and namespace URI, the *
+     * @return attr If the newAttr attribute replaces an existing attribute
      *                  previously existing Attr node is returned, otherwise
-     *                  null is returned.
+     *                  null is returned
      * @throws          WRONG_DOCUMENT_ERR: Raised if newAttr
      *                  was created from a different document than the one that
-     *                  created the element.
-     *
+     *                  created the element
      * @throws          NO_MODIFICATION_ALLOWED_ERR: Raised if
-     *                  this node is readonly.
-     *
+     *                  this node is readonly
      * @throws          INUSE_ATTRIBUTE_ERR: Raised if newAttr is
      *                  already an attribute of another Element object. The
      *                  DOM user must explicitly clone Attr nodes to re-use
@@ -820,8 +810,8 @@ public class ElementImpl
     } // setAttributeNodeNS(Attr):Attr
 
     /**
-      * NON-DOM: sets attribute node for this element
-      */
+     * NON-DOM: sets attribute node for this element
+     */
     protected int setXercesAttributeNode (Attr attr){
 
         if (needsSyncData()) {
@@ -836,8 +826,8 @@ public class ElementImpl
     }
 
     /**
-      * NON-DOM: get inded of an attribute
-      */
+     * NON-DOM: get inded of an attribute
+     */
     protected int getXercesAttribute(String namespaceURI, String localName){
 
         if (needsSyncData()) {
@@ -881,15 +871,15 @@ public class ElementImpl
      * namespace URI in the order in which they would be encountered in a
      * preorder traversal of the Document tree, starting from this node.
      *
-     * @param namespaceURI The namespace URI of the elements to match
+     * @param namespaceURI the namespace URI of the elements to match
      *                     on. The special value "*" matches all
      *                     namespaces. When it is null or an empty
      *                     string, this method behaves like
      *                     getElementsByTagName.
-     * @param localName    The local name of the elements to match on.
-     *                     The special value "*" matches all local names.
-     * @return NodeList    A new NodeList object containing all the matched
-     *                     Elements.
+     * @param localName    the local name of the elements to match on.
+     *                     The special value "*" matches all local names
+     * @return NodeList A new NodeList object containing all the matched
+     *                     Elements
      * @since WD-DOM-Level-2-19990923
      */
     public NodeList getElementsByTagNameNS(String namespaceURI,
@@ -1132,6 +1122,7 @@ public class ElementImpl
    }
 
     /**
+     *
      * @see org.w3c.dom.TypeInfo#getTypeName()
      */
      public String getTypeName() {
@@ -1139,6 +1130,7 @@ public class ElementImpl
      }
 
     /**
+     *
      * @see org.w3c.dom.TypeInfo#getTypeNamespace()
      */
     public String getTypeNamespace() {
@@ -1149,14 +1141,13 @@ public class ElementImpl
      * Introduced in DOM Level 3. <p>
      * Checks if a type is derived from another by restriction. See:
      * http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo-isDerivedFrom
-     * 
-     * @param typeNamespaceArg 
+     *
+     * @param typeNamespaceArg
      *        The namspace of the ancestor type declaration
      * @param typeNameArg
      *        The name of the ancestor type declaration
      * @param derivationMethod
      *        The derivation method
-     * 
      * @return boolean True if the type is derived by restriciton for the
      *         reference type
      */
@@ -1167,10 +1158,11 @@ public class ElementImpl
         return false;
     }
 
-	/**
-	 * Method getSchemaTypeInfo.
-	 * @return TypeInfo
-	 */
+    /**
+     * Method getSchemaTypeInfo.
+     *
+     * @return TypeInfo
+     */
     public TypeInfo getSchemaTypeInfo(){
         if(needsSyncData()) {
             synchronizeData();
@@ -1184,6 +1176,7 @@ public class ElementImpl
 
     /**
      * NON-DOM: Subclassed to flip the attributes' readonly switch as well.
+     *
      * @see NodeImpl#setReadOnly
      */
     public void setReadOnly(boolean readOnly, boolean deep) {
@@ -1270,6 +1263,7 @@ public class ElementImpl
     //
 
     /**
+     *
      * @see <a href="http://www.w3.org/TR/2008/REC-ElementTraversal-20081222/#attribute-childElementCount">
      * Element Traversal Specification</a>
      */
@@ -1284,6 +1278,7 @@ public class ElementImpl
     } // getChildElementCount():int
 
     /**
+     *
      * @see <a href="http://www.w3.org/TR/2008/REC-ElementTraversal-20081222/#attribute-firstElementChild">
      * Element Traversal Specification</a>
      */
@@ -1306,6 +1301,7 @@ public class ElementImpl
     } // getFirstElementChild():Element
 
     /**
+     *
      * @see <a href="http://www.w3.org/TR/2008/REC-ElementTraversal-20081222/#attribute-lastElementChild">
      * Element Traversal Specification</a>
      */
@@ -1328,6 +1324,7 @@ public class ElementImpl
     } // getLastElementChild():Element
 
     /**
+     *
      * @see <a href="http://www.w3.org/TR/2008/REC-ElementTraversal-20081222/#attribute-nextElementSibling">
      * Element Traversal Specification</a>
      */
@@ -1350,6 +1347,7 @@ public class ElementImpl
     } // getNextElementSibling():Element
     
     /**
+     *
      * @see <a href="http://www.w3.org/TR/2008/REC-ElementTraversal-20081222/#attribute-previousElementSibling">
      * Element Traversal Specification</a>
      */

@@ -27,7 +27,7 @@ import org.apache.xerces.xni.grammars.XMLGrammarPool;
  * no validators currently have a reference to the
  * grammar pool, the garbage collector is free to reclaim
  * its memory.</p>
- * 
+ *
  * @author Michael Glavassevich, IBM
  * @version $Id$
  */

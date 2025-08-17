@@ -27,15 +27,13 @@ import java.util.Map;
 import javax.xml.transform.TransformerException;
 
 /**
- * This class provides, collation support for XalanJ's XPath 3.1 
+ * This class provides, collation support for XalanJ's XPath 3.1
  * implementation.
- * 
- * Ref : https://www.w3.org/TR/xpath-functions-31/#collations
- * 
- * @author Mukul Gandhi <mukulg@apache.org>
- * 
- * @version $Id$
  *
+ * Ref : https://www.w3.org/TR/xpath-functions-31/#collations
+ *
+ * @author Mukul Gandhi <mukulg@apache.org>
+ * @version $Id$
  * @xsl.usage advanced
  */
 public class XPathCollationSupport {
@@ -88,16 +86,14 @@ public class XPathCollationSupport {
     
     /**
      * This method, compares two string values, using a specified collation.
-     * 
+     *
      * @param str1               the first string
      * @param str2               the second string
      * @param collationUri       collation uri
-     * 
-     * @return                   the string comparison result represented as an integer value. The value -1
+     * @return  the string comparison result represented as an integer value. The value -1
      *                           indicates that string 'str1' collates before string 'str2', the value 1
      *                           indicates that string 'str1' collates after string 'str2', the value 0
-     *                           indicates that string 'str1' is equal to string 'str2'. 
-     *                             
+     *                           indicates that string 'str1' is equal to string 'str2'.
      * @throws javax.xml.transform.TransformerException
      */
     public int compareStringsUsingCollation(String str1, String str2, String collationUri) 
@@ -208,8 +204,7 @@ public class XPathCollationSupport {
      *
      * @param str1    the first string
      * @param str2    the second string
-     * 
-     * @return        an integer value denoting, the result of comparison
+     * @return  an integer value denoting, the result of comparison
      */
     private int compareStringsUsingUnicodeCodepointCollation(String str1, String str2) {
        int comparisonResult = 0;
@@ -223,8 +218,8 @@ public class XPathCollationSupport {
     }
     
     /**
-     * This method compares two int[] arrays comprising unicode codepoints 
-     * (corresponding to the strings to be compared), according to 'Unicode 
+     * This method compares two int[] arrays comprising unicode codepoints
+     * (corresponding to the strings to be compared), according to 'Unicode
      * Codepoint Collation' as defined by XPath 3.1 F&O spec.
      */
     private int compareCodepointArrays(int[] codePointsArr1, int[] codePointsArr2) {
@@ -292,7 +287,7 @@ public class XPathCollationSupport {
     
     /**
      * Given a list of type List<Integer>, get the corresponding array
-     * of primitive integers.  
+     * of primitive integers.
      */
     private int[] getIntArrayFromIntegerList(List<Integer> integerList) {
        int[] intArray = new int[integerList.size()];
@@ -308,13 +303,11 @@ public class XPathCollationSupport {
      * This method implements, 'Unicode Collation Algorithm' as specified by XPath 3.1 F&O spec
      * (which in turn is based on UTS #10 [Unicode Technical Standard #10 : Unicode Collation
      * Algorithm]).
-     * 
+     *
      * @param collationUri     the requested collation uri, during XPath 3.1 string comparisons,
-     *                         and sorting of strings.
-     *                         
-     * @return                 a configured Java object of type java.text.Collator, that callers of
-     *                         this method can use to do locale specific string comparisons.
-     * 
+     *                         and sorting of strings
+     * @return a configured Java object of type java.text.Collator, that callers of
+     *                         this method can use to do locale specific string comparisons
      * @throws TransformerException
      */
     private Collator getUCACollatorFromCollationUri(String collationUri) throws TransformerException {
@@ -387,7 +380,7 @@ public class XPathCollationSupport {
     }
     
     /**
-     * Get the java.text.Collator object, corresponding to XalanJ's 
+     * Get the java.text.Collator object, corresponding to XalanJ's
      * default collation when using 'Unicode Collation Algorithm' (UCA).
      */
     private Collator getDefaultUCACollator() {
@@ -416,7 +409,7 @@ public class XPathCollationSupport {
     
     /**
      * From the requested collation uri, build a corresponding java.util.Map
-     * object representation.  
+     * object representation.
      */
     private Map<String, String> getUCAQueryStrComponents(String uriQueryStr) throws TransformerException {
        Map<String, String> queryStrMap = new HashMap<String, String>();
@@ -495,13 +488,13 @@ public class XPathCollationSupport {
     }
     
     /**
-     * An object of this class, stores data for one 'Unicode 
+     * An object of this class, stores data for one 'Unicode
      * Collation Algorithm' (UCA) collation uri query parameter/
      * keyword (the words 'parameter' and 'keyword' are synonym,
      * here).
-     * 
+     *
      * XalanJ's XPath 3.1 implementation, currently supports only
-     * following UCA parameters : 'fallback', 'lang', 'strength'. 
+     * following UCA parameters : 'fallback', 'lang', 'strength'.
      */
     private class UCAParameter {        
         

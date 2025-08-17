@@ -25,7 +25,6 @@ import org.apache.xerces.xni.XNIException;
  * parsing errors and configuration errors.
  *
  * @author Andy Clark, IBM
- *
  * @version $Id$
  */
 public class XMLConfigurationException
@@ -58,13 +57,12 @@ public class XMLConfigurationException
     // Constructors
     //
 
-    /** 
+    /**
      * Constructs a configuration exception with the specified type
      * and feature/property identifier.
      *
-     * @param type       The type of the exception.
-     * @param identifier The feature or property identifier.
-     *
+     * @param type       the type of the exception
+     * @param identifier the feature or property identifier
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED
      */
@@ -74,14 +72,13 @@ public class XMLConfigurationException
         fIdentifier = identifier;
     } // <init>(short,String)
 
-    /** 
+    /**
      * Constructs a configuration exception with the specified type,
      * feature/property identifier, and error message
      *
-     * @param type       The type of the exception.
-     * @param identifier The feature or property identifier.
-     * @param message    The error message.
-     *
+     * @param type       the type of the exception
+     * @param identifier the feature or property identifier
+     * @param message    the error message
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED
      */
@@ -96,8 +93,8 @@ public class XMLConfigurationException
     // Public methods
     //
 
-    /** 
-     * Returns the exception type. 
+    /**
+     * Returns the exception type.
      *
      * @see #NOT_RECOGNIZED
      * @see #NOT_SUPPORTED

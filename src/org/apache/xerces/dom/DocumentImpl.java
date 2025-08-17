@@ -75,15 +75,14 @@ import org.w3c.dom.traversal.TreeWalker;
  * <p>
  * <b>Note:</b> When any node in the document is serialized, the
  * entire document is serialized along with it.
- * 
- * @xerces.internal
  *
- * @author Arnaud  Le Hors, IBM
+ * @xerces.internal
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @author Andy Clark, IBM
  * @author Ralf Pfeiffer, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
  */
 public class DocumentImpl
     extends CoreDocumentImpl
@@ -100,16 +99,16 @@ public class DocumentImpl
     // Data
     //
 
-    /** Node Iterators */
+    /** Node Iterators. */
     protected transient List iterators;
     
-    /** Reference queue for cleared Node Iterator references */
+    /** Reference queue for cleared Node Iterator references. */
     protected transient ReferenceQueue iteratorReferenceQueue;
 
-    /** Ranges */
+    /** Ranges. */
     protected transient List ranges;
     
-    /** Reference queue for cleared Range references */
+    /** Reference queue for cleared Range references. */
     protected transient ReferenceQueue rangeReferenceQueue;
 
     /** Table for event listeners registered to this document nodes. */
@@ -197,9 +196,9 @@ public class DocumentImpl
      * added to a list of NodeIterators so that it can be
      * removed to free up the DOM Nodes it references.
      *
-     * @param root The root of the iterator.
-     * @param whatToShow The whatToShow mask.
-     * @param filter The NodeFilter installed. Null means no filter.
+     * @param root the root of the iterator
+     * @param whatToShow the whatToShow mask
+     * @param filter the NodeFilter installed. Null means no filter.
      */
     public NodeIterator createNodeIterator(Node root,
                                            short whatToShow,
@@ -213,9 +212,9 @@ public class DocumentImpl
      * added to a list of NodeIterators so that it can be
      * removed to free up the DOM Nodes it references.
      *
-     * @param root The root of the iterator.
-     * @param whatToShow The whatToShow mask.
-     * @param filter The NodeFilter installed. Null means no filter.
+     * @param root the root of the iterator
+     * @param whatToShow the whatToShow mask
+     * @param filter the NodeFilter installed. Null means no filter.
      * @param entityReferenceExpansion true to expand the contents of
      *                                 EntityReference nodes
      * @since WD-DOM-Level-2-19990923
@@ -251,9 +250,9 @@ public class DocumentImpl
      * NON-DOM extension:
      * Create and return a TreeWalker.
      *
-     * @param root The root of the iterator.
-     * @param whatToShow The whatToShow mask.
-     * @param filter The NodeFilter installed. Null means no filter.
+     * @param root the root of the iterator
+     * @param whatToShow the whatToShow mask
+     * @param filter the NodeFilter installed. Null means no filter.
      */
     public TreeWalker createTreeWalker(Node root,
                                        short whatToShow,
@@ -264,9 +263,9 @@ public class DocumentImpl
     /**
      * Create and return a TreeWalker.
      *
-     * @param root The root of the iterator.
-     * @param whatToShow The whatToShow mask.
-     * @param filter The NodeFilter installed. Null means no filter.
+     * @param root the root of the iterator
+     * @param whatToShow the whatToShow mask
+     * @param filter the NodeFilter installed. Null means no filter.
      * @param entityReferenceExpansion true to expand the contents of
      *                                 EntityReference nodes
      * @since WD-DOM-Level-2-19990923
@@ -288,7 +287,7 @@ public class DocumentImpl
     // Not DOM Level 2. Support DocumentTraversal methods.
     //
 
-    /** 
+    /**
      * This is not called by the developer client. The
      * developer client uses the detach() function on the
      * NodeIterator itself. <p>
@@ -367,9 +366,10 @@ public class DocumentImpl
 
     }
     
-    /** Not a client function. Called by Range.detach(),
-     *  so a Range can remove itself from the list of
-     *  Ranges.
+    /**
+     * Not a client function. Called by Range.detach(),
+     * so a Range can remove itself from the list of
+     * Ranges.
      */
     void removeRange(Range range) {
 
@@ -510,7 +510,7 @@ public class DocumentImpl
      * Introduced in DOM Level 2. Optional. <p>
      * Create and return Event objects.
      *
-     * @param type The eventType parameter specifies the type of Event
+     * @param type the eventType parameter specifies the type of Event
      * interface to be created.  If the Event interface specified is supported
      * by the implementation this method will return a new Event of the
      * interface type requested. If the Event is to be dispatched via the
@@ -520,8 +520,8 @@ public class DocumentImpl
      * createEvent with the parameter "Events". The initEvent method could then
      * be called on the newly created Event to set the specific type of Event
      * to be dispatched and set its context information.
-     * @return Newly created Event
-     * @exception DOMException NOT_SUPPORTED_ERR: Raised if the implementation
+     * @return newly created Event
+     * @throws DOMException NOT_SUPPORTED_ERR: Raised if the implementation
      * does not support the type of Event interface requested
      * @since WD-DOM-Level-2-19990923
      */
@@ -621,10 +621,12 @@ public class DocumentImpl
         EventListener listener;
         boolean useCapture;
 	    
-        /** NON-DOM INTERNAL: Constructor for Listener list Entry 
-         * @param type Event name (NOT event group!) to listen for.
-         * @param listener Who gets called when event is dispatched
-         * @param useCaptue True iff listener is registered on
+        /**
+         * NON-DOM INTERNAL: Constructor for Listener list Entry
+         *
+         * @param type event name (NOT event group!) to listen for
+         * @param listener who gets called when event is dispatched
+         * @param useCaptue true iff listener is registered on
          *  capturing phase rather than at-target or bubbling
          */
         LEntry(String type, EventListener listener, boolean useCapture)
@@ -641,10 +643,11 @@ public class DocumentImpl
      * Node. A listener may be independently registered as both Capturing and
      * Bubbling, but may only be registered once per role; redundant
      * registrations are ignored.
+     *
      * @param node node to add listener to
-     * @param type Event name (NOT event group!) to listen for.
-     * @param listener Who gets called when event is dispatched
-     * @param useCapture True iff listener is registered on
+     * @param type event name (NOT event group!) to listen for
+     * @param listener who gets called when event is dispatched
+     * @param useCapture true iff listener is registered on
      *  capturing phase rather than at-target or bubbling
      */
     protected void addEventListener(NodeImpl node, String type,
@@ -684,10 +687,11 @@ public class DocumentImpl
      * registered with this Node.  A listener must be independently removed
      * from the Capturing and Bubbling roles. Redundant removals (of listeners
      * not currently registered for this role) are ignored.
+     *
      * @param node node to remove listener from
-     * @param type Event name (NOT event group!) to listen for.
-     * @param listener Who gets called when event is dispatched
-     * @param useCapture True iff listener is registered on
+     * @param type event name (NOT event group!) to listen for
+     * @param listener who gets called when event is dispatched
+     * @param useCapture true iff listener is registered on
      *  capturing phase rather than at-target or bubbling
      */
     protected void removeEventListener(NodeImpl node, String type,
@@ -739,31 +743,31 @@ public class DocumentImpl
 
     /**
      * Introduced in DOM Level 2. <p>
-     * Distribution engine for DOM Level 2 Events. 
+     * Distribution engine for DOM Level 2 Events.
      * <p>
      * Event propagation runs as follows:
      * <ol>
      * <li>Event is dispatched to a particular target node, which invokes
-     *   this code. Note that the event's stopPropagation flag is
-     *   cleared when dispatch begins; thereafter, if it has 
-     *   been set before processing of a node commences, we instead
-     *   immediately advance to the DEFAULT phase.
+     * this code. Note that the event's stopPropagation flag is
+     * cleared when dispatch begins; thereafter, if it has
+     * been set before processing of a node commences, we instead
+     * immediately advance to the DEFAULT phase.
      * <li>The node's ancestors are established as destinations for events.
-     *   For capture and bubble purposes, node ancestry is determined at 
-     *   the time dispatch starts. If an event handler alters the document 
-     *   tree, that does not change which nodes will be informed of the event. 
-     * <li>CAPTURING_PHASE: Ancestors are scanned, root to target, for 
-     *   Capturing listeners. If found, they are invoked (see below). 
-     * <li>AT_TARGET: 
-     *   Event is dispatched to NON-CAPTURING listeners on the
-     *   target node. Note that capturing listeners on this node are _not_
-     *   invoked.
+     * For capture and bubble purposes, node ancestry is determined at
+     * the time dispatch starts. If an event handler alters the document
+     * tree, that does not change which nodes will be informed of the event.
+     * <li>CAPTURING_PHASE: Ancestors are scanned, root to target, for
+     * Capturing listeners. If found, they are invoked (see below).
+     * <li>AT_TARGET:
+     * Event is dispatched to NON-CAPTURING listeners on the
+     * target node. Note that capturing listeners on this node are _not_
+     * invoked.
      * <li>BUBBLING_PHASE: Ancestors are scanned, target to root, for
-     *   non-capturing listeners. 
+     * non-capturing listeners.
      * <li>Default processing: Some DOMs have default behaviors bound to
-     *   specific nodes. If this DOM does, and if the event's preventDefault
-     *   flag has not been set, we now return to the target node and process
-     *   its default handler for this event, if any.
+     * specific nodes. If this DOM does, and if the event's preventDefault
+     * flag has not been set, we now return to the target node and process
+     * its default handler for this event, if any.
      * </ol>
      * <p>
      * Note that registration of handlers during processing of an event does
@@ -773,7 +777,7 @@ public class DocumentImpl
      * <p>
      * If an event handler itself causes events to be dispatched, they are
      * processed synchronously, before processing resumes
-     * on the event which triggered them. Please be aware that this may 
+     * on the event which triggered them. Please be aware that this may
      * result in events arriving at listeners "out of order" relative
      * to the actual sequence of requests.
      * <p>
@@ -781,12 +785,13 @@ public class DocumentImpl
      * when dispatch begins.
      * I believe the DOM's intent is that event objects be redispatchable,
      * though it isn't stated in those terms.
+     *
      * @param node node to dispatch to
-     * @param event the event object to be dispatched to 
+     * @param event the event object to be dispatched to
      *              registered EventListeners
      * @return true if the event's <code>preventDefault()</code>
-     *              method was invoked by an EventListener; otherwise false.
-    */
+     *              method was invoked by an EventListener; otherwise false
+     */
     protected boolean dispatchEvent(NodeImpl node, Event event) {
         if (event == null) return false;
         
@@ -950,11 +955,12 @@ public class DocumentImpl
      * <p>
      * Similar to code in dispatchingEventToSubtree however this method
      * is only used on the target node and does not start a dispatching chain
-     * on the sibling of the target node as this is not part of the subtree 
+     * on the sibling of the target node as this is not part of the subtree
      * ***** At the moment I'm being sloppy and using the normal
      * capture dispatcher on every node. This could be optimized hugely
      * by writing a capture engine that tracks our position in the tree to
      * update the capture chain without repeated chases up to root.
+     *
      * @param n target node (that was directly inserted or removed)
      * @param e event to be sent to that node and its subtree
      */
@@ -973,7 +979,7 @@ public class DocumentImpl
 
     /**
      * Dispatches event to the target node's descendents recursively
-     * 
+     *
      * @param n node to dispatch to
      * @param e event to be sent to that node and its subtree
      */
@@ -996,7 +1002,7 @@ public class DocumentImpl
     
     /**
      * NON-DOM INTERNAL: Return object for getEnclosingAttr. Carries
-     * (two values, the Attr node affected (if any) and its previous 
+     * (two values, the Attr node affected (if any) and its previous
      * string value. Simple struct, no methods.
      */
     class EnclosingAttr implements Serializable {
@@ -1011,6 +1017,7 @@ public class DocumentImpl
      * NON-DOM INTERNAL: Convenience wrapper for calling
      * dispatchAggregateEvents when the context was established
      * by <code>savedEnclosingAttr</code>.
+     *
      * @param node node to dispatch to
      * @param ea description of Attr affected by current operation
      */
@@ -1030,21 +1037,21 @@ public class DocumentImpl
      * mutation operation, even if that involves multiple changes to
      * the DOM.
      * For example, if a DOM operation makes multiple changes to a single
-     * Attr before returning, it would be nice to generate only one 
+     * Attr before returning, it would be nice to generate only one
      * DOMAttrModified, and multiple changes over larger scope but within
-     * a recognizable single subtree might want to generate only one 
-     * DOMSubtreeModified, sent to their lowest common ancestor. 
+     * a recognizable single subtree might want to generate only one
+     * DOMSubtreeModified, sent to their lowest common ancestor.
      * <p>
      * To manage this, use the "internal" versions of insert and remove
      * with MUTATION_LOCAL, then make an explicit call to this routine
      * at the higher level. Some examples now exist in our code.
      *
-     * @param node The node to dispatch to
-     * @param enclosingAttr The Attr node (if any) whose value has been changed
+     * @param node the node to dispatch to
+     * @param enclosingAttr the Attr node (if any) whose value has been changed
      * as a result of the DOM operation. Null if none such.
-     * @param oldvalue The String value previously held by the
+     * @param oldvalue the String value previously held by the
      * enclosingAttr. Ignored if none such.
-     * @param change Type of modification to the attr. See
+     * @param change type of modification to the attr. See
      * MutationEvent.attrChange
      */
     protected void dispatchAggregateEvents(NodeImpl node,
@@ -1096,6 +1103,7 @@ public class DocumentImpl
      * NON-DOM INTERNAL: Pre-mutation context check, in
      * preparation for later generating DOMAttrModified events.
      * Determines whether this node is within an Attr
+     *
      * @param node node to get enclosing attribute for
      */
     protected void saveEnclosingAttr(NodeImpl node) {

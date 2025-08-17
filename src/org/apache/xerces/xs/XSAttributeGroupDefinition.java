@@ -22,13 +22,13 @@ package org.apache.xerces.xs;
  */
 public interface XSAttributeGroupDefinition extends XSObject {
     /**
-     * A set of [attribute uses] if it exists, otherwise an empty 
-     * <code>XSObjectList</code>. 
+     * A set of [attribute uses] if it exists, otherwise an empty
+     * <code>XSObjectList</code>.
      */
     public XSObjectList getAttributeUses();
 
     /**
-     * A [wildcard] if it exists, otherwise <code>null</code>. 
+     * A [wildcard] if it exists, otherwise <code>null</code>.
      */
     public XSWildcard getAttributeWildcard();
 

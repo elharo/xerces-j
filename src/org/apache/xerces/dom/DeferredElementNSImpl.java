@@ -32,10 +32,9 @@ import org.w3c.dom.NamedNodeMap;
 
 /**
  * DeferredElementNSImpl is to ElementNSImpl, what DeferredElementImpl is to
- * ElementImpl. 
- * 
+ * ElementImpl.
+ *
  * @xerces.internal
- * 
  * @see DeferredElementImpl
  */
 public class DeferredElementNSImpl

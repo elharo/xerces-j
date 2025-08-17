@@ -45,50 +45,48 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
  * This component requires the following features and properties from the
  * component manager that uses it:
  * <ul>
- *  <li>http://xml.org/sax/features/namespaces {true} -- if the value of this
- *      feature is set to false this scanner must not be used.</li>
- *  <li>http://xml.org/sax/features/validation</li>
- *  <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
- *  <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
- *  <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
- *  <li>http://apache.org/xml/properties/internal/symbol-table</li>
- *  <li>http://apache.org/xml/properties/internal/error-reporter</li>
- *  <li>http://apache.org/xml/properties/internal/entity-manager</li>
- *  <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
+ * <li>http://xml.org/sax/features/namespaces {true} -- if the value of this
+ * feature is set to false this scanner must not be used.</li>
+ * <li>http://xml.org/sax/features/validation</li>
+ * <li>http://apache.org/xml/features/nonvalidating/load-external-dtd</li>
+ * <li>http://apache.org/xml/features/scanner/notify-char-refs</li>
+ * <li>http://apache.org/xml/features/scanner/notify-builtin-refs</li>
+ * <li>http://apache.org/xml/properties/internal/symbol-table</li>
+ * <li>http://apache.org/xml/properties/internal/error-reporter</li>
+ * <li>http://apache.org/xml/properties/internal/entity-manager</li>
+ * <li>http://apache.org/xml/properties/internal/dtd-scanner</li>
  * </ul>
- * 
- * @xerces.internal
  *
+ * @xerces.internal
  * @author Elena Litani, IBM
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
 
-    /** 
+    /**
      * If is true, the dtd validator is no longer in the pipeline
-     * and the scanner should bind namespaces 
+     * and the scanner should bind namespaces
      */
     protected boolean fBindNamespaces;
 
-    /** 
+    /**
      * If validating parser, make sure we report an error in the
-     *  scanner if DTD grammar is missing.
+     * scanner if DTD grammar is missing.
      */
     protected boolean fPerformValidation;
 
     // private data
     //
 
-    /** DTD validator */
+    /** DTD validator. */
     private XMLDTDValidatorFilter fDTDValidator;
     
-    /** 
+    /**
      * Saw spaces after element name or between attributes.
-     * 
+     *
      * This is reserved for the case where scanning of a start element spans
-     * several methods, as is the case when scanning the start of a root element 
+     * several methods, as is the case when scanning the start of a root element
      * where a DTD external subset may be read after scanning the element name.
      */
     private boolean fSawSpace;
@@ -96,7 +94,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
     /**
      * The scanner is responsible for removing DTD validator
      * from the pipeline if it is not needed.
-     * 
+     *
      * @param validator the DTD validator from the pipeline
      */
     public void setDTDValidator(XMLDTDValidatorFilter validator) {
@@ -121,7 +119,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
      * destroyed. The caller should copy important information out of
      * these variables before calling this method.
      *
-     * @return True if element is empty. (i.e. It matches
+     * @return true if element is empty. (i.e. It matches
      *          production [44].
      */
     protected boolean scanStartElement() throws IOException, XNIException {
@@ -318,8 +316,8 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
     } // scanStartElement():boolean
     
     /**
-     * Scans the name of an element in a start or empty tag. 
-     * 
+     * Scans the name of an element in a start or empty tag.
+     *
      * @see #scanStartElement()
      */
     protected void scanStartElementName ()
@@ -333,10 +331,10 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
     
     /**
      * Scans the remainder of a start or empty tag after the element name.
-     * 
+     *
      * @see #scanStartElement
-     * @return True if element is empty.
-     */    
+     * @return true if element is empty
+     */
     protected boolean scanStartElementAfterName()
         throws IOException, XNIException {
 
@@ -543,7 +541,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
      * fQName variables. The contents of these variables will be
      * destroyed.
      *
-     * @param attributes The attributes list for the scanned attribute.
+     * @param attributes the attributes list for the scanned attribute
      */
     protected void scanAttribute(XMLAttributesImpl attributes)
         throws IOException, XNIException {
@@ -702,7 +700,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
      * copy the needed information out of this variable before calling
      * this method.
      *
-     * @return The element depth.
+     * @return the element depth
      */
     protected int scanEndElement() throws IOException, XNIException {
         if (DEBUG_CONTENT_SCANNING)
@@ -783,8 +781,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
          * from the pipeline, if there is no DTD grammar. If DTD validator
          * is no longer in the pipeline bind namespaces in the scanner.
          *
-         *
-         * @return True if the caller should stop and return true which
+         * @return true if the caller should stop and return true which
          *          allows the scanner to switch to a new scanning
          *          dispatcher. A return value of false indicates that
          *          the content dispatcher should continue as normal.
@@ -816,7 +813,7 @@ public class XML11NSDocumentScannerImpl extends XML11DocumentScannerImpl {
         } // scanRootElementHook():boolean
         
         /**
-         * Re-configures pipeline by removing the DTD validator 
+         * Re-configures pipeline by removing the DTD validator
          * if no DTD grammar exists. If no validator exists in the
          * pipeline or there is no DTD grammar, namespace binding
          * is performed by the scanner in the enclosing class.

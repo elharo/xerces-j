@@ -26,13 +26,13 @@ import java.util.Map;
 import org.apache.xerces.xni.Augmentations;
 
 /**
- * This class provides an implementation for Augmentations interface. 
+ * This class provides an implementation for Augmentations interface.
  * Augmentations interface defines a hashtable of additional data that could
  * be passed along the document pipeline. The information can contain extra
  * arguments or infoset augmentations, for example PSVI. This additional
  * information is identified by a String key.
  * <p>
- * 
+ *
  * @author Elena Litani, IBM
  * @version $Id$
  */
@@ -43,12 +43,11 @@ public class AugmentationsImpl implements Augmentations {
     
     /**
      * Add additional information identified by a key to the Augmentations structure.
-     * 
-     * @param key    Identifier, can't be <code>null</code>
-     * @param item   Additional information
      *
+     * @param key    identifier, can't be <code>null</code>
+     * @param item   additional information
      * @return the previous value of the specified key in the Augmentations strucutre,
-     *         or <code>null</code> if it did not have one.
+     *         or <code>null</code> if it did not have one
      */
     public Object putItem (String key, Object item){
         Object oldValue = fAugmentationsContainer.putItem(key, item);
@@ -62,11 +61,10 @@ public class AugmentationsImpl implements Augmentations {
 
     /**
      * Get information identified by a key from the Augmentations structure
-     * 
-     * @param key    Identifier, can't be <code>null</code>
      *
+     * @param key    identifier, can't be <code>null</code>
      * @return the value to which the key is mapped in the Augmentations structure;
-     *         <code>null</code> if the key is not mapped to any value.
+     *         <code>null</code> if the key is not mapped to any value
      */
     public Object getItem(String key){
         return fAugmentationsContainer.getItem(key);
@@ -74,8 +72,8 @@ public class AugmentationsImpl implements Augmentations {
     
     /**
      * Remove additional info from the Augmentations structure
-     * 
-     * @param key    Identifier, can't be <code>null</code>
+     *
+     * @param key    identifier, can't be <code>null</code>
      */
     public Object removeItem (String key){
         return fAugmentationsContainer.removeItem(key);
@@ -83,7 +81,6 @@ public class AugmentationsImpl implements Augmentations {
 
     /**
      * Returns an enumeration of the keys in the Augmentations structure
-     *
      */
     public Enumeration keys (){
         return fAugmentationsContainer.keys();

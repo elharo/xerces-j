@@ -27,7 +27,6 @@ import org.w3c.dom.Node;
  * attributes. In Level 2 it should enable the ChildRule support.
  *
  * @xerces.internal
- *
  * @version $Id$
  */
 public class DeferredElementDefinitionImpl 

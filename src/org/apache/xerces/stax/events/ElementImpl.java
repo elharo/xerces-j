@@ -27,11 +27,10 @@ import javax.xml.stream.Location;
 import javax.xml.stream.events.Namespace;
 
 /**
+ *
  * @xerces.internal
- * 
  * @author Lucian Holland
  * @author Michael Glavassevich, IBM
- * 
  * @version $Id$
  */
 abstract class ElementImpl extends XMLEventImpl {
@@ -66,6 +65,7 @@ abstract class ElementImpl extends XMLEventImpl {
     }
     
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getName()
      * @see javax.xml.stream.events.EndElement#getName()
      */
@@ -74,6 +74,7 @@ abstract class ElementImpl extends XMLEventImpl {
     }
     
     /**
+     *
      * @see javax.xml.stream.events.StartElement#getNamespaces()
      * @see javax.xml.stream.events.EndElement#getNamespaces()
      */
@@ -94,6 +95,7 @@ abstract class ElementImpl extends XMLEventImpl {
         }
         
         /**
+         *
          * @see java.util.Iterator#hasNext()
          */
         public boolean hasNext() {
@@ -101,6 +103,7 @@ abstract class ElementImpl extends XMLEventImpl {
         }
 
         /**
+         *
          * @see java.util.Iterator#next()
          */
         public Object next() {
@@ -108,6 +111,7 @@ abstract class ElementImpl extends XMLEventImpl {
         }
 
         /**
+         *
          * @see java.util.Iterator#remove()
          */
         public void remove() {
