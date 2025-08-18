@@ -22,10 +22,9 @@ import org.w3c.dom.events.MutationEvent;
 
 /**
  * An implementation of the DOM Level 2 <code>MutationEvent</code> interface.
- * 
- * @xerces.internal 
- * 
+ *
  * @version $Id$
+ * @xerces.internal
  */
 public class MutationEventImpl 
     extends EventImpl 
@@ -49,7 +48,7 @@ public class MutationEventImpl
     public static final String DOM_ATTR_MODIFIED = "DOMAttrModified";
     public static final String DOM_CHARACTER_DATA_MODIFIED = "DOMCharacterDataModified";
 
-    /** 
+    /**
      * @return the name of the Attr which
      * changed, for DOMAttrModified events. 
      * Undefined for others.
@@ -59,33 +58,33 @@ public class MutationEventImpl
     }
 
     /**
-     * <code>attrChange</code> indicates the type of change which triggered 
+     * <code>attrChange</code> indicates the type of change which triggered
      * the DOMAttrModified event. The values can be <code>MODIFICATION</code>
-     * , <code>ADDITION</code>, or <code>REMOVAL</code>. 
+     * , <code>ADDITION</code>, or <code>REMOVAL</code>.
      */
     public short getAttrChange() {
         return attrChange;
     }
 
-    /** 
+    /**
      * @return the new string value of the Attr for DOMAttrModified events, or
      * of the CharacterData node for DOMCharDataModifed events.
-     * Undefined for others.
+     * Undefined for others
      */
     public String getNewValue() {
         return newValue;
     }
 
-    /** 
+    /**
      * @return the previous string value of the Attr for DOMAttrModified events, or
      * of the CharacterData node for DOMCharDataModifed events.
-     * Undefined for others.
+     * Undefined for others
      */
     public String getPrevValue() {
         return prevValue;
     }
 
-    /** 
+    /**
      * @return a Node related to this event, other than the target that the
      * node was dispatched to. For DOMNodeRemoved, it is the node which
      * was removed. 
@@ -95,9 +94,9 @@ public class MutationEventImpl
         return relatedNode;
     }
 
-    /** 
+    /**
      * Initialize a mutation event, or overwrite the event's current
-     * settings with new values of the parameters. 
+     * settings with new values of the parameters.
      */
     public void initMutationEvent(String typeArg, boolean canBubbleArg, 
             boolean cancelableArg, Node relatedNodeArg, String prevValueArg, 

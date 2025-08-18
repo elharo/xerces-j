@@ -22,10 +22,9 @@ import org.w3c.dom.views.AbstractView;
 
 /**
  * An implementation of the DOM Level 2 <code>UIEvent</code> interface.
- * 
- * @xerces.internal 
- * 
+ *
  * @version $Id$
+ * @xerces.internal
  */
 public class UIEventImpl 
     extends EventImpl 

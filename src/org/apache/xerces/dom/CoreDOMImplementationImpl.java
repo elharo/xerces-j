@@ -47,11 +47,10 @@ import org.w3c.dom.ls.LSSerializer;
  * This particular class, along with CoreDocumentImpl, supports the DOM
  * Core and Load/Save (Experimental). Optional modules are supported by
  * the more complete DOMImplementation class along with DocumentImpl.
- * 
- * @xerces.internal
- * 
+ *
  * @version $Id$
- * @since PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class CoreDOMImplementationImpl
 	implements DOMImplementation, DOMImplementationLS {
@@ -90,34 +89,32 @@ public class CoreDOMImplementationImpl
     private int docAndDoctypeCounter = 0;
     
 	// static
-	/** Dom implementation singleton. */
+    /** Dom implementation singleton. */
 	static final CoreDOMImplementationImpl singleton = new CoreDOMImplementationImpl();
 	
 	//
 	// Public methods
 	//
-	/** NON-DOM: Obtain and return the single shared object */
+    /** NON-DOM: Obtain and return the single shared object. */
 	public static DOMImplementation getDOMImplementation() {
 		return singleton;
 	}
 	//
 	// DOMImplementation methods
 	//
-	/**
-	 * Test if the DOM implementation supports a specific "feature" --
-	 * currently meaning language and level thereof.
-	 *
-	 * @param feature The package name of the feature to test.
+    /**
+     * Test if the DOM implementation supports a specific "feature" --
+     * currently meaning language and level thereof.
+     *
+     * @param feature the package name of the feature to test.
 	 * In Level 1, supported values are "HTML" and "XML" (case-insensitive).
-	 * At this writing, org.apache.xerces.dom supports only XML.
-	 *
-	 * @param version The version number of the feature being tested.
+	 * At this writing, org.apache.xerces.dom supports only XML
+     * @param version the version number of the feature being tested.
 	 * This is interpreted as "Version of the DOM API supported for the
 	 * specified Feature", and in Level 1 should be "1.0"
-	 *
-	 * @return true iff this implementation is compatible with the specified
-	 * feature and version.
-	 */
+     * @return true iff this implementation is compatible with the specified
+	 * feature and version
+     */
 	public boolean hasFeature(String feature, String version) {
 	    
 	    boolean anyVersion = version == null || version.length() == 0;
@@ -176,16 +173,16 @@ public class CoreDOMImplementationImpl
 	} // hasFeature(String,String):boolean
 
 
-	/**
-	 * Introduced in DOM Level 2. <p>
-	 *
-	 * Creates an empty DocumentType node.
-	 *
-	 * @param qualifiedName The qualified name of the document type to be created.
-	 * @param publicID The document type public identifier.
-	 * @param systemID The document type system identifier.
-	 * @since WD-DOM-Level-2-19990923
-	 */
+    /**
+     * Introduced in DOM Level 2. <p>
+     *
+     * Creates an empty DocumentType node.
+     *
+     * @param qualifiedName the qualified name of the document type to be created
+     * @param publicID the document type public identifier
+     * @param systemID the document type system identifier
+     * @since WD-DOM-Level-2-19990923
+     */
 	public DocumentType createDocumentType( String qualifiedName,
                                     String publicID, String systemID) {
 		// REVISIT: this might allow creation of invalid name for DOCTYPE
@@ -260,26 +257,25 @@ public class CoreDOMImplementationImpl
     }
 
 
-	/**
-	 * Introduced in DOM Level 2. <p>
-	 *
-	 * Creates an XML Document object of the specified type with its document
-	 * element.
-	 *
-	 * @param namespaceURI     The namespace URI of the document
-	 *                         element to create, or null.
-	 * @param qualifiedName    The qualified name of the document
-	 *                         element to create.
-	 * @param doctype          The type of document to be created or null.<p>
-	 *
+    /**
+     * Introduced in DOM Level 2. <p>
+     *
+     * Creates an XML Document object of the specified type with its document
+     * element.
+     *
+     * @param namespaceURI     the namespace URI of the document
+	 *                         element to create, or null
+     * @param qualifiedName    the qualified name of the document
+	 *                         element to create
+     * @param doctype          the type of document to be created or null.<p>
 	 *                         When doctype is not null, its
 	 *                         Node.ownerDocument attribute is set to
-	 *                         the document being created.
-	 * @return Document        A new Document object.
-	 * @throws DOMException    WRONG_DOCUMENT_ERR: Raised if doctype has
-	 *                         already been used with a different document.
-	 * @since WD-DOM-Level-2-19990923
-	 */
+	 *                         the document being created
+     * @return document A new Document object
+     * @throws DOMException    WRONG_DOCUMENT_ERR: Raised if doctype has
+	 *                         already been used with a different document
+     * @since WD-DOM-Level-2-19990923
+     */
 	public Document createDocument(
 		String namespaceURI,
 		String qualifiedName,
@@ -306,9 +302,9 @@ public class CoreDOMImplementationImpl
 	    return new CoreDocumentImpl(doctype);
 	}
 
-	/**
-	 * DOM Level 3 WD - Experimental.
-	 */
+    /**
+     * DOM Level 3 WD - Experimental.
+     */
 	public Object getFeature(String feature, String version) {
 	    if (singleton.hasFeature(feature, version)) {
 	        if ((feature.equalsIgnoreCase("+XPath"))) {
@@ -338,20 +334,21 @@ public class CoreDOMImplementationImpl
 
 	// DOM L3 LS
 
-	/**
-	 * DOM Level 3 LS CR - Experimental.
+    /**
+     * DOM Level 3 LS CR - Experimental.
      * Create a new <code>LSParser</code>. The newly constructed parser may
      * then be configured by means of its <code>DOMConfiguration</code>
      * object, and used to parse documents by means of its <code>parse</code>
-     *  method.
-     * @param mode  The <code>mode</code> argument is either
+     * method.
+     *
+     * @param mode  the <code>mode</code> argument is either
      *   <code>MODE_SYNCHRONOUS</code> or <code>MODE_ASYNCHRONOUS</code>, if
      *   <code>mode</code> is <code>MODE_SYNCHRONOUS</code> then the
      *   <code>LSParser</code> that is created will operate in synchronous
      *   mode, if it's <code>MODE_ASYNCHRONOUS</code> then the
      *   <code>LSParser</code> that is created will operate in asynchronous
-     *   mode.
-     * @param schemaType  An absolute URI representing the type of the schema
+     *   mode
+     * @param schemaType  an absolute URI representing the type of the schema
      *   language used during the load of a <code>Document</code> using the
      *   newly created <code>LSParser</code>. Note that no lexical checking
      *   is done on the absolute URI. In order to create a
@@ -376,10 +373,9 @@ public class CoreDOMImplementationImpl
      *   the initial value of the <code>"error-handler"</code> configuration
      *   parameter on the new created <code>LSParser</code> contains a
      *   reference to the default error handler.
-     * @exception DOMException
-     *    NOT_SUPPORTED_ERR: Raised if the requested mode or schema type is
-     *   not supported.
-	 */
+     * @throws DOMException NOT_SUPPORTED_ERR: Raised if the requested mode or schema type is
+     *   not supported
+     */
     public LSParser createLSParser(short mode, String schemaType)
 		throws DOMException {
 		if (mode != DOMImplementationLS.MODE_SYNCHRONOUS || (schemaType !=null &&
@@ -409,7 +405,8 @@ public class CoreDOMImplementationImpl
     /**
      * DOM Level 3 LS CR - Experimental.
      * Create a new <code>LSSerializer</code> object.
-     * @return The newly created <code>LSSerializer</code> object.
+     *
+     * @return the newly created <code>LSSerializer</code> object.
      * <p ><b>Note:</b>    By default, the newly created
      * <code>LSSerializer</code> has no <code>DOMErrorHandler</code>,
      * i.e. the value of the <code>"error-handler"</code> configuration
@@ -432,11 +429,12 @@ public class CoreDOMImplementationImpl
         return new DOMSerializerImpl();
     }
     
-	/**
-	 * DOM Level 3 LS CR - Experimental.
-	 * Create a new empty input source.
-	 * @return  The newly created input object.
-	 */
+    /**
+     * DOM Level 3 LS CR - Experimental.
+     * Create a new empty input source.
+     *
+     * @return The newly created input object
+     */
 	public LSInput createLSInput() {
 		return new DOMInputImpl();
 	}
@@ -444,7 +442,7 @@ public class CoreDOMImplementationImpl
 	//
 	// Protected methods
 	//
-	/** NON-DOM: retrieve validator. */
+    /** NON-DOM: retrieve validator. */
 	synchronized RevalidationHandler getValidator(String schemaType, String xmlVersion) {
         if (schemaType == XMLGrammarDescription.XML_SCHEMA) {
             // create new validator - we should not attempt
@@ -513,7 +511,7 @@ public class CoreDOMImplementationImpl
         return null;
 	}
 
-	/** NON-DOM: release validator */
+    /** NON-DOM: release validator. */
 	synchronized void releaseValidator(String schemaType, String xmlVersion,
 	        RevalidationHandler validator) {
 	    if (schemaType == XMLGrammarDescription.XML_SCHEMA) {
@@ -579,7 +577,7 @@ public class CoreDOMImplementationImpl
 	    }
 	}
     
-    /** NON-DOM: retrieve DTD loader */
+    /** NON-DOM: retrieve DTD loader. */
     synchronized final XMLDTDLoader getDTDLoader(String xmlVersion) {
         // return an instance of XML11DTDProcessor
         if ("1.1".equals(xmlVersion)) {
@@ -619,7 +617,7 @@ public class CoreDOMImplementationImpl
         }
     }
     
-    /** NON-DOM: release DTD loader */
+    /** NON-DOM: release DTD loader. */
     synchronized final void releaseDTDLoader(String xmlVersion, XMLDTDLoader loader) {
         // release an instance of XMLDTDLoader
         if ("1.1".equals(xmlVersion)) {
@@ -663,25 +661,26 @@ public class CoreDOMImplementationImpl
         }
     }
     
-	/** NON-DOM:  increment document/doctype counter */
+    /** NON-DOM:  increment document/doctype counter. */
 	protected synchronized int assignDocumentNumber() {
 	    return ++docAndDoctypeCounter;
 	}
     
-	/** NON-DOM:  increment document/doctype counter */
+    /** NON-DOM:  increment document/doctype counter. */
 	protected synchronized int assignDocTypeNumber() {
 	    return ++docAndDoctypeCounter;
 	}
 	
-	/**
+    /**
      * DOM Level 3 LS CR - Experimental.
-	 *
-	 * Create a new empty output destination object where
-	 * <code>LSOutput.characterStream</code>,
-	 * <code>LSOutput.byteStream</code>, <code>LSOutput.systemId</code>,
-	 * <code>LSOutput.encoding</code> are null.
-	 * @return  The newly created output object.
-	 */
+     *
+     * Create a new empty output destination object where
+     * <code>LSOutput.characterStream</code>,
+     * <code>LSOutput.byteStream</code>, <code>LSOutput.systemId</code>,
+     * <code>LSOutput.encoding</code> are null.
+     *
+     * @return The newly created output object
+     */
 	public LSOutput createLSOutput() {
 	    return new DOMOutputImpl();
 	}
@@ -699,7 +698,7 @@ public class CoreDOMImplementationImpl
     }
     
     /**
-     * A holder for XMLDTDLoaders. This allows us to reuse SoftReferences 
+     * A holder for XMLDTDLoaders. This allows us to reuse SoftReferences
      * which haven't yet been cleared by the garbage collector.
      */
     static final class XMLDTDLoaderHolder {

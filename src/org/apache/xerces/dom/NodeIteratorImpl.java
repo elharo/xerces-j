@@ -23,19 +23,19 @@ import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.traversal.NodeIterator;
 
 
-/** DefaultNodeIterator implements a NodeIterator, which iterates a 
- *  DOM tree in the expected depth first way. 
+/**
+ * DefaultNodeIterator implements a NodeIterator, which iterates a
+ * DOM tree in the expected depth first way.
  *
- *  <p>The whatToShow and filter functionality is implemented as expected.
- *  
- *  <p>This class also has method removeNode to enable iterator "fix-up" 
- *  on DOM remove. It is expected that the DOM implementation call removeNode
- *  right before the actual DOM transformation. If not called by the DOM,
- *  the client could call it before doing the removal.
- *  
- * @xerces.internal
+ * <p>The whatToShow and filter functionality is implemented as expected.
+ *
+ * <p>This class also has method removeNode to enable iterator "fix-up"
+ * on DOM remove. It is expected that the DOM implementation call removeNode
+ * right before the actual DOM transformation. If not called by the DOM,
+ * the client could call it before doing the removal.
  *
  * @version $Id$
+ * @xerces.internal
  */
 public class NodeIteratorImpl implements NodeIterator {
     
@@ -70,11 +70,12 @@ public class NodeIteratorImpl implements NodeIterator {
     /** The last Node returned. */
     private Node fCurrentNode;
     
-    /** The direction of the iterator on the fCurrentNode.
-     *  <pre>
-     *  nextNode()  ==      fForward = true;
-     *  previousNode() ==   fForward = false;
-     *  </pre>
+    /**
+     * The direction of the iterator on the fCurrentNode.
+     * <pre>
+     * nextNode()  ==      fForward = true;
+     * previousNode() ==   fForward = false;
+     * </pre>
      */
     private boolean fForward = true;
     
@@ -85,7 +86,7 @@ public class NodeIteratorImpl implements NodeIterator {
     // Constructor
     //
     
-    /** Public constructor */
+    /** Public constructor. */
     public NodeIteratorImpl( DocumentImpl document,
                              Node root, 
                              int whatToShow, 
@@ -107,12 +108,12 @@ public class NodeIteratorImpl implements NodeIterator {
     // and filter values at each call, and therefore one _could_ add
     // setters for these values and alter them while iterating!
     
-    /** Return the whatToShow value */
+    /** Return the whatToShow value. */
     public int                getWhatToShow() {
         return fWhatToShow;
     }
 
-    /** Return the filter */
+    /** Return the filter. */
     public NodeFilter         getFilter() {
         return fNodeFilter;
     }
@@ -122,9 +123,10 @@ public class NodeIteratorImpl implements NodeIterator {
         return fEntityReferenceExpansion;
     }
             
-    /** Return the next Node in the Iterator. The node is the next node in 
-     *  depth-first order which also passes the filter, and whatToShow. 
-     *  If there is no next node which passes these criteria, then return null.
+    /**
+     * Return the next Node in the Iterator. The node is the next node in
+     * depth-first order which also passes the filter, and whatToShow.
+     * If there is no next node which passes these criteria, then return null.
      */
     public Node               nextNode() {
         
@@ -179,8 +181,9 @@ public class NodeIteratorImpl implements NodeIterator {
             
     }
     
-    /** Return the previous Node in the Iterator. The node is the next node in 
-     *  _backwards_ depth-first order which also passes the filter, and whatToShow. 
+    /**
+     * Return the previous Node in the Iterator. The node is the next node in
+     * _backwards_ depth-first order which also passes the filter, and whatToShow.
      */
     public Node               previousNode() {
         
@@ -252,11 +255,12 @@ public class NodeIteratorImpl implements NodeIterator {
         return null;
     }
     
-    /** The method nextNode(Node, boolean) returns the next node 
-     *  from the actual DOM tree.
-     * 
-     *  The boolean visitChildren determines whether to visit the children.
-     *  The result is the nextNode.
+    /**
+     * The method nextNode(Node, boolean) returns the next node
+     * from the actual DOM tree.
+     *
+     * The boolean visitChildren determines whether to visit the children.
+     * The result is the nextNode.
      */
     Node nextNode(Node node, boolean visitChildren) {
             
@@ -297,8 +301,9 @@ public class NodeIteratorImpl implements NodeIterator {
         return null;            
     }
     
-    /** The method previousNode(Node) returns the previous node 
-     *  from the actual DOM tree.
+    /**
+     * The method previousNode(Node) returns the previous node
+     * from the actual DOM tree.
      */
     Node previousNode(Node node) {
         
@@ -330,8 +335,9 @@ public class NodeIteratorImpl implements NodeIterator {
         return result;
     }
     
-    /** Fix-up the iterator on a remove. Called by DOM or otherwise,
-     *  before an actual DOM remove.   
+    /**
+     * Fix-up the iterator on a remove. Called by DOM or otherwise,
+     * before an actual DOM remove.
      */
     public void removeNode(Node node) {
         

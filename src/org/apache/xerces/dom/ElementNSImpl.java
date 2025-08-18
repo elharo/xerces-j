@@ -32,12 +32,11 @@ import org.w3c.dom.DOMException;
  * The qualified name is the node name, and we store localName which is also
  * used in all queries. On the other hand we recompute the prefix when
  * necessary.
- * 
- * @xerces.internal
- * 
+ *
  * @author Elena litani, IBM
  * @author Neeraj Bajaj, Sun Microsystems
  * @version $Id$
+ * @xerces.internal
  */
 public class ElementNSImpl
     extends ElementImpl {
@@ -60,7 +59,7 @@ public class ElementNSImpl
     /** DOM2: localName. */
     protected String localName;
 
-    /** DOM3: type information */
+    /** DOM3: type information. */
     // REVISIT: we are losing the type information in DOM during serialization
     transient XSTypeDefinition type;
 
@@ -206,6 +205,7 @@ public class ElementNSImpl
      *
      * For nodes created with a DOM Level 1 method, such as createElement
      * from the Document interface, this is null.
+     *
      * @since WD-DOM-Level-2-19990923
      */
     public String getNamespaceURI()
@@ -243,12 +243,10 @@ public class ElementNSImpl
      * qualified name, as well as the tagName and name attributes of the Element
      * and Attr interfaces, when applicable.<p>
      *
-     * @param prefix The namespace prefix of this node, or null(empty string) if it is unspecified.
-     *
-     * @exception INVALID_CHARACTER_ERR
-     *                   Raised if the specified
-     *                   prefix contains an invalid character.
-     * @exception DOMException
+     * @param prefix the namespace prefix of this node, or null(empty string) if it is unspecified
+     * @throws DOMException
+     * @throws INVALID_CHARACTER_ERR raised if the specified
+     *                   prefix contains an invalid character
      * @since WD-DOM-Level-2-19990923
      */
     public void setPrefix(String prefix)
@@ -294,6 +292,7 @@ public class ElementNSImpl
      * Introduced in DOM Level 2. <p>
      *
      * Returns the local part of the qualified name of this node.
+     *
      * @since WD-DOM-Level-2-19990923
      */
     public String getLocalName()
@@ -339,15 +338,11 @@ public class ElementNSImpl
     /**
      * Introduced in DOM Level 2. <p>
      * Checks if a type is derived from another by restriction. See:
-     * http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo-isDerivedFrom
-     * 
-     * @param typeNamespaceArg 
-     *        The namspace of the ancestor type declaration
-     * @param typeNameArg
-     *        The name of the ancestor type declaration
-     * @param derivationMethod
-     *        The derivation method
-     * 
+     * http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo-isDerivedFrom.
+     *
+     * @param typeNamespaceArg the namspace of the ancestor type declaration
+     * @param typeNameArg the name of the ancestor type declaration
+     * @param derivationMethod the derivation method
      * @return boolean True if the type is derived by restriciton for the
      *         reference type
      */
@@ -369,7 +364,8 @@ public class ElementNSImpl
     }    
 
     /**
-     * NON-DOM: setting type used by the DOM parser
+     * NON-DOM: setting type used by the DOM parser.
+     *
      * @see NodeImpl#setReadOnly
      */
     public void setType(XSTypeDefinition type) {

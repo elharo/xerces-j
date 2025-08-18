@@ -21,11 +21,10 @@ package org.apache.xerces.dom;
  * Processing Instructions (PIs) permit documents to carry
  * processor-specific information alongside their actual content. PIs
  * are most common in XML, but they are supported in HTML as well.
- * 
- * @xerces.internal
  *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class DeferredProcessingInstructionImpl
     extends ProcessingInstructionImpl 
@@ -50,7 +49,7 @@ public class DeferredProcessingInstructionImpl
     //
 
     /**
-     * This is the deferred constructor. Only the fNodeIndex is given here. 
+     * This is the deferred constructor. Only the fNodeIndex is given here.
      * All other data, can be requested from the ownerDocument via the index.
      */
     DeferredProcessingInstructionImpl(DeferredDocumentImpl ownerDocument,

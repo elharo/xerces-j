@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
  * escape these special characters. It's primarily a convenience feature
  * for those who are hand-editing XML.
  * <P>
- * CDATASection is an Extended DOM feature, and is not used in HTML 
+ * CDATASection is an Extended DOM feature, and is not used in HTML
  * contexts.
  * <P>
  * Within the DOM, CDATASections are treated essentially as Text
@@ -42,10 +42,9 @@ import org.w3c.dom.Node;
  * <P>
  * CDATA does not participate in Element.normalize() processing.
  *
- * @xerces.internal
- *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class CDATASectionImpl 
     extends TextImpl 
@@ -71,7 +70,7 @@ public class CDATASectionImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */

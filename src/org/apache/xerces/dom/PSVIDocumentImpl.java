@@ -34,12 +34,10 @@ import org.w3c.dom.UserDataHandler;
 /**
  * Our own document implementation, which knows how to create an element
  * with PSVI information.
- * 
- * @xerces.internal
- * 
+ *
  * @author Sandy Gao, IBM
- * 
  * @version $Id$
+ * @xerces.internal
  */
 public class PSVIDocumentImpl extends DocumentImpl {
    
@@ -67,8 +65,8 @@ public class PSVIDocumentImpl extends DocumentImpl {
      * protection. I've chosen to implement it by calling importNode
      * which is DOM Level 2.
      *
-     * @return org.w3c.dom.Node
      * @param deep boolean, iff true replicate children
+     * @return org.w3c.dom.Node
      */
     public Node cloneNode(boolean deep) {
 
@@ -96,7 +94,7 @@ public class PSVIDocumentImpl extends DocumentImpl {
     }
 
     /**
-     * Create an element with PSVI information
+     * Create an element with PSVI information.
      */
     public Element createElementNS(String namespaceURI, String qualifiedName)
         throws DOMException {
@@ -104,7 +102,7 @@ public class PSVIDocumentImpl extends DocumentImpl {
     }
 
     /**
-     * Create an element with PSVI information
+     * Create an element with PSVI information.
      */
     public Element createElementNS(String namespaceURI, String qualifiedName,
                                    String localpart) throws DOMException {
@@ -112,7 +110,7 @@ public class PSVIDocumentImpl extends DocumentImpl {
     }
 
     /**
-     * Create an attribute with PSVI information
+     * Create an attribute with PSVI information.
      */
     public Attr createAttributeNS(String namespaceURI, String qualifiedName)
         throws DOMException {
@@ -120,7 +118,7 @@ public class PSVIDocumentImpl extends DocumentImpl {
     } 
     
     /**
-     * Create an attribute with PSVI information
+     * Create an attribute with PSVI information.
      */
     public Attr createAttributeNS(String namespaceURI, String qualifiedName,
                                   String localName) throws DOMException {
@@ -128,9 +126,9 @@ public class PSVIDocumentImpl extends DocumentImpl {
     } 
     
     /**
-     * 
-     * The configuration used when <code>Document.normalizeDocument</code> is 
-     * invoked. 
+     * The configuration used when <code>Document.normalizeDocument</code> is
+     * invoked.
+     *
      * @since DOM Level 3
      */
     public DOMConfiguration getDomConfig(){

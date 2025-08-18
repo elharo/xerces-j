@@ -25,11 +25,10 @@ import org.w3c.dom.DOMImplementationList;
 
 /**
  * <p>This class implements the DOM Level 3 Core interface DOMImplementationList.</p>
- * 
- * @xerces.internal
- * 
+ *
  * @author Neil Delima, IBM
  * @since DOM Level 3 Core
+ * @xerces.internal
  */
 public class DOMImplementationListImpl implements DOMImplementationList {
 
@@ -37,30 +36,30 @@ public class DOMImplementationListImpl implements DOMImplementationList {
     private final ArrayList fImplementations;
 
     /**
-     * Construct an empty list of DOMImplementations
+     * Construct an empty list of DOMImplementations.
      */
     public DOMImplementationListImpl() {
         fImplementations = new ArrayList();
     }
     
-    /** 
-     * Construct a list of DOMImplementations from an ArrayList
-     */ 
+    /**
+     * Construct a list of DOMImplementations from an ArrayList.
+     */
     public DOMImplementationListImpl(ArrayList params) {
         fImplementations = params;    
     }
 
-    /** 
-     * Construct a list of DOMImplementations from a Vector
-     */ 
+    /**
+     * Construct a list of DOMImplementations from a Vector.
+     */
     public DOMImplementationListImpl(Vector params) {
         fImplementations = new ArrayList(params);
     }
 
     /**
      * Returns the indexth item in the collection.
-     * 
-     * @param index The index of the DOMImplemetation from the list to return.
+     *
+     * @param index the index of the DOMImplemetation from the list to return
      */
     public DOMImplementation item(int index) {
         final int length = getLength();
@@ -72,8 +71,8 @@ public class DOMImplementationListImpl implements DOMImplementationList {
     
     /**
      * Returns the number of DOMImplementations in the list.
-     * 
-     * @return An integer indicating the number of DOMImplementations.
+     *
+     * @return an integer indicating the number of DOMImplementations
      */
     public int getLength() {
         return fImplementations.size();

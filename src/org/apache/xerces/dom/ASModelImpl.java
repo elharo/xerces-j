@@ -33,29 +33,30 @@ import org.apache.xerces.impl.xs.SchemaGrammar;
 import org.w3c.dom.DOMException;
 
 /**
- * To begin with, an abstract schema is a generic structure that could 
- * contain both internal and external subsets. An <code>ASModel</code> is an 
- * abstract object that could map to a DTD , an XML Schema , a database 
- * schema, etc. An <code>ASModel</code> could represent either an internal 
- * or an external subset; hence an abstract schema could be composed of an 
- * <code>ASModel</code> representing the internal subset and an 
- * <code>ASModel</code> representing the external subset. Note that the 
- * <code>ASModel</code> representing the external subset could consult the 
- * <code>ASModel</code> representing the internal subset. Furthermore, the 
- * <code>ASModel</code> representing the internal subset could be set to 
- * null by the <code>setInternalAS</code> method as a mechanism for 
- * "removal". In addition, only one <code>ASModel</code> representing the 
- * external subset can be specified as "active" and it is possible that none 
- * are "active". Finally, the <code>ASModel</code> contains the factory 
- * methods needed to create a various types of ASObjects like 
- * <code>ASElementDeclaration</code>, <code>ASAttributeDeclaration</code>, 
- * etc. 
+ * To begin with, an abstract schema is a generic structure that could
+ * contain both internal and external subsets. An <code>ASModel</code> is an
+ * abstract object that could map to a DTD , an XML Schema , a database
+ * schema, etc. An <code>ASModel</code> could represent either an internal
+ * or an external subset; hence an abstract schema could be composed of an
+ * <code>ASModel</code> representing the internal subset and an
+ * <code>ASModel</code> representing the external subset. Note that the
+ * <code>ASModel</code> representing the external subset could consult the
+ * <code>ASModel</code> representing the internal subset. Furthermore, the
+ * <code>ASModel</code> representing the internal subset could be set to
+ * null by the <code>setInternalAS</code> method as a mechanism for
+ * "removal". In addition, only one <code>ASModel</code> representing the
+ * external subset can be specified as "active" and it is possible that none
+ * are "active". Finally, the <code>ASModel</code> contains the factory
+ * methods needed to create a various types of ASObjects like
+ * <code>ASElementDeclaration</code>, <code>ASAttributeDeclaration</code>,
+ * etc.
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>
  * Document Object Model (DOM) Level 3 Abstract Schemas and Load and Save Specification</a>.
- * @deprecated
+ *
  * @author Pavani Mukthipudi
  * @author Neil Graham
  * @version $Id$
+ * @deprecated
  */
 public class ASModelImpl implements ASModel {
 
@@ -95,9 +96,9 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * The <code>ASModel</code> object associated with this 
-     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this 
-     * is <code>null</code>. 
+     * The <code>ASModel</code> object associated with this
+     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this
+     * is <code>null</code>.
      */
     public ASModel getOwnerASModel() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -105,9 +106,9 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * The <code>ASModel</code> object associated with this 
-     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this 
-     * is <code>null</code>. 
+     * The <code>ASModel</code> object associated with this
+     * <code>ASObject</code>. For a node of type <code>AS_MODEL</code>, this
+     * is <code>null</code>.
      */
     public void setOwnerASModel(ASModel ownerASModel) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -115,7 +116,7 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * The <code>name</code> of this <code>ASObject</code> depending on the 
+     * The <code>name</code> of this <code>ASObject</code> depending on the
      * <code>ASObject</code> type.
      */
     public String getNodeName() {
@@ -124,7 +125,7 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * The <code>name</code> of this <code>ASObject</code> depending on the 
+     * The <code>name</code> of this <code>ASObject</code> depending on the
      * <code>ASObject</code> type.
      */
     public void setNodeName(String nodeName) {
@@ -133,7 +134,7 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * The namespace prefix of this node, or <code>null</code> if it is 
+     * The namespace prefix of this node, or <code>null</code> if it is
      * unspecified.
      */
     public String getPrefix() {
@@ -142,7 +143,7 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * The namespace prefix of this node, or <code>null</code> if it is 
+     * The namespace prefix of this node, or <code>null</code> if it is
      * unspecified.
      */
     public void setPrefix(String prefix) {
@@ -151,7 +152,7 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Returns the local part of the qualified name of this 
+     * Returns the local part of the qualified name of this
      * <code>ASObject</code>.
      */
     public String getLocalName() {
@@ -160,7 +161,7 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * Returns the local part of the qualified name of this 
+     * Returns the local part of the qualified name of this
      * <code>ASObject</code>.
      */
     public void setLocalName(String localName) {
@@ -169,8 +170,8 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * The namespace URI of this node, or <code>null</code> if it is 
-     * unspecified.  defines how a namespace URI is attached to schema 
+     * The namespace URI of this node, or <code>null</code> if it is
+     * unspecified.  defines how a namespace URI is attached to schema
      * components.
      */
     public String getNamespaceURI() {
@@ -179,8 +180,8 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * The namespace URI of this node, or <code>null</code> if it is 
-     * unspecified.  defines how a namespace URI is attached to schema 
+     * The namespace URI of this node, or <code>null</code> if it is
+     * unspecified.  defines how a namespace URI is attached to schema
      * components.
      */
     public void setNamespaceURI(String namespaceURI) {
@@ -189,13 +190,14 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Creates a copy of this <code>ASObject</code>. See text for 
-     * <code>cloneNode</code> off of <code>Node</code> but substitute AS 
+     * Creates a copy of this <code>ASObject</code>. See text for
+     * <code>cloneNode</code> off of <code>Node</code> but substitute AS
      * functionality.
-     * @param deep Setting the <code>deep</code> flag on, causes the whole 
+     *
+     * @param deep setting the <code>deep</code> flag on, causes the whole
      *   subtree to be duplicated. Setting it to <code>false</code> only 
      *   duplicates its immediate child nodes.
-     * @return Cloned <code>ASObject</code>.
+     * @return cloned <code>ASObject</code>
      */
     public ASObject cloneASObject(boolean deep) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -207,9 +209,9 @@ public class ASModelImpl implements ASModel {
     //
     
     /**
-     * <code>true</code> if this <code>ASModel</code> defines the document 
-     * structure in terms of namespaces and local names ; <code>false</code> 
-     * if the document structure is defined only in terms of 
+     * <code>true</code> if this <code>ASModel</code> defines the document
+     * structure in terms of namespaces and local names ; <code>false</code>
+     * if the document structure is defined only in terms of
      * <code>QNames</code>.
      */
     public boolean getIsNamespaceAware() {
@@ -217,9 +219,9 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     *  0 if used internally, 1 if used externally, 2 if not all. An exception 
-     * will be raised if it is incompatibly shared or in use as an internal 
-     * subset. 
+     * 0 if used internally, 1 if used externally, 2 if not all. An exception
+     * will be raised if it is incompatibly shared or in use as an internal
+     * subset.
      */
     public short getUsageLocation() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -227,7 +229,7 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     *  The URI reference. 
+     * The URI reference.
      */
     public String getAsLocation() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -235,7 +237,7 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     *  The URI reference. 
+     * The URI reference.
      */
     public void setAsLocation(String asLocation) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -243,7 +245,7 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     *  The hint to locating an ASModel. 
+     * The hint to locating an ASModel.
      */
     public String getAsHint() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -251,7 +253,7 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     *  The hint to locating an ASModel. 
+     * The hint to locating an ASModel.
      */
     public void setAsHint(String asHint) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -259,19 +261,19 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * If <code>usage</code> is EXTERNAL_SUBSET or NOT_USED, and the 
-     * <code>ASModel</code> is simply a container of other ASModels. 
+     * If <code>usage</code> is EXTERNAL_SUBSET or NOT_USED, and the
+     * <code>ASModel</code> is simply a container of other ASModels.
      */
     public boolean getContainer() {
     	return (fGrammar != null);
     }
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * element declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * element declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getElementDeclarations() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -279,11 +281,11 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * attribute declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * attribute declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getAttributeDeclarations() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -291,11 +293,11 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * notation declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * notation declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getNotationDeclarations() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -303,11 +305,11 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global" 
-     * entity declarations. If one attempts to add, set, or remove a node 
-     * type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global"
+     * entity declarations. If one attempts to add, set, or remove a node
+     * type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getEntityDeclarations() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -315,11 +317,11 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Instead of returning an all-in-one <code>ASObject</code> with 
-     * <code>ASModel</code> methods, have discernible top-level/"global 
-     * content model declarations. If one attempts to add, set, or remove a 
-     * node type other than the intended one, a hierarchy exception (or 
-     * equivalent is thrown). 
+     * Instead of returning an all-in-one <code>ASObject</code> with
+     * <code>ASModel</code> methods, have discernible top-level/"global
+     * content model declarations. If one attempts to add, set, or remove a
+     * node type other than the intended one, a hierarchy exception (or
+     * equivalent is thrown).
      */
     public ASNamedObjectMap getContentModelDeclarations() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -327,17 +329,19 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * This method will allow the nesting or "importation" of ASModels. 
-     * @param abstractSchema ASModel to be set. Subsequent calls will nest 
-     *   the ASModels within the specified <code>ownerASModel</code>. 
+     * This method will allow the nesting or "importation" of ASModels.
+     *
+     * @param abstractSchema ASModel to be set. Subsequent calls will nest
+     *   the ASModels within the specified <code>ownerASModel</code>.
      */
     public void addASModel(ASModel abstractSchema) {
     	fASModels.addElement(abstractSchema);
     }
 
     /**
-     * To retrieve a list of nested ASModels without reference to names. 
-     * @return A list of ASModels. 
+     * To retrieve a list of nested ASModels without reference to names.
+     *
+     * @return a list of ASModels
      */
     public ASObjectList getASModels() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -345,19 +349,21 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Removes only the specified <code>ASModel</code> from the list of 
+     * Removes only the specified <code>ASModel</code> from the list of
      * <code>ASModel</code>s.
-     * @param as AS to be removed.
+     *
+     * @param as AS to be removed
      */
     public void removeAS(ASModel as) {
     	fASModels.removeElement(as);
     }
 
     /**
-     * Determines if an <code>ASModel</code> itself is valid, i.e., confirming 
-     * that it's well-formed and valid per its own formal grammar. 
-     * @return <code>true</code> if the <code>ASModel</code> is valid, 
-     *   <code>false</code> otherwise.
+     * Determines if an <code>ASModel</code> itself is valid, i.e., confirming
+     * that it's well-formed and valid per its own formal grammar.
+     *
+     * @return <code>true</code> if the <code>ASModel</code> is valid,
+     *   <code>false</code> otherwise
      */
     public boolean validate() {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -365,8 +371,9 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Imports <code>ASObject</code> into ASModel. 
-     * @param asobject  <code>ASObject</code> to be imported. 
+     * Imports <code>ASObject</code> into ASModel.
+     *
+     * @param asobject  <code>ASObject</code> to be imported
      */
     public void importASObject(ASObject asobject) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -374,8 +381,9 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Inserts <code>ASObject</code> into ASModel. 
-     * @param asobject  <code>ASObject</code> to be inserted. 
+     * Inserts <code>ASObject</code> into ASModel.
+     *
+     * @param asobject  <code>ASObject</code> to be inserted
      */
     public void insertASObject(ASObject asobject) {
         String msg = DOMMessageFormatter.formatMessage(DOMMessageFormatter.DOM_DOMAIN, "NOT_SUPPORTED_ERR", null);
@@ -384,19 +392,19 @@ public class ASModelImpl implements ASModel {
     
     /**
      * Creates an element declaration for the element type specified.
-     * @param namespaceURI The <code>namespace URI</code> of the element type 
-     *   being declared. 
-     * @param name The name of the element. The format of the name could be 
+     *
+     * @param namespaceURI the <code>namespace URI</code> of the element type
+     *   being declared
+     * @param name the name of the element. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @return A new <code>ASElementDeclaration</code> object with 
+     *   1.0; it's ASModel-dependent.
+     * @return a new <code>ASElementDeclaration</code> object with
      *   <code>name</code> attribute set to <code>tagname</code> and 
      *   <code>namespaceURI</code> set to <code>systemId</code>. Other 
      *   attributes of the element declaration are set through 
      *   <code>ASElementDeclaration</code> interface methods.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified name contains an 
+     *   illegal character
      */
     public ASElementDeclaration createASElementDeclaration(String namespaceURI, 
                                                            String name)
@@ -407,15 +415,15 @@ public class ASModelImpl implements ASModel {
 
     /**
      * Creates an attribute declaration.
-     * @param namespaceURI The namespace URI of the attribute being declared.
-     * @param name The name of the attribute. The format of the name could be 
+     *
+     * @param namespaceURI the namespace URI of the attribute being declared
+     * @param name the name of the attribute. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @return A new <code>ASAttributeDeclaration</code> object with 
-     *   appropriate attributes set by input parameters.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the input <code>name</code> 
-     *   parameter contains an illegal character.
+     *   1.0; it's ASModel-dependent.
+     * @return a new <code>ASAttributeDeclaration</code> object with
+     *   appropriate attributes set by input parameters
+     * @throws DOMException INVALID_CHARACTER_ERR: Raised if the input <code>name</code> 
+     *   parameter contains an illegal character
      */
     public ASAttributeDeclaration createASAttributeDeclaration(String namespaceURI, 
                                                                String name)
@@ -425,20 +433,20 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Creates a new notation declaration. 
-     * @param namespaceURI The namespace URI of the notation being declared.
-     * @param name The name of the notation. The format of the name could be 
+     * Creates a new notation declaration.
+     *
+     * @param namespaceURI the namespace URI of the notation being declared
+     * @param name the name of the notation. The format of the name could be
      *   an NCName as defined by XML Namespaces or a Name as defined by XML 
-     *   1.0; it's ASModel-dependent. 
-     * @param systemId The system identifier for the notation declaration.
-     * @param publicId The public identifier for the notation declaration.
-     * @return A new <code>ASNotationDeclaration</code> object with 
+     *   1.0; it's ASModel-dependent.
+     * @param systemId the system identifier for the notation declaration
+     * @param publicId the public identifier for the notation declaration
+     * @return a new <code>ASNotationDeclaration</code> object with
      *   <code>notationName</code> attribute set to <code>name</code> and 
      *   <code>publicId</code> and <code>systemId</code> set to the 
-     *   corresponding fields.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     *   corresponding fields
+     * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified name contains an 
+     *   illegal character
      */
     public ASNotationDeclaration createASNotationDeclaration(String namespaceURI, String name, 
                                                              String systemId, String publicId)
@@ -448,13 +456,13 @@ public class ASModelImpl implements ASModel {
     }
     
     /**
-     * Creates an ASEntityDeclaration. 
-     * @param name The name of the entity being declared.
-     * @return A new <code>ASEntityDeclaration</code> object with 
-     *   <code>entityName</code> attribute set to name.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified name contains an 
-     *   illegal character.
+     * Creates an ASEntityDeclaration.
+     *
+     * @param name the name of the entity being declared
+     * @return a new <code>ASEntityDeclaration</code> object with
+     *   <code>entityName</code> attribute set to name
+     * @throws DOMException INVALID_CHARACTER_ERR: Raised if the specified name contains an 
+     *   illegal character
      */
     public ASEntityDeclaration createASEntityDeclaration(String name)
                                                          throws DOMException {
@@ -463,18 +471,18 @@ public class ASModelImpl implements ASModel {
     }
 
     /**
-     * Creates an object which describes part of an 
-     * <code>ASElementDeclaration</code>'s content model. 
-     * @param minOccurs The minimum occurrence for the subModels of this 
-     *   <code>ASContentModel</code>.
-     * @param maxOccurs The maximum occurrence for the subModels of this 
-     *   <code>ASContentModel</code>.
-     * @param operator operator of type <code>AS_CHOICE</code>, 
+     * Creates an object which describes part of an
+     * <code>ASElementDeclaration</code>'s content model.
+     *
+     * @param minOccurs the minimum occurrence for the subModels of this
+     *   <code>ASContentModel</code>
+     * @param maxOccurs the maximum occurrence for the subModels of this
+     *   <code>ASContentModel</code>
+     * @param operator operator of type <code>AS_CHOICE</code>,
      *   <code>AS_SEQUENCE</code>, <code>AS_ALL</code> or 
-     *   <code>AS_NONE</code>.
-     * @return A new <code>ASContentModel</code> object.
-     * @exception DOMASException
-     *   A DOMASException, e.g., <code>minOccurs &gt; maxOccurs</code>.
+     *   <code>AS_NONE</code>
+     * @return a new <code>ASContentModel</code> object
+     * @throws DOMASException a DOMASException, e.g., <code>minOccurs &gt; maxOccurs</code>
      */
     public ASContentModel createASContentModel(int minOccurs, int maxOccurs, 
                                                short operator) throws DOMASException {

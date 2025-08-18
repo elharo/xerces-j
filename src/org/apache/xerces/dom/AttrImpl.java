@@ -99,15 +99,13 @@ import org.w3c.dom.TypeInfo;
  * <p><b>WARNING</b>: Some of the code here is partially duplicated in
  * ParentNode, be careful to keep these two classes in sync!
  *
- * @xerces.internal
- *
- * @see AttrNSImpl 
- *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
- * @author Andy Clark, IBM 
+ * @author Andy Clark, IBM
  * @version $Id$
- * @since PR-DOM-Level-1-19980818.
+ * @see AttrNSImpl
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  *
  */
 public class AttrImpl
@@ -121,7 +119,7 @@ public class AttrImpl
     /** Serialization version. */
     static final long serialVersionUID = 7277707688218972102L;
     
-    /** DTD namespace. **/
+    /** DTD namespace. */
     static final String DTD_URI = "http://www.w3.org/TR/REC-xml";
 
     //
@@ -134,7 +132,7 @@ public class AttrImpl
     /** Attribute name. */
     protected String name;
     
-    /** Type information */
+    /** Type information. */
     // REVISIT: we are losing the type information in DOM during serialization
     transient Object type;
 
@@ -186,7 +184,7 @@ public class AttrImpl
 
     /**
      * NON-DOM
-     * set the ownerDocument of this node and its children
+     * set the ownerDocument of this node and its children.
      */
     protected void setOwnerDocument(CoreDocumentImpl doc) {
         if (needsSyncChildren()) {
@@ -203,7 +201,7 @@ public class AttrImpl
 
     /**
      * NON-DOM: set the type of this attribute to be ID type.
-     * 
+     *
      * @param id
      */
     public void setIdAttribute(boolean id){
@@ -212,7 +210,7 @@ public class AttrImpl
         }
         isIdAttribute(id);
     }
-    /** DOM Level 3: isId*/
+    /** DOM Level 3: isId. */
     public boolean isId(){
         // REVISIT: should an attribute that is not in the tree return
         // isID true?
@@ -258,7 +256,7 @@ public class AttrImpl
     }
 
     /**
-     * Returns the attribute name
+     * Returns the attribute name.
      */
     public String getNodeName() {
         if (needsSyncData()) {
@@ -296,6 +294,7 @@ public class AttrImpl
     
     /**
      * Method getSchemaTypeInfo.
+     *
      * @return TypeInfo
      */
     public TypeInfo getSchemaTypeInfo(){
@@ -318,7 +317,7 @@ public class AttrImpl
 
     /**
      * In Attributes, NodeName is considered a synonym for the
-     * attribute's Name
+     * attribute's Name.
      */
     public String getName() {
 
@@ -510,8 +509,7 @@ public class AttrImpl
      * or null if the attribute has not been added to an element.
      *
      * @see #getOwnerElement
-     *
-     * @deprecated Previous working draft of DOM Level 2. New method
+     * @deprecated previous working draft of DOM Level 2. New method
      *             is <tt>getOwnerElement()</tt>.
      */
     public Element getElement() {
@@ -575,7 +573,7 @@ public class AttrImpl
     // Public methods
     //
 
-    /** NON-DOM, for use by parser */
+    /** NON-DOM, for use by parser. */
     public void setSpecified(boolean arg) {
 
         if (needsSyncData()) {
@@ -585,10 +583,11 @@ public class AttrImpl
 
     } // setSpecified(boolean)
     
-	/**
-	 * NON-DOM: used by the parser
-	 * @param type
-	 */
+    /**
+     * NON-DOM: used by the parser.
+     *
+     * @param type
+     */
     public void setType (Object type){
         this.type = type;
     }
@@ -597,7 +596,7 @@ public class AttrImpl
     // Object methods
     //
 
-    /** NON-DOM method for debugging convenience */
+    /** NON-DOM method for debugging convenience. */
     public String toString() {
     	return getName() + "=" + "\"" + getValue() + "\"";
     }
@@ -674,29 +673,23 @@ public class AttrImpl
      * Move one or more node(s) to our list of children. Note that this
      * implicitly removes them from their previous parent.
      *
-     * @param newChild The Node to be moved to our subtree. As a
+     * @param newChild the Node to be moved to our subtree. As a
      * convenience feature, inserting a DocumentNode will instead insert
      * all its children.
-     *
-     * @param refChild Current child which newChild should be placed
+     * @param refChild current child which newChild should be placed
      * immediately before. If refChild is null, the insertion occurs
      * after all existing Nodes, like appendChild().
-     *
      * @return newChild, in its new state (relocated, or emptied in the case of
      * DocumentNode.)
-     *
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is an
-     * ancestor of this node.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
-     * this node.
-     *
+     * ancestor of this node
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
      */
     public Node insertBefore(Node newChild, Node refChild) 
         throws DOMException {
@@ -704,7 +697,8 @@ public class AttrImpl
         return internalInsertBefore(newChild, refChild, false);
     } // insertBefore(Node,Node):Node
      
-    /** NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
+    /**
+     * NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
      * to control which mutation events are spawned. This version of the
      * insertBefore operation allows us to do so. It is not intended
      * for use by application programs.
@@ -869,13 +863,11 @@ public class AttrImpl
      * Remove a child from this Node. The removed child's subtree
      * remains intact so it may be re-inserted elsewhere.
      *
-     * @return oldChild, in its new state (removed).
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
      */
     public Node removeChild(Node oldChild) 
         throws DOMException {
@@ -888,7 +880,8 @@ public class AttrImpl
         return internalRemoveChild(oldChild, false);
     } // removeChild(Node) :Node
      
-    /** NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
+    /**
+     * NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
      * to control which mutation events are spawned. This version of the
      * removeChild operation allows us to do so. It is not intended
      * for use by application programs.
@@ -965,20 +958,16 @@ public class AttrImpl
      * parent, if any. Equivalent to inserting newChild before oldChild,
      * then removing oldChild.
      *
-     * @return oldChild, in its new state (removed).
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is
-     * one of our ancestors.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * one of our ancestors
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
      */
     public Node replaceChild(Node newChild, Node oldChild)
         throws DOMException {
@@ -1011,7 +1000,8 @@ public class AttrImpl
     //
 
     /**
-     * NodeList method: Count the immediate children of this node
+     * NodeList method: Count the immediate children of this node.
+     *
      * @return int
      */
     public int getLength() {
@@ -1031,8 +1021,9 @@ public class AttrImpl
     /**
      * NodeList method: Return the Nth immediate child of this node, or
      * null if the index is out of bounds.
-     * @return org.w3c.dom.Node
+     *
      * @param index int
+     * @return org.w3c.dom.Node
      */
     public Node item(int index) {
 
@@ -1072,15 +1063,11 @@ public class AttrImpl
     /**
      * Introduced in DOM Level 3. <p>
      * Checks if a type is derived from another by restriction. See:
-     * http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo-isDerivedFrom
-     * 
-     * @param typeNamespaceArg 
-     *        The namspace of the ancestor type declaration
-     * @param typeNameArg
-     *        The name of the ancestor type declaration
-     * @param derivationMethod
-     *        The derivation method
-     * 
+     * http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo-isDerivedFrom.
+     *
+     * @param typeNamespaceArg the namspace of the ancestor type declaration
+     * @param typeNameArg the name of the ancestor type declaration
+     * @param derivationMethod the derivation method
      * @return boolean True if the type is derived by restriciton for the
      *         reference type
      */
@@ -1099,10 +1086,11 @@ public class AttrImpl
     /**
      * Override default behavior so that if deep is true, children are also
      * toggled.
+     *
      * @see Node
-     * <P>
+ * <P>
      * Note: this will not change the state of an EntityReference or its
-     * children, which are always read-only.
+     * children, which are always read-only
      */
     public void setReadOnly(boolean readOnly, boolean deep) {
 
@@ -1153,7 +1141,6 @@ public class AttrImpl
      * </ul>
      *
      * @param insertedChild the child node that was inserted into this node
-     *
      * @throws NullPointerException if the inserted child is <code>null</code>
      */
     void checkNormalizationAfterInsert(ChildNode insertedChild) {

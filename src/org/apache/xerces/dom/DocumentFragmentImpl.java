@@ -57,11 +57,10 @@ import org.w3c.dom.Text;
  * acts as the parent of these nodes so that the user can use the
  * standard methods from the Node interface, such as insertBefore()
  * and appendChild().
- * 
- * @xerces.internal
  *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class DocumentFragmentImpl 
     extends ParentNode
@@ -90,7 +89,7 @@ public class DocumentFragmentImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */

@@ -59,13 +59,12 @@ import org.w3c.dom.UserDataHandler;
  *
  * <p><b>WARNING</b>: Some of the code here is partially duplicated in
  * AttrImpl, be careful to keep these two classes in sync!
- * 
- * @xerces.internal
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @author Andy Clark, IBM
  * @version $Id$
+ * @xerces.internal
  */
 public abstract class ParentNode
     extends ChildNode {
@@ -81,7 +80,7 @@ public abstract class ParentNode
 
     // transients
 
-    /** NodeList cache */
+    /** NodeList cache. */
     protected transient NodeListCache fNodeListCache = null;
 
     //
@@ -90,7 +89,7 @@ public abstract class ParentNode
 
     /**
      * No public constructor; only subclasses of ParentNode should be
-     * instantiated, and those normally via a Document's factory methods
+     * instantiated, and those normally via a Document's factory methods.
      */
     protected ParentNode(CoreDocumentImpl ownerDocument) {
         super(ownerDocument);
@@ -161,8 +160,8 @@ public abstract class ParentNode
     }
 
     /**
-     * same as above but returns internal type and this one is not overridden
-     * by CoreDocumentImpl to return null
+     * Same as above but returns internal type and this one is not overridden
+     * by CoreDocumentImpl to return null.
      */
     CoreDocumentImpl ownerDocument() {
         return ownerDocument;
@@ -170,7 +169,7 @@ public abstract class ParentNode
 
     /**
      * NON-DOM
-     * set the ownerDocument of this node and its children
+     * set the ownerDocument of this node and its children.
      */
     protected void setOwnerDocument(CoreDocumentImpl doc) {
         if (needsSyncChildren()) {
@@ -253,29 +252,23 @@ public abstract class ParentNode
      * Move one or more node(s) to our list of children. Note that this
      * implicitly removes them from their previous parent.
      *
-     * @param newChild The Node to be moved to our subtree. As a
+     * @param newChild the Node to be moved to our subtree. As a
      * convenience feature, inserting a DocumentNode will instead insert
      * all its children.
-     *
-     * @param refChild Current child which newChild should be placed
+     * @param refChild current child which newChild should be placed
      * immediately before. If refChild is null, the insertion occurs
      * after all existing Nodes, like appendChild().
-     *
      * @return newChild, in its new state (relocated, or emptied in the case of
      * DocumentNode.)
-     *
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is an
-     * ancestor of this node.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
-     * this node.
-     *
+     * ancestor of this node
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
      */
     public Node insertBefore(Node newChild, Node refChild) 
         throws DOMException {
@@ -283,7 +276,8 @@ public abstract class ParentNode
         return internalInsertBefore(newChild, refChild, false);
     } // insertBefore(Node,Node):Node
      
-    /** NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
+    /**
+     * NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
      * to control which mutation events are spawned. This version of the
      * insertBefore operation allows us to do so. It is not intended
      * for use by application programs.
@@ -463,13 +457,11 @@ public abstract class ParentNode
      * Remove a child from this Node. The removed child's subtree
      * remains intact so it may be re-inserted elsewhere.
      *
-     * @return oldChild, in its new state (removed).
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
      */
     public Node removeChild(Node oldChild) 
         throws DOMException {
@@ -477,7 +469,8 @@ public abstract class ParentNode
         return internalRemoveChild(oldChild, false);
     } // removeChild(Node) :Node
      
-    /** NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
+    /**
+     * NON-DOM INTERNAL: Within DOM actions,we sometimes need to be able
      * to control which mutation events are spawned. This version of the
      * removeChild operation allows us to do so. It is not intended
      * for use by application programs.
@@ -570,20 +563,16 @@ public abstract class ParentNode
      * parent, if any. Equivalent to inserting newChild before oldChild,
      * then removing oldChild.
      *
-     * @return oldChild, in its new state (removed).
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is
-     * one of our ancestors.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * one of our ancestors
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
      */
     public Node replaceChild(Node newChild, Node oldChild)
         throws DOMException {
@@ -668,6 +657,7 @@ public abstract class ParentNode
     /**
      * Count the immediate children of this node.  Use to implement
      * NodeList.getLength().
+     *
      * @return int
      */
     private int nodeListGetLength() {
@@ -710,7 +700,8 @@ public abstract class ParentNode
     } // nodeListGetLength():int
 
     /**
-     * NodeList method: Count the immediate children of this node
+     * NodeList method: Count the immediate children of this node.
+     *
      * @return int
      */
     public int getLength() {
@@ -720,6 +711,7 @@ public abstract class ParentNode
     /**
      * Return the Nth immediate child of this node, or null if the index is
      * out of bounds.  Use to implement NodeList.item().
+     *
      * @param index int
      */
     private Node nodeListItem(int index) {
@@ -787,8 +779,9 @@ public abstract class ParentNode
     /**
      * NodeList method: Return the Nth immediate child of this node, or
      * null if the index is out of bounds.
-     * @return org.w3c.dom.Node
+     *
      * @param index int
+     * @return org.w3c.dom.Node
      */
     public Node item(int index) {
         return nodeListItem(index);
@@ -920,10 +913,11 @@ public abstract class ParentNode
     /**
      * Override default behavior so that if deep is true, children are also
      * toggled.
+     *
      * @see Node
-     * <P>
+ * <P>
      * Note: this will not change the state of an EntityReference or its
-     * children, which are always read-only.
+     * children, which are always read-only
      */
     public void setReadOnly(boolean readOnly, boolean deep) {
 
@@ -971,7 +965,6 @@ public abstract class ParentNode
      * </ul>
      *
      * @param insertedChild the child node that was inserted into this node
-     *
      * @throws NullPointerException if the inserted child is <code>null</code>
      */
     void checkNormalizationAfterInsert(ChildNode insertedChild) {

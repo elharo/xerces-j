@@ -27,9 +27,8 @@ import org.w3c.dom.Node;
  * I've included this in Level 1 purely as an anchor point for default
  * attributes. In Level 2 it should enable the ChildRule support.
  *
- * @xerces.internal
- *
  * @version $Id$
+ * @xerces.internal
  */
 public class ElementDefinitionImpl 
     extends ParentNode {
@@ -66,7 +65,7 @@ public class ElementDefinitionImpl
     // Node methods
     //
 
-    /** 
+    /**
      * A short integer indicating what type of node this is. The named
      * constants for this value are defined in the org.w3c.dom.Node interface.
      */
@@ -75,7 +74,7 @@ public class ElementDefinitionImpl
     }
 
     /**
-     * Returns the element definition name
+     * Returns the element definition name.
      */
     public String getNodeName() {
         if (needsSyncData()) {
@@ -104,7 +103,7 @@ public class ElementDefinitionImpl
      * representing the defaults. In a more serious implementation, it would
      * contain AttributeDefinitionImpl objects for all declared Attributes,
      * indicating which are Default, DefaultFixed, Implicit and/or Required.
-     * 
+     *
      * @return org.w3c.dom.NamedNodeMap containing org.w3c.dom.Attribute
      */
     public NamedNodeMap getAttributes() {

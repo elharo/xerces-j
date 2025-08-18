@@ -22,14 +22,13 @@ import org.w3c.dom.Node;
 
 
 /**
- * <code>DOMLocatorImpl</code> is an implementaion that describes a location (e.g. 
+ * <code>DOMLocatorImpl</code> is an implementaion that describes a location (e.g.
  * where an error occured).
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-Core-20010913'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * 
- * @xerces.internal
  *
- * @author Gopal Sharma, SUN Microsystems Inc.
+ * @author Gopal Sharma, SUN Microsystems Inc
  * @version $Id$
+ * @xerces.internal
  */
  
 public class DOMLocatorImpl implements DOMLocator {
@@ -39,35 +38,35 @@ public class DOMLocatorImpl implements DOMLocator {
     //
 
    /**
-    * The column number where the error occured, 
+    * The column number where the error occured,
     * or -1 if there is no column number available.
     */
    public int fColumnNumber = -1;
 
    /**
-    * The line number where the error occured, 
+    * The line number where the error occured,
     * or -1 if there is no line number available.
     */
    public int fLineNumber = -1;
 
-   /** related data node*/
+   /** Related data node. */
    public Node fRelatedNode = null;
 
    /**
-    * The URI where the error occured, 
+    * The URI where the error occured,
     * or null if there is no URI available.
     */
    public String fUri = null;
 
    /**
-    * The byte offset into the input source this locator is pointing to or -1 
-    * if there is no byte offset available
+    * The byte offset into the input source this locator is pointing to or -1
+    * if there is no byte offset available.
     */
    public int fByteOffset = -1;
    
    /**
-    * The UTF-16, as defined in [Unicode] and Amendment 1 of [ISO/IEC 10646], 
-    * offset into the input source this locator is pointing to or -1 if there 
+    * The UTF-16, as defined in [Unicode] and Amendment 1 of [ISO/IEC 10646],
+    * offset into the input source this locator is pointing to or -1 if there
     * is no UTF-16 offset available.
     */
    public int fUtf16Offset = -1;
@@ -111,7 +110,7 @@ public class DOMLocatorImpl implements DOMLocator {
 
 
   /**
-   * The line number where the error occured, or -1 if there is no line 
+   * The line number where the error occured, or -1 if there is no line
    * number available.
    */
    public int getLineNumber(){
@@ -119,7 +118,7 @@ public class DOMLocatorImpl implements DOMLocator {
    }
 
   /**
-   * The column number where the error occured, or -1 if there is no column 
+   * The column number where the error occured, or -1 if there is no column
    * number available.
    */
   public int getColumnNumber(){
@@ -141,16 +140,16 @@ public class DOMLocatorImpl implements DOMLocator {
   
 
   /**
-   * The byte offset into the input source this locator is pointing to or -1 
-   * if there is no byte offset available
+   * The byte offset into the input source this locator is pointing to or -1
+   * if there is no byte offset available.
    */
   public int getByteOffset(){
 	return fByteOffset;
   }
 
   /**
-   * The UTF-16, as defined in [Unicode] and Amendment 1 of [ISO/IEC 10646], 
-   * offset into the input source this locator is pointing to or -1 if there 
+   * The UTF-16, as defined in [Unicode] and Amendment 1 of [ISO/IEC 10646],
+   * offset into the input source this locator is pointing to or -1 if there
    * is no UTF-16 offset available.
    */
   public int getUtf16Offset(){

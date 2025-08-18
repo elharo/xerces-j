@@ -40,12 +40,11 @@ import org.w3c.dom.NamedNodeMap;
  * <P>
  * DeferredElementImpl inherits from ElementImpl which does not support
  * Namespaces. DeferredElementNSImpl, which inherits from ElementNSImpl, does.
- * @see DeferredElementNSImpl
- *
- * @xerces.internal
  *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @see DeferredElementNSImpl
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class DeferredElementImpl
     extends ElementImpl

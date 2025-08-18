@@ -65,11 +65,10 @@ import org.w3c.dom.NodeList;
  * <P>
  * NOTE: Level 2 of the DOM will probably _not_ use NodeList for its
  * extended search mechanisms, partly for the reasons just discussed.
- * 
- * @xerces.internal
  *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class DeepNodeListImpl 
     implements NodeList {
@@ -160,7 +159,7 @@ public class DeepNodeListImpl
     // Protected methods (might be overridden by an extending DOM)
     //
 
-    /** 
+    /**
      * Iterative tree-walker. When you have a Parent link, there's often no
      * need to resort to recursion. NOTE THAT only Element nodes are matched
      * since we're specifically supporting getElementsByTagName().

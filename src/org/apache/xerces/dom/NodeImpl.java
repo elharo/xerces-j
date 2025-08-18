@@ -73,13 +73,12 @@ import org.w3c.dom.events.EventTarget;
  * This class doesn't directly support mutation events, however, it still
  * implements the EventTarget interface and forward all related calls to the
  * document so that the document class do so.
- * 
- * @xerces.internal
  *
- * @author Arnaud  Le Hors, IBM
+ * @author Arnaud Le Hors, IBM
  * @author Joe Kesselman, IBM
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public abstract class NodeImpl
     implements Node, NodeList, EventTarget, Cloneable, NodeEqualityWithQname, Serializable{
@@ -108,18 +107,18 @@ public abstract class NodeImpl
      */
     public static final short TREE_POSITION_DESCENDANT  = 0x08;
     /**
-     * The two nodes have an equivalent position. This is the case of two 
-     * attributes that have the same <code>ownerElement</code>, and two 
+     * The two nodes have an equivalent position. This is the case of two
+     * attributes that have the same <code>ownerElement</code>, and two
      * nodes that are the same.
      */
     public static final short TREE_POSITION_EQUIVALENT  = 0x10;
     /**
-     * The two nodes are the same. Two nodes that are the same have an 
+     * The two nodes are the same. Two nodes that are the same have an
      * equivalent position, though the reverse may not be true.
      */
     public static final short TREE_POSITION_SAME_NODE   = 0x20;
     /**
-     * The two nodes are disconnected, they do not have any common ancestor. 
+     * The two nodes are disconnected, they do not have any common ancestor.
      * This is the case of two nodes that are not in the same document.
      */
     public static final short TREE_POSITION_DISCONNECTED = 0x00;
@@ -193,12 +192,13 @@ public abstract class NodeImpl
     public abstract short getNodeType();
 
     /**
-     * the name of this node.
+     * The name of this node.
      */
     public abstract String getNodeName();
     
     /**
      * Returns the node value.
+     *
      * @throws DOMException(DOMSTRING_SIZE_ERR)
      */
     public String getNodeValue()
@@ -208,6 +208,7 @@ public abstract class NodeImpl
 
     /**
      * Sets the node value.
+     *
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR)
      */
     public void setNodeValue(String x) 
@@ -218,22 +219,19 @@ public abstract class NodeImpl
     /**
      * Adds a child node to the end of the list of children for this node.
      * Convenience shorthand for insertBefore(newChild,null).
-     * @see #insertBefore(Node, Node)
-     * <P>
-     * By default we do not accept any children, ParentNode overrides this.
-     * @see ParentNode
      *
      * @return newChild, in its new state (relocated, or emptied in the case of
      * DocumentNode.)
-     *
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
-     * type that shouldn't be a child of this node.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
+     * type that shouldn't be a child of this node
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
+     * @see #insertBefore(Node, Node)
+     * <P>
+     * By default we do not accept any children, ParentNode overrides this
+     * @see ParentNode
      */
     public Node appendChild(Node newChild) throws DOMException {
     	return insertBefore(newChild, null);
@@ -247,9 +245,9 @@ public abstract class NodeImpl
      * <P>
      * Note: since we never have any children deep is meaningless here,
      * ParentNode overrides this behavior.
-     * @see ParentNode
      *
-     * <p>
+     * @see ParentNode
+ * <p>
      * Example: Cloning a Text node will copy both the node and the text it
      * contains.
      * <p>
@@ -261,6 +259,7 @@ public abstract class NodeImpl
      * NOTE: Clones will always be read/write, even if the node being cloned
      * is read-only, to permit applications using only the DOM API to obtain
      * editable copies of locked portions of the tree.
+     *
      */
     public Node cloneNode(boolean deep) {
 
@@ -309,8 +308,8 @@ public abstract class NodeImpl
     }
 
     /**
-     * same as above but returns internal type and this one is not overridden
-     * by CoreDocumentImpl to return null 
+     * Same as above but returns internal type and this one is not overridden
+     * by CoreDocumentImpl to return null.
      */
     CoreDocumentImpl ownerDocument() {
         // if we have an owner simply forward the request
@@ -324,7 +323,7 @@ public abstract class NodeImpl
 
     /**
      * NON-DOM
-     * set the ownerDocument of this node
+     * set the ownerDocument of this node.
      */
     protected void setOwnerDocument(CoreDocumentImpl doc) {
         if (needsSyncData()) {
@@ -338,7 +337,7 @@ public abstract class NodeImpl
     }
 
     /**
-     * Returns the node number
+     * Returns the node number.
      */
     protected int getNodeNumber() {
         int nodeNumber;
@@ -364,12 +363,12 @@ public abstract class NodeImpl
         return null;
     }
 
-    /** The next child of this node's parent, or null if none */
+    /** The next child of this node's parent, or null if none. */
     public Node getNextSibling() {
         return null;            // default behavior, overriden in ChildNode
     }
 
-    /** The previous child of this node's parent, or null if none */
+    /** The previous child of this node's parent, or null if none. */
     public Node getPreviousSibling() {
         return null;            // default behavior, overriden in ChildNode
     }
@@ -390,11 +389,12 @@ public abstract class NodeImpl
     }
 
     /**
-     *  Returns whether this node (if it is an element) has any attributes.
-     * @return <code>true</code> if this node has any attributes, 
-     *   <code>false</code> otherwise.
-     * @since DOM Level 2
+     * Returns whether this node (if it is an element) has any attributes.
+     *
+     * @return <code>true</code> if this node has any attributes,
+     *   <code>false</code> otherwise
      * @see ElementImpl
+     * @since DOM Level 2
      */
     public boolean hasAttributes() {
         return false;           // overridden in ElementImpl
@@ -405,6 +405,7 @@ public abstract class NodeImpl
      * for (Node.getFirstChild()!=null)
      * <P>
      * By default we do not have any children, ParentNode overrides this.
+     *
      * @see ParentNode
      */
     public boolean hasChildNodes() {
@@ -428,18 +429,22 @@ public abstract class NodeImpl
         return this;
     }
 
-    /** The first child of this Node, or null if none.
+    /**
+     * The first child of this Node, or null if none.
      * <P>
      * By default we do not have any children, ParentNode overrides this.
+     *
      * @see ParentNode
      */
     public Node getFirstChild() {
     	return null;
     }
 
-    /** The first child of this Node, or null if none.
+    /**
+     * The first child of this Node, or null if none.
      * <P>
      * By default we do not have any children, ParentNode overrides this.
+     *
      * @see ParentNode
      */
     public Node getLastChild() {
@@ -451,31 +456,25 @@ public abstract class NodeImpl
      * implicitly removes them from their previous parent.
      * <P>
      * By default we do not accept any children, ParentNode overrides this.
-     * @see ParentNode
      *
-     * @param newChild The Node to be moved to our subtree. As a
+     * @param newChild the Node to be moved to our subtree. As a
      * convenience feature, inserting a DocumentNode will instead insert
      * all its children.
-     *
-     * @param refChild Current child which newChild should be placed
+     * @param refChild current child which newChild should be placed
      * immediately before. If refChild is null, the insertion occurs
      * after all existing Nodes, like appendChild().
-     *
      * @return newChild, in its new state (relocated, or emptied in the case of
      * DocumentNode.)
-     *
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is an
-     * ancestor of this node.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
-     * this node.
-     *
+     * ancestor of this node
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if refChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
+     * @see ParentNode
      */
     public Node insertBefore(Node newChild, Node refChild) 
 	throws DOMException {
@@ -489,15 +488,13 @@ public abstract class NodeImpl
      * remains intact so it may be re-inserted elsewhere.
      * <P>
      * By default we do not have any children, ParentNode overrides this.
-     * @see ParentNode
      *
-     * @return oldChild, in its new state (removed).
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
+     * @see ParentNode
      */
     public Node removeChild(Node oldChild) 
 		throws DOMException {
@@ -513,22 +510,18 @@ public abstract class NodeImpl
      * then removing oldChild.
      * <P>
      * By default we do not have any children, ParentNode overrides this.
-     * @see ParentNode
      *
-     * @return oldChild, in its new state (removed).
-     *
+     * @return oldChild, in its new state (removed)
      * @throws DOMException(HIERARCHY_REQUEST_ERR) if newChild is of a
      * type that shouldn't be a child of this node, or if newChild is
-     * one of our ancestors.
-     *
-     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
-     * different owner document than we do.
-     *
-     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
-     * this node.
-     *
+     * one of our ancestors
      * @throws DOMException(NO_MODIFICATION_ALLOWED_ERR) if this node is
-     * read-only.
+     * read-only
+     * @throws DOMException(NOT_FOUND_ERR) if oldChild is not a child of
+     * this node
+     * @throws DOMException(WRONG_DOCUMENT_ERR) if newChild has a
+     * different owner document than we do
+     * @see ParentNode
      */
     public Node replaceChild(Node newChild, Node oldChild)
         throws DOMException {
@@ -545,9 +538,9 @@ public abstract class NodeImpl
      * NodeList method: Count the immediate children of this node
      * <P>
      * By default we do not have any children, ParentNode overrides this.
-     * @see ParentNode
      *
      * @return int
+     * @see ParentNode
      */
     public int getLength() {
 	return 0;
@@ -558,10 +551,10 @@ public abstract class NodeImpl
      * null if the index is out of bounds.
      * <P>
      * By default we do not have any children, ParentNode overrides this.
-     * @see ParentNode
      *
-     * @return org.w3c.dom.Node
      * @param index int
+     * @return org.w3c.dom.Node
+     * @see ParentNode
      */
     public Node item(int index) {
 	return null;
@@ -572,17 +565,17 @@ public abstract class NodeImpl
     //
 
     /**
-     * Puts all <code>Text</code> nodes in the full depth of the sub-tree 
-     * underneath this <code>Node</code>, including attribute nodes, into a 
-     * "normal" form where only markup (e.g., tags, comments, processing 
-     * instructions, CDATA sections, and entity references) separates 
-     * <code>Text</code> nodes, i.e., there are no adjacent <code>Text</code> 
-     * nodes.  This can be used to ensure that the DOM view of a document is 
-     * the same as if it were saved and re-loaded, and is useful when 
-     * operations (such as XPointer lookups) that depend on a particular 
-     * document tree structure are to be used.In cases where the document 
-     * contains <code>CDATASections</code>, the normalize operation alone may 
-     * not be sufficient, since XPointers do not differentiate between 
+     * Puts all <code>Text</code> nodes in the full depth of the sub-tree
+     * underneath this <code>Node</code>, including attribute nodes, into a
+     * "normal" form where only markup (e.g., tags, comments, processing
+     * instructions, CDATA sections, and entity references) separates
+     * <code>Text</code> nodes, i.e., there are no adjacent <code>Text</code>
+     * nodes.  This can be used to ensure that the DOM view of a document is
+     * the same as if it were saved and re-loaded, and is useful when
+     * operations (such as XPointer lookups) that depend on a particular
+     * document tree structure are to be used.In cases where the document
+     * contains <code>CDATASections</code>, the normalize operation alone may
+     * not be sufficient, since XPointers do not differentiate between
      * <code>Text</code> nodes and <code>CDATASection</code> nodes.
      * <p>
      * Note that this implementation simply calls normalize() on this Node's
@@ -598,15 +591,16 @@ public abstract class NodeImpl
      * Introduced in DOM Level 2. <p>
      * Tests whether the DOM implementation implements a specific feature and
      * that feature is supported by this node.
-     * @param feature The package name of the feature to test. This is the same
+     *
+     * @param feature the package name of the feature to test. This is the same
      * name as what can be passed to the method hasFeature on
      * DOMImplementation.
-     * @param version This is the version number of the package name to
+     * @param version this is the version number of the package name to
      * test. In Level 2, version 1, this is the string "2.0". If the version is
      * not specified, supporting any version of the feature will cause the
      * method to return true.
      * @return boolean Returns true if this node defines a subtree within which
-     * the specified feature is supported, false otherwise.
+     * the specified feature is supported, false otherwise
      * @since WD-DOM-Level-2-19990923
      */
     public boolean isSupported(String feature, String version)
@@ -628,9 +622,10 @@ public abstract class NodeImpl
      *
      * For nodes created with a DOM Level 1 method, such as createElement
      * from the Document interface, this is null.
-     * @since WD-DOM-Level-2-19990923
+     *
      * @see AttrNSImpl
      * @see ElementNSImpl
+     * @since WD-DOM-Level-2-19990923
      */
     public String getNamespaceURI()
     {
@@ -647,9 +642,9 @@ public abstract class NodeImpl
      * For nodes created with a DOM Level 1 method, such as createElement
      * from the Document interface, this is null. <p>
      *
-     * @since WD-DOM-Level-2-19990923
      * @see AttrNSImpl
      * @see ElementNSImpl
+     * @since WD-DOM-Level-2-19990923
      */
     public String getPrefix()
     {
@@ -657,25 +652,24 @@ public abstract class NodeImpl
     }
 
     /**
-     *  Introduced in DOM Level 2. <p>
+     * Introduced in DOM Level 2. <p>
      *
-     *  The namespace prefix of this node, or null if it is unspecified. When
-     *  this node is of any type other than ELEMENT_NODE and ATTRIBUTE_NODE
-     *  this is always null and setting it has no effect.<p>
+     * The namespace prefix of this node, or null if it is unspecified. When
+     * this node is of any type other than ELEMENT_NODE and ATTRIBUTE_NODE
+     * this is always null and setting it has no effect.<p>
      *
-     *  For nodes created with a DOM Level 1 method, such as createElement from
-     *  the Document interface, this is null.<p>
+     * For nodes created with a DOM Level 1 method, such as createElement from
+     * the Document interface, this is null.<p>
      *
-     *  Note that setting this attribute changes the nodeName attribute, which
-     *  holds the qualified name, as well as the tagName and name attributes of
-     *  the Element and Attr interfaces, when applicable.<p>
+     * Note that setting this attribute changes the nodeName attribute, which
+     * holds the qualified name, as well as the tagName and name attributes of
+     * the Element and Attr interfaces, when applicable.<p>
      *
-     * @throws INVALID_CHARACTER_ERR Raised if the specified
-     *  prefix contains an invalid character.
-     *
-     * @since WD-DOM-Level-2-19990923
+     * @throws INVALID_CHARACTER_ERR raised if the specified
+     *  prefix contains an invalid character
      * @see AttrNSImpl
      * @see ElementNSImpl
+     * @since WD-DOM-Level-2-19990923
      */
     public void setPrefix(String prefix)
         throws DOMException
@@ -693,9 +687,10 @@ public abstract class NodeImpl
      * from the Document interface, and for nodes of any type other than
      * ELEMENT_NODE and ATTRIBUTE_NODE this is the same as the nodeName
      * attribute.
-     * @since WD-DOM-Level-2-19990923
+     *
      * @see AttrNSImpl
      * @see ElementNSImpl
+     * @since WD-DOM-Level-2-19990923
      */
     public String             getLocalName()
     {
@@ -728,27 +723,28 @@ public abstract class NodeImpl
     //
 
     /**
-     * The absolute base URI of this node or <code>null</code> if undefined. 
-     * This value is computed according to . However, when the 
-     * <code>Document</code> supports the feature "HTML" , the base URI is 
-     * computed using first the value of the href attribute of the HTML BASE 
-     * element if any, and the value of the <code>documentURI</code> 
+     * The absolute base URI of this node or <code>null</code> if undefined.
+     * This value is computed according to . However, when the
+     * <code>Document</code> supports the feature "HTML" , the base URI is
+     * computed using first the value of the href attribute of the HTML BASE
+     * element if any, and the value of the <code>documentURI</code>
      * attribute from the <code>Document</code> interface otherwise.
-     * <br> When the node is an <code>Element</code>, a <code>Document</code> 
-     * or a a <code>ProcessingInstruction</code>, this attribute represents 
-     * the properties [base URI] defined in . When the node is a 
-     * <code>Notation</code>, an <code>Entity</code>, or an 
-     * <code>EntityReference</code>, this attribute represents the 
-     * properties [declaration base URI] in the . How will this be affected 
-     * by resolution of relative namespace URIs issue?It's not.Should this 
-     * only be on Document, Element, ProcessingInstruction, Entity, and 
-     * Notation nodes, according to the infoset? If not, what is it equal to 
-     * on other nodes? Null? An empty string? I think it should be the 
-     * parent's.No.Should this be read-only and computed or and actual 
-     * read-write attribute?Read-only and computed (F2F 19 Jun 2000 and 
-     * teleconference 30 May 2001).If the base HTML element is not yet 
+     * <br> When the node is an <code>Element</code>, a <code>Document</code>
+     * or a a <code>ProcessingInstruction</code>, this attribute represents
+     * the properties [base URI] defined in . When the node is a
+     * <code>Notation</code>, an <code>Entity</code>, or an
+     * <code>EntityReference</code>, this attribute represents the
+     * properties [declaration base URI] in the . How will this be affected
+     * by resolution of relative namespace URIs issue?It's not.Should this
+     * only be on Document, Element, ProcessingInstruction, Entity, and
+     * Notation nodes, according to the infoset? If not, what is it equal to
+     * on other nodes? Null? An empty string? I think it should be the
+     * parent's.No.Should this be read-only and computed or and actual
+     * read-write attribute?Read-only and computed (F2F 19 Jun 2000 and
+     * teleconference 30 May 2001).If the base HTML element is not yet
      * attached to a document, does the insert change the Document.baseURI?
      * Yes. (F2F 26 Sep 2001)
+     *
      * @since DOM Level 3
      */
     public String getBaseURI() {
@@ -756,12 +752,13 @@ public abstract class NodeImpl
     }
 
     /**
-     * Compares a node with this node with regard to their position in the 
-     * tree and according to the document order. This order can be extended 
+     * Compares a node with this node with regard to their position in the
+     * tree and according to the document order. This order can be extended
      * by module that define additional types of nodes.
-     * @param other The node to compare against this node.
-     * @return Returns how the given node is positioned relatively to this 
-     *   node.
+     *
+     * @param other the node to compare against this node
+     * @return returns how the given node is positioned relatively to this
+     *   node
      * @since DOM Level 3
      * @deprecated
      */
@@ -963,11 +960,12 @@ public abstract class NodeImpl
 
     }
     /**
-     * Compares a node with this node with regard to their position in the 
-     * document. 
-     * @param other The node to compare against this node.
-     * @return Returns how the given node is positioned relatively to this 
-     *   node.
+     * Compares a node with this node with regard to their position in the
+     * document.
+     *
+     * @param other the node to compare against this node
+     * @return returns how the given node is positioned relatively to this
+     *   node
      * @since DOM Level 3
      */
     public short compareDocumentPosition(Node other) throws DOMException {
@@ -1235,35 +1233,35 @@ public abstract class NodeImpl
     }
 
     /**
-     * This attribute returns the text content of this node and its 
-     * descendants. When it is defined to be null, setting it has no effect. 
-     * When set, any possible children this node may have are removed and 
-     * replaced by a single <code>Text</code> node containing the string 
-     * this attribute is set to. On getting, no serialization is performed, 
-     * the returned string does not contain any markup. No whitespace 
-     * normalization is performed, the returned string does not contain the 
-     * element content whitespaces . Similarly, on setting, no parsing is 
+     * This attribute returns the text content of this node and its
+     * descendants. When it is defined to be null, setting it has no effect.
+     * When set, any possible children this node may have are removed and
+     * replaced by a single <code>Text</code> node containing the string
+     * this attribute is set to. On getting, no serialization is performed,
+     * the returned string does not contain any markup. No whitespace
+     * normalization is performed, the returned string does not contain the
+     * element content whitespaces . Similarly, on setting, no parsing is
      * performed either, the input string is taken as pure textual content.
-     * <br>The string returned is made of the text content of this node 
-     * depending on its type, as defined below: 
+     * <br>The string returned is made of the text content of this node
+     * depending on its type, as defined below:
      * <table border='1'>
      * <tr>
      * <th>Node type</th>
      * <th>Content</th>
      * </tr>
-
-    /**
-     * This attribute returns the text content of this node and its 
-     * descendants. When it is defined to be null, setting it has no effect. 
-     * When set, any possible children this node may have are removed and 
-     * replaced by a single <code>Text</code> node containing the string 
-     * this attribute is set to. On getting, no serialization is performed, 
-     * the returned string does not contain any markup. No whitespace 
-     * normalization is performed, the returned string does not contain the 
-     * element content whitespaces . Similarly, on setting, no parsing is 
+     *
+     * /**
+     * This attribute returns the text content of this node and its
+     * descendants. When it is defined to be null, setting it has no effect.
+     * When set, any possible children this node may have are removed and
+     * replaced by a single <code>Text</code> node containing the string
+     * this attribute is set to. On getting, no serialization is performed,
+     * the returned string does not contain any markup. No whitespace
+     * normalization is performed, the returned string does not contain the
+     * element content whitespaces . Similarly, on setting, no parsing is
      * performed either, the input string is taken as pure textual content.
-     * <br>The string returned is made of the text content of this node 
-     * depending on its type, as defined below: 
+     * <br>The string returned is made of the text content of this node
+     * depending on its type, as defined below:
      * <table border='1'>
      * <tr>
      * <th>Node type</th>
@@ -1271,14 +1269,14 @@ public abstract class NodeImpl
      * </tr>
      * <tr>
      * <td valign='top' rowspan='1' colspan='1'>
-     * ELEMENT_NODE, ENTITY_NODE, ENTITY_REFERENCE_NODE, 
+     * ELEMENT_NODE, ENTITY_NODE, ENTITY_REFERENCE_NODE,
      * DOCUMENT_FRAGMENT_NODE</td>
-     * <td valign='top' rowspan='1' colspan='1'>concatenation of the <code>textContent</code> 
-     * attribute value of every child node, excluding COMMENT_NODE and 
+     * <td valign='top' rowspan='1' colspan='1'>concatenation of the <code>textContent</code>
+     * attribute value of every child node, excluding COMMENT_NODE and
      * PROCESSING_INSTRUCTION_NODE nodes</td>
      * </tr>
      * <tr>
-     * <td valign='top' rowspan='1' colspan='1'>ATTRIBUTE_NODE, TEXT_NODE, 
+     * <td valign='top' rowspan='1' colspan='1'>ATTRIBUTE_NODE, TEXT_NODE,
      * CDATA_SECTION_NODE, COMMENT_NODE, PROCESSING_INSTRUCTION_NODE</td>
      * <td valign='top' rowspan='1' colspan='1'>
      * <code>nodeValue</code></td>
@@ -1289,12 +1287,11 @@ public abstract class NodeImpl
      * null</td>
      * </tr>
      * </table>
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
-     * @exception DOMException
-     *   DOMSTRING_SIZE_ERR: Raised when it would return more characters than 
+     *
+     * @throws DOMException NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly
+     * @throws DOMException DOMSTRING_SIZE_ERR: Raised when it would return more characters than 
      *   fit in a <code>DOMString</code> variable on the implementation 
-     *   platform.
+     *   platform
      * @since DOM Level 3
      */
     public String getTextContent() throws DOMException {
@@ -1310,17 +1307,17 @@ public abstract class NodeImpl
     }
 
     /**
-     * This attribute returns the text content of this node and its 
-     * descendants. When it is defined to be null, setting it has no effect. 
-     * When set, any possible children this node may have are removed and 
-     * replaced by a single <code>Text</code> node containing the string 
-     * this attribute is set to. On getting, no serialization is performed, 
-     * the returned string does not contain any markup. No whitespace 
-     * normalization is performed, the returned string does not contain the 
-     * element content whitespaces . Similarly, on setting, no parsing is 
+     * This attribute returns the text content of this node and its
+     * descendants. When it is defined to be null, setting it has no effect.
+     * When set, any possible children this node may have are removed and
+     * replaced by a single <code>Text</code> node containing the string
+     * this attribute is set to. On getting, no serialization is performed,
+     * the returned string does not contain any markup. No whitespace
+     * normalization is performed, the returned string does not contain the
+     * element content whitespaces . Similarly, on setting, no parsing is
      * performed either, the input string is taken as pure textual content.
-     * <br>The string returned is made of the text content of this node 
-     * depending on its type, as defined below: 
+     * <br>The string returned is made of the text content of this node
+     * depending on its type, as defined below:
      * <table border='1'>
      * <tr>
      * <th>Node type</th>
@@ -1328,14 +1325,14 @@ public abstract class NodeImpl
      * </tr>
      * <tr>
      * <td valign='top' rowspan='1' colspan='1'>
-     * ELEMENT_NODE, ENTITY_NODE, ENTITY_REFERENCE_NODE, 
+     * ELEMENT_NODE, ENTITY_NODE, ENTITY_REFERENCE_NODE,
      * DOCUMENT_FRAGMENT_NODE</td>
-     * <td valign='top' rowspan='1' colspan='1'>concatenation of the <code>textContent</code> 
-     * attribute value of every child node, excluding COMMENT_NODE and 
+     * <td valign='top' rowspan='1' colspan='1'>concatenation of the <code>textContent</code>
+     * attribute value of every child node, excluding COMMENT_NODE and
      * PROCESSING_INSTRUCTION_NODE nodes</td>
      * </tr>
      * <tr>
-     * <td valign='top' rowspan='1' colspan='1'>ATTRIBUTE_NODE, TEXT_NODE, 
+     * <td valign='top' rowspan='1' colspan='1'>ATTRIBUTE_NODE, TEXT_NODE,
      * CDATA_SECTION_NODE, COMMENT_NODE, PROCESSING_INSTRUCTION_NODE</td>
      * <td valign='top' rowspan='1' colspan='1'>
      * <code>nodeValue</code></td>
@@ -1346,12 +1343,11 @@ public abstract class NodeImpl
      * null</td>
      * </tr>
      * </table>
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
-     * @exception DOMException
-     *   DOMSTRING_SIZE_ERR: Raised when it would return more characters than 
+     *
+     * @throws DOMException NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly
+     * @throws DOMException DOMSTRING_SIZE_ERR: Raised when it would return more characters than 
      *   fit in a <code>DOMString</code> variable on the implementation 
-     *   platform.
+     *   platform
      * @since DOM Level 3
      */
     public void setTextContent(String textContent)
@@ -1361,16 +1357,17 @@ public abstract class NodeImpl
 
     /**
      * Returns whether this node is the same node as the given one.
-     * <br>This method provides a way to determine whether two 
-     * <code>Node</code> references returned by the implementation reference 
-     * the same object. When two <code>Node</code> references are references 
-     * to the same object, even if through a proxy, the references may be 
-     * used completely interchangably, such that all attributes have the 
-     * same values and calling the same DOM method on either reference 
+     * <br>This method provides a way to determine whether two
+     * <code>Node</code> references returned by the implementation reference
+     * the same object. When two <code>Node</code> references are references
+     * to the same object, even if through a proxy, the references may be
+     * used completely interchangably, such that all attributes have the
+     * same values and calling the same DOM method on either reference
      * always has exactly the same effect.
-     * @param other The node to test against.
-     * @return Returns <code>true</code> if the nodes are the same, 
-     *   <code>false</code> otherwise.
+     *
+     * @param other the node to test against
+     * @return returns <code>true</code> if the nodes are the same,
+     *   <code>false</code> otherwise
      * @since DOM Level 3
      */
     public boolean isSameNode(Node other) {
@@ -1382,12 +1379,13 @@ public abstract class NodeImpl
      
 
     /**
-     *  DOM Level 3: Experimental
-     *  This method checks if the specified <code>namespaceURI</code> is the 
-     *  default namespace or not. 
-     *  @param namespaceURI The namespace URI to look for.
+     * DOM Level 3: Experimental
+     * This method checks if the specified <code>namespaceURI</code> is the
+     * default namespace or not.
+     *
+     * @param namespaceURI the namespace URI to look for.
      *  @return  <code>true</code> if the specified <code>namespaceURI</code> 
-     *   is the default namespace, <code>false</code> otherwise. 
+     *   is the default namespace, <code>false</code> otherwise
      * @since DOM Level 3
      */
     public boolean isDefaultNamespace(String namespaceURI){
@@ -1459,10 +1457,9 @@ public abstract class NodeImpl
 
 
     /**
-     * 
      * DOM Level 3 - Experimental:
      * Look up the prefix associated to the given namespace URI, starting from this node.
-     * 
+     *
      * @param namespaceURI
      * @return the prefix for the namespace
      */
@@ -1515,8 +1512,8 @@ public abstract class NodeImpl
     /**
      * DOM Level 3 - Experimental:
      * Look up the namespace URI associated to the given prefix, starting from this node.
-     * Use lookupNamespaceURI(null) to lookup the default namespace
-     * 
+     * Use lookupNamespaceURI(null) to lookup the default namespace.
+     *
      * @param specifiedPrefix
      * @return the URI for the namespace
      * @since DOM Level 3
@@ -1663,41 +1660,42 @@ public abstract class NodeImpl
 
     /**
      * Tests whether two nodes are equal.
-     * <br>This method tests for equality of nodes, not sameness (i.e., 
-     * whether the two nodes are references to the same object) which can be 
-     * tested with <code>Node.isSameNode</code>. All nodes that are the same 
+     * <br>This method tests for equality of nodes, not sameness (i.e.,
+     * whether the two nodes are references to the same object) which can be
+     * tested with <code>Node.isSameNode</code>. All nodes that are the same
      * will also be equal, though the reverse may not be true.
-     * <br>Two nodes are equal if and only if the following conditions are 
-     * satisfied: The two nodes are of the same type.The following string 
-     * attributes are equal: <code>nodeName</code>, <code>localName</code>, 
+     * <br>Two nodes are equal if and only if the following conditions are
+     * satisfied: The two nodes are of the same type.The following string
+     * attributes are equal: <code>nodeName</code>, <code>localName</code>,
      * <code>namespaceURI</code>, <code>prefix</code>, <code>nodeValue</code>
-     * , <code>baseURI</code>. This is: they are both <code>null</code>, or 
+     * , <code>baseURI</code>. This is: they are both <code>null</code>, or
      * they have the same length and are character for character identical.
-     * The <code>attributes</code> <code>NamedNodeMaps</code> are equal. 
-     * This is: they are both <code>null</code>, or they have the same 
-     * length and for each node that exists in one map there is a node that 
-     * exists in the other map and is equal, although not necessarily at the 
-     * same index.The <code>childNodes</code> <code>NodeLists</code> are 
-     * equal. This is: they are both <code>null</code>, or they have the 
-     * same length and contain equal nodes at the same index. This is true 
-     * for <code>Attr</code> nodes as for any other type of node. Note that 
-     * normalization can affect equality; to avoid this, nodes should be 
-     * normalized before being compared. 
-     * <br>For two <code>DocumentType</code> nodes to be equal, the following 
-     * conditions must also be satisfied: The following string attributes 
-     * are equal: <code>publicId</code>, <code>systemId</code>, 
-     * <code>internalSubset</code>.The <code>entities</code> 
-     * <code>NamedNodeMaps</code> are equal.The <code>notations</code> 
-     * <code>NamedNodeMaps</code> are equal. 
-     * <br>On the other hand, the following do not affect equality: the 
-     * <code>ownerDocument</code> attribute, the <code>specified</code> 
-     * attribute for <code>Attr</code> nodes, the 
-     * <code>isWhitespaceInElementContent</code> attribute for 
-     * <code>Text</code> nodes, as well as any user data or event listeners 
+     * The <code>attributes</code> <code>NamedNodeMaps</code> are equal.
+     * This is: they are both <code>null</code>, or they have the same
+     * length and for each node that exists in one map there is a node that
+     * exists in the other map and is equal, although not necessarily at the
+     * same index.The <code>childNodes</code> <code>NodeLists</code> are
+     * equal. This is: they are both <code>null</code>, or they have the
+     * same length and contain equal nodes at the same index. This is true
+     * for <code>Attr</code> nodes as for any other type of node. Note that
+     * normalization can affect equality; to avoid this, nodes should be
+     * normalized before being compared.
+     * <br>For two <code>DocumentType</code> nodes to be equal, the following
+     * conditions must also be satisfied: The following string attributes
+     * are equal: <code>publicId</code>, <code>systemId</code>,
+     * <code>internalSubset</code>.The <code>entities</code>
+     * <code>NamedNodeMaps</code> are equal.The <code>notations</code>
+     * <code>NamedNodeMaps</code> are equal.
+     * <br>On the other hand, the following do not affect equality: the
+     * <code>ownerDocument</code> attribute, the <code>specified</code>
+     * attribute for <code>Attr</code> nodes, the
+     * <code>isWhitespaceInElementContent</code> attribute for
+     * <code>Text</code> nodes, as well as any user data or event listeners
      * registered on the nodes.
-     * @param arg The node to compare equality with.
-     * @return If the nodes, and possibly subtrees are equal, 
-     *   <code>true</code> otherwise <code>false</code>.
+     *
+     * @param arg the node to compare equality with
+     * @return if the nodes, and possibly subtrees are equal,
+     *   <code>true</code> otherwise <code>false</code>
      * @since DOM Level 3
      */
     public boolean isEqualNode(Node arg) {
@@ -1759,45 +1757,46 @@ public abstract class NodeImpl
     
     /**
      * Tests whether two nodes are equal.
-     * 
+     *
      * This method implementation is added, to support use
      * cases like use of XPath 3.1 function fn:deep-equal.
-     * 
-     * <br>This method tests for equality of nodes, not sameness (i.e., 
-     * whether the two nodes are references to the same object) which can be 
-     * tested with <code>Node.isSameNode</code>. All nodes that are the same 
+     *
+     * <br>This method tests for equality of nodes, not sameness (i.e.,
+     * whether the two nodes are references to the same object) which can be
+     * tested with <code>Node.isSameNode</code>. All nodes that are the same
      * will also be equal, though the reverse may not be true.
-     * <br>Two nodes are equal if and only if the following conditions are 
-     * satisfied: The two nodes are of the same type. The following string 
+     * <br>Two nodes are equal if and only if the following conditions are
+     * satisfied: The two nodes are of the same type. The following string
      * attributes are equal: <code>localName</code>, <code>namespaceURI</code>,
-     * <code>nodeValue</code>, <code>baseURI</code>. This is: they are both 
-     * <code>null</code>, or they have the same length and are character 
+     * <code>nodeValue</code>, <code>baseURI</code>. This is: they are both
+     * <code>null</code>, or they have the same length and are character
      * for character identical.
-     * The <code>attributes</code> <code>NamedNodeMaps</code> are equal. 
-     * This is: they are both <code>null</code>, or they have the same 
-     * length and for each node that exists in one map there is a node that 
-     * exists in the other map and is equal, although not necessarily at the 
-     * same index. The <code>childNodes</code> <code>NodeLists</code> are 
-     * equal. This is: they are both <code>null</code>, or they have the 
-     * same length and contain equal nodes at the same index. This is true 
-     * for <code>Attr</code> nodes as for any other type of node. Note that 
-     * normalization can affect equality; to avoid this, nodes should be 
-     * normalized before being compared. 
-     * <br>For two <code>DocumentType</code> nodes to be equal, the following 
-     * conditions must also be satisfied: The following string attributes 
-     * are equal: <code>publicId</code>, <code>systemId</code>, 
-     * <code>internalSubset</code>. The <code>entities</code> 
-     * <code>NamedNodeMaps</code> are equal. The <code>notations</code> 
-     * <code>NamedNodeMaps</code> are equal. 
-     * <br>On the other hand, the following do not affect equality: the 
-     * <code>ownerDocument</code> attribute, the <code>specified</code> 
-     * attribute for <code>Attr</code> nodes, the 
-     * <code>isWhitespaceInElementContent</code> attribute for 
-     * <code>Text</code> nodes, as well as any user data or event listeners 
+     * The <code>attributes</code> <code>NamedNodeMaps</code> are equal.
+     * This is: they are both <code>null</code>, or they have the same
+     * length and for each node that exists in one map there is a node that
+     * exists in the other map and is equal, although not necessarily at the
+     * same index. The <code>childNodes</code> <code>NodeLists</code> are
+     * equal. This is: they are both <code>null</code>, or they have the
+     * same length and contain equal nodes at the same index. This is true
+     * for <code>Attr</code> nodes as for any other type of node. Note that
+     * normalization can affect equality; to avoid this, nodes should be
+     * normalized before being compared.
+     * <br>For two <code>DocumentType</code> nodes to be equal, the following
+     * conditions must also be satisfied: The following string attributes
+     * are equal: <code>publicId</code>, <code>systemId</code>,
+     * <code>internalSubset</code>. The <code>entities</code>
+     * <code>NamedNodeMaps</code> are equal. The <code>notations</code>
+     * <code>NamedNodeMaps</code> are equal.
+     * <br>On the other hand, the following do not affect equality: the
+     * <code>ownerDocument</code> attribute, the <code>specified</code>
+     * attribute for <code>Attr</code> nodes, the
+     * <code>isWhitespaceInElementContent</code> attribute for
+     * <code>Text</code> nodes, as well as any user data or event listeners
      * registered on the nodes.
-     * @param arg The node to compare equality with.
-     * @return If the nodes, and possibly subtrees are equal, 
-     *   <code>true</code> otherwise <code>false</code>.
+     *
+     * @param arg the node to compare equality with
+     * @return if the nodes, and possibly subtrees are equal,
+     *   <code>true</code> otherwise <code>false</code>
      */
     public boolean isEqualNodeWithQName(Node arg, String collationUri) {
         if (arg == this) {
@@ -1868,16 +1867,17 @@ public abstract class NodeImpl
     }
 
     /**
-     * Associate an object to a key on this node. The object can later be 
-     * retrieved from this node by calling <code>getUserData</code> with the 
+     * Associate an object to a key on this node. The object can later be
+     * retrieved from this node by calling <code>getUserData</code> with the
      * same key.
-     * @param key The key to associate the object to.
-     * @param data The object to associate to the given key, or 
-     *   <code>null</code> to remove any existing association to that key.
-     * @param handler The handler to associate to that key, or 
-     *   <code>null</code>.
-     * @return Returns the <code>DOMObject</code> previously associated to 
-     *   the given key on this node, or <code>null</code> if there was none.
+     *
+     * @param key the key to associate the object to
+     * @param data the object to associate to the given key, or
+     *   <code>null</code> to remove any existing association to that key
+     * @param handler the handler to associate to that key, or
+     *   <code>null</code>
+     * @return returns the <code>DOMObject</code> previously associated to
+     *   the given key on this node, or <code>null</code> if there was none
      * @since DOM Level 3
      */
     public Object setUserData(String key, 
@@ -1887,12 +1887,13 @@ public abstract class NodeImpl
     }
 
     /**
-     * Retrieves the object associated to a key on a this node. The object 
-     * must first have been set to this node by calling 
+     * Retrieves the object associated to a key on a this node. The object
+     * must first have been set to this node by calling
      * <code>setUserData</code> with the same key.
-     * @param key The key the object is associated to.
-     * @return Returns the <code>DOMObject</code> associated to the given key 
-     *   on this node, or <code>null</code> if there was none.
+     *
+     * @param key the key the object is associated to
+     * @return returns the <code>DOMObject</code> associated to the given key
+     *   on this node, or <code>null</code> if there was none
      * @since DOM Level 3
      */
     public Object getUserData(String key) {
@@ -1918,12 +1919,12 @@ public abstract class NodeImpl
      * <P>
      * Note: since we never have any children deep is meaningless here,
      * ParentNode overrides this behavior.
-     * @see ParentNode
      *
-     * @param readOnly True or false as desired.
-     * @param deep If true, children are also toggled. Note that this will
+     * @param readOnly true or false as desired
+     * @param deep if true, children are also toggled. Note that this will
      *	not change the state of an EntityReference or its children,
      *  which are always read-only.
+     * @see ParentNode
      */
     public void setReadOnly(boolean readOnly, boolean deep) {
 
@@ -2004,9 +2005,9 @@ public abstract class NodeImpl
         needsSyncData(false);
     }
 
-    /** 
-     * For non-child nodes, the node which "points" to this node.  
-     * For example, the owning element for an attribute
+    /**
+     * For non-child nodes, the node which "points" to this node.
+     * For example, the owning element for an attribute.
      */
     protected Node getContainer() {
        return null;

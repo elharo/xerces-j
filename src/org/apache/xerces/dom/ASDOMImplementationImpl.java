@@ -38,9 +38,10 @@ import org.w3c.dom.DOMImplementation;
  * <P>
  * This particular class, along with DocumentImpl, supports the DOM
  * Core, DOM Level 2 optional mofules, and Abstract Schemas (Experimental).
- * @deprecated 
+ *
  * @version $Id$
- * @since PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @deprecated
  */
 public class ASDOMImplementationImpl extends DOMImplementationImpl 
     implements DOMImplementationAS {
@@ -56,7 +57,7 @@ public class ASDOMImplementationImpl extends DOMImplementationImpl
     // Public methods
     //
 
-    /** NON-DOM: Obtain and return the single shared object */
+    /** NON-DOM: Obtain and return the single shared object. */
     public static DOMImplementation getDOMImplementation() {
         return singleton;
     }  
@@ -69,10 +70,11 @@ public class ASDOMImplementationImpl extends DOMImplementationImpl
     /**
      * DOM Level 3 WD - Experimental.
      * Creates an ASModel.
-     * @param isNamespaceAware Allow creation of <code>ASModel</code> with 
-     *   this attribute set to a specific value.
-     * @return A <code>null</code> return indicates failure.what is a 
-     *   failure? Could be a system error.
+     *
+     * @param isNamespaceAware allow creation of <code>ASModel</code> with
+     *   this attribute set to a specific value
+     * @return a <code>null</code> return indicates failure.what is a
+     *   failure? Could be a system error
      */
     public ASModel createAS(boolean isNamespaceAware){
         return new ASModelImpl(isNamespaceAware);
@@ -80,8 +82,9 @@ public class ASDOMImplementationImpl extends DOMImplementationImpl
 
     /**
      * DOM Level 3 WD - Experimental.
-     * Creates an <code>DOMASBuilder</code>.Do we need the method since we 
+     * Creates an <code>DOMASBuilder</code>.Do we need the method since we
      * already have <code>DOMImplementationLS.createDOMParser</code>?
+     *
      * @return  DOMASBuilder
      */
     public DOMASBuilder createDOMASBuilder(){
@@ -92,6 +95,7 @@ public class ASDOMImplementationImpl extends DOMImplementationImpl
     /**
      * DOM Level 3 WD - Experimental.
      * Creates an <code>DOMASWriter</code>.
+     *
      * @return  a DOMASWriter
      */
     public DOMASWriter createDOMASWriter(){

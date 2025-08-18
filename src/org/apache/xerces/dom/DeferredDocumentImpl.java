@@ -34,11 +34,10 @@ import org.w3c.dom.Node;
  * objects. The Node objects created have a ownerDocument attribute
  * which associates them with the Document within whose context they
  * were created.
- * 
- * @xerces.internal
  *
  * @version $Id$
- * @since  PR-DOM-Level-1-19980818.
+ * @since PR-DOM-Level-1-19980818
+ * @xerces.internal
  */
 public class DeferredDocumentImpl
     extends DocumentImpl
@@ -120,7 +119,8 @@ public class DeferredDocumentImpl
     /** Identifier element indexes. */
     protected transient int fIdElement[];
 
-    /** DOM2: For namespace support in the deferred case.
+    /**
+     * DOM2: For namespace support in the deferred case.
      */
     // Implementation Note: The deferred element and attribute must know how to
     // interpret the int representing the qname.
@@ -179,7 +179,7 @@ public class DeferredDocumentImpl
         return DeferredDOMImplementationImpl.getDOMImplementation();
     }
     
-    /** Returns the cached parser.getNamespaces() value.*/
+    /** Returns the cached parser.getNamespaces() value. */
     boolean getNamespacesEnabled() {
         return fNamespacesEnabled;
     }
@@ -327,7 +327,7 @@ public class DeferredDocumentImpl
     }
 
     /**
-     * DOM Internal 
+     * DOM Internal
      *
      * An attribute specifying the actual encoding of this document. This is
      * <code>null</code> otherwise.
@@ -363,8 +363,9 @@ public class DeferredDocumentImpl
     } // createDeferredEntityReference(String):int
 
 
-    /** 
+    /**
      * Creates an element node with a URI in the table and type information.
+     *
      * @deprecated
      */
     public int createDeferredElement(String elementURI, String elementName, 
@@ -383,16 +384,17 @@ public class DeferredDocumentImpl
 
     } // createDeferredElement(String,String,Object):int
 
-    /** 
+    /**
      * Creates an element node in the table.
-     * @deprecated 
+     *
+     * @deprecated
      */
     public int createDeferredElement(String elementName) {
         return createDeferredElement(null, elementName);
     }
 
-    /** 
-     * Creates an element node with a URI in the table. 
+    /**
+     * Creates an element node with a URI in the table.
      */
     public int createDeferredElement(String elementURI, String elementName) {
 
@@ -409,17 +411,18 @@ public class DeferredDocumentImpl
     } // createDeferredElement(String,String):int
     
     
-	/**
-	 * This method is used by the DOMParser to create attributes.
-	 * @param elementNodeIndex
-	 * @param attrName
-	 * @param attrURI
-	 * @param attrValue
-	 * @param specified
-	 * @param id
-	 * @param type
-	 * @return int
-	 */
+    /**
+     * This method is used by the DOMParser to create attributes.
+     *
+     * @param elementNodeIndex
+     * @param attrName
+     * @param attrURI
+     * @param attrValue
+     * @param specified
+     * @param id
+     * @param type
+     * @return int
+     */
 	public int setDeferredAttribute(int elementNodeIndex,
 		                        String attrName,
                           		String attrURI,
@@ -468,8 +471,9 @@ public class DeferredDocumentImpl
 		return attrNodeIndex;
 	}
     
-    /**  
+    /**
      * Sets an attribute on an element node.
+     *
      * @deprecated
      */
     public int setDeferredAttribute(int elementNodeIndex,
@@ -528,7 +532,7 @@ public class DeferredDocumentImpl
 
     } // createDeferredAttribute(String,String,String,boolean):int
 
-    /** Creates an element definition in the table.*/
+    /** Creates an element definition in the table. */
     public int createDeferredElementDefinition(String elementName) {
 
         // create node
@@ -741,7 +745,7 @@ public class DeferredDocumentImpl
     }
 
 
-    /** Sets type of attribute */
+    /** Sets type of attribute. */
     public void setIdAttribute(int attrIndex) {
 
         int chunk = attrIndex >> CHUNK_SHIFT;
@@ -788,7 +792,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the parent node of the given node.
-     * @param free True to free parent node.
+     *
+     * @param free true to free parent node
      */
     public int getParentNode(int nodeIndex, boolean free) {
 
@@ -810,7 +815,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the last child of the given node.
-     * @param free True to free child index.
+     *
+     * @param free true to free child index
      */
     public int getLastChild(int nodeIndex, boolean free) {
 
@@ -835,7 +841,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the prev sibling of the given node.
-     * @param free True to free sibling index.
+     *
+     * @param free true to free sibling index
      */
     public int getPrevSibling(int nodeIndex, boolean free) {
 
@@ -876,7 +883,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the <i>real</i> prev sibling of the given node.
-     * @param free True to free sibling index.
+     *
+     * @param free true to free sibling index
      */
     public int getRealPrevSibling(int nodeIndex, boolean free) {
 
@@ -1111,7 +1119,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the name of the given node.
-     * @param free True to free the string index.
+     *
+     * @param free true to free the string index
      */
     public String getNodeName(int nodeIndex, boolean free) {
 
@@ -1133,7 +1142,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the real value of the given node.
-     * @param free True to free the string index.
+     *
+     * @param free true to free the string index
      */
     public String getNodeValueString(int nodeIndex, boolean free) {
 
@@ -1222,11 +1232,12 @@ public class DeferredDocumentImpl
         return getNodeValue(nodeIndex, true);
     }
     
-	/**
-	 * Clears the type info that is stored in the fNodeValue array
-	 * @param nodeIndex
-	 * @return Object - type information for the attribute/element node
-	 */
+    /**
+     * Clears the type info that is stored in the fNodeValue array.
+     *
+     * @param nodeIndex
+     * @return object - type information for the attribute/element node
+     */
     public Object getTypeInfo(int nodeIndex) {
         if (nodeIndex == -1) {
             return null;
@@ -1250,7 +1261,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the value of the given node.
-     * @param free True to free the value index.
+     *
+     * @param free true to free the value index
      */
     public String getNodeValue(int nodeIndex, boolean free) {
 
@@ -1275,7 +1287,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the extra info of the given node.
-     * @param free True to free the value index.
+     *
+     * @param free true to free the value index
      */
     public int getNodeExtra(int nodeIndex, boolean free) {
 
@@ -1297,7 +1310,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the type of the given node.
-     * @param free True to free type index.
+     *
+     * @param free true to free type index
      */
     public short getNodeType(int nodeIndex, boolean free) {
 
@@ -1338,7 +1352,8 @@ public class DeferredDocumentImpl
 
     /**
      * Returns the URI of the given node.
-     * @param free True to free URI index.
+     *
+     * @param free true to free URI index
      */
     public String getNodeURI(int nodeIndex, boolean free) {
 
@@ -1864,14 +1879,13 @@ public class DeferredDocumentImpl
      * before calling this method and all array values must be
      * non-negative.
      *
-     * @param values  The array of values to search.
-     * @param start   The starting offset of the search.
-     * @param end     The ending offset of the search.
-     * @param target  The target value.
-     *
-     * @return This function will return the <i>first</i> occurrence
+     * @param values  the array of values to search
+     * @param start   the starting offset of the search
+     * @param end     the ending offset of the search
+     * @param target  the target value
+     * @return this function will return the <i>first</i> occurrence
      *         of the target value, or -1 if the target value cannot
-     *         be found.
+     *         be found
      */
     protected static int binarySearch(final int values[],
                                       int start, int end, int target) {
@@ -1945,7 +1959,7 @@ public class DeferredDocumentImpl
     /**
      * Sets the specified value in the given of data at the chunk and index.
      *
-     * @return Returns the old value.
+     * @return returns the old value
      */
     private final int setChunkIndex(int data[][], int value,
                                     int chunk, int index) {
@@ -2014,7 +2028,7 @@ public class DeferredDocumentImpl
      * Note that this method will clear the given chunk if the reference
      * count becomes zero.
      *
-     * @return Returns the old value.
+     * @return returns the old value
      */
     private final int clearChunkIndex(int data[][], int chunk, int index) {
         int value = data[chunk] != null ? data[chunk][index] : -1;

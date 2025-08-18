@@ -33,7 +33,7 @@ import org.w3c.dom.ls.LSInput;
  * <p> There are two places that the application will deliver this input
  * source to the parser: as the argument to the <code>parse</code> method,
  * or as the return value of the <code>DOMResourceResolver.resolveEntity</code>
- *  method.
+ * method.
  * <p> The <code>DOMParser</code> will use the <code>LSInput</code>
  * object to determine how to read XML input. If there is a character stream
  * available, the parser will read that stream directly; if not, the parser
@@ -45,12 +45,11 @@ import org.w3c.dom.ls.LSInput;
  * necessary).  Eventhough all attributes in this interface are writable the
  * DOM implementation is expected to never mutate a LSInput.
  * <p>See also the <a href='http://www.w3.org/TR/2001/WD-DOM-Level-3-ASLS-20011025'>Document Object Model (DOM) Level 3 Abstract Schemas and Load
-and Save Specification</a>.
+ * and Save Specification</a>.
  *
- * @xerces.internal
- *
- * @author Gopal Sharma, SUN Microsystems Inc.
+ * @author Gopal Sharma, SUN Microsystems Inc
  * @version $Id$
+ * @xerces.internal
  */
 
 // REVISIT:
@@ -77,27 +76,25 @@ public class DOMInputImpl implements LSInput {
         protected boolean fCertifiedText = false;
 
    /**
-     * Default Constructor, constructs an input source
-     *
-     *
-     */
+    * Default Constructor, constructs an input source.
+    */
      public DOMInputImpl() {}
 
    /**
-     * Constructs an input source from just the public and system
-     * identifiers, leaving resolution of the entity and opening of
-     * the input stream up to the caller.
-     *
-     * @param publicId     The public identifier, if known.
-     * @param systemId     The system identifier. This value should
+    * Constructs an input source from just the public and system
+    * identifiers, leaving resolution of the entity and opening of
+    * the input stream up to the caller.
+    *
+    * @param publicId     the public identifier, if known
+    * @param systemId     the system identifier. This value should
      *                     always be set, if possible, and can be
      *                     relative or absolute. If the system identifier
      *                     is relative, then the base system identifier
      *                     should be set.
-     * @param baseSystemId The base system identifier. This value should
+    * @param baseSystemId the base system identifier. This value should
      *                     always be set to the fully expanded URI of the
      *                     base system identifier, if possible.
-     */
+    */
 
     public DOMInputImpl(String publicId, String systemId,
                           String baseSystemId) {
@@ -111,17 +108,17 @@ public class DOMInputImpl implements LSInput {
     /**
      * Constructs an input source from a byte stream.
      *
-     * @param publicId     The public identifier, if known.
-     * @param systemId     The system identifier. This value should
+     * @param publicId     the public identifier, if known
+     * @param systemId     the system identifier. This value should
      *                     always be set, if possible, and can be
      *                     relative or absolute. If the system identifier
      *                     is relative, then the base system identifier
      *                     should be set.
-     * @param baseSystemId The base system identifier. This value should
+     * @param baseSystemId the base system identifier. This value should
      *                     always be set to the fully expanded URI of the
      *                     base system identifier, if possible.
-     * @param byteStream   The byte stream.
-     * @param encoding     The encoding of the byte stream, if known.
+     * @param byteStream   the byte stream
+     * @param encoding     the encoding of the byte stream, if known
      */
 
     public DOMInputImpl(String publicId, String systemId,
@@ -137,21 +134,21 @@ public class DOMInputImpl implements LSInput {
     } // DOMInputImpl(String,String,String,InputStream,String)
 
    /**
-     * Constructs an input source from a character stream.
-     *
-     * @param publicId     The public identifier, if known.
-     * @param systemId     The system identifier. This value should
+    * Constructs an input source from a character stream.
+    *
+    * @param publicId     the public identifier, if known
+    * @param systemId     the system identifier. This value should
      *                     always be set, if possible, and can be
      *                     relative or absolute. If the system identifier
      *                     is relative, then the base system identifier
      *                     should be set.
-     * @param baseSystemId The base system identifier. This value should
+    * @param baseSystemId the base system identifier. This value should
      *                     always be set to the fully expanded URI of the
      *                     base system identifier, if possible.
-     * @param charStream   The character stream.
-     * @param encoding     The original encoding of the byte stream
-     *                     used by the reader, if known.
-     */
+    * @param charStream   the character stream
+    * @param encoding     the original encoding of the byte stream
+     *                     used by the reader, if known
+    */
 
      public DOMInputImpl(String publicId, String systemId,
                           String baseSystemId, Reader charStream,
@@ -166,21 +163,21 @@ public class DOMInputImpl implements LSInput {
      } // DOMInputImpl(String,String,String,Reader,String)
 
    /**
-     * Constructs an input source from a String.
-     *
-     * @param publicId     The public identifier, if known.
-     * @param systemId     The system identifier. This value should
+    * Constructs an input source from a String.
+    *
+    * @param publicId     the public identifier, if known
+    * @param systemId     the system identifier. This value should
      *                     always be set, if possible, and can be
      *                     relative or absolute. If the system identifier
      *                     is relative, then the base system identifier
      *                     should be set.
-     * @param baseSystemId The base system identifier. This value should
+    * @param baseSystemId the base system identifier. This value should
      *                     always be set to the fully expanded URI of the
      *                     base system identifier, if possible.
-     * @param data		   The String Data.
-     * @param encoding     The original encoding of the byte stream
-     *                     used by the reader, if known.
-     */
+    * @param data		   the String Data
+    * @param encoding     the original encoding of the byte stream
+     *                     used by the reader, if known
+    */
 
      public DOMInputImpl(String publicId, String systemId,
                           String baseSystemId, String data,
@@ -193,15 +190,15 @@ public class DOMInputImpl implements LSInput {
      } // DOMInputImpl(String,String,String,String,String)
 
    /**
-     * An attribute of a language-binding dependent type that represents a
-     * stream of bytes.
-     * <br>The parser will ignore this if there is also a character stream
-     * specified, but it will use a byte stream in preference to opening a
-     * URI connection itself.
-     * <br>If the application knows the character encoding of the byte stream,
-     * it should set the encoding property. Setting the encoding in this way
-     * will override any encoding specified in the XML declaration itself.
-     */
+    * An attribute of a language-binding dependent type that represents a
+    * stream of bytes.
+    * <br>The parser will ignore this if there is also a character stream
+    * specified, but it will use a byte stream in preference to opening a
+    * URI connection itself.
+    * <br>If the application knows the character encoding of the byte stream,
+    * it should set the encoding property. Setting the encoding in this way
+    * will override any encoding specified in the XML declaration itself.
+    */
 
     public InputStream getByteStream(){
 	return fByteStream;
@@ -223,7 +220,7 @@ public class DOMInputImpl implements LSInput {
      }
 
     /**
-     *  An attribute of a language-binding dependent type that represents a
+     * An attribute of a language-binding dependent type that represents a
      * stream of 16-bit units. Application must encode the stream using
      * UTF-16 (defined in  and Amendment 1 of ).
      * <br>If a character stream is specified, the parser will ignore any byte
@@ -234,7 +231,7 @@ public class DOMInputImpl implements LSInput {
 	return fCharStream;
     }
     /**
-     *  An attribute of a language-binding dependent type that represents a
+     * An attribute of a language-binding dependent type that represents a
      * stream of 16-bit units. Application must encode the stream using
      * UTF-16 (defined in  and Amendment 1 of ).
      * <br>If a character stream is specified, the parser will ignore any byte
@@ -258,19 +255,19 @@ public class DOMInputImpl implements LSInput {
     }
 
    /**
-     * A string attribute that represents a sequence of 16 bit units (utf-16
-     * encoded characters).
-     * <br>If string data is available in the input source, the parser will
-     * ignore the character stream and the byte stream and will not attempt
-     * to open a URI connection to the system identifier.
-     */
+    * A string attribute that represents a sequence of 16 bit units (utf-16
+    * encoded characters).
+    * <br>If string data is available in the input source, the parser will
+    * ignore the character stream and the byte stream and will not attempt
+    * to open a URI connection to the system identifier.
+    */
 
      public void setStringData(String stringData){
 		fData = stringData;
      }
 
     /**
-     *  The character encoding, if known. The encoding must be a string
+     * The character encoding, if known. The encoding must be a string
      * acceptable for an XML encoding declaration ( section 4.3.3 "Character
      * Encoding in Entities").
      * <br>This attribute has no effect when the application provides a
@@ -285,7 +282,7 @@ public class DOMInputImpl implements LSInput {
     }
 
     /**
-     *  The character encoding, if known. The encoding must be a string
+     * The character encoding, if known. The encoding must be a string
      * acceptable for an XML encoding declaration ( section 4.3.3 "Character
      * Encoding in Entities").
      * <br>This attribute has no effect when the application provides a
@@ -351,7 +348,7 @@ public class DOMInputImpl implements LSInput {
     }
 
     /**
-     *  The base URI to be used (see section 5.1.4 in ) for resolving relative
+     * The base URI to be used (see section 5.1.4 in ) for resolving relative
      * URIs to absolute URIs. If the baseURI is itself a relative URI, the
      * behavior is implementation dependent.
      */
@@ -359,7 +356,7 @@ public class DOMInputImpl implements LSInput {
 	return fBaseSystemId;
     }
     /**
-     *  The base URI to be used (see section 5.1.4 in ) for resolving relative
+     * The base URI to be used (see section 5.1.4 in ) for resolving relative
      * URIs to absolute URIs. If the baseURI is itself a relative URI, the
      * behavior is implementation dependent.
      */
@@ -368,19 +365,19 @@ public class DOMInputImpl implements LSInput {
     }
 
     /**
-      *  If set to true, assume that the input is certified (see section 2.13
-      * in [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>]) when
-      * parsing [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>].
-      */
+     * If set to true, assume that the input is certified (see section 2.13
+     * in [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>]) when
+     * parsing [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>].
+     */
     public boolean getCertifiedText(){
       return fCertifiedText;
     }
 
     /**
-      *  If set to true, assume that the input is certified (see section 2.13
-      * in [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>]) when
-      * parsing [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>].
-      */
+     * If set to true, assume that the input is certified (see section 2.13
+     * in [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>]) when
+     * parsing [<a href='http://www.w3.org/TR/2002/CR-xml11-20021015/'>XML 1.1</a>].
+     */
 
     public void setCertifiedText(boolean certifiedText){
       fCertifiedText = certifiedText;
